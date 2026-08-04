@@ -11,3 +11,5 @@ next-env.d.ts
 
 # Capture d écran ad hoc : npm i -D playwright
 .playwright/
+
+out/

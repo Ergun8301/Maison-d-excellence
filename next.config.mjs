@@ -1,11 +1,13 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  images: {
-    // Les visuels Unsplash de la maquette sont provisoires : le handoff les
-    // liste comme à remplacer par les photos de chantier du client.
-    remotePatterns: [{ protocol: 'https', hostname: 'images.unsplash.com' }],
-  },
+
+  // Export en pages statiques : les 26 pages deviennent des fichiers HTML
+  // complets. Google reçoit le contenu sans attendre, et le site s'héberge
+  // gratuitement, sans serveur à faire tourner. Les effets, eux, se jouent
+  // normalement dans le navigateur.
+  output: 'export',
+  images: { unoptimized: true },
 };
 
 export default nextConfig;
