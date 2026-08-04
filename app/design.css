@@ -1,0 +1,122 @@
+/* Feuille de style de la maquette Claude Design, reprise sans retouche. */
+*{box-sizing:border-box;}
+html{-webkit-font-smoothing:antialiased;}
+body{margin:0;background:#111412;}
+img{display:block;}
+::selection{background:#2E5A49;color:#fff;}
+a{color:#2E5A49;}
+a:hover{color:#111412;}
+@keyframes meBureau{0%{transform:scale(1);}100%{transform:scale(1.07);}}
+@keyframes meKb{0%{transform:scale(1.06) translate(0,0);}100%{transform:scale(1.18) translate(-1.4%,-1.2%);}}
+@keyframes meDrop{0%{transform:translateY(-20px);opacity:0;}18%{opacity:1;}80%{opacity:1;}100%{transform:translateY(104px);opacity:0;}}
+@keyframes meScroll{0%{transform:translateY(0);opacity:0;}30%{opacity:1;}80%{transform:translateY(15px);opacity:0;}100%{opacity:0;}}
+@keyframes mePulse{0%{box-shadow:0 0 0 0 rgba(37,211,102,.5);}70%{box-shadow:0 0 0 16px rgba(37,211,102,0);}100%{box-shadow:0 0 0 0 rgba(37,211,102,0);}}
+@keyframes meStar{0%{transform:translateY(-115%);opacity:0;}18%{opacity:1;}82%{opacity:1;}100%{transform:translateY(115%);opacity:0;}}
+@keyframes meShine{0%{background-position:100% 0;}100%{background-position:0% 0;}}
+@keyframes meStarGlow{0%{opacity:.25;}50%{opacity:.6;}100%{opacity:.25;}}
+.me-star-dot{animation:meStar 2.9s cubic-bezier(.55,.05,.45,.95) infinite alternate;}
+.me-star-halo{animation:meStarGlow 2.9s ease-in-out infinite alternate;}
+.me-shine{background:linear-gradient(100deg,#C08F45 0%,#D6B073 26%,#FFFFFF 48%,#FFFFFF 52%,#D6B073 74%,#C08F45 100%);background-size:300% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;animation:meShine 3.6s ease-in-out infinite alternate;}
+.me-shine-once{background:linear-gradient(100deg,#D3B27A 0%,#D3B27A 36%,#FFF6E4 50%,#D3B27A 64%,#D3B27A 100%);background-size:300% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;animation:meShine 2.8s ease-in-out 1.5s 1 both;}
+.me-hdr-mark{opacity:1;}
+.me-g2{display:grid;grid-template-columns:1fr 1fr;}
+.me-g3{display:grid;grid-template-columns:repeat(3,1fr);}
+.me-g4{display:grid;grid-template-columns:repeat(4,1fr);}
+.me-split{display:grid;grid-template-columns:1.04fr 0.96fr;}
+.me-cx{display:grid;grid-template-columns:1.02fr 0.98fr;align-items:stretch;}
+.me-lead{display:grid;grid-template-columns:0.82fr 1.7fr;}
+.me-sticky{position:sticky;top:98px;}
+.me-steps{display:grid;grid-template-columns:repeat(5,1fr);}
+.me-card{transition:transform .65s cubic-bezier(.16,.84,.44,1),box-shadow .65s cubic-bezier(.16,.84,.44,1);}
+.me-card:hover{transform:translateY(-10px);box-shadow:0 50px 90px -55px rgba(11,13,12,.85);}
+.me-zoom{transition:transform 1.2s cubic-bezier(.16,.84,.44,1);}
+.me-card:hover .me-zoom{transform:scale(1.08);}
+.me-btn{transition:transform .45s cubic-bezier(.16,.84,.44,1),background .35s,color .35s,border-color .35s,box-shadow .45s;}
+.me-btn:hover{transform:translateY(-3px);}
+.me-link{transition:color .3s,gap .35s;}
+.me-navitem{transition:color .3s,opacity .3s;}
+.me-scroll{transition:color .3s,transform .35s cubic-bezier(.16,.84,.44,1);}
+.me-scroll:hover{transform:translateY(3px);}
+.me-navitem:hover{opacity:1 !important;}
+.me-burger{display:none;}
+.me-projbig:hover .me-zoom{transform:scale(1.06);}
+.me-wa{animation:mePulse 3.4s infinite;}
+.me-range{-webkit-appearance:none;appearance:none;width:100%;height:3px;border-radius:3px;background:rgba(17,20,18,.18);outline:none;}
+.me-range::-webkit-slider-thumb{-webkit-appearance:none;width:26px;height:26px;border-radius:50%;background:#2E5A49;border:3px solid #FFFFFF;box-shadow:0 6px 16px -6px rgba(17,20,18,.8);cursor:pointer;}
+.me-range::-moz-range-thumb{width:22px;height:22px;border-radius:50%;background:#2E5A49;border:3px solid #FFFFFF;cursor:pointer;}
+.me-w{display:inline-block;overflow:hidden;vertical-align:bottom;padding:0.12em 0.14em 0.42em;margin:-0.12em -0.14em -0.42em;perspective:760px;}
+.me-w>span{display:inline-block;transform-origin:50% 100%;backface-visibility:hidden;}
+.me-slide{transition:opacity 1.25s cubic-bezier(.4,0,.2,1);}
+.me-soc{transition:background .3s,color .3s,transform .3s,border-color .3s;}
+.me-soc:hover{background:#F7F7F4;color:#111412;transform:translateY(-3px);}
+.me-select{-webkit-appearance:none;appearance:none;padding-right:44px !important;cursor:pointer;}
+.me-totop{transition:opacity .45s cubic-bezier(.16,.84,.44,1),transform .45s cubic-bezier(.16,.84,.44,1),background .3s;}
+.me-totop:hover{background:#2E5A49 !important;transform:translateY(-4px);}
+.me-wa:hover{transform:scale(1.06);}
+.me-quote:hover{border-color:rgba(46,90,73,.42);}
+.leaflet-container{font-family:'Manrope',sans-serif;background:#EDEDE7;}
+.leaflet-pane,.leaflet-top,.leaflet-bottom{z-index:400 !important;}
+.leaflet-tile-loaded{opacity:1 !important;}
+.me-pin{font-family:'Manrope',sans-serif;}
+@media(max-width:1024px){ .me-g4{grid-template-columns:1fr 1fr;} }
+@media(max-width:1120px){
+  .me-desk-nav{display:none !important;}
+  .me-burger{display:inline-flex !important;}
+}
+@media(max-width:980px){
+  .me-hero-avis{visibility:hidden !important;}
+}
+@media(max-width:900px){
+  .me-cue{display:none !important;}
+  .me-hdr-cta{display:none !important;}
+  .me-hdr-mark{font-size:16px !important;letter-spacing:0.04em !important;}
+}
+@media(max-width:760px){
+  .me-hero-h1{font-size:clamp(34px,9vw,54px) !important;line-height:1.24 !important;}
+  .me-hero-avis{display:none !important;}
+  .me-hero-bar{height:auto !important;margin-bottom:92px !important;grid-template-columns:1fr !important;justify-items:center;}
+  .me-hero-cta{flex-direction:column;align-items:stretch !important;width:100%;max-width:340px;gap:12px !important;}
+  .me-hero-cta > a{width:100%;min-width:0 !important;}
+}
+@media(max-width:620px){
+  .me-hero-rule{display:none !important;}
+  .me-hero-eyebrow{letter-spacing:0.18em !important;}
+}
+@media(max-width:880px){
+  .me-g3{grid-template-columns:1fr 1fr;}
+  .me-split{grid-template-columns:1fr;}
+  .me-cx{grid-template-columns:1fr;}
+  .me-lead{grid-template-columns:1fr;}
+  .me-sticky{position:static;}
+  .me-steps{grid-template-columns:1fr;}
+}
+@media(max-width:600px){
+  .me-g2,.me-g3,.me-g4{grid-template-columns:1fr;}
+}
+
+/* Pastille Google du bloc « Avis vérifiés ».
+   Règles dictées par Claude Design : révélation au survol, et mention visible
+   en permanence sur mobile, où il n'y a pas de survol. L'état de départ de la
+   flèche est porté ici plutôt qu'en style en ligne, pour éviter d'avoir à le
+   contredire à coups de !important sur petit écran. */
+.me-avis-google:hover { background: rgba(46,90,73,0.05); }
+.me-avis-arrow { opacity: 0; transform: translateX(-4px); transition: opacity .25s ease, transform .25s ease; }
+.me-avis-google:hover .me-avis-arrow,
+.me-avis-google:focus-visible .me-avis-arrow { opacity: 1; transform: translateX(0); }
+@media (max-width: 640px) { .me-avis-arrow { opacity: 1; transform: none; } }
+
+/* Signature de réalisation IPPYX, en bas du pied de page. Discrète au repos,
+   elle s'éclaircit au survol comme les autres liens du pied de page. */
+.me-signature:hover { color: rgba(247,247,244,0.72); }
+
+/* Zones tactiles du pied de page.
+   Les liens y font 16 px de haut : confortables à viser à la souris, justes
+   au doigt. Le rembourrage est compensé par une marge négative de même
+   valeur, si bien que la boîte de marge — et donc l'écart entre les liens —
+   ne change pas : la zone touchable passe à 28 px sans qu'un seul pixel ne
+   bouge. 6 px et pas davantage : au-delà, les zones de deux liens voisins se
+   chevaucheraient et une frappe entre les deux partirait au mauvais endroit.
+   Réservé aux écrans tactiles, où le problème se pose. */
+@media (hover: none) {
+  footer .me-link { padding: 6px 0; margin: -6px 0; }
+}

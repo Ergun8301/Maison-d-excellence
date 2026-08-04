@@ -8,3 +8,8 @@ build/
 *.tsbuildinfo
 next-env.d.ts
 .DS_Store
+
+# Capture d écran ad hoc : npm i -D playwright
+.playwright/
+
+out/
