@@ -45,7 +45,10 @@ function bindings(block) {
  * mal depuis une route imbriquée comme /blog/mon-article. On les ancre à la
  * racine : les fichiers vivent dans public/photos/.
  */
-const absolutePhotos = (s) => s.replaceAll('src="photos/', 'src="/photos/');
+const absolutePhotos = (s) =>
+  // Ancrage à la racine, et extension alignée sur les fichiers convertis en
+  // WebP par scripts/optimise-photos.mjs.
+  s.replace(/src="photos\/([^"]+?)\.(png|jpe?g|webp)"/g, 'src="/photos/$1.webp"');
 
 /**
  * Corrections de contenu appliquées à la source avant conversion, pour qu'une

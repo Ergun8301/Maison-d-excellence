@@ -13,7 +13,7 @@ export default function Entreprise(v: Vals) {
     <>
       <main data-screen-label="L'entreprise">
           <section style={{ position: "relative", minHeight: "clamp(420px,48vh,580px)", overflow: "hidden", display: "flex", alignItems: "flex-end" }}>
-            <div style={{ position: "absolute", inset: "0", overflow: "hidden" }}><img src="/photos/chantier-gros-oeuvre-brique.png" alt="Chantier de maison individuelle suivi par Maisons d'Excellence dans l'Ain" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "50% 46%", animation: "meKb 18s ease-out forwards" }} /></div>
+            <div style={{ position: "absolute", inset: "0", overflow: "hidden" }}><img src="/photos/chantier-gros-oeuvre-brique.webp" alt="Chantier de maison individuelle suivi par Maisons d'Excellence dans l'Ain" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "50% 46%", animation: "meKb 18s ease-out forwards" }} /></div>
             <div style={{ position: "absolute", inset: "0", background: "linear-gradient(180deg,rgba(11,13,12,0.62) 0%,rgba(11,13,12,0.42) 34%,rgba(11,13,12,0.74) 68%,rgba(11,13,12,0.94) 100%)" }}></div>
             <div style={{ position: "relative", width: "100%", maxWidth: "1440px", margin: "0 auto", padding: "clamp(104px,11vw,128px) clamp(20px,5vw,64px) clamp(44px,5.4vw,76px)" }}>
               <div data-reveal="" style={{ display: "inline-flex", alignItems: "center", gap: "12px", marginBottom: "20px" }}><span style={{ width: "42px", height: "1px", background: "#9CC4B2" }}></span><span style={{ color: "#CFE0D6", fontSize: "12px", fontWeight: "600", letterSpacing: "0.3em", textTransform: "uppercase" }}>L'entreprise</span></div>
@@ -119,14 +119,14 @@ export default function Entreprise(v: Vals) {
 
               <div className="me-g2" style={{ gap: "clamp(16px,2vw,26px)", marginTop: "clamp(44px,6vw,70px)" }}>
                 <div data-reveal="" className="me-card" style={{ background: "#FFFFFF", border: "1px solid rgba(17,20,18,0.08)", borderRadius: "10px", overflow: "hidden" }}>
-                  <div style={{ position: "relative", aspectRatio: "16/9", overflow: "hidden" }}><img className="me-zoom" src="/photos/chantier-gros-oeuvre-brique.png" alt="Élévation des murs en brique sur un chantier de maison individuelle dans l'Ain" style={{ width: "100%", height: "100%", objectFit: "cover" }} /></div>
+                  <div style={{ position: "relative", aspectRatio: "16/9", overflow: "hidden" }}><img className="me-zoom" src="/photos/chantier-gros-oeuvre-brique.webp" alt="Élévation des murs en brique sur un chantier de maison individuelle dans l'Ain" style={{ width: "100%", height: "100%", objectFit: "cover" }} /></div>
                   <div style={{ padding: "clamp(26px,3vw,38px)" }}>
                     <h3 style={{ margin: "0", fontFamily: "'Cormorant Garamond',serif", fontWeight: "400", fontSize: "29px", color: "#111412" }}>Brique ou béton cellulaire</h3>
                     <p style={{ margin: "12px 0 0", color: "#565B56", fontSize: "14.5px", lineHeight: "1.7" }}>La brique de terre cuite à alvéoles offre une bonne inertie et un excellent confort d'été ; le béton cellulaire (siporex) est plus léger, très isolant et rapide à mettre en œuvre. Les deux sont nettement plus performants que le parpaing traditionnel, qui exige davantage d'isolant rapporté pour atteindre la RE2020. Le choix se décide sur votre plan, votre terrain et votre budget — pas par habitude d'entreprise.</p>
                   </div>
                 </div>
                 <div data-reveal="" data-delay="120" className="me-card" style={{ background: "#FFFFFF", border: "1px solid rgba(17,20,18,0.08)", borderRadius: "10px", overflow: "hidden" }}>
-                  <div style={{ position: "relative", aspectRatio: "16/9", overflow: "hidden" }}><img className="me-zoom" src="/photos/charpente-fermette-bois.jpg" alt="Charpente en bois posée sur une maison neuve : entretoises, contreventement et pannes" style={{ width: "100%", height: "100%", objectFit: "cover" }} /></div>
+                  <div style={{ position: "relative", aspectRatio: "16/9", overflow: "hidden" }}><img className="me-zoom" src="/photos/charpente-fermette-bois.webp" alt="Charpente en bois posée sur une maison neuve : entretoises, contreventement et pannes" style={{ width: "100%", height: "100%", objectFit: "cover" }} /></div>
                   <div style={{ padding: "clamp(26px,3vw,38px)" }}>
                     <h3 style={{ margin: "0", fontFamily: "'Cormorant Garamond',serif", fontWeight: "400", fontSize: "29px", color: "#111412" }}>Charpente traditionnelle ou fermette</h3>
                     <p style={{ margin: "12px 0 0", color: "#565B56", fontSize: "14.5px", lineHeight: "1.7" }}>La charpente traditionnelle libère les combles : elle permet de les aménager plus tard, ou dès la construction, et supporte tous les types de couverture. La fermette industrielle coûte moins cher mais encombre le volume sous toiture. Si vous pensez aménager un jour, la traditionnelle est presque toujours le bon calcul.</p>
