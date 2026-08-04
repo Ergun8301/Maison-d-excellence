@@ -47,9 +47,51 @@ function bindings(block) {
  */
 const absolutePhotos = (s) => s.replaceAll('src="photos/', 'src="/photos/');
 
+/**
+ * Corrections de contenu appliquées à la source avant conversion, pour qu'une
+ * régénération ne les perde pas. Elles ne portent que sur du texte : aucun
+ * style, aucune classe, aucun nœud n'est touché.
+ */
+const CORRECTIONS = [
+  // La boîte contact@ suppose un domaine qui n'est pas encore déposé. On
+  // affiche l'adresse réellement utilisée par le dirigeant.
+  ['contact@maisons-dexcellence.fr', 'aykut.atak@sfr.fr'],
+
+  // Mentions légales : SIRET du siège, date d'immatriculation et code APE
+  // relevés sur le Kbis, plus une adresse de contact écrite.
+  [
+    'SIREN 844 477 794 — RCS Bourg-en-Bresse — TVA intracommunautaire FR04844477794. ' +
+      'Gérant et responsable de la publication : Aykut Atak. Téléphone : 04 74 34 66 43.',
+    'SIREN 844 477 794 — SIRET du siège 844 477 794 00011 — RCS Bourg-en-Bresse, ' +
+      'immatriculée le 10 décembre 2018 — TVA intracommunautaire FR04844477794 — ' +
+      'code APE 41.20A (construction de maisons individuelles). ' +
+      'Gérant et responsable de la publication : Aykut Atak. ' +
+      'Téléphone : 04 74 34 66 43 — courriel : aykut.atak@sfr.fr.',
+  ],
+
+  // L'article 6 III de la loi pour la confiance dans l'économie numérique
+  // impose de nommer l'hébergeur avec ses coordonnées : « disponibles sur
+  // demande » ne satisfait pas cette obligation.
+  [
+    "Le site est hébergé par un prestataire situé dans l'Union européenne. " +
+      "Les coordonnées complètes de l'hébergeur sont disponibles sur demande écrite " +
+      "adressée au siège de l'entreprise.",
+    'Le site est hébergé par Vercel Inc., 440 N Barranca Ave #4133, Covina, ' +
+      'CA 91723, États-Unis — vercel.com.',
+  ],
+];
+
+function corrections(s) {
+  let out = s;
+  for (const [from, to] of CORRECTIONS) {
+    if (out.includes(from)) out = out.replaceAll(from, to);
+  }
+  return out;
+}
+
 function componentFile(name, block, { tag = 'div' } = {}) {
   const vars = bindings(block);
-  const jsx = toJsx(absolutePhotos(block));
+  const jsx = toJsx(corrections(absolutePhotos(block)));
   const destructure = vars.length ? `  const { ${vars.join(', ')} } = v;\n` : '';
   return (
     "'use client';\n\n" +

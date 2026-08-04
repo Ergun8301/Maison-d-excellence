@@ -21,7 +21,7 @@ export default function Mentions(v: Vals) {
             <div style={{ maxWidth: "760px", margin: "0 auto", padding: "0 clamp(20px,5vw,64px)", display: "flex", flexDirection: "column", gap: "clamp(28px,3.4vw,42px)" }}>
               <div>
                 <h2 style={{ margin: "0", fontFamily: "'Cormorant Garamond',serif", fontWeight: "400", fontSize: "clamp(22px,2.6vw,32px)", color: "#111412" }}>Éditeur du site</h2>
-                <p style={{ margin: "12px 0 0", color: "#4a443c", fontSize: "16px", lineHeight: "1.85" }}>Maisons d'Excellence Constructeurs de Maisons Individuelles — SARL au capital de 50 000 €. Siège social : 6 rue de Genève, 01800 Meximieux, France. SIREN 844 477 794 — RCS Bourg-en-Bresse — TVA intracommunautaire FR04844477794. Gérant et responsable de la publication : Aykut Atak. Téléphone : 04 74 34 66 43.</p>
+                <p style={{ margin: "12px 0 0", color: "#4a443c", fontSize: "16px", lineHeight: "1.85" }}>Maisons d'Excellence Constructeurs de Maisons Individuelles — SARL au capital de 50 000 €. Siège social : 6 rue de Genève, 01800 Meximieux, France. SIREN 844 477 794 — SIRET du siège 844 477 794 00011 — RCS Bourg-en-Bresse, immatriculée le 10 décembre 2018 — TVA intracommunautaire FR04844477794 — code APE 41.20A (construction de maisons individuelles). Gérant et responsable de la publication : Aykut Atak. Téléphone : 04 74 34 66 43 — courriel : aykut.atak@sfr.fr.</p>
               </div>
               <div>
                 <h2 style={{ margin: "0", fontFamily: "'Cormorant Garamond',serif", fontWeight: "400", fontSize: "clamp(22px,2.6vw,32px)", color: "#111412" }}>Assurances et garanties professionnelles</h2>
@@ -29,7 +29,7 @@ export default function Mentions(v: Vals) {
               </div>
               <div>
                 <h2 style={{ margin: "0", fontFamily: "'Cormorant Garamond',serif", fontWeight: "400", fontSize: "clamp(22px,2.6vw,32px)", color: "#111412" }}>Hébergement</h2>
-                <p style={{ margin: "12px 0 0", color: "#4a443c", fontSize: "16px", lineHeight: "1.85" }}>Le site est hébergé par un prestataire situé dans l'Union européenne. Les coordonnées complètes de l'hébergeur sont disponibles sur demande écrite adressée au siège de l'entreprise.</p>
+                <p style={{ margin: "12px 0 0", color: "#4a443c", fontSize: "16px", lineHeight: "1.85" }}>Le site est hébergé par Vercel Inc., 440 N Barranca Ave #4133, Covina, CA 91723, États-Unis — vercel.com.</p>
               </div>
               <div>
                 <h2 style={{ margin: "0", fontFamily: "'Cormorant Garamond',serif", fontWeight: "400", fontSize: "clamp(22px,2.6vw,32px)", color: "#111412" }}>Données personnelles (RGPD)</h2>
