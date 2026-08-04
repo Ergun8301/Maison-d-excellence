@@ -83,6 +83,19 @@ const CORRECTIONS = [
       'CA 91723, États-Unis — vercel.com.',
   ],
 
+  // Les liens WhatsApp de la maquette ouvraient une conversation vide. On y
+  // ajoute un message pré-rempli : le visiteur n'a plus à trouver ses mots, et
+  // le destinataire sait d'où vient la demande. Le texte reste court et neutre,
+  // pour que le visiteur le complète à sa façon.
+  [
+    'href="https://wa.me/33615191647"',
+    'href="https://wa.me/33615191647?text=' +
+      encodeURIComponent(
+        "Bonjour, je vous écris depuis votre site. J'aimerais échanger sur mon projet de construction."
+      ) +
+      '"',
+  ],
+
   // Pastille Google dans le bloc « Avis vérifiés ». Placement, dimensions et
   // traitement dictés par Claude Design : le logo signe, il ne décore pas —
   // 16 px, posé à plat, jamais plus haut que la rangée d'étoiles, et une seule

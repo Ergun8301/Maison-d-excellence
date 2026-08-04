@@ -55,7 +55,7 @@ export default function FicheTerrain(v: Vals) {
                   <p style={{ margin: "12px 0 0", fontSize: "12px", color: "rgba(247,247,244,0.5)", lineHeight: "1.6" }}>Le formulaire de contact est pré-rempli avec la référence de la parcelle.</p>
                   <div style={{ marginTop: "24px", paddingTop: "20px", borderTop: "1px solid rgba(247,247,244,0.14)", display: "flex", flexDirection: "column", gap: "10px" }}>
                     <a href="tel:+33474346643" className="me-link" style={{ textDecoration: "none", color: "rgba(247,247,244,0.82)", fontSize: "14px", fontWeight: "600" }} style-hover="color:#9CC4B2;">✆ 04 74 34 66 43</a>
-                    <a href="https://wa.me/33615191647" target="_blank" rel="noopener" className="me-link" style={{ textDecoration: "none", color: "rgba(247,247,244,0.82)", fontSize: "14px", fontWeight: "600" }} style-hover="color:#25D366;">WhatsApp · 06 15 19 16 47</a>
+                    <a href="https://wa.me/33615191647?text=Bonjour%2C%20je%20vous%20%C3%A9cris%20depuis%20votre%20site.%20J'aimerais%20%C3%A9changer%20sur%20mon%20projet%20de%20construction." target="_blank" rel="noopener" className="me-link" style={{ textDecoration: "none", color: "rgba(247,247,244,0.82)", fontSize: "14px", fontWeight: "600" }} style-hover="color:#25D366;">WhatsApp · 06 15 19 16 47</a>
                     <a href="#estimation" onClick={goEstimation} className="me-link" style={{ textDecoration: "none", color: "rgba(247,247,244,0.82)", fontSize: "14px", fontWeight: "600" }} style-hover="color:#9CC4B2;">Estimer la maison →</a>
                   </div>
                 </div>
