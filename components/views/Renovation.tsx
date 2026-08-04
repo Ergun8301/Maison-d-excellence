@@ -11,7 +11,7 @@ export default function Renovation(v: Vals) {
   const { goContact } = v;
   return (
     <>
-      <main data-screen-label="Rénovation &amp; extension">
+      <main data-screen-label="Rénovation & extension">
           <section style={{ position: "relative", minHeight: "clamp(420px,48vh,580px)", overflow: "hidden", display: "flex", alignItems: "flex-end" }}>
             <div style={{ position: "absolute", inset: "0", overflow: "hidden" }}><img src="/photos/maison-traditionnelle-etage.png" alt="Maison traditionnelle à étage dans l'Ain, avant travaux d'extension" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "50% 54%", animation: "meKb 18s ease-out forwards" }} /></div>
             <div style={{ position: "absolute", inset: "0", background: "linear-gradient(180deg,rgba(11,13,12,0.62) 0%,rgba(11,13,12,0.42) 34%,rgba(11,13,12,0.74) 68%,rgba(11,13,12,0.94) 100%)" }}></div>

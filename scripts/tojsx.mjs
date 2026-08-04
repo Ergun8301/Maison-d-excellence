@@ -66,6 +66,23 @@ const NUMERIC = new Set([
   'tabindex', 'colspan', 'rowspan', 'step', 'min', 'max',
 ]);
 
+/**
+ * Décode les entités HTML d'une valeur d'attribut.
+ *
+ * Indispensable : en HTML, `&amp;` est décodé par l'analyseur avant que la
+ * valeur ne serve. En JSX, cette valeur devient une chaîne JavaScript où
+ * `&amp;` resterait littéral — une URL telle que
+ * `photo-123?auto=format&amp;w=2400` ne pointerait alors sur rien.
+ */
+const ENTITIES = { amp: '&', lt: '<', gt: '>', quot: '"', apos: "'", nbsp: ' ' };
+
+const decodeEntities = (s) =>
+  s.replace(/&(?:#(\d+)|#[xX]([0-9a-fA-F]+)|([a-zA-Z]+));/g, (m, dec, hex, name) => {
+    if (dec) return String.fromCodePoint(Number(dec));
+    if (hex) return String.fromCodePoint(parseInt(hex, 16));
+    return ENTITIES[name] ?? m;
+  });
+
 const camel = (p) =>
   p.startsWith('--') ? p : p.replace(/-([a-z])/g, (_, c) => c.toUpperCase());
 
@@ -111,8 +128,10 @@ function splitAttrs(src) {
   let m;
   while ((m = re.exec(src))) {
     const name = m[1];
-    const value = m[4] !== undefined ? m[4] : m[5] !== undefined ? m[5] : null;
-    attrs.push([name, value]);
+    const raw = m[4] !== undefined ? m[4] : m[5] !== undefined ? m[5] : null;
+    // Décodage ici, une fois pour toutes : styles, URLs et attributs
+    // déclaratifs deviennent tous des chaînes JavaScript en aval.
+    attrs.push([name, raw === null ? null : decodeEntities(raw)]);
   }
   return attrs;
 }

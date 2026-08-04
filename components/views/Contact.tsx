@@ -147,7 +147,7 @@ export default function Contact(v: Vals) {
 
                 <div data-reveal="" data-delay="120" style={{ position: "relative", display: "flex", flexDirection: "column", minHeight: "clamp(320px,38vw,520px)", borderRadius: "12px", overflow: "hidden", border: "1px solid rgba(17,20,18,0.12)", boxShadow: "0 40px 80px -55px rgba(17,20,18,0.6)", background: "#EDEDE7" }}>
                   <div id="me-map-bureau" style={{ position: "absolute", inset: "0", width: "100%", height: "100%" }}></div>
-                  <a href="https://www.google.com/maps/search/?api=1&amp;query=6+rue+de+Gen%C3%A8ve+01800+Meximieux" target="_blank" rel="noopener" className="me-btn" style={{ position: "absolute", zIndex: "500", left: "16px", bottom: "16px", display: "inline-flex", alignItems: "center", gap: "9px", padding: "13px 22px", borderRadius: "100px", background: "#111412", color: "#F7F7F4", fontSize: "13px", fontWeight: "600", textDecoration: "none", boxShadow: "0 18px 34px -18px rgba(17,20,18,0.9)" }} style-hover="background:#2E5A49;transform:translateY(-3px);">Ouvrir l'itinéraire ↗</a>
+                  <a href="https://www.google.com/maps/search/?api=1&query=6+rue+de+Gen%C3%A8ve+01800+Meximieux" target="_blank" rel="noopener" className="me-btn" style={{ position: "absolute", zIndex: "500", left: "16px", bottom: "16px", display: "inline-flex", alignItems: "center", gap: "9px", padding: "13px 22px", borderRadius: "100px", background: "#111412", color: "#F7F7F4", fontSize: "13px", fontWeight: "600", textDecoration: "none", boxShadow: "0 18px 34px -18px rgba(17,20,18,0.9)" }} style-hover="background:#2E5A49;transform:translateY(-3px);">Ouvrir l'itinéraire ↗</a>
                 </div>
 
               </div>
