@@ -12,7 +12,7 @@ export default function Realisations(v: Vals) {
   return (
     <>
       <main data-screen-label="Réalisations">
-          <section style={{ position: "relative", minHeight: "clamp(420px,48vh,580px)", overflow: "hidden", display: "flex", alignItems: "flex-end" }}>
+          <section style={{ position: "relative", minHeight: "clamp(480px,66vh,600px)", overflow: "hidden", display: "flex", alignItems: "flex-end" }}>
             {/* PHOTO D'EN-TÊTE À REMPLACER : maison livrée, prise de vue large en fin de journée. */}
             <div style={{ position: "absolute", inset: "0", overflow: "hidden" }}><img src="/photos/maison-familiale-etage.webp" alt="Maison individuelle livrée par Maisons d'Excellence dans l'Ain" style={{ width: "100%", height: "100%", objectFit: "cover", animation: "meKb 18s ease-out forwards" }} /></div>
             <div style={{ position: "absolute", inset: "0", background: "linear-gradient(180deg,rgba(11,13,12,0.62) 0%,rgba(11,13,12,0.42) 34%,rgba(11,13,12,0.74) 68%,rgba(11,13,12,0.94) 100%)" }}></div>

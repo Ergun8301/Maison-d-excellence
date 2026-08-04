@@ -12,7 +12,7 @@ export default function NosModeles(v: Vals) {
   return (
     <>
       <main data-screen-label="Nos modèles">
-          <section style={{ position: "relative", minHeight: "clamp(420px,48vh,580px)", overflow: "hidden", display: "flex", alignItems: "flex-end" }}>
+          <section style={{ position: "relative", minHeight: "clamp(480px,66vh,600px)", overflow: "hidden", display: "flex", alignItems: "flex-end" }}>
             <div style={{ position: "absolute", inset: "0", overflow: "hidden" }}><img src="/photos/maison-contemporaine-bardage-bois.webp" alt="Maison contemporaine à étage, béton et bardage bois ajouré, volets coulissants" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "50% 42%", animation: "meKb 18s ease-out forwards" }} /></div>
             <div style={{ position: "absolute", inset: "0", background: "linear-gradient(180deg,rgba(11,13,12,0.62) 0%,rgba(11,13,12,0.42) 34%,rgba(11,13,12,0.74) 68%,rgba(11,13,12,0.94) 100%)" }}></div>
             <div style={{ position: "relative", width: "100%", maxWidth: "1440px", margin: "0 auto", padding: "clamp(104px,11vw,128px) clamp(20px,5vw,64px) clamp(44px,5.4vw,76px)" }}>

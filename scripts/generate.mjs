@@ -124,8 +124,37 @@ const CORRECTIONS = [
   // conservé tel quel.
   [
     'src="photos/bureau-meximieux-vitrine-bandeau.png" alt="Les vitrines du bureau Maisons d\'Excellence, 6 rue de Genève à Meximieux" style="width:100%;height:100%;object-fit:cover;object-position:50% 46%;animation:meKb 18s ease-out forwards;"',
-    'src="photos/bureau-meximieux-facade.png" alt="La devanture du bureau Maisons d\'Excellence, 6 rue de Genève à Meximieux" style="width:100%;height:100%;object-fit:cover;object-position:50% 16%;animation:meKb 18s ease-out forwards;"',
+    'src="photos/bureau-meximieux-facade.png" alt="La devanture du bureau Maisons d\'Excellence, 6 rue de Genève à Meximieux" style="width:100%;height:100%;object-fit:cover;object-position:50% 54%;animation:meKb 18s ease-out forwards;"',
   ],
+
+  // Bandeau de la page Entreprise. La photo de gros œuvre en brique y servait
+  // déjà deux fois, plus une troisième sur l'accueil : trois occurrences de la
+  // même image. Le bandeau prend une photo de conception sur plans, plus juste
+  // pour une page qui parle de savoir-faire et de garanties. La brique reste
+  // dans la section consacrée aux matériaux, où elle est à sa place. Le cadrage
+  // descend sur les mains et le plan, ce qui écarte du champ le logo d'une
+  // autre entreprise brodé sur le polo.
+  [
+    '<img src="photos/chantier-gros-oeuvre-brique.png" alt="Chantier de maison individuelle suivi par Maisons d\'Excellence dans l\'Ain" style="width:100%;height:100%;object-fit:cover;object-position:50% 46%;animation:meKb 18s ease-out forwards;">',
+    '<img src="photos/entreprise-bandeau.png" alt="Conception des plans d\'une maison individuelle sur mesure par Maisons d\'Excellence" style="width:100%;height:100%;object-fit:cover;object-position:50% 64%;animation:meKb 18s ease-out forwards;">',
+  ],
+
+  // Bandeau de la page Terrains : photo fournie par le client à la place du
+  // visuel de banque d'images. Le cadrage d'origine est conservé.
+  [
+    '<img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&amp;fit=crop&amp;w=2000&amp;q=80" alt="Terrain à bâtir constructible dans la Plaine de l\'Ain" style="width:100%;height:100%;object-fit:cover;object-position:50% 54%;animation:meKb 18s ease-out forwards;">',
+    '<img src="photos/terrain-a-batir-bandeau.png" alt="Terrain à bâtir constructible dans la Plaine de l\'Ain" style="width:100%;height:100%;object-fit:cover;object-position:50% 54%;animation:meKb 18s ease-out forwards;">',
+  ],
+
+  // Hauteur des bandeaux de page intérieure.
+  //
+  // La hauteur minimale était déjà commune, mais le bandeau s'étire à la
+  // hauteur de son contenu : un titre court donnait un bandeau bas. Mesuré au
+  // navigateur, Contact tombait à 432 px quand Réalisations et Entreprise
+  // atteignaient 600 px — d'où l'impression de photo écrasée en passant d'une
+  // page à l'autre. Le plancher est remonté pour que toutes s'alignent sur la
+  // plus haute, sans jamais dépasser 600 px sur un petit écran.
+  ['min-height:clamp(420px,48vh,580px)', 'min-height:clamp(480px,66vh,600px)'],
 
   // Les liens WhatsApp de la maquette ouvraient une conversation vide. On y
   // ajoute un message pré-rempli : le visiteur n'a plus à trouver ses mots, et
