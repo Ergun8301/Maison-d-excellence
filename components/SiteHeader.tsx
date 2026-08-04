@@ -37,7 +37,7 @@ export default function SiteHeader(v: Vals) {
 
         {/* ===================== MOBILE MENU ===================== */}
         {(menuOpen) ? (<>
-          <div onClick={closeMenu} style={{ position: "fixed", inset: "0", zIndex: "200", background: "rgba(11,13,12,0.97)", backdropFilter: "blur(8px)", display: "flex", flexDirection: "column", justifyContent: "center", padding: "40px clamp(28px,8vw,64px)", overflowY: "auto" }}>
+          <div onClick={closeMenu} style={{ position: "fixed", inset: "0", zIndex: "200", background: "rgba(11,13,12,0.97)", backdropFilter: "blur(8px)", display: "flex", flexDirection: "column", justifyContent: "center", padding: "40px clamp(28px,8vw,64px)", overflowY: "auto" }}><button onClick={closeMenu} aria-label="Fermer le menu" className="me-fermer" style={{ position: "absolute", top: "clamp(17px,2vw,26px)", right: "clamp(20px,5vw,64px)", width: "44px", height: "44px", display: "flex", alignItems: "center", justifyContent: "center", border: "1px solid rgba(247,247,244,0.5)", borderRadius: "100px", background: "transparent", color: "#F7F7F4", cursor: "pointer" }}><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.4" aria-hidden="true"><path d="M3 3 L13 13 M13 3 L3 13"></path></svg></button>
             <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
               <a href="#modeles" onClick={goModeles} style={{ textDecoration: "none", color: "#F7F7F4", fontFamily: "'Cormorant Garamond',serif", fontWeight: "300", fontSize: "clamp(30px,9vw,50px)", lineHeight: "1.18", borderBottom: "1px solid rgba(247,247,244,0.12)", padding: "8px 0" }}>Nos modèles</a>
               <a href="#realisations" onClick={goRealisations} style={{ textDecoration: "none", color: "#F7F7F4", fontFamily: "'Cormorant Garamond',serif", fontWeight: "300", fontSize: "clamp(30px,9vw,50px)", lineHeight: "1.18", borderBottom: "1px solid rgba(247,247,244,0.12)", padding: "8px 0" }}>Nos réalisations</a>
@@ -46,7 +46,7 @@ export default function SiteHeader(v: Vals) {
               <a href="#terrains" onClick={goTerrains} style={{ textDecoration: "none", color: "#F7F7F4", fontFamily: "'Cormorant Garamond',serif", fontWeight: "300", fontSize: "clamp(30px,9vw,50px)", lineHeight: "1.18", borderBottom: "1px solid rgba(247,247,244,0.12)", padding: "8px 0" }}>Terrains</a>
               <a href="#contact" onClick={goContact} style={{ textDecoration: "none", color: "#F7F7F4", fontFamily: "'Cormorant Garamond',serif", fontWeight: "300", fontSize: "clamp(30px,9vw,50px)", lineHeight: "1.18", padding: "8px 0" }}>Contact</a>
             </div>
-            <div style={{ display: "flex", flexWrap: "wrap", gap: "14px 26px", marginTop: "30px" }}>
+            <div style={{ display: "flex", flexDirection: "column", gap: "16px", marginTop: "34px", paddingTop: "26px", borderTop: "1px solid rgba(247,247,244,0.12)" }}>
               <a href="#investisseurs" onClick={goInvestisseurs} style={{ textDecoration: "none", color: "rgba(247,247,244,0.62)", fontSize: "14px" }}>Investisseurs</a>
               <a href="#renovation" onClick={goRenovation} style={{ textDecoration: "none", color: "rgba(247,247,244,0.62)", fontSize: "14px" }}>Rénovation &amp; extension</a>
               <a href="#blog" onClick={goBlog} style={{ textDecoration: "none", color: "rgba(247,247,244,0.62)", fontSize: "14px" }}>Blog</a>

@@ -48,8 +48,8 @@ export default function Contact(v: Vals) {
                   {(submitted) ? (<>
                     <div style={{ padding: "8px 0" }}>
                       <div style={{ width: "54px", height: "54px", borderRadius: "50%", background: "#111412", display: "flex", alignItems: "center", justifyContent: "center", color: "#9CC4B2", fontSize: "25px" }}>✓</div>
-                      <h3 style={{ margin: "20px 0 0", fontFamily: "'Cormorant Garamond',serif", fontWeight: "400", fontSize: "clamp(22px,2.3vw,30px)", color: "#111412", lineHeight: "1.1" }}>Merci, votre demande est partie.</h3>
-                      <p style={{ margin: "10px 0 0", color: "#565B56", fontSize: "14.5px", lineHeight: "1.7" }}>Nous vous répondons sous 48 h ouvrées. Pour une demande urgente, appelez le 04 74 34 66 43 ou écrivez-nous sur WhatsApp.</p>
+                      <h3 style={{ margin: "20px 0 0", fontFamily: "'Cormorant Garamond',serif", fontWeight: "400", fontSize: "clamp(22px,2.3vw,30px)", color: "#111412", lineHeight: "1.1" }}>Dernière étape dans WhatsApp.</h3>
+                      <p style={{ margin: "10px 0 0", color: "#565B56", fontSize: "14.5px", lineHeight: "1.7" }}>WhatsApp vient de s'ouvrir avec votre demande déjà rédigée. Appuyez sur Envoyer : sans ce dernier geste, elle ne nous parviendra pas. Vous préférez le téléphone ? 04 74 34 66 43.</p>
                       <button onClick={resetForm} className="me-btn" style={{ marginTop: "24px", cursor: "pointer", padding: "13px 26px", borderRadius: "100px", background: "transparent", border: "1px solid rgba(17,20,18,0.28)", color: "#111412", fontSize: "13.5px", fontWeight: "600", fontFamily: "inherit" }} style-hover="border-color:#2E5A49;color:#2E5A49;">Envoyer un autre message</button>
                     </div>
                   </>) : null}

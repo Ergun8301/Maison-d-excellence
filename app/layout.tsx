@@ -7,11 +7,17 @@ import './design.css';
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   // Logo fourni par le client : remplace le « M » provisoire de la maquette.
-  // Sert d'icône d'onglet et d'icône d'écran d'accueil sur mobile.
+  // L'icône d'écran d'accueil Android vient du manifeste (app/manifest.ts) ;
+  // iOS, lui, ne lit que apple-touch-icon, d'où la déclaration séparée.
   icons: {
-    icon: '/logo-onglet.png',
-    apple: '/logo-onglet.png',
+    icon: [
+      { url: '/logo-onglet.png', type: 'image/png' },
+      { url: '/icone-192.png', sizes: '192x192', type: 'image/png' },
+      { url: '/icone-512.png', sizes: '512x512', type: 'image/png' },
+    ],
+    apple: [{ url: '/icone-180.png', sizes: '180x180', type: 'image/png' }],
   },
+  appleWebApp: { capable: true, title: "Maisons d'Excellence", statusBarStyle: 'black-translucent' },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

@@ -156,6 +156,38 @@ const CORRECTIONS = [
   // plus haute, sans jamais dépasser 600 px sur un petit écran.
   ['min-height:clamp(420px,48vh,580px)', 'min-height:clamp(480px,66vh,600px)'],
 
+  // Confirmation des formulaires. Le message annonçait « votre demande est
+  // partie », ce qui est faux : un lien WhatsApp ouvre la conversation avec le
+  // texte déjà saisi, mais rien ne part tant que le visiteur n'appuie pas sur
+  // Envoyer. Annoncer un envoi qui n'a pas eu lieu fait perdre des demandes
+  // sans que personne ne s'en aperçoive.
+  ['Merci, votre demande est partie.', 'Dernière étape dans WhatsApp.'],
+  [
+    'Nous vous répondons sous 48 h ouvrées. Pour une demande urgente, appelez le 04 74 34 66 43 ou écrivez-nous sur WhatsApp.',
+    'WhatsApp vient de s\'ouvrir avec votre demande déjà rédigée. Appuyez sur Envoyer : sans ce dernier geste, elle ne nous parviendra pas. Vous préférez le téléphone ? 04 74 34 66 43.',
+  ],
+
+  // Liens secondaires du menu mobile. Disposés en ligne avec retour à la
+  // ligne, ils se répartissaient de travers — « Zone d'intervention » tombait
+  // seul sur une deuxième ligne. Une colonne, séparée du menu principal par un
+  // filet, les distingue nettement des entrées principales.
+  [
+    '<div style="display:flex;flex-wrap:wrap;gap:14px 26px;margin-top:30px;">',
+    '<div style="display:flex;flex-direction:column;gap:16px;margin-top:34px;padding-top:26px;border-top:1px solid rgba(247,247,244,0.12);">',
+  ],
+
+  // Fermeture du menu mobile. L'ouverture ne laissait aucun repère : le menu
+  // se referme au toucher hors des liens, mais rien ne l'indiquait. Une croix
+  // reprend l'emplacement et la taille exacts du bouton d'ouverture, si bien
+  // qu'elle tombe sous le doigt qui vient d'appuyer.
+  [
+    '<div onClick="{{ closeMenu }}" style="position:fixed;inset:0;z-index:200;background:rgba(11,13,12,0.97);backdrop-filter:blur(8px);display:flex;flex-direction:column;justify-content:center;padding:40px clamp(28px,8vw,64px);overflow-y:auto;">',
+    '<div onClick="{{ closeMenu }}" style="position:fixed;inset:0;z-index:200;background:rgba(11,13,12,0.97);backdrop-filter:blur(8px);display:flex;flex-direction:column;justify-content:center;padding:40px clamp(28px,8vw,64px);overflow-y:auto;">'
+    + '<button onClick="{{ closeMenu }}" aria-label="Fermer le menu" class="me-fermer" style="position:absolute;top:clamp(17px,2vw,26px);right:clamp(20px,5vw,64px);width:44px;height:44px;display:flex;align-items:center;justify-content:center;border:1px solid rgba(247,247,244,0.5);border-radius:100px;background:transparent;color:#F7F7F4;cursor:pointer;">'
+    + '<svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M3 3 L13 13 M13 3 L3 13"></path></svg>'
+    + '</button>',
+  ],
+
   // Les liens WhatsApp de la maquette ouvraient une conversation vide. On y
   // ajoute un message pré-rempli : le visiteur n'a plus à trouver ses mots, et
   // le destinataire sait d'où vient la demande. Le texte reste court et neutre,

@@ -139,3 +139,8 @@ a:hover{color:#111412;}
      sur une feuille de style — la règle voisine .me-desk-nav fait de même. */
   [data-header] > div { grid-template-columns: 1fr auto !important; }
 }
+
+/* Bouton de fermeture du menu mobile : il pivote légèrement au toucher, pour
+   confirmer l'appui sur un écran où il n'y a pas de survol. */
+.me-fermer { transition: transform .3s cubic-bezier(.16,.84,.44,1), border-color .3s; }
+.me-fermer:active { transform: rotate(90deg); border-color: rgba(247,247,244,0.9); }
