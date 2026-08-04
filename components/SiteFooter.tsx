@@ -70,6 +70,23 @@ export default function SiteFooter(v: Vals) {
               <p style={{ margin: "0", fontSize: "11.5px", lineHeight: "1.7", color: "rgba(247,247,244,0.4)", maxWidth: "78ch" }}>Maisons d'Excellence Constructeurs de Maisons Individuelles — SARL au capital de 50 000 € — SIREN 844 477 794 — RCS Bourg-en-Bresse — TVA FR04844477794 — Siège : 6 rue de Genève, 01800 Meximieux.</p>
               <p style={{ margin: "0", fontSize: "11.5px", color: "rgba(247,247,244,0.4)" }}>© {year} — Tous droits réservés</p>
             </div>
+            <div style={{ padding: "0 0 38px", display: "flex", justifyContent: "center" }}>
+              <a href="https://ippyx.com/?utm_source=maisons-excellence&utm_medium=signature&utm_campaign=footer" target="_blank" rel="noopener" className="me-signature" style={{ display: "inline-flex", alignItems: "center", gap: "9px", textDecoration: "none", fontSize: "11.5px", color: "rgba(247,247,244,0.34)", transition: "color .3s ease" }}>
+                <svg width="13" height="13.5" viewBox="0 0 26 27" fill="currentColor" aria-hidden="true" style={{ flex: "none" }}>
+                  <rect x="0" y="7" width="4" height="4"></rect>
+                  <rect x="4" y="11" width="4" height="4"></rect>
+                  <rect x="8" y="15" width="4" height="4"></rect>
+                  <rect x="12" y="19" width="4" height="4"></rect>
+                  <rect x="16" y="23" width="4" height="4"></rect>
+                  <rect x="16" y="7" width="4" height="4"></rect>
+                  <rect x="12" y="11" width="4" height="4"></rect>
+                  <rect x="4" y="19" width="4" height="4"></rect>
+                  <rect x="0" y="23" width="4" height="4"></rect>
+                  <rect x="21.6" y="1.4" width="4" height="4"></rect>
+                </svg>
+                <span>Site réalisé par <span style={{ fontWeight: "600", letterSpacing: "0.1em" }}>IPPYX</span></span>
+              </a>
+            </div>
           </div>
         </footer>
     </>

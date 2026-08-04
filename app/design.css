@@ -104,3 +104,19 @@ a:hover{color:#111412;}
 .me-avis-google:hover .me-avis-arrow,
 .me-avis-google:focus-visible .me-avis-arrow { opacity: 1; transform: translateX(0); }
 @media (max-width: 640px) { .me-avis-arrow { opacity: 1; transform: none; } }
+
+/* Signature de réalisation IPPYX, en bas du pied de page. Discrète au repos,
+   elle s'éclaircit au survol comme les autres liens du pied de page. */
+.me-signature:hover { color: rgba(247,247,244,0.72); }
+
+/* Zones tactiles du pied de page.
+   Les liens y font 16 px de haut : confortables à viser à la souris, justes
+   au doigt. Le rembourrage est compensé par une marge négative de même
+   valeur, si bien que la boîte de marge — et donc l'écart entre les liens —
+   ne change pas : la zone touchable passe à 28 px sans qu'un seul pixel ne
+   bouge. 6 px et pas davantage : au-delà, les zones de deux liens voisins se
+   chevaucheraient et une frappe entre les deux partirait au mauvais endroit.
+   Réservé aux écrans tactiles, où le problème se pose. */
+@media (hover: none) {
+  footer .me-link { padding: 6px 0; margin: -6px 0; }
+}

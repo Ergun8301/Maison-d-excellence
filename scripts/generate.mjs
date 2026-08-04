@@ -83,6 +83,40 @@ const CORRECTIONS = [
       'CA 91723, États-Unis — vercel.com.',
   ],
 
+  // Signature de réalisation, en bas du pied de page.
+  //
+  // Le logo est le vrai tracé d'IPPYX, repris depuis public/assets/logo.svg de
+  // son dépôt — pas une approximation redessinée. Il est rendu en monochrome
+  // sur la couleur du pied de page : c'est le seul traitement qui reste
+  // identique d'un site client à l'autre, quelle que soit leur palette.
+  //
+  // Le lien ne porte pas rel="nofollow" : il transmet volontairement son
+  // autorité. Il s'ajoute sous la ligne existante, qui n'est pas touchée — le
+  // pied de page s'allonge, rien ne se déplace.
+  [
+    `<p style="margin:0;font-size:11.5px;color:rgba(247,247,244,0.4);">© {{ year }} — Tous droits réservés</p>
+      </div>`,
+    `<p style="margin:0;font-size:11.5px;color:rgba(247,247,244,0.4);">© {{ year }} — Tous droits réservés</p>
+      </div>
+      <div style="padding:0 0 38px;display:flex;justify-content:center;">
+        <a href="https://ippyx.com/?utm_source=maisons-excellence&amp;utm_medium=signature&amp;utm_campaign=footer" target="_blank" rel="noopener" class="me-signature" style="display:inline-flex;align-items:center;gap:9px;text-decoration:none;font-size:11.5px;color:rgba(247,247,244,0.34);transition:color .3s ease;">
+          <svg width="13" height="13.5" viewBox="0 0 26 27" fill="currentColor" aria-hidden="true" style="flex:none;">
+            <rect x="0" y="7" width="4" height="4"></rect>
+            <rect x="4" y="11" width="4" height="4"></rect>
+            <rect x="8" y="15" width="4" height="4"></rect>
+            <rect x="12" y="19" width="4" height="4"></rect>
+            <rect x="16" y="23" width="4" height="4"></rect>
+            <rect x="16" y="7" width="4" height="4"></rect>
+            <rect x="12" y="11" width="4" height="4"></rect>
+            <rect x="4" y="19" width="4" height="4"></rect>
+            <rect x="0" y="23" width="4" height="4"></rect>
+            <rect x="21.6" y="1.4" width="4" height="4"></rect>
+          </svg>
+          <span>Site réalisé par <span style="font-weight:600;letter-spacing:0.1em;">IPPYX</span></span>
+        </a>
+      </div>`,
+  ],
+
   // Les liens WhatsApp de la maquette ouvraient une conversation vide. On y
   // ajoute un message pré-rempli : le visiteur n'a plus à trouver ses mots, et
   // le destinataire sait d'où vient la demande. Le texte reste court et neutre,
