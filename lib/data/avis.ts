@@ -80,6 +80,14 @@ export const AVIS_RESERVE = [
 /** Nombre d'avis affiché à côté de la note. Relevé sur la fiche Google. */
 export const AVIS_COUNT = 36;
 
-/** Fiche Google de l'établissement, pour renvoyer vers les avis d'origine. */
+/**
+ * Fiche Google de l'établissement, cible de la pastille d'avis.
+ *
+ * Cette adresse ouvre la fiche par recherche sur son nom et son adresse. Le
+ * jour où le Place ID d'Aykut sera connu, le remplacer par
+ * `https://www.google.com/maps/place/?q=place_id:LE_PLACE_ID`, qui pointe la
+ * fiche exacte sans dépendre de la recherche.
+ */
 export const GOOGLE_REVIEWS_URL =
-  'https://www.google.com/search?q=Maisons+D%27excellence+Meximieux';
+  'https://www.google.com/maps/search/?api=1&query=' +
+  encodeURIComponent("Maisons D'excellence, 6 Rue de Genève, 01800 Meximieux");

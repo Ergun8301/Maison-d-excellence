@@ -1,6 +1,23 @@
-// Grille de calcul du simulateur, reprise telle quelle de la maquette.
-// Valeurs provisoires (marché de l'Ain, 2026) — signalées comme à valider
-// avec le client. Tout le calcul dépend uniquement de ce bloc.
+// Grille de calcul du simulateur — SOURCE UNIQUE du chiffrage.
+//
+// ⚠️ CHIFFRES DE DÉMONSTRATION. À remplacer par la grille d'Aykut Atak avant
+// toute mise en ligne : un prix affiché par un constructeur CCMI l'engage.
+// Le site peut être montré au client avec ces valeurs, en le lui disant — il
+// corrigera plus vite devant un résultat faux que devant un tableau vide.
+//
+// Ce qui tient : les rapports entre les valeurs. Le 1,07 du plain-pied traduit
+// le « 5 à 10 % de plus au m² » écrit ailleurs sur le site (milieu de
+// fourchette). Les 4 800 € par chambre, les paliers de garage et le 0,80 du
+// prêt-à-finir sont des écarts relatifs cohérents. Corriger `baseM2` seul
+// recale donc tout le reste proportionnellement.
+//
+// Ce qui est arbitraire : `baseM2` (1 580 €/m²) et `fourchette` (±5,5 %,
+// calibrée pour qu'une estimation de 120 m² tombe sur environ ±13 000 €).
+//
+// La maquette lisait ce prix à deux endroits — une propriété de composant
+// l'emportait sur cette grille. Cette propriété a été supprimée à
+// l'intégration : `estimate()` dans components/Site.tsx ne lit que ce fichier,
+// pour qu'une correction ici ait bien un effet.
 
 export const ME_PRIX = {
   baseM2: 1580,              // € / m² habitable, construction seule (hors terrain)

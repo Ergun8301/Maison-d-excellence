@@ -23,7 +23,7 @@ import { TERRAINS } from '@/lib/data/terrains';
 import { ARTICLES } from '@/lib/data/articles';
 import { ECHEANCIER } from '@/lib/data/echeancier';
 import { COMMUNES } from '@/lib/data/communes';
-import { AVIS, AVIS_COUNT } from '@/lib/data/avis';
+import { AVIS, AVIS_COUNT, GOOGLE_REVIEWS_URL } from '@/lib/data/avis';
 
 /** Nom de vue de la maquette -> route Next.js. */
 export const ROUTES: Record<string, string> = {
@@ -319,6 +319,7 @@ export default function Site({
       scrollTop: () => runtime.current?.smoothTo(0),
 
       avisCount: AVIS_COUNT,
+      avisUrl: GOOGLE_REVIEWS_URL,
       avis: AVIS.map((a, i) => ({ ...a, delay: i * 110 })),
       echeancier: ECHEANCIER,
 

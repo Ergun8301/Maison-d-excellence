@@ -56,7 +56,7 @@ const iPrix = js.indexOf('const ME_PRIX');
 const prix = js.slice(iPrix, js.indexOf('};', iPrix) + 2).replace(/^const /, 'export const ');
 emit(
   'prix.ts',
-  '// Grille de calcul du simulateur, reprise telle quelle de la maquette.\n' +
+  '// (remplacé)\n' +
     "// Valeurs provisoires (marché de l'Ain, 2026) — signalées comme à valider\n" +
     '// avec le client. Tout le calcul dépend uniquement de ce bloc.\n\n',
   prix

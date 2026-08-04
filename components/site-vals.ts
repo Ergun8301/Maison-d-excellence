@@ -91,6 +91,8 @@ export type Vals = {
   // preuve sociale
   avisCount: number;
   avis: Avis[];
+  /** Fiche Google de l'établissement, cible de la pastille d'avis. */
+  avisUrl: string;
   echeancier: readonly { pct: string; t: string; d: string }[];
 
   // modèles

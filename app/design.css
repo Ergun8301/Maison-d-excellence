@@ -93,3 +93,14 @@ a:hover{color:#111412;}
 @media(max-width:600px){
   .me-g2,.me-g3,.me-g4{grid-template-columns:1fr;}
 }
+
+/* Pastille Google du bloc « Avis vérifiés ».
+   Règles dictées par Claude Design : révélation au survol, et mention visible
+   en permanence sur mobile, où il n'y a pas de survol. L'état de départ de la
+   flèche est porté ici plutôt qu'en style en ligne, pour éviter d'avoir à le
+   contredire à coups de !important sur petit écran. */
+.me-avis-google:hover { background: rgba(46,90,73,0.05); }
+.me-avis-arrow { opacity: 0; transform: translateX(-4px); transition: opacity .25s ease, transform .25s ease; }
+.me-avis-google:hover .me-avis-arrow,
+.me-avis-google:focus-visible .me-avis-arrow { opacity: 1; transform: translateX(0); }
+@media (max-width: 640px) { .me-avis-arrow { opacity: 1; transform: none; } }
