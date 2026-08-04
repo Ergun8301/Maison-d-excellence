@@ -16,6 +16,7 @@ import SiteHeader from '@/components/SiteHeader';
 import SiteFooter from '@/components/SiteFooter';
 import type { Opt, Vals } from '@/components/site-vals';
 import { SiteRuntime } from '@/lib/site-runtime';
+import { waLink } from '@/lib/site';
 import { ME_PRIX } from '@/lib/data/prix';
 import { MODELES } from '@/lib/data/modeles';
 import { TERRAINS } from '@/lib/data/terrains';
@@ -87,6 +88,49 @@ const BADGE: Record<string, string> = {
 
 /** Message pré-rempli transmis au formulaire de contact d'une vue à l'autre. */
 const PREFILL_KEY = 'me:prefill';
+
+/**
+ * Relève ce que le visiteur a saisi dans un formulaire.
+ *
+ * Les champs de la maquette n'ont pas d'attribut `name`. On reprend donc, dans
+ * l'ordre, l'étiquette visible au-dessus du champ, son `aria-label`, puis à
+ * défaut son texte d'exemple. Aucun balisage n'est retouché, et un champ que
+ * le design ajouterait plus tard serait repris tout seul.
+ */
+function lireFormulaire(form: HTMLFormElement): [string, string][] {
+  const champs: [string, string][] = [];
+
+  form.querySelectorAll('input, select, textarea').forEach((el) => {
+    const champ = el as HTMLInputElement;
+    if (champ.type === 'checkbox' || champ.type === 'submit') return;
+
+    // `:scope >` limite aux étiquettes voisines immédiates. Sans cette borne,
+    // un champ posé directement dans le formulaire récupérait la première
+    // étiquette venue — en pratique celle du consentement RGPD.
+    const etiquette =
+      champ.parentElement?.querySelector(':scope > label')?.textContent ?? '';
+
+    const libelle = (
+      champ.getAttribute('aria-label') ||
+      etiquette ||
+      champ.getAttribute('placeholder') ||
+      ''
+    )
+      .replace(/\s*\*\s*$/, '') // l'astérisque du champ obligatoire
+      .trim();
+
+    const valeur = champ.value.trim();
+    if (libelle && valeur) champs.push([libelle, valeur]);
+  });
+
+  return champs;
+}
+
+/** Ouvre WhatsApp avec la demande mise en forme, vers le numéro de l'entreprise. */
+function envoyerVersWhatsApp(entete: string, champs: [string, string][]) {
+  const corps = champs.map(([k, v]) => `${k} : ${v}`).join('\n');
+  window.open(waLink(`${entete}\n\n${corps}`), '_blank', 'noopener,noreferrer');
+}
 
 const ViewContext = createContext<Vals | null>(null);
 
@@ -303,6 +347,15 @@ export default function Site({
       estNotSent: !estSent,
       onEstSubmit: (ev: FormEvent) => {
         ev.preventDefault();
+        const champs = lireFormulaire(ev.currentTarget as HTMLFormElement);
+        envoyerVersWhatsApp(
+          `Bonjour, voici mon estimation depuis le site :\n` +
+            `${est.surface} m², ${est.niveau.toLowerCase()}, ${est.chambres} chambres, ` +
+            `garage ${est.garage.toLowerCase()}, vide sanitaire ${est.vs.toLowerCase()}, ` +
+            `${est.finition.toLowerCase()}.\n` +
+            `Fourchette annoncée : ${fmt(e.low)} € – ${fmt(e.high)} €.`,
+          champs
+        );
         setEstSent(true);
       },
 
@@ -310,6 +363,10 @@ export default function Site({
       notSubmitted: !submitted,
       onSubmit: (ev: FormEvent) => {
         ev.preventDefault();
+        envoyerVersWhatsApp(
+          'Bonjour, je vous écris depuis le site Maisons d’Excellence.',
+          lireFormulaire(ev.currentTarget as HTMLFormElement)
+        );
         setSubmitted(true);
       },
       resetForm: () => {
