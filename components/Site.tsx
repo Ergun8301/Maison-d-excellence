@@ -126,10 +126,23 @@ function lireFormulaire(form: HTMLFormElement): [string, string][] {
   return champs;
 }
 
-/** Ouvre WhatsApp avec la demande mise en forme, vers le numéro de l'entreprise. */
+/**
+ * Ouvre WhatsApp avec la demande mise en forme, vers le numéro de l'entreprise.
+ *
+ * Sur écran tactile, la navigation se fait dans l'onglet courant : ouvrir un
+ * onglet empêche Android de passer la main à l'application WhatsApp, qui ne
+ * s'ouvre alors pas du tout. Sur ordinateur, le nouvel onglet reste préférable
+ * — il évite de quitter le site pour WhatsApp Web.
+ */
 function envoyerVersWhatsApp(entete: string, champs: [string, string][]) {
   const corps = champs.map(([k, v]) => `${k} : ${v}`).join('\n');
-  window.open(waLink(`${entete}\n\n${corps}`), '_blank', 'noopener,noreferrer');
+  const url = waLink(`${entete}\n\n${corps}`);
+
+  if (window.matchMedia('(hover: none)').matches) {
+    window.location.href = url;
+    return;
+  }
+  window.open(url, '_blank', 'noopener,noreferrer');
 }
 
 const ViewContext = createContext<Vals | null>(null);
