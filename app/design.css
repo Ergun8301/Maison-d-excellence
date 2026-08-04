@@ -120,3 +120,10 @@ a:hover{color:#111412;}
 @media (hover: none) {
   footer .me-link { padding: 6px 0; margin: -6px 0; }
 }
+
+/* Zoom lent du bandeau Contact.
+   Le zoom d'origine (1,06 → 1,18) rogne encore 15 % d'une photo déjà recadrée
+   pour tenir dans une bande large : la devanture s'en trouvait tronquée. Cette
+   variante part de la taille réelle et bouge à peine — le mouvement reste
+   perceptible, mais on voit la façade entière. */
+@keyframes meKbDoux { 0% { transform: scale(1); } 100% { transform: scale(1.05); } }

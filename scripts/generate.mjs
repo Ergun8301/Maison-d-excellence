@@ -124,7 +124,7 @@ const CORRECTIONS = [
   // conservé tel quel.
   [
     'src="photos/bureau-meximieux-vitrine-bandeau.png" alt="Les vitrines du bureau Maisons d\'Excellence, 6 rue de Genève à Meximieux" style="width:100%;height:100%;object-fit:cover;object-position:50% 46%;animation:meKb 18s ease-out forwards;"',
-    'src="photos/bureau-meximieux-facade.png" alt="La devanture du bureau Maisons d\'Excellence, 6 rue de Genève à Meximieux" style="width:100%;height:100%;object-fit:cover;object-position:50% 54%;animation:meKb 18s ease-out forwards;"',
+    'src="photos/devanture-rue.png" alt="La devanture du bureau Maisons d\'Excellence, 6 rue de Genève à Meximieux" style="width:100%;height:100%;object-fit:cover;object-position:50% 47%;animation:meKbDoux 22s ease-out forwards;"',
   ],
 
   // Bandeau de la page Entreprise. La photo de gros œuvre en brique y servait

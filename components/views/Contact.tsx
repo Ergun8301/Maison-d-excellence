@@ -14,7 +14,7 @@ export default function Contact(v: Vals) {
       <main data-screen-label="Contact">
           {/* EN-TÊTE */}
           <section style={{ position: "relative", minHeight: "clamp(480px,66vh,600px)", overflow: "hidden", display: "flex", alignItems: "flex-end" }}>
-            <div style={{ position: "absolute", inset: "0", overflow: "hidden" }}><img src="/photos/bureau-meximieux-facade.webp" alt="La devanture du bureau Maisons d'Excellence, 6 rue de Genève à Meximieux" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "50% 54%", animation: "meKb 18s ease-out forwards" }} /></div>
+            <div style={{ position: "absolute", inset: "0", overflow: "hidden" }}><img src="/photos/devanture-rue.webp" alt="La devanture du bureau Maisons d'Excellence, 6 rue de Genève à Meximieux" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "50% 47%", animation: "meKbDoux 22s ease-out forwards" }} /></div>
             <div style={{ position: "absolute", inset: "0", background: "linear-gradient(180deg,rgba(11,13,12,0.62) 0%,rgba(11,13,12,0.42) 34%,rgba(11,13,12,0.74) 68%,rgba(11,13,12,0.94) 100%)" }}></div>
             <div style={{ position: "relative", width: "100%", maxWidth: "1440px", margin: "0 auto", padding: "clamp(104px,11vw,128px) clamp(20px,5vw,64px) clamp(44px,5.4vw,76px)" }}>
               <div data-reveal="" style={{ display: "inline-flex", alignItems: "center", gap: "12px", marginBottom: "20px" }}><span style={{ width: "42px", height: "1px", background: "#9CC4B2" }}></span><span style={{ color: "#CFE0D6", fontSize: "12px", fontWeight: "600", letterSpacing: "0.3em", textTransform: "uppercase" }}>Contact · Meximieux (01)</span></div>
