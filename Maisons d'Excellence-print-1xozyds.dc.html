@@ -1,0 +1,1274 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style data-omelette-print-defaults>
+@media print {
+  @page { margin: 0.5in; }
+  h1, h2, h3, h4, h5, h6 { break-after: avoid; }
+  figure, table, pre, blockquote, img, svg, tr, [class~="card" i] { break-inside: avoid; }
+  img, svg { max-width: 100%; }
+  p { orphans: 3; widows: 3; }
+}
+</style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%231c1a16'/%3E%3Ctext x='16' y='23' font-family='Georgia,serif' font-size='20' fill='%23a07d4a' text-anchor='middle'%3EM%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;}
+body{margin:0;background:#1c1a16;}
+img{display:block;}
+::selection{background:#a07d4a;color:#fff;}
+@keyframes meKb{0%{transform:scale(1.06) translate(0,0);}100%{transform:scale(1.18) translate(-1.4%,-1.2%);}}
+@keyframes meScroll{0%{transform:translateY(0);opacity:0;}30%{opacity:1;}80%{transform:translateY(15px);opacity:0;}100%{opacity:0;}}
+@keyframes meFloat{0%,100%{transform:translateY(0);}50%{transform:translateY(7px);}}
+.me-g2{display:grid;grid-template-columns:1fr 1fr;}
+.me-g3{display:grid;grid-template-columns:repeat(3,1fr);}
+.me-g4{display:grid;grid-template-columns:repeat(4,1fr);}
+.me-split{display:grid;grid-template-columns:1.04fr 0.96fr;}
+.me-steps{display:grid;grid-template-columns:repeat(5,1fr);}
+.me-card{transition:transform .65s cubic-bezier(.16,.84,.44,1),box-shadow .65s cubic-bezier(.16,.84,.44,1);}
+.me-card:hover{transform:translateY(-10px);box-shadow:0 50px 90px -55px rgba(20,18,14,.85);}
+.me-zoom{transition:transform 1.2s cubic-bezier(.16,.84,.44,1);}
+.me-card:hover .me-zoom{transform:scale(1.08);}
+.me-card:hover .me-cap{transform:translateY(0);opacity:1;}
+.me-cap{transition:transform .55s cubic-bezier(.16,.84,.44,1),opacity .55s;}
+.me-btn{transition:transform .45s cubic-bezier(.16,.84,.44,1),background .35s,color .35s,border-color .35s,box-shadow .45s;}
+.me-btn:hover{transform:translateY(-3px);}
+.me-link{transition:color .3s,gap .35s;}
+.me-navitem{transition:color .3s,opacity .3s;}
+.me-navitem:hover{opacity:1 !important;}
+.me-burger{display:none;}
+.me-projbig:hover .me-zoom{transform:scale(1.06);}
+@media(max-width:1024px){ .me-g4{grid-template-columns:1fr 1fr;} }
+@media(max-width:880px){
+  .me-g3{grid-template-columns:1fr 1fr;}
+  .me-split{grid-template-columns:1fr;}
+  .me-steps{grid-template-columns:1fr;}
+  .me-desk-nav{display:none !important;}
+  .me-burger{display:inline-flex !important;}
+}
+@media(max-width:600px){
+  .me-g2,.me-g3,.me-g4{grid-template-columns:1fr;}
+}
+</style>
+</helmet>
+
+<div style="font-family:'Manrope',system-ui,sans-serif;color:#1c1a16;background:#f5f0e8;overflow-x:hidden;position:relative;">
+
+  <!-- ===================== HEADER ===================== -->
+  <header data-header style="position:fixed;top:0;left:0;right:0;z-index:120;color:#f5f0e8;border-bottom:1px solid transparent;transition:background .5s,color .4s,box-shadow .5s,border-color .5s;">
+    <div style="max-width:1320px;margin:0 auto;padding:clamp(14px,1.6vw,22px) clamp(20px,5vw,64px);display:flex;align-items:center;justify-content:space-between;gap:24px;">
+      <a href="#accueil" onClick="{{ goAccueil }}" data-navitem style="display:flex;flex-direction:column;line-height:1;text-decoration:none;color:inherit;flex:none;">
+        <span style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(18px,2vw,23px);letter-spacing:0.05em;white-space:nowrap;">MAISONS D'EXCELLENCE</span>
+        <span style="font-size:9px;font-weight:600;letter-spacing:0.36em;opacity:0.66;margin-top:5px;">CONSTRUCTEUR · AIN</span>
+      </a>
+      <nav class="me-desk-nav" style="display:flex;align-items:center;gap:clamp(18px,2.4vw,40px);">
+        <a href="#accueil" onClick="{{ goAccueil }}" data-navitem class="me-navitem" style="text-decoration:none;color:rgba(245,240,232,0.86);font-size:13.5px;font-weight:500;letter-spacing:0.02em;">Accueil</a>
+        <a href="#entreprise" onClick="{{ goEntreprise }}" data-navitem class="me-navitem" style="text-decoration:none;color:rgba(245,240,232,0.86);font-size:13.5px;font-weight:500;letter-spacing:0.02em;">L'entreprise</a>
+        <a href="#savoir-faire" onClick="{{ goSavoir }}" data-navitem class="me-navitem" style="text-decoration:none;color:rgba(245,240,232,0.86);font-size:13.5px;font-weight:500;letter-spacing:0.02em;">Savoir-faire</a>
+        <a href="#realisations" onClick="{{ goRealisations }}" data-navitem class="me-navitem" style="text-decoration:none;color:rgba(245,240,232,0.86);font-size:13.5px;font-weight:500;letter-spacing:0.02em;">Réalisations</a>
+        <a href="#terrains" onClick="{{ goTerrains }}" data-navitem class="me-navitem" style="text-decoration:none;color:rgba(245,240,232,0.86);font-size:13.5px;font-weight:500;letter-spacing:0.02em;">Terrains</a>
+        <a href="tel:+33474346643" class="me-btn" style="text-decoration:none;display:inline-flex;align-items:center;gap:9px;padding:11px 20px;border-radius:100px;background:#a07d4a;color:#fff;font-size:13px;font-weight:600;letter-spacing:0.02em;box-shadow:0 14px 30px -16px rgba(160,125,74,.9);" style-hover="background:#b08d57;transform:translateY(-3px);box-shadow:0 18px 36px -16px rgba(160,125,74,1);">
+          <span style="font-size:14px;">✆</span> 04 74 34 66 43
+        </a>
+      </nav>
+      <button class="me-burger" onClick="{{ toggleMenu }}" aria-label="Menu" style="display:none;align-items:center;justify-content:center;width:44px;height:44px;border:1px solid currentColor;border-radius:100px;background:transparent;color:inherit;cursor:pointer;">
+        <span style="display:block;width:18px;height:10px;border-top:1.5px solid currentColor;border-bottom:1.5px solid currentColor;"></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ===================== MOBILE MENU ===================== -->
+  <sc-if value="{{ menuOpen }}">
+    <div onClick="{{ closeMenu }}" style="position:fixed;inset:0;z-index:200;background:rgba(20,18,14,0.97);backdrop-filter:blur(8px);display:flex;flex-direction:column;justify-content:center;padding:40px clamp(28px,8vw,64px);">
+      <div style="display:flex;flex-direction:column;gap:6px;">
+        <a href="#accueil" onClick="{{ goAccueil }}" style="text-decoration:none;color:#f5f0e8;font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(34px,11vw,56px);line-height:1.18;border-bottom:1px solid rgba(245,240,232,0.12);padding:8px 0;">Accueil</a>
+        <a href="#entreprise" onClick="{{ goEntreprise }}" style="text-decoration:none;color:#f5f0e8;font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(34px,11vw,56px);line-height:1.18;border-bottom:1px solid rgba(245,240,232,0.12);padding:8px 0;">L'entreprise</a>
+        <a href="#savoir-faire" onClick="{{ goSavoir }}" style="text-decoration:none;color:#f5f0e8;font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(34px,11vw,56px);line-height:1.18;border-bottom:1px solid rgba(245,240,232,0.12);padding:8px 0;">Savoir-faire</a>
+        <a href="#realisations" onClick="{{ goRealisations }}" style="text-decoration:none;color:#f5f0e8;font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(34px,11vw,56px);line-height:1.18;border-bottom:1px solid rgba(245,240,232,0.12);padding:8px 0;">Réalisations</a>
+        <a href="#terrains" onClick="{{ goTerrains }}" style="text-decoration:none;color:#f5f0e8;font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(34px,11vw,56px);line-height:1.18;border-bottom:1px solid rgba(245,240,232,0.12);padding:8px 0;">Terrains à bâtir</a>
+        <a href="#contact" onClick="{{ goContact }}" style="text-decoration:none;color:#c4a878;font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(34px,11vw,56px);line-height:1.18;padding:8px 0;">Contact</a>
+      </div>
+      <a href="tel:+33474346643" style="margin-top:34px;text-decoration:none;color:rgba(245,240,232,0.7);font-size:14px;letter-spacing:0.04em;">✆ 04 74 34 66 43 — Meximieux (01)</a>
+    </div>
+  </sc-if>
+
+  <!-- ===================== ACCUEIL ===================== -->
+  <sc-if value="{{ isAccueil }}" hint-placeholder-val="{{ true }}">
+  <main data-screen-label="Accueil">
+
+    <!-- HERO -->
+    <section style="position:relative;height:100vh;min-height:640px;overflow:hidden;display:flex;align-items:flex-end;">
+      <div style="position:absolute;inset:0;overflow:hidden;">
+        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=2200&q=80" alt="Maison individuelle contemporaine" style="width:100%;height:100%;object-fit:cover;animation:meKb 16s ease-out forwards;"/>
+      </div>
+      <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,18,14,0.55) 0%,rgba(20,18,14,0.15) 32%,rgba(20,18,14,0.30) 62%,rgba(20,18,14,0.88) 100%);"></div>
+      <div style="position:relative;width:100%;max-width:1320px;margin:0 auto;padding:0 clamp(20px,5vw,64px) clamp(64px,9vw,120px);">
+        <div data-reveal data-delay="80" style="display:inline-flex;align-items:center;gap:12px;margin-bottom:26px;">
+          <span style="width:42px;height:1px;background:#c4a878;"></span>
+          <span style="color:#e9dcc4;font-size:12px;font-weight:600;letter-spacing:0.3em;text-transform:uppercase;">Constructeur de maisons individuelles · Ain</span>
+        </div>
+        <h1 data-reveal data-delay="180" style="margin:0;color:#f7f3ec;font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(46px,8.4vw,118px);line-height:0.96;letter-spacing:-0.02em;max-width:15ch;text-wrap:balance;">Votre maison, bâtie avec exigence.</h1>
+        <p data-reveal data-delay="300" style="margin:28px 0 0;color:rgba(245,240,232,0.82);font-size:clamp(16px,1.5vw,20px);line-height:1.65;max-width:54ch;font-weight:300;">Du terrain à la remise des clés, nous concevons et construisons des maisons traditionnelles et contemporaines, sur-mesure, en Rhône-Alpes. Un accompagnement complet, un seul interlocuteur.</p>
+        <div data-reveal data-delay="420" style="display:flex;flex-wrap:wrap;gap:16px;margin-top:40px;">
+          <a href="#realisations" onClick="{{ goRealisations }}" class="me-btn" style="text-decoration:none;display:inline-flex;align-items:center;gap:10px;padding:17px 32px;border-radius:100px;background:#a07d4a;color:#fff;font-size:14px;font-weight:600;letter-spacing:0.02em;box-shadow:0 22px 44px -22px rgba(160,125,74,1);" style-hover="background:#b08d57;transform:translateY(-3px);">Découvrir nos réalisations →</a>
+          <a href="#contact" onClick="{{ goContact }}" class="me-btn" style="text-decoration:none;display:inline-flex;align-items:center;gap:10px;padding:17px 32px;border-radius:100px;background:rgba(245,240,232,0.08);color:#f5f0e8;font-size:14px;font-weight:600;letter-spacing:0.02em;border:1px solid rgba(245,240,232,0.45);" style-hover="background:rgba(245,240,232,0.16);transform:translateY(-3px);">Prendre rendez-vous</a>
+        </div>
+      </div>
+      <div style="position:absolute;bottom:28px;left:50%;transform:translateX(-50%);width:22px;height:36px;border:1.5px solid rgba(245,240,232,0.5);border-radius:14px;display:flex;justify-content:center;padding-top:7px;">
+        <span style="width:3px;height:8px;border-radius:3px;background:#f5f0e8;animation:meScroll 2.1s infinite;"></span>
+      </div>
+    </section>
+
+    <!-- PROPOSITION DE VALEUR -->
+    <section style="background:#f5f0e8;padding:clamp(84px,12vw,160px) 0;">
+      <div style="max-width:1320px;margin:0 auto;padding:0 clamp(20px,5vw,64px);">
+        <div class="me-split" style="gap:clamp(40px,6vw,96px);align-items:center;">
+          <div>
+            <div data-reveal style="display:inline-flex;align-items:center;gap:12px;margin-bottom:24px;"><span style="width:42px;height:1px;background:#a07d4a;"></span><span style="color:#a07d4a;font-size:12px;font-weight:600;letter-spacing:0.3em;text-transform:uppercase;">Constructeur depuis 2019</span></div>
+            <h2 data-reveal data-delay="100" style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(34px,4.6vw,62px);line-height:1.04;letter-spacing:-0.01em;color:#1c1a16;max-width:18ch;">Un bâtisseur local, à vos côtés du premier rendez-vous aux clés.</h2>
+            <p data-reveal data-delay="180" style="margin:26px 0 0;color:#5a5247;font-size:clamp(15px,1.4vw,18px);line-height:1.75;max-width:52ch;">Implantée à Meximieux et présente dans tout l'Ain, Maisons d'Excellence conçoit des maisons qui vous ressemblent. Sur-mesure et personnalisées, traditionnelles comme contemporaines — toujours conformes à la réglementation thermique RE2020.</p>
+            <a href="#entreprise" onClick="{{ goEntreprise }}" class="me-link" style="display:inline-flex;align-items:center;gap:9px;margin-top:30px;text-decoration:none;color:#1c1a16;font-weight:600;font-size:14px;border-bottom:1px solid #a07d4a;padding-bottom:5px;" style-hover="gap:15px;color:#a07d4a;">Découvrir l'entreprise →</a>
+          </div>
+          <div data-reveal data-delay="120" style="position:relative;">
+            <div style="position:relative;overflow:hidden;border-radius:6px;aspect-ratio:4/5;box-shadow:0 50px 90px -50px rgba(28,26,22,0.6);">
+              <img data-parallax="0.07" src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1400&q=80" alt="Intérieur lumineux" style="width:100%;height:100%;object-fit:cover;transform:scale(1.08);will-change:transform;"/>
+            </div>
+            <div style="position:absolute;left:-22px;bottom:-26px;background:#1c1a16;color:#f5f0e8;padding:24px 30px;border-radius:6px;box-shadow:0 30px 60px -30px rgba(28,26,22,0.7);">
+              <div style="font-family:'Cormorant Garamond',serif;font-size:46px;font-weight:300;line-height:1;color:#c4a878;">A → Z</div>
+              <div style="font-size:12px;letter-spacing:0.16em;text-transform:uppercase;margin-top:8px;opacity:0.78;">Accompagnement<br/>complet</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- stat strip -->
+        <div class="me-g4" style="gap:1px;margin-top:clamp(56px,8vw,110px);background:rgba(28,26,22,0.12);border-radius:6px;overflow:hidden;">
+          <div data-reveal style="background:#faf7f1;padding:34px 30px;"><div style="font-family:'Cormorant Garamond',serif;font-size:clamp(38px,4vw,54px);font-weight:300;line-height:1;color:#1c1a16;">2019</div><div style="margin-top:10px;font-size:13px;color:#7a7164;letter-spacing:0.04em;">SARL créée dans l'Ain</div></div>
+          <div data-reveal data-delay="80" style="background:#faf7f1;padding:34px 30px;"><div style="font-family:'Cormorant Garamond',serif;font-size:clamp(38px,4vw,54px);font-weight:300;line-height:1;color:#1c1a16;">01800</div><div style="margin-top:10px;font-size:13px;color:#7a7164;letter-spacing:0.04em;">Meximieux · Rhône-Alpes</div></div>
+          <div data-reveal data-delay="160" style="background:#faf7f1;padding:34px 30px;"><div style="font-family:'Cormorant Garamond',serif;font-size:clamp(38px,4vw,54px);font-weight:300;line-height:1;color:#1c1a16;">RE2020</div><div style="margin-top:10px;font-size:13px;color:#7a7164;letter-spacing:0.04em;">Conformité systématique</div></div>
+          <div data-reveal data-delay="240" style="background:#faf7f1;padding:34px 30px;"><div style="font-family:'Cormorant Garamond',serif;font-size:clamp(38px,4vw,54px);font-weight:300;line-height:1;color:#1c1a16;">100%</div><div style="margin-top:10px;font-size:13px;color:#7a7164;letter-spacing:0.04em;">Sur-mesure & personnalisé</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ACCOMPAGNEMENT A→Z -->
+    <section style="background:#1c1a16;color:#f5f0e8;padding:clamp(84px,12vw,160px) 0;position:relative;">
+      <div style="max-width:1320px;margin:0 auto;padding:0 clamp(20px,5vw,64px);">
+        <div style="max-width:60ch;">
+          <div data-reveal style="display:inline-flex;align-items:center;gap:12px;margin-bottom:24px;"><span style="width:42px;height:1px;background:#c4a878;"></span><span style="color:#c4a878;font-size:12px;font-weight:600;letter-spacing:0.3em;text-transform:uppercase;">Notre fil rouge</span></div>
+          <h2 data-reveal data-delay="100" style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(34px,4.8vw,66px);line-height:1.02;letter-spacing:-0.01em;">Un parcours maîtrisé, du terrain à la remise des clés.</h2>
+        </div>
+        <div class="me-steps" style="gap:0;margin-top:clamp(48px,7vw,90px);border-top:1px solid rgba(245,240,232,0.16);">
+          <div data-reveal data-delay="60" style="padding:30px 22px 0 0;border-right:1px solid rgba(245,240,232,0.12);"><div style="font-family:'Cormorant Garamond',serif;font-size:clamp(50px,7vw,96px);font-weight:300;line-height:1;color:#c4a878;">01</div><div style="margin-top:18px;font-size:17px;font-weight:600;">Le terrain</div><p style="margin:10px 0 0;color:rgba(245,240,232,0.6);font-size:13.5px;line-height:1.6;">Recherche et sélection du terrain idéal pour votre projet.</p></div>
+          <div data-reveal data-delay="140" style="padding:30px 22px 0 22px;border-right:1px solid rgba(245,240,232,0.12);"><div style="font-family:'Cormorant Garamond',serif;font-size:clamp(50px,7vw,96px);font-weight:300;line-height:1;color:#c4a878;">02</div><div style="margin-top:18px;font-size:17px;font-weight:600;">Le financement</div><p style="margin:10px 0 0;color:rgba(245,240,232,0.6);font-size:13.5px;line-height:1.6;">Plan de financement et accompagnement bancaire.</p></div>
+          <div data-reveal data-delay="220" style="padding:30px 22px 0 22px;border-right:1px solid rgba(245,240,232,0.12);"><div style="font-family:'Cormorant Garamond',serif;font-size:clamp(50px,7vw,96px);font-weight:300;line-height:1;color:#c4a878;">03</div><div style="margin-top:18px;font-size:17px;font-weight:600;">La conception</div><p style="margin:10px 0 0;color:rgba(245,240,232,0.6);font-size:13.5px;line-height:1.6;">Plans personnalisés, dessinés selon vos envies et la RE2020.</p></div>
+          <div data-reveal data-delay="300" style="padding:30px 22px 0 22px;border-right:1px solid rgba(245,240,232,0.12);"><div style="font-family:'Cormorant Garamond',serif;font-size:clamp(50px,7vw,96px);font-weight:300;line-height:1;color:#c4a878;">04</div><div style="margin-top:18px;font-size:17px;font-weight:600;">La construction</div><p style="margin:10px 0 0;color:rgba(245,240,232,0.6);font-size:13.5px;line-height:1.6;">Chantier suivi de près, artisans qualifiés et locaux.</p></div>
+          <div data-reveal data-delay="380" style="padding:30px 0 0 22px;"><div style="font-family:'Cormorant Garamond',serif;font-size:clamp(50px,7vw,96px);font-weight:300;line-height:1;color:#c4a878;">05</div><div style="margin-top:18px;font-size:17px;font-weight:600;">La remise des clés</div><p style="margin:10px 0 0;color:rgba(245,240,232,0.6);font-size:13.5px;line-height:1.6;">Toutes garanties réunies, votre maison prête à vivre.</p></div>
+        </div>
+        <div data-reveal data-delay="160" style="margin-top:50px;"><a href="#savoir-faire" onClick="{{ goSavoir }}" class="me-btn" style="text-decoration:none;display:inline-flex;align-items:center;gap:10px;padding:16px 30px;border-radius:100px;background:#a07d4a;color:#fff;font-size:14px;font-weight:600;" style-hover="background:#b08d57;transform:translateY(-3px);">Voir notre savoir-faire en détail →</a></div>
+      </div>
+    </section>
+
+    <!-- APERÇU RÉALISATIONS -->
+    <section style="background:#f5f0e8;padding:clamp(84px,12vw,160px) 0;">
+      <div style="max-width:1320px;margin:0 auto;padding:0 clamp(20px,5vw,64px);">
+        <div style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:24px;margin-bottom:clamp(40px,5vw,64px);">
+          <div>
+            <div data-reveal style="display:inline-flex;align-items:center;gap:12px;margin-bottom:22px;"><span style="width:42px;height:1px;background:#a07d4a;"></span><span style="color:#a07d4a;font-size:12px;font-weight:600;letter-spacing:0.3em;text-transform:uppercase;">Réalisations</span></div>
+            <h2 data-reveal data-delay="100" style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(34px,4.6vw,62px);line-height:1.04;color:#1c1a16;max-width:16ch;">Des maisons pensées dans le moindre détail.</h2>
+          </div>
+          <a href="#realisations" onClick="{{ goRealisations }}" class="me-link" style="text-decoration:none;color:#1c1a16;font-weight:600;font-size:14px;display:inline-flex;align-items:center;gap:9px;border-bottom:1px solid #a07d4a;padding-bottom:5px;" style-hover="gap:15px;color:#a07d4a;">Toute la galerie →</a>
+        </div>
+        <div class="me-g3" style="gap:clamp(16px,1.8vw,26px);">
+          <div data-reveal class="me-card" style="border-radius:6px;overflow:hidden;background:#1c1a16;">
+            <div style="position:relative;overflow:hidden;aspect-ratio:3/4;">
+              <img class="me-zoom" src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1100&q=80" alt="Villa contemporaine" style="width:100%;height:100%;object-fit:cover;"/>
+              <div style="position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(20,18,14,0.85) 100%);"></div>
+              <div style="position:absolute;left:24px;bottom:22px;color:#f5f0e8;"><div style="font-size:11px;letter-spacing:0.22em;text-transform:uppercase;color:#c4a878;">Contemporain</div><div style="font-family:'Cormorant Garamond',serif;font-size:27px;font-weight:400;margin-top:4px;">Villa Horizon</div></div>
+            </div>
+          </div>
+          <div data-reveal data-delay="120" class="me-card" style="border-radius:6px;overflow:hidden;background:#1c1a16;">
+            <div style="position:relative;overflow:hidden;aspect-ratio:3/4;">
+              <img class="me-zoom" src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?auto=format&fit=crop&w=1100&q=80" alt="Maison traditionnelle" style="width:100%;height:100%;object-fit:cover;"/>
+              <div style="position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(20,18,14,0.85) 100%);"></div>
+              <div style="position:absolute;left:24px;bottom:22px;color:#f5f0e8;"><div style="font-size:11px;letter-spacing:0.22em;text-transform:uppercase;color:#c4a878;">Traditionnel</div><div style="font-family:'Cormorant Garamond',serif;font-size:27px;font-weight:400;margin-top:4px;">Maison des Tilleuls</div></div>
+            </div>
+          </div>
+          <div data-reveal data-delay="240" class="me-card" style="border-radius:6px;overflow:hidden;background:#1c1a16;">
+            <div style="position:relative;overflow:hidden;aspect-ratio:3/4;">
+              <img class="me-zoom" src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=1100&q=80" alt="Maison familiale" style="width:100%;height:100%;object-fit:cover;"/>
+              <div style="position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(20,18,14,0.85) 100%);"></div>
+              <div style="position:absolute;left:24px;bottom:22px;color:#f5f0e8;"><div style="font-size:11px;letter-spacing:0.22em;text-transform:uppercase;color:#c4a878;">Sur-mesure</div><div style="font-family:'Cormorant Garamond',serif;font-size:27px;font-weight:400;margin-top:4px;">Le Clos Meximieux</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GARANTIES / RE2020 -->
+    <section style="position:relative;overflow:hidden;color:#f5f0e8;padding:clamp(90px,13vw,170px) 0;">
+      <div style="position:absolute;inset:0;overflow:hidden;"><img data-parallax="0.10" src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=2000&q=80" alt="Chantier de construction" style="width:100%;height:100%;object-fit:cover;transform:scale(1.08);will-change:transform;"/></div>
+      <div style="position:absolute;inset:0;background:linear-gradient(110deg,rgba(20,18,14,0.94) 0%,rgba(20,18,14,0.80) 50%,rgba(20,18,14,0.55) 100%);"></div>
+      <div style="position:relative;max-width:1320px;margin:0 auto;padding:0 clamp(20px,5vw,64px);">
+        <div style="max-width:62ch;">
+          <div data-reveal style="display:inline-flex;align-items:center;gap:12px;margin-bottom:24px;"><span style="width:42px;height:1px;background:#c4a878;"></span><span style="color:#c4a878;font-size:12px;font-weight:600;letter-spacing:0.3em;text-transform:uppercase;">Sérénité garantie</span></div>
+          <h2 data-reveal data-delay="100" style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(34px,4.8vw,64px);line-height:1.04;">Construire en toute confiance, avec toutes les garanties.</h2>
+          <p data-reveal data-delay="180" style="margin:24px 0 0;color:rgba(245,240,232,0.78);font-size:clamp(15px,1.4vw,18px);line-height:1.7;">Chaque maison est bâtie dans le cadre du Contrat de Construction de Maison Individuelle (CCMI) et répond à la réglementation thermique RE2020 — pour un habitat plus sobre, plus confortable et plus durable.</p>
+        </div>
+        <div class="me-g4" style="gap:clamp(14px,1.6vw,22px);margin-top:clamp(44px,6vw,72px);">
+          <div data-reveal data-delay="60" style="background:rgba(245,240,232,0.06);border:1px solid rgba(245,240,232,0.14);border-radius:6px;padding:26px 24px;backdrop-filter:blur(4px);"><div style="color:#c4a878;font-family:'Cormorant Garamond',serif;font-size:32px;line-height:1;">✓</div><div style="margin-top:14px;font-size:15px;font-weight:600;">Garantie décennale</div><p style="margin:8px 0 0;color:rgba(245,240,232,0.6);font-size:13px;line-height:1.55;">Couverture des dommages pendant 10 ans.</p></div>
+          <div data-reveal data-delay="140" style="background:rgba(245,240,232,0.06);border:1px solid rgba(245,240,232,0.14);border-radius:6px;padding:26px 24px;backdrop-filter:blur(4px);"><div style="color:#c4a878;font-family:'Cormorant Garamond',serif;font-size:32px;line-height:1;">✓</div><div style="margin-top:14px;font-size:15px;font-weight:600;">Garantie de parfait achèvement</div><p style="margin:8px 0 0;color:rgba(245,240,232,0.6);font-size:13px;line-height:1.55;">Reprise des désordres signalés la première année.</p></div>
+          <div data-reveal data-delay="220" style="background:rgba(245,240,232,0.06);border:1px solid rgba(245,240,232,0.14);border-radius:6px;padding:26px 24px;backdrop-filter:blur(4px);"><div style="color:#c4a878;font-family:'Cormorant Garamond',serif;font-size:32px;line-height:1;">✓</div><div style="margin-top:14px;font-size:15px;font-weight:600;">Livraison à prix & délais convenus</div><p style="margin:8px 0 0;color:rgba(245,240,232,0.6);font-size:13px;line-height:1.55;">Le budget et le calendrier sont contractuels.</p></div>
+          <div data-reveal data-delay="300" style="background:rgba(245,240,232,0.06);border:1px solid rgba(245,240,232,0.14);border-radius:6px;padding:26px 24px;backdrop-filter:blur(4px);"><div style="color:#c4a878;font-family:'Cormorant Garamond',serif;font-size:32px;line-height:1;">✓</div><div style="margin-top:14px;font-size:15px;font-weight:600;">Assurance dommages-ouvrage</div><p style="margin:8px 0 0;color:rgba(245,240,232,0.6);font-size:13px;line-height:1.55;">Réparation rapide, sans recherche de responsabilité.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section style="background:#f5f0e8;padding:clamp(84px,12vw,150px) 0;">
+      <div style="max-width:1040px;margin:0 auto;padding:0 clamp(20px,5vw,64px);text-align:center;">
+        <h2 data-reveal style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(36px,5.6vw,76px);line-height:1.02;color:#1c1a16;text-wrap:balance;">Et si l'on parlait de votre future maison ?</h2>
+        <p data-reveal data-delay="100" style="margin:22px auto 0;color:#5a5247;font-size:clamp(15px,1.4vw,18px);line-height:1.7;max-width:50ch;">Un premier échange gratuit et sans engagement pour étudier votre terrain, votre budget et vos envies.</p>
+        <div data-reveal data-delay="180" style="margin-top:38px;display:flex;flex-wrap:wrap;gap:16px;justify-content:center;">
+          <a href="#contact" onClick="{{ goContact }}" class="me-btn" style="text-decoration:none;display:inline-flex;align-items:center;gap:10px;padding:18px 36px;border-radius:100px;background:#1c1a16;color:#f5f0e8;font-size:14px;font-weight:600;box-shadow:0 24px 48px -26px rgba(28,26,22,0.9);" style-hover="background:#2a261f;transform:translateY(-3px);">Demander un rendez-vous →</a>
+          <a href="tel:+33474346643" class="me-btn" style="text-decoration:none;display:inline-flex;align-items:center;gap:10px;padding:18px 36px;border-radius:100px;background:transparent;color:#1c1a16;font-size:14px;font-weight:600;border:1px solid rgba(28,26,22,0.28);" style-hover="border-color:#a07d4a;color:#a07d4a;transform:translateY(-3px);">✆ 04 74 34 66 43</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+  </sc-if>
+
+  <!-- ===================== L'ENTREPRISE ===================== -->
+  <sc-if value="{{ isEntreprise }}">
+  <main data-screen-label="L'entreprise">
+    <section style="position:relative;height:62vh;min-height:440px;overflow:hidden;display:flex;align-items:flex-end;">
+      <div style="position:absolute;inset:0;overflow:hidden;"><img src="https://images.unsplash.com/photo-1503174971373-b1f69850bded?auto=format&fit=crop&w=2000&q=80" alt="Architecture résidentielle" style="width:100%;height:100%;object-fit:cover;animation:meKb 18s ease-out forwards;"/></div>
+      <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,18,14,0.6) 0%,rgba(20,18,14,0.2) 40%,rgba(20,18,14,0.85) 100%);"></div>
+      <div style="position:relative;width:100%;max-width:1320px;margin:0 auto;padding:0 clamp(20px,5vw,64px) clamp(48px,6vw,84px);">
+        <div data-reveal style="display:inline-flex;align-items:center;gap:12px;margin-bottom:22px;"><span style="width:42px;height:1px;background:#c4a878;"></span><span style="color:#e9dcc4;font-size:12px;font-weight:600;letter-spacing:0.3em;text-transform:uppercase;">L'entreprise</span></div>
+        <h1 data-reveal data-delay="120" style="margin:0;color:#f7f3ec;font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(42px,7vw,92px);line-height:0.98;letter-spacing:-0.02em;max-width:18ch;">Un constructeur de l'Ain, fidèle à ses engagements.</h1>
+      </div>
+    </section>
+
+    <section style="background:#f5f0e8;padding:clamp(80px,11vw,150px) 0;">
+      <div style="max-width:1320px;margin:0 auto;padding:0 clamp(20px,5vw,64px);">
+        <div class="me-split" style="gap:clamp(40px,6vw,96px);align-items:start;">
+          <div>
+            <h2 data-reveal style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(30px,3.8vw,52px);line-height:1.06;color:#1c1a16;max-width:16ch;">Maisons d'Excellence, depuis 2019.</h2>
+          </div>
+          <div>
+            <p data-reveal style="margin:0;color:#5a5247;font-size:clamp(15px,1.4vw,18px);line-height:1.8;">Fondée en 2019 et basée à Meximieux (01800), Maisons d'Excellence est une SARL spécialisée dans la construction de maisons individuelles sur-mesure. Dirigée par <strong style="color:#1c1a16;font-weight:600;">Aykut Atak</strong>, l'entreprise réunit une équipe à taille humaine de 3 à 5 personnes, attachée à un suivi personnel de chaque projet.</p>
+            <p data-reveal data-delay="100" style="margin:20px 0 0;color:#5a5247;font-size:clamp(15px,1.4vw,18px);line-height:1.8;">Présents dans tout l'Ain et en région Rhône-Alpes / Auvergne, nous concevons des maisons traditionnelles comme contemporaines, toujours personnalisées et conformes à la réglementation thermique RE2020. Notre force : un accompagnement de A à Z, de la recherche du terrain jusqu'à la remise des clés.</p>
+          </div>
+        </div>
+
+        <!-- dirigeant -->
+        <div class="me-split" style="gap:clamp(32px,5vw,72px);align-items:center;margin-top:clamp(56px,8vw,110px);">
+          <div data-reveal class="me-card" style="background:#1c1a16;border-radius:8px;padding:clamp(32px,4vw,56px);color:#f5f0e8;">
+            <div style="display:flex;align-items:center;gap:20px;">
+              <div style="width:74px;height:74px;border-radius:50%;background:#a07d4a;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:30px;color:#fff;flex:none;">AA</div>
+              <div><div style="font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:400;line-height:1;">Aykut Atak</div><div style="margin-top:7px;font-size:12.5px;letter-spacing:0.16em;text-transform:uppercase;color:#c4a878;">Gérant fondateur</div></div>
+            </div>
+            <p style="margin:26px 0 0;color:rgba(245,240,232,0.74);font-size:15px;line-height:1.75;">« Construire une maison, c'est accompagner une famille dans l'un des projets les plus importants de sa vie. Nous mettons un point d'honneur à rester disponibles, transparents et exigeants, du premier plan à la remise des clés. »</p>
+          </div>
+          <div data-reveal data-delay="120">
+            <div data-reveal style="display:inline-flex;align-items:center;gap:12px;margin-bottom:22px;"><span style="width:42px;height:1px;background:#a07d4a;"></span><span style="color:#a07d4a;font-size:12px;font-weight:600;letter-spacing:0.3em;text-transform:uppercase;">Une équipe à taille humaine</span></div>
+            <p style="margin:0;color:#5a5247;font-size:clamp(15px,1.4vw,18px);line-height:1.8;">De 3 à 5 collaborateurs et un réseau d'artisans locaux de confiance. Cette proximité nous permet de connaître chaque chantier dans le détail et de garantir une qualité d'exécution constante, sans sous-traitance anonyme.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VALEURS -->
+    <section style="background:#efe8db;padding:clamp(80px,11vw,150px) 0;">
+      <div style="max-width:1320px;margin:0 auto;padding:0 clamp(20px,5vw,64px);">
+        <div data-reveal style="display:inline-flex;align-items:center;gap:12px;margin-bottom:22px;"><span style="width:42px;height:1px;background:#a07d4a;"></span><span style="color:#a07d4a;font-size:12px;font-weight:600;letter-spacing:0.3em;text-transform:uppercase;">Nos valeurs</span></div>
+        <h2 data-reveal data-delay="100" style="margin:0 0 clamp(40px,5vw,60px);font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(32px,4.4vw,58px);line-height:1.04;color:#1c1a16;max-width:18ch;">Ce qui guide chacun de nos chantiers.</h2>
+        <div class="me-g4" style="gap:clamp(16px,1.8vw,26px);">
+          <div data-reveal style="background:#faf7f1;border-radius:6px;padding:32px 28px;"><div style="font-family:'Cormorant Garamond',serif;font-size:40px;color:#c4a878;line-height:1;">01</div><div style="margin-top:18px;font-family:'Cormorant Garamond',serif;font-size:24px;color:#1c1a16;">Proximité</div><p style="margin:10px 0 0;color:#7a7164;font-size:14px;line-height:1.65;">Un interlocuteur unique, disponible et à l'écoute, tout au long du projet.</p></div>
+          <div data-reveal data-delay="100" style="background:#faf7f1;border-radius:6px;padding:32px 28px;"><div style="font-family:'Cormorant Garamond',serif;font-size:40px;color:#c4a878;line-height:1;">02</div><div style="margin-top:18px;font-family:'Cormorant Garamond',serif;font-size:24px;color:#1c1a16;">Exigence</div><p style="margin:10px 0 0;color:#7a7164;font-size:14px;line-height:1.65;">Des matériaux choisis et des finitions soignées, sans compromis sur la qualité.</p></div>
+          <div data-reveal data-delay="200" style="background:#faf7f1;border-radius:6px;padding:32px 28px;"><div style="font-family:'Cormorant Garamond',serif;font-size:40px;color:#c4a878;line-height:1;">03</div><div style="margin-top:18px;font-family:'Cormorant Garamond',serif;font-size:24px;color:#1c1a16;">Transparence</div><p style="margin:10px 0 0;color:#7a7164;font-size:14px;line-height:1.65;">Un prix et des délais clairs, contractuels, connus dès le départ.</p></div>
+          <div data-reveal data-delay="300" style="background:#faf7f1;border-radius:6px;padding:32px 28px;"><div style="font-family:'Cormorant Garamond',serif;font-size:40px;color:#c4a878;line-height:1;">04</div><div style="margin-top:18px;font-family:'Cormorant Garamond',serif;font-size:24px;color:#1c1a16;">Sur-mesure</div><p style="margin:10px 0 0;color:#7a7164;font-size:14px;line-height:1.65;">Chaque maison est unique, dessinée autour de votre mode de vie.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ENGAGEMENT / GARANTIES -->
+    <section style="background:#1c1a16;color:#f5f0e8;padding:clamp(80px,11vw,150px) 0;">
+      <div style="max-width:1320px;margin:0 auto;padding:0 clamp(20px,5vw,64px);">
+        <div class="me-split" style="gap:clamp(40px,6vw,90px);align-items:center;">
+          <div>
+            <div data-reveal style="display:inline-flex;align-items:center;gap:12px;margin-bottom:22px;"><span style="width:42px;height:1px;background:#c4a878;"></span><span style="color:#c4a878;font-size:12px;font-weight:600;letter-spacing:0.3em;text-transform:uppercase;">Engagement qualité</span></div>
+            <h2 data-reveal data-delay="100" style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(32px,4.4vw,58px);line-height:1.04;">Toutes les garanties du contrat de construction.</h2>
+            <p data-reveal data-delay="180" style="margin:24px 0 0;color:rgba(245,240,232,0.74);font-size:clamp(15px,1.4vw,18px);line-height:1.75;">Vous construisez dans un cadre sécurisé et encadré par la loi, et bénéficiez d'un habitat conforme à la RE2020.</p>
+          </div>
+          <div data-reveal data-delay="120" style="display:flex;flex-direction:column;gap:1px;background:rgba(245,240,232,0.14);border-radius:6px;overflow:hidden;">
+            <div style="background:#211e19;padding:20px 26px;display:flex;align-items:center;gap:16px;"><span style="color:#c4a878;font-size:20px;">✓</span><span style="font-size:15px;">Garantie de parfait achèvement</span></div>
+            <div style="background:#211e19;padding:20px 26px;display:flex;align-items:center;gap:16px;"><span style="color:#c4a878;font-size:20px;">✓</span><span style="font-size:15px;">Garantie biennale (bon fonctionnement)</span></div>
+            <div style="background:#211e19;padding:20px 26px;display:flex;align-items:center;gap:16px;"><span style="color:#c4a878;font-size:20px;">✓</span><span style="font-size:15px;">Garantie décennale</span></div>
+            <div style="background:#211e19;padding:20px 26px;display:flex;align-items:center;gap:16px;"><span style="color:#c4a878;font-size:20px;">✓</span><span style="font-size:15px;">Garantie de livraison à prix et délais convenus</span></div>
+            <div style="background:#211e19;padding:20px 26px;display:flex;align-items:center;gap:16px;"><span style="color:#c4a878;font-size:20px;">✓</span><span style="font-size:15px;">Assurance dommages-ouvrage · Conformité RE2020</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  </sc-if>
+
+  <!-- ===================== SAVOIR-FAIRE ===================== -->
+  <sc-if value="{{ isSavoir }}">
+  <main data-screen-label="Savoir-faire">
+    <section style="position:relative;height:62vh;min-height:440px;overflow:hidden;display:flex;align-items:flex-end;">
+      <div style="position:absolute;inset:0;overflow:hidden;"><img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=2000&q=80" alt="Construction de maison" style="width:100%;height:100%;object-fit:cover;animation:meKb 18s ease-out forwards;"/></div>
+      <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,18,14,0.6) 0%,rgba(20,18,14,0.2) 40%,rgba(20,18,14,0.85) 100%);"></div>
+      <div style="position:relative;width:100%;max-width:1320px;margin:0 auto;padding:0 clamp(20px,5vw,64px) clamp(48px,6vw,84px);">
+        <div data-reveal style="display:inline-flex;align-items:center;gap:12px;margin-bottom:22px;"><span style="width:42px;height:1px;background:#c4a878;"></span><span style="color:#e9dcc4;font-size:12px;font-weight:600;letter-spacing:0.3em;text-transform:uppercase;">Savoir-faire</span></div>
+        <h1 data-reveal data-delay="120" style="margin:0;color:#f7f3ec;font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(42px,7vw,92px);line-height:0.98;letter-spacing:-0.02em;max-width:16ch;">Du terrain à la remise des clés.</h1>
+      </div>
+    </section>
+
+    <!-- PARCOURS DETAILLE -->
+    <section style="background:#f5f0e8;padding:clamp(80px,11vw,150px) 0;">
+      <div style="max-width:1320px;margin:0 auto;padding:0 clamp(20px,5vw,64px);">
+        <div style="max-width:60ch;margin-bottom:clamp(48px,6vw,80px);">
+          <div data-reveal style="display:inline-flex;align-items:center;gap:12px;margin-bottom:22px;"><span style="width:42px;height:1px;background:#a07d4a;"></span><span style="color:#a07d4a;font-size:12px;font-weight:600;letter-spacing:0.3em;text-transform:uppercase;">Le parcours client</span></div>
+          <h2 data-reveal data-delay="100" style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(32px,4.6vw,60px);line-height:1.04;color:#1c1a16;">Cinq étapes, un seul interlocuteur.</h2>
+        </div>
+
+        <!-- step rows -->
+        <div style="display:flex;flex-direction:column;gap:clamp(20px,2.4vw,32px);">
+          <div data-reveal class="me-split" style="gap:clamp(28px,4vw,56px);align-items:center;background:#faf7f1;border-radius:8px;overflow:hidden;">
+            <div style="padding:clamp(30px,4vw,56px);"><div style="font-family:'Cormorant Garamond',serif;font-size:clamp(48px,6vw,84px);font-weight:300;color:#c4a878;line-height:1;">01</div><h3 style="margin:14px 0 0;font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(24px,2.6vw,34px);color:#1c1a16;">Le terrain</h3><p style="margin:12px 0 0;color:#6a6155;font-size:15px;line-height:1.75;max-width:46ch;">Nous vous aidons à trouver et sélectionner le terrain idéal : exposition, viabilité, contraintes d'urbanisme. Un terrain bien choisi, c'est une maison réussie.</p></div>
+            <div style="position:relative;overflow:hidden;align-self:stretch;min-height:240px;"><img data-parallax="0.06" src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1200&q=80" alt="Terrain" style="width:100%;height:100%;object-fit:cover;transform:scale(1.08);will-change:transform;"/></div>
+          </div>
+          <div data-reveal class="me-split" style="gap:clamp(28px,4vw,56px);align-items:center;background:#faf7f1;border-radius:8px;overflow:hidden;">
+            <div style="position:relative;overflow:hidden;align-self:stretch;min-height:240px;order:0;"><img data-parallax="0.06" src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1200&q=80" alt="Financement" style="width:100%;height:100%;object-fit:cover;transform:scale(1.08);will-change:transform;"/></div>
+            <div style="padding:clamp(30px,4vw,56px);"><div style="font-family:'Cormorant Garamond',serif;font-size:clamp(48px,6vw,84px);font-weight:300;color:#c4a878;line-height:1;">02</div><h3 style="margin:14px 0 0;font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(24px,2.6vw,34px);color:#1c1a16;">Le financement</h3><p style="margin:12px 0 0;color:#6a6155;font-size:15px;line-height:1.75;max-width:46ch;">Nous bâtissons avec vous un plan de financement clair et vous accompagnons dans vos démarches bancaires, pour avancer en toute sérénité.</p></div>
+          </div>
+          <div data-reveal class="me-split" style="gap:clamp(28px,4vw,56px);align-items:center;background:#faf7f1;border-radius:8px;overflow:hidden;">
+            <div style="padding:clamp(30px,4vw,56px);"><div style="font-family:'Cormorant Garamond',serif;font-size:clamp(48px,6vw,84px);font-weight:300;color:#c4a878;line-height:1;">03</div><h3 style="margin:14px 0 0;font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(24px,2.6vw,34px);color:#1c1a16;">La conception</h3><p style="margin:12px 0 0;color:#6a6155;font-size:15px;line-height:1.75;max-width:46ch;">Vos plans sont dessinés sur-mesure, autour de votre mode de vie et de vos goûts, dans le respect de la RE2020. Vous validez chaque détail avant le premier coup de pelle.</p></div>
+            <div style="position:relative;overflow:hidden;align-self:stretch;min-height:240px;"><img data-parallax="0.06" src="https://images.unsplash.com/photo-1503387837-b154d5074bd2?auto=format&fit=crop&w=1200&q=80" alt="Plans de conception" style="width:100%;height:100%;object-fit:cover;transform:scale(1.08);will-change:transform;"/></div>
+          </div>
+          <div data-reveal class="me-split" style="gap:clamp(28px,4vw,56px);align-items:center;background:#faf7f1;border-radius:8px;overflow:hidden;">
+            <div style="position:relative;overflow:hidden;align-self:stretch;min-height:240px;"><img data-parallax="0.06" src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=1200&q=80" alt="Construction" style="width:100%;height:100%;object-fit:cover;transform:scale(1.08);will-change:transform;"/></div>
+            <div style="padding:clamp(30px,4vw,56px);"><div style="font-family:'Cormorant Garamond',serif;font-size:clamp(48px,6vw,84px);font-weight:300;color:#c4a878;line-height:1;">04</div><h3 style="margin:14px 0 0;font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(24px,2.6vw,34px);color:#1c1a16;">La construction</h3><p style="margin:12px 0 0;color:#6a6155;font-size:15px;line-height:1.75;max-width:46ch;">Le chantier est mené par nos équipes et des artisans locaux qualifiés, suivi de près et étape par étape. Vous êtes informé de l'avancement jusqu'à la finition.</p></div>
+          </div>
+          <div data-reveal class="me-split" style="gap:clamp(28px,4vw,56px);align-items:center;background:#1c1a16;border-radius:8px;overflow:hidden;color:#f5f0e8;">
+            <div style="padding:clamp(30px,4vw,56px);"><div style="font-family:'Cormorant Garamond',serif;font-size:clamp(48px,6vw,84px);font-weight:300;color:#c4a878;line-height:1;">05</div><h3 style="margin:14px 0 0;font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(24px,2.6vw,34px);">La remise des clés</h3><p style="margin:12px 0 0;color:rgba(245,240,232,0.74);font-size:15px;line-height:1.75;max-width:46ch;">Nous vous remettons une maison achevée, contrôlée et garantie. Il ne vous reste plus qu'à y vivre — toutes les garanties du CCMI vous protègent dans la durée.</p></div>
+            <div style="position:relative;overflow:hidden;align-self:stretch;min-height:240px;"><img data-parallax="0.06" src="https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?auto=format&fit=crop&w=1200&q=80" alt="Remise des clés" style="width:100%;height:100%;object-fit:cover;transform:scale(1.08);will-change:transform;"/></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TRADITIONNEL VS CONTEMPORAIN -->
+    <section style="background:#efe8db;padding:clamp(80px,11vw,150px) 0;">
+      <div style="max-width:1320px;margin:0 auto;padding:0 clamp(20px,5vw,64px);">
+        <div data-reveal style="text-align:center;margin-bottom:clamp(40px,5vw,64px);">
+          <div style="display:inline-flex;align-items:center;gap:12px;margin-bottom:20px;"><span style="width:42px;height:1px;background:#a07d4a;"></span><span style="color:#a07d4a;font-size:12px;font-weight:600;letter-spacing:0.3em;text-transform:uppercase;">Deux styles, une même exigence</span><span style="width:42px;height:1px;background:#a07d4a;"></span></div>
+          <h2 style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(32px,4.6vw,60px);line-height:1.04;color:#1c1a16;">Traditionnelle ou contemporaine.</h2>
+        </div>
+        <div class="me-g2" style="gap:clamp(16px,2vw,28px);">
+          <div data-reveal class="me-card me-projbig" style="position:relative;border-radius:8px;overflow:hidden;min-height:clamp(360px,46vw,520px);">
+            <img class="me-zoom" src="https://images.unsplash.com/photo-1523217582562-09d0def993a6?auto=format&fit=crop&w=1400&q=80" alt="Maison traditionnelle" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"/>
+            <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,18,14,0.1) 30%,rgba(20,18,14,0.9) 100%);"></div>
+            <div style="position:absolute;left:0;right:0;bottom:0;padding:clamp(28px,3vw,44px);color:#f5f0e8;"><div style="font-size:11px;letter-spacing:0.24em;text-transform:uppercase;color:#c4a878;">Traditionnelle</div><h3 style="margin:8px 0 0;font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(26px,3vw,40px);">Le charme intemporel</h3><p style="margin:12px 0 0;color:rgba(245,240,232,0.8);font-size:14.5px;line-height:1.7;max-width:42ch;">Toitures en tuiles, volumes chaleureux et matériaux nobles : une maison qui traverse les années avec élégance.</p></div>
+          </div>
+          <div data-reveal data-delay="120" class="me-card me-projbig" style="position:relative;border-radius:8px;overflow:hidden;min-height:clamp(360px,46vw,520px);">
+            <img class="me-zoom" src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1400&q=80" alt="Maison contemporaine" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"/>
+            <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,18,14,0.1) 30%,rgba(20,18,14,0.9) 100%);"></div>
+            <div style="position:absolute;left:0;right:0;bottom:0;padding:clamp(28px,3vw,44px);color:#f5f0e8;"><div style="font-size:11px;letter-spacing:0.24em;text-transform:uppercase;color:#c4a878;">Contemporaine</div><h3 style="margin:8px 0 0;font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(26px,3vw,40px);">Les lignes d'aujourd'hui</h3><p style="margin:12px 0 0;color:rgba(245,240,232,0.8);font-size:14.5px;line-height:1.7;max-width:42ch;">Toit plat, grandes ouvertures et espaces ouverts baignés de lumière : une architecture résolument moderne.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RE2020 -->
+    <section style="background:#1c1a16;color:#f5f0e8;padding:clamp(80px,11vw,150px) 0;">
+      <div style="max-width:1100px;margin:0 auto;padding:0 clamp(20px,5vw,64px);text-align:center;">
+        <div data-reveal style="display:inline-flex;align-items:center;gap:12px;margin-bottom:24px;"><span style="width:42px;height:1px;background:#c4a878;"></span><span style="color:#c4a878;font-size:12px;font-weight:600;letter-spacing:0.3em;text-transform:uppercase;">Réglementation environnementale</span></div>
+        <h2 data-reveal data-delay="100" style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(34px,5vw,68px);line-height:1.04;">Des maisons conformes à la RE2020.</h2>
+        <p data-reveal data-delay="180" style="margin:24px auto 0;color:rgba(245,240,232,0.78);font-size:clamp(15px,1.4vw,18px);line-height:1.75;max-width:58ch;">Toutes nos constructions respectent la réglementation thermique RE2020 : moins de consommation d'énergie, un meilleur confort d'été et une empreinte carbone réduite. Un habitat plus sobre, plus sain et plus durable, qui valorise votre patrimoine.</p>
+        <div class="me-g3" data-reveal data-delay="220" style="gap:clamp(14px,1.6vw,22px);margin-top:clamp(40px,5vw,64px);text-align:left;">
+          <div style="background:#211e19;border:1px solid rgba(245,240,232,0.1);border-radius:6px;padding:28px 26px;"><div style="font-family:'Cormorant Garamond',serif;font-size:30px;color:#c4a878;">Sobriété</div><p style="margin:10px 0 0;color:rgba(245,240,232,0.62);font-size:13.5px;line-height:1.6;">Une consommation énergétique réduite au quotidien.</p></div>
+          <div style="background:#211e19;border:1px solid rgba(245,240,232,0.1);border-radius:6px;padding:28px 26px;"><div style="font-family:'Cormorant Garamond',serif;font-size:30px;color:#c4a878;">Confort</div><p style="margin:10px 0 0;color:rgba(245,240,232,0.62);font-size:13.5px;line-height:1.6;">Une maison fraîche l'été, chaleureuse l'hiver.</p></div>
+          <div style="background:#211e19;border:1px solid rgba(245,240,232,0.1);border-radius:6px;padding:28px 26px;"><div style="font-family:'Cormorant Garamond',serif;font-size:30px;color:#c4a878;">Durabilité</div><p style="margin:10px 0 0;color:rgba(245,240,232,0.62);font-size:13.5px;line-height:1.6;">Des matériaux bas-carbone, un patrimoine pérenne.</p></div>
+        </div>
+      </div>
+    </section>
+  </main>
+  </sc-if>
+
+  <!-- ===================== RÉALISATIONS ===================== -->
+  <sc-if value="{{ isRealisations }}">
+  <main data-screen-label="Réalisations">
+    <section style="background:#1c1a16;color:#f5f0e8;padding:clamp(130px,16vw,200px) 0 clamp(56px,7vw,90px);">
+      <div style="max-width:1320px;margin:0 auto;padding:0 clamp(20px,5vw,64px);">
+        <div data-reveal style="display:inline-flex;align-items:center;gap:12px;margin-bottom:22px;"><span style="width:42px;height:1px;background:#c4a878;"></span><span style="color:#c4a878;font-size:12px;font-weight:600;letter-spacing:0.3em;text-transform:uppercase;">Réalisations</span></div>
+        <h1 data-reveal data-delay="120" style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(42px,7vw,96px);line-height:0.98;letter-spacing:-0.02em;max-width:16ch;">Quelques maisons que nous avons bâties.</h1>
+        <p data-reveal data-delay="200" style="margin:24px 0 0;color:rgba(245,240,232,0.7);font-size:clamp(15px,1.4vw,18px);line-height:1.7;max-width:54ch;">Traditionnelles ou contemporaines, toutes sur-mesure et conçues dans l'Ain et sa région.</p>
+      </div>
+    </section>
+
+    <section style="background:#f5f0e8;padding:clamp(56px,7vw,96px) 0 clamp(80px,11vw,150px);">
+      <div style="max-width:1320px;margin:0 auto;padding:0 clamp(20px,5vw,64px);">
+        <!-- editorial grid -->
+        <div class="me-g2" style="gap:clamp(16px,2vw,28px);">
+          <div data-reveal class="me-card me-projbig" style="position:relative;border-radius:8px;overflow:hidden;min-height:clamp(320px,40vw,460px);">
+            <img class="me-zoom" src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1500&q=80" alt="Villa Horizon" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"/>
+            <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,18,14,0) 40%,rgba(20,18,14,0.86) 100%);"></div>
+            <div style="position:absolute;left:0;right:0;bottom:0;padding:clamp(26px,3vw,40px);color:#f5f0e8;"><div style="font-size:11px;letter-spacing:0.22em;text-transform:uppercase;color:#c4a878;">Contemporain · Meximieux</div><h3 style="margin:7px 0 0;font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(26px,3vw,38px);">Villa Horizon</h3></div>
+          </div>
+          <div data-reveal data-delay="120" class="me-card me-projbig" style="position:relative;border-radius:8px;overflow:hidden;min-height:clamp(320px,40vw,460px);">
+            <img class="me-zoom" src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?auto=format&fit=crop&w=1500&q=80" alt="Maison des Tilleuls" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"/>
+            <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,18,14,0) 40%,rgba(20,18,14,0.86) 100%);"></div>
+            <div style="position:absolute;left:0;right:0;bottom:0;padding:clamp(26px,3vw,40px);color:#f5f0e8;"><div style="font-size:11px;letter-spacing:0.22em;text-transform:uppercase;color:#c4a878;">Traditionnel · Ain</div><h3 style="margin:7px 0 0;font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(26px,3vw,38px);">Maison des Tilleuls</h3></div>
+          </div>
+        </div>
+
+        <div class="me-g3" style="gap:clamp(16px,2vw,28px);margin-top:clamp(16px,2vw,28px);">
+          <div data-reveal class="me-card me-projbig" style="position:relative;border-radius:8px;overflow:hidden;aspect-ratio:4/5;">
+            <img class="me-zoom" src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=1100&q=80" alt="Le Clos" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"/>
+            <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,18,14,0) 45%,rgba(20,18,14,0.85) 100%);"></div>
+            <div style="position:absolute;left:0;right:0;bottom:0;padding:clamp(22px,2.4vw,32px);color:#f5f0e8;"><div style="font-size:10.5px;letter-spacing:0.22em;text-transform:uppercase;color:#c4a878;">Sur-mesure</div><h3 style="margin:6px 0 0;font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(22px,2.4vw,30px);">Le Clos Meximieux</h3></div>
+          </div>
+          <div data-reveal data-delay="100" class="me-card me-projbig" style="position:relative;border-radius:8px;overflow:hidden;aspect-ratio:4/5;">
+            <img class="me-zoom" src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1100&q=80" alt="Maison Lumière" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"/>
+            <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,18,14,0) 45%,rgba(20,18,14,0.85) 100%);"></div>
+            <div style="position:absolute;left:0;right:0;bottom:0;padding:clamp(22px,2.4vw,32px);color:#f5f0e8;"><div style="font-size:10.5px;letter-spacing:0.22em;text-transform:uppercase;color:#c4a878;">Contemporain</div><h3 style="margin:6px 0 0;font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(22px,2.4vw,30px);">Maison Lumière</h3></div>
+          </div>
+          <div data-reveal data-delay="200" class="me-card me-projbig" style="position:relative;border-radius:8px;overflow:hidden;aspect-ratio:4/5;">
+            <img class="me-zoom" src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?auto=format&fit=crop&w=1100&q=80" alt="Villa des Vignes" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"/>
+            <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,18,14,0) 45%,rgba(20,18,14,0.85) 100%);"></div>
+            <div style="position:absolute;left:0;right:0;bottom:0;padding:clamp(22px,2.4vw,32px);color:#f5f0e8;"><div style="font-size:10.5px;letter-spacing:0.22em;text-transform:uppercase;color:#c4a878;">Traditionnel</div><h3 style="margin:6px 0 0;font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(22px,2.4vw,30px);">Villa des Vignes</h3></div>
+          </div>
+        </div>
+
+        <div class="me-split" style="gap:clamp(16px,2vw,28px);margin-top:clamp(16px,2vw,28px);">
+          <div data-reveal class="me-card me-projbig" style="position:relative;border-radius:8px;overflow:hidden;min-height:clamp(300px,34vw,420px);">
+            <img class="me-zoom" src="https://images.unsplash.com/photo-1576941089067-2de3c901e126?auto=format&fit=crop&w=1400&q=80" alt="Maison du Parc" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"/>
+            <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,18,14,0) 45%,rgba(20,18,14,0.85) 100%);"></div>
+            <div style="position:absolute;left:0;right:0;bottom:0;padding:clamp(24px,2.6vw,36px);color:#f5f0e8;"><div style="font-size:11px;letter-spacing:0.22em;text-transform:uppercase;color:#c4a878;">Contemporain · Rhône-Alpes</div><h3 style="margin:7px 0 0;font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(24px,2.8vw,34px);">Maison du Parc</h3></div>
+          </div>
+          <div data-reveal data-delay="120" class="me-card me-projbig" style="position:relative;border-radius:8px;overflow:hidden;min-height:clamp(300px,34vw,420px);">
+            <img class="me-zoom" src="https://images.unsplash.com/photo-1592595896551-12b371d546d5?auto=format&fit=crop&w=1400&q=80" alt="Maison Belvédère" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"/>
+            <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,18,14,0) 45%,rgba(20,18,14,0.85) 100%);"></div>
+            <div style="position:absolute;left:0;right:0;bottom:0;padding:clamp(24px,2.6vw,36px);color:#f5f0e8;"><div style="font-size:11px;letter-spacing:0.22em;text-transform:uppercase;color:#c4a878;">Sur-mesure · Ain</div><h3 style="margin:7px 0 0;font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(24px,2.8vw,34px);">Maison Belvédère</h3></div>
+          </div>
+        </div>
+
+        <div data-reveal style="text-align:center;margin-top:clamp(56px,7vw,90px);">
+          <p style="margin:0 0 26px;font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(26px,3.4vw,42px);color:#1c1a16;">Votre projet sera le prochain.</p>
+          <a href="#contact" onClick="{{ goContact }}" class="me-btn" style="text-decoration:none;display:inline-flex;align-items:center;gap:10px;padding:18px 36px;border-radius:100px;background:#1c1a16;color:#f5f0e8;font-size:14px;font-weight:600;box-shadow:0 24px 48px -26px rgba(28,26,22,0.9);" style-hover="background:#2a261f;transform:translateY(-3px);">Démarrer mon projet →</a>
+        </div>
+      </div>
+    </section>
+  </main>
+  </sc-if>
+
+  <!-- ===================== CONTACT ===================== -->
+  <sc-if value="{{ isContact }}">
+  <main data-screen-label="Contact">
+    <section style="background:#1c1a16;color:#f5f0e8;padding:clamp(130px,16vw,200px) 0 clamp(56px,7vw,90px);">
+      <div style="max-width:1320px;margin:0 auto;padding:0 clamp(20px,5vw,64px);">
+        <div data-reveal style="display:inline-flex;align-items:center;gap:12px;margin-bottom:22px;"><span style="width:42px;height:1px;background:#c4a878;"></span><span style="color:#c4a878;font-size:12px;font-weight:600;letter-spacing:0.3em;text-transform:uppercase;">Contact</span></div>
+        <h1 data-reveal data-delay="120" style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(42px,7vw,96px);line-height:0.98;letter-spacing:-0.02em;max-width:16ch;">Parlons de votre projet.</h1>
+        <p data-reveal data-delay="200" style="margin:24px 0 0;color:rgba(245,240,232,0.7);font-size:clamp(15px,1.4vw,18px);line-height:1.7;max-width:52ch;">Un premier échange gratuit et sans engagement. Décrivez-nous votre projet, nous revenons vers vous rapidement.</p>
+      </div>
+    </section>
+
+    <section style="background:#f5f0e8;padding:clamp(56px,7vw,90px) 0 clamp(80px,11vw,140px);">
+      <div style="max-width:1320px;margin:0 auto;padding:0 clamp(20px,5vw,64px);">
+        <div class="me-split" style="gap:clamp(40px,5vw,80px);align-items:start;">
+
+          <!-- FORM -->
+          <div data-reveal style="background:#faf7f1;border:1px solid rgba(28,26,22,0.08);border-radius:10px;padding:clamp(28px,4vw,52px);box-shadow:0 40px 80px -55px rgba(28,26,22,0.5);">
+            <sc-if value="{{ submitted }}" hint-placeholder-val="{{ false }}">
+              <div style="text-align:center;padding:30px 10px;">
+                <div style="width:68px;height:68px;border-radius:50%;background:#a07d4a;display:flex;align-items:center;justify-content:center;margin:0 auto;color:#fff;font-size:32px;">✓</div>
+                <h3 style="margin:24px 0 0;font-family:'Cormorant Garamond',serif;font-weight:400;font-size:30px;color:#1c1a16;">Merci, message envoyé.</h3>
+                <p style="margin:12px 0 0;color:#6a6155;font-size:15px;line-height:1.7;">Nous vous recontactons dans les plus brefs délais. Pour une demande urgente, appelez-nous au 04 74 34 66 43.</p>
+                <button onClick="{{ resetForm }}" class="me-btn" style="margin-top:26px;cursor:pointer;padding:13px 26px;border-radius:100px;background:transparent;border:1px solid rgba(28,26,22,0.28);color:#1c1a16;font-size:13.5px;font-weight:600;font-family:inherit;" style-hover="border-color:#a07d4a;color:#a07d4a;">Envoyer un autre message</button>
+              </div>
+            </sc-if>
+            <sc-if value="{{ notSubmitted }}" hint-placeholder-val="{{ true }}">
+            <form onSubmit="{{ onSubmit }}">
+              <div style="display:flex;flex-direction:column;gap:20px;">
+                <div>
+                  <label style="display:block;font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#7a7164;margin-bottom:9px;">Nom complet *</label>
+                  <input required type="text" placeholder="Votre nom" style="width:100%;padding:15px 16px;border:1px solid rgba(28,26,22,0.16);border-radius:6px;background:#fff;font-family:inherit;font-size:15px;color:#1c1a16;outline:none;" style-focus="border-color:#a07d4a;box-shadow:0 0 0 3px rgba(160,125,74,0.14);"/>
+                </div>
+                <div class="me-g2" style="gap:18px;">
+                  <div>
+                    <label style="display:block;font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#7a7164;margin-bottom:9px;">Email *</label>
+                    <input required type="email" placeholder="vous@email.fr" style="width:100%;padding:15px 16px;border:1px solid rgba(28,26,22,0.16);border-radius:6px;background:#fff;font-family:inherit;font-size:15px;color:#1c1a16;outline:none;" style-focus="border-color:#a07d4a;box-shadow:0 0 0 3px rgba(160,125,74,0.14);"/>
+                  </div>
+                  <div>
+                    <label style="display:block;font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#7a7164;margin-bottom:9px;">Téléphone</label>
+                    <input type="tel" placeholder="06 00 00 00 00" style="width:100%;padding:15px 16px;border:1px solid rgba(28,26,22,0.16);border-radius:6px;background:#fff;font-family:inherit;font-size:15px;color:#1c1a16;outline:none;" style-focus="border-color:#a07d4a;box-shadow:0 0 0 3px rgba(160,125,74,0.14);"/>
+                  </div>
+                </div>
+                <div>
+                  <label style="display:block;font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#7a7164;margin-bottom:9px;">Votre projet *</label>
+                  <textarea required rows="5" placeholder="Décrivez votre projet : terrain, style souhaité, budget approximatif, délais…" style="width:100%;padding:15px 16px;border:1px solid rgba(28,26,22,0.16);border-radius:6px;background:#fff;font-family:inherit;font-size:15px;color:#1c1a16;outline:none;resize:vertical;" style-focus="border-color:#a07d4a;box-shadow:0 0 0 3px rgba(160,125,74,0.14);"></textarea>
+                </div>
+                <button type="submit" class="me-btn" style="cursor:pointer;width:100%;padding:17px;border:none;border-radius:100px;background:#1c1a16;color:#f5f0e8;font-family:inherit;font-size:14px;font-weight:600;letter-spacing:0.02em;box-shadow:0 20px 40px -24px rgba(28,26,22,0.9);" style-hover="background:#2a261f;transform:translateY(-2px);">Envoyer ma demande →</button>
+                <p style="margin:2px 0 0;font-size:11.5px;color:#9a917f;line-height:1.5;">* Champs obligatoires. Vos données ne sont utilisées que pour répondre à votre demande.</p>
+              </div>
+            </form>
+            </sc-if>
+          </div>
+
+          <!-- INFOS -->
+          <div data-reveal data-delay="120">
+            <div style="display:flex;flex-direction:column;gap:2px;">
+              <a href="tel:+33474346643" class="me-link" style="text-decoration:none;display:flex;align-items:center;gap:18px;padding:22px 0;border-bottom:1px solid rgba(28,26,22,0.12);color:#1c1a16;" style-hover="color:#a07d4a;">
+                <span style="width:46px;height:46px;flex:none;border-radius:50%;background:#1c1a16;color:#c4a878;display:flex;align-items:center;justify-content:center;font-size:18px;">✆</span>
+                <span><span style="display:block;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:#7a7164;">Téléphone</span><span style="font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:500;">04 74 34 66 43</span></span>
+              </a>
+              <div style="display:flex;align-items:flex-start;gap:18px;padding:22px 0;border-bottom:1px solid rgba(28,26,22,0.12);">
+                <span style="width:46px;height:46px;flex:none;border-radius:50%;background:#1c1a16;color:#c4a878;display:flex;align-items:center;justify-content:center;font-size:18px;">⌖</span>
+                <span><span style="display:block;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:#7a7164;">Adresse</span><span style="font-size:17px;color:#1c1a16;line-height:1.5;display:block;margin-top:3px;">6 rue de Genève<br/>01800 Meximieux</span></span>
+              </div>
+              <div style="display:flex;align-items:flex-start;gap:18px;padding:22px 0;border-bottom:1px solid rgba(28,26,22,0.12);">
+                <span style="width:46px;height:46px;flex:none;border-radius:50%;background:#1c1a16;color:#c4a878;display:flex;align-items:center;justify-content:center;font-size:18px;">◷</span>
+                <span><span style="display:block;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:#7a7164;">Horaires</span><span style="font-size:15px;color:#3f3a32;line-height:1.7;display:block;margin-top:5px;">Lundi – Vendredi · 8h30 – 18h00<br/>Samedi sur rendez-vous</span></span>
+              </div>
+              <div style="display:flex;align-items:flex-start;gap:18px;padding:22px 0;">
+                <span style="width:46px;height:46px;flex:none;border-radius:50%;background:#1c1a16;color:#c4a878;display:flex;align-items:center;justify-content:center;font-size:16px;">⌂</span>
+                <span><span style="display:block;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:#7a7164;">Zone d'intervention</span><span style="font-size:15px;color:#3f3a32;line-height:1.6;display:block;margin-top:5px;">Ain (01) et région Rhône-Alpes / Auvergne</span></span>
+              </div>
+            </div>
+            <a href="https://www.google.com/maps/search/?api=1&query=6+rue+de+Gen%C3%A8ve+01800+Meximieux" target="_blank" rel="noopener" class="me-card" style="display:block;margin-top:14px;border-radius:10px;overflow:hidden;height:300px;position:relative;border:1px solid rgba(28,26,22,0.12);box-shadow:0 30px 60px -50px rgba(28,26,22,0.5);text-decoration:none;">
+              <div style="position:absolute;top:50%;left:50%;width:512px;height:512px;transform:translate(-50%,-50%);display:grid;grid-template-columns:256px 256px;grid-template-rows:256px 256px;filter:grayscale(0.32) contrast(1.05) brightness(1.02);">
+                <img src="https://tile.openstreetmap.org/14/8428/5840.png" alt="" width="256" height="256" style="display:block;"/>
+                <img src="https://tile.openstreetmap.org/14/8429/5840.png" alt="" width="256" height="256" style="display:block;"/>
+                <img src="https://tile.openstreetmap.org/14/8428/5841.png" alt="" width="256" height="256" style="display:block;"/>
+                <img src="https://tile.openstreetmap.org/14/8429/5841.png" alt="" width="256" height="256" style="display:block;"/>
+                <div style="position:absolute;left:65%;top:45%;transform:translate(-50%,-100%);">
+                  <div style="width:28px;height:28px;border-radius:50% 50% 50% 0;background:#a07d4a;transform:rotate(-45deg);border:2.5px solid #fff;box-shadow:0 10px 20px -6px rgba(28,26,22,0.8);"></div>
+                </div>
+              </div>
+              <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,18,14,0) 52%,rgba(20,18,14,0.62) 100%);"></div>
+              <div style="position:absolute;left:18px;right:18px;bottom:15px;display:flex;align-items:center;justify-content:space-between;gap:12px;color:#f5f0e8;">
+                <span style="font-size:13.5px;font-weight:600;letter-spacing:0.01em;">6 rue de Genève · 01800 Meximieux</span>
+                <span style="font-size:12px;font-weight:600;color:#e9dcc4;white-space:nowrap;">Ouvrir dans Maps ↗</span>
+              </div>
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+  </sc-if>
+
+  <!-- ===================== TERRAINS ===================== -->
+  <sc-if value="{{ isTerrains }}">
+  <main data-screen-label="Terrains">
+    <!-- HERO -->
+    <section style="position:relative;height:64vh;min-height:460px;overflow:hidden;display:flex;align-items:flex-end;">
+      <div style="position:absolute;inset:0;overflow:hidden;"><img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=2000&q=80" alt="Terrain à bâtir dans l'Ain" style="width:100%;height:100%;object-fit:cover;animation:meKb 18s ease-out forwards;"/></div>
+      <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,18,14,0.55) 0%,rgba(20,18,14,0.18) 38%,rgba(20,18,14,0.86) 100%);"></div>
+      <div style="position:relative;width:100%;max-width:1320px;margin:0 auto;padding:0 clamp(20px,5vw,64px) clamp(48px,6vw,84px);">
+        <div data-reveal style="display:inline-flex;align-items:center;gap:12px;margin-bottom:22px;"><span style="width:42px;height:1px;background:#c4a878;"></span><span style="color:#e9dcc4;font-size:12px;font-weight:600;letter-spacing:0.3em;text-transform:uppercase;">Terrains à bâtir · Ain</span></div>
+        <h1 data-reveal data-delay="120" style="margin:0;color:#f7f3ec;font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(42px,7vw,96px);line-height:0.98;letter-spacing:-0.02em;max-width:17ch;">Le terrain de votre future maison.</h1>
+        <p data-reveal data-delay="220" style="margin:24px 0 0;color:rgba(245,240,232,0.82);font-size:clamp(16px,1.5vw,20px);line-height:1.65;max-width:54ch;font-weight:300;">En partenariat avec notre partenaire foncier, nous sélectionnons pour vous des terrains constructibles dans l'Ain et la région — prêts à accueillir votre projet sur-mesure.</p>
+      </div>
+    </section>
+
+    <!-- PARTENARIAT FONCIER -->
+    <section style="background:#f5f0e8;padding:clamp(80px,11vw,150px) 0;">
+      <div style="max-width:1320px;margin:0 auto;padding:0 clamp(20px,5vw,64px);">
+        <div class="me-split" style="gap:clamp(40px,6vw,90px);align-items:center;">
+          <div>
+            <div data-reveal style="display:inline-flex;align-items:center;gap:12px;margin-bottom:22px;"><span style="width:42px;height:1px;background:#a07d4a;"></span><span style="color:#a07d4a;font-size:12px;font-weight:600;letter-spacing:0.3em;text-transform:uppercase;">Un réseau foncier dédié</span></div>
+            <h2 data-reveal data-delay="100" style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(30px,4.4vw,56px);line-height:1.05;color:#1c1a16;max-width:17ch;">Des terrains choisis, pensés pour construire.</h2>
+            <p data-reveal data-delay="180" style="margin:24px 0 0;color:#5a5247;font-size:clamp(15px,1.4vw,18px);line-height:1.75;max-width:50ch;">Grâce à notre partenaire foncier, nous accédons à des terrains avant même qu'ils ne soient diffusés. Nous vérifions pour vous la constructibilité, la viabilisation et la compatibilité avec votre projet de maison — et vous restez libre de votre constructeur.</p>
+            <div class="me-g2" data-reveal data-delay="240" style="gap:14px;margin-top:32px;">
+              <div style="display:flex;gap:12px;align-items:flex-start;"><span style="color:#a07d4a;font-size:18px;line-height:1.3;">✓</span><span style="font-size:14.5px;color:#3f3a32;">Terrains viabilisés &amp; constructibles</span></div>
+              <div style="display:flex;gap:12px;align-items:flex-start;"><span style="color:#a07d4a;font-size:18px;line-height:1.3;">✓</span><span style="font-size:14.5px;color:#3f3a32;">Compatibles RE2020</span></div>
+              <div style="display:flex;gap:12px;align-items:flex-start;"><span style="color:#a07d4a;font-size:18px;line-height:1.3;">✓</span><span style="font-size:14.5px;color:#3f3a32;">Étude de faisabilité offerte</span></div>
+              <div style="display:flex;gap:12px;align-items:flex-start;"><span style="color:#a07d4a;font-size:18px;line-height:1.3;">✓</span><span style="font-size:14.5px;color:#3f3a32;">Accompagnement terrain + maison</span></div>
+            </div>
+          </div>
+          <div data-reveal data-delay="120" style="position:relative;">
+            <div style="position:relative;overflow:hidden;border-radius:6px;aspect-ratio:5/6;box-shadow:0 50px 90px -50px rgba(28,26,22,0.6);">
+              <img data-parallax="0.07" src="https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?auto=format&fit=crop&w=1300&q=80" alt="Terrain constructible" style="width:100%;height:100%;object-fit:cover;transform:scale(1.1);will-change:transform;"/>
+            </div>
+            <div style="position:absolute;right:-22px;bottom:-26px;background:#1c1a16;color:#f5f0e8;padding:24px 30px;border-radius:6px;box-shadow:0 30px 60px -30px rgba(28,26,22,0.7);max-width:230px;">
+              <div style="font-family:'Cormorant Garamond',serif;font-size:40px;font-weight:300;line-height:1;color:#c4a878;">+ Maison</div>
+              <div style="font-size:12.5px;line-height:1.5;margin-top:8px;opacity:0.8;">Terrain et construction réunis dans un seul projet, un seul budget.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GRILLE DES TERRAINS -->
+    <section style="background:#efe8db;padding:clamp(72px,10vw,140px) 0;">
+      <div style="max-width:1320px;margin:0 auto;padding:0 clamp(20px,5vw,64px);">
+        <div style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:24px;margin-bottom:clamp(32px,4vw,48px);">
+          <div>
+            <div data-reveal style="display:inline-flex;align-items:center;gap:12px;margin-bottom:20px;"><span style="width:42px;height:1px;background:#a07d4a;"></span><span style="color:#a07d4a;font-size:12px;font-weight:600;letter-spacing:0.3em;text-transform:uppercase;">Nos offres du moment</span></div>
+            <h2 data-reveal data-delay="100" style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(30px,4.4vw,56px);line-height:1.04;color:#1c1a16;">Terrains disponibles dans l'Ain.</h2>
+          </div>
+          <div data-reveal data-delay="160" style="font-size:14px;color:#7a7164;"><span style="font-family:'Cormorant Garamond',serif;font-size:30px;color:#1c1a16;vertical-align:-3px;">{{ terrainCount }}</span> terrain(s) affiché(s)</div>
+        </div>
+
+        <div data-reveal style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:clamp(32px,4vw,46px);">
+          <sc-for list="{{ terrainChips }}" as="chip" hint-placeholder-count="4">
+            <button onClick="{{ chip.onClick }}" class="me-btn" style="cursor:pointer;padding:10px 20px;border-radius:100px;border:1px solid;font-family:inherit;font-size:13px;font-weight:600;letter-spacing:0.01em;{{ chip.style }}">{{ chip.label }}</button>
+          </sc-for>
+        </div>
+
+        <div class="me-g3" style="gap:clamp(16px,1.8vw,26px);">
+          <sc-for list="{{ terrains }}" as="t" hint-placeholder-count="6">
+            <div data-reveal data-delay="{{ t.delay }}" class="me-card" style="border-radius:9px;overflow:hidden;background:#faf7f1;border:1px solid rgba(28,26,22,0.07);opacity:{{ t.cardOpacity }};">
+              <div style="position:relative;overflow:hidden;aspect-ratio:16/11;">
+                <img class="me-zoom" src="{{ t.photo }}" alt="Terrain à {{ t.commune }}" style="width:100%;height:100%;object-fit:cover;"/>
+                <span style="position:absolute;top:13px;left:13px;padding:6px 13px;border-radius:100px;font-size:10.5px;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;{{ t.badgeStyle }}">{{ t.status }}</span>
+                <span style="position:absolute;top:13px;right:13px;padding:6px 12px;border-radius:100px;background:rgba(20,18,14,0.6);color:#f5f0e8;font-size:12px;font-weight:600;backdrop-filter:blur(4px);">{{ t.surfaceLabel }}</span>
+              </div>
+              <div style="padding:22px 24px 24px;">
+                <h3 style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:500;font-size:26px;color:#1c1a16;line-height:1;">{{ t.commune }}</h3>
+                <div style="margin-top:6px;font-size:11.5px;letter-spacing:0.12em;text-transform:uppercase;color:#a07d4a;">{{ t.secteur }} · {{ t.dept }}</div>
+                <p style="margin:14px 0 0;color:#7a7164;font-size:13.5px;line-height:1.55;">{{ t.note }}</p>
+                <div style="margin-top:18px;padding-top:16px;border-top:1px solid rgba(28,26,22,0.1);display:flex;align-items:center;justify-content:space-between;gap:12px;">
+                  <div><div style="font-size:11px;color:#9a917f;">Terrain à partir de</div><div style="font-family:'Cormorant Garamond',serif;font-size:25px;color:#1c1a16;line-height:1.1;">{{ t.priceLabel }}</div></div>
+                  <a href="#contact" onClick="{{ goContact }}" class="me-btn" style="text-decoration:none;padding:11px 18px;border-radius:100px;background:#1c1a16;color:#f5f0e8;font-size:12.5px;font-weight:600;white-space:nowrap;" style-hover="background:#a07d4a;transform:translateY(-2px);">Étudier →</a>
+                </div>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+
+        <p data-reveal style="margin:clamp(34px,4vw,48px) 0 0;font-size:13px;color:#9a917f;line-height:1.6;max-width:74ch;">Offres présentées à titre indicatif, hors frais de notaire, sous réserve de disponibilité. Surfaces et prix communiqués par notre partenaire foncier — détails et plans sur demande.</p>
+      </div>
+    </section>
+
+    <!-- TERRAIN + MAISON -->
+    <section style="background:#1c1a16;color:#f5f0e8;padding:clamp(80px,11vw,150px) 0;">
+      <div style="max-width:1320px;margin:0 auto;padding:0 clamp(20px,5vw,64px);">
+        <div style="max-width:60ch;">
+          <div data-reveal style="display:inline-flex;align-items:center;gap:12px;margin-bottom:22px;"><span style="width:42px;height:1px;background:#c4a878;"></span><span style="color:#c4a878;font-size:12px;font-weight:600;letter-spacing:0.3em;text-transform:uppercase;">Terrain + maison</span></div>
+          <h2 data-reveal data-delay="100" style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(32px,4.6vw,62px);line-height:1.03;">Un projet complet, un seul interlocuteur.</h2>
+        </div>
+        <div class="me-g3" style="gap:clamp(16px,1.8vw,26px);margin-top:clamp(44px,6vw,72px);">
+          <div data-reveal style="background:#211e19;border:1px solid rgba(245,240,232,0.1);border-radius:8px;padding:32px 28px;"><div style="font-family:'Cormorant Garamond',serif;font-size:42px;color:#c4a878;line-height:1;">01</div><div style="margin-top:16px;font-family:'Cormorant Garamond',serif;font-size:24px;">Budget maîtrisé</div><p style="margin:10px 0 0;color:rgba(245,240,232,0.6);font-size:14px;line-height:1.6;">Terrain et construction chiffrés ensemble, pour un plan de financement clair dès le départ.</p></div>
+          <div data-reveal data-delay="120" style="background:#211e19;border:1px solid rgba(245,240,232,0.1);border-radius:8px;padding:32px 28px;"><div style="font-family:'Cormorant Garamond',serif;font-size:42px;color:#c4a878;line-height:1;">02</div><div style="margin-top:16px;font-family:'Cormorant Garamond',serif;font-size:24px;">Faisabilité vérifiée</div><p style="margin:10px 0 0;color:rgba(245,240,232,0.6);font-size:14px;line-height:1.6;">Nous validons que le terrain accueille bien la maison dont vous rêvez, sans mauvaise surprise.</p></div>
+          <div data-reveal data-delay="240" style="background:#211e19;border:1px solid rgba(245,240,232,0.1);border-radius:8px;padding:32px 28px;"><div style="font-family:'Cormorant Garamond',serif;font-size:42px;color:#c4a878;line-height:1;">03</div><div style="margin-top:16px;font-family:'Cormorant Garamond',serif;font-size:24px;">Un seul contact</div><p style="margin:10px 0 0;color:rgba(245,240,232,0.6);font-size:14px;line-height:1.6;">Du terrain à la remise des clés, vous gardez le même interlocuteur tout au long du projet.</p></div>
+        </div>
+        <div data-reveal style="margin-top:clamp(40px,5vw,60px);display:flex;flex-wrap:wrap;gap:16px;">
+          <a href="#contact" onClick="{{ goContact }}" class="me-btn" style="text-decoration:none;display:inline-flex;align-items:center;gap:10px;padding:17px 32px;border-radius:100px;background:#a07d4a;color:#fff;font-size:14px;font-weight:600;box-shadow:0 22px 44px -22px rgba(160,125,74,1);" style-hover="background:#b08d57;transform:translateY(-3px);">Recevoir les nouveaux terrains →</a>
+          <a href="#savoir-faire" onClick="{{ goSavoir }}" class="me-btn" style="text-decoration:none;display:inline-flex;align-items:center;gap:10px;padding:17px 32px;border-radius:100px;background:rgba(245,240,232,0.08);color:#f5f0e8;font-size:14px;font-weight:600;border:1px solid rgba(245,240,232,0.4);" style-hover="background:rgba(245,240,232,0.16);transform:translateY(-3px);">Voir notre accompagnement</a>
+        </div>
+      </div>
+    </section>
+  </main>
+  </sc-if>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer style="background:#15130f;color:rgba(245,240,232,0.7);padding:clamp(60px,8vw,96px) 0 0;">
+    <div style="max-width:1320px;margin:0 auto;padding:0 clamp(20px,5vw,64px);">
+      <div class="me-split" style="gap:clamp(40px,6vw,90px);padding-bottom:clamp(48px,6vw,72px);border-bottom:1px solid rgba(245,240,232,0.1);">
+        <div>
+          <div style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:26px;letter-spacing:0.04em;color:#f5f0e8;">MAISONS D'EXCELLENCE</div>
+          <div style="font-size:9px;font-weight:600;letter-spacing:0.36em;color:#a07d4a;margin-top:6px;">CONSTRUCTEUR DE MAISONS INDIVIDUELLES · AIN</div>
+          <p style="margin:22px 0 0;font-size:14px;line-height:1.75;max-width:46ch;color:rgba(245,240,232,0.6);">Constructeur de maisons individuelles traditionnelles et contemporaines, sur-mesure, dans l'Ain et la région Rhône-Alpes. De la recherche du terrain à la remise des clés.</p>
+          <a href="#contact" onClick="{{ goContact }}" class="me-btn" style="display:inline-flex;align-items:center;gap:9px;margin-top:26px;text-decoration:none;padding:14px 26px;border-radius:100px;background:#a07d4a;color:#fff;font-size:13.5px;font-weight:600;" style-hover="background:#b08d57;transform:translateY(-3px);">Demander un devis →</a>
+        </div>
+        <div class="me-g2" style="gap:32px;">
+          <div>
+            <div style="font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(245,240,232,0.45);margin-bottom:18px;">Navigation</div>
+            <div style="display:flex;flex-direction:column;gap:13px;">
+              <a href="#accueil" onClick="{{ goAccueil }}" class="me-link" style="text-decoration:none;color:rgba(245,240,232,0.72);font-size:14.5px;" style-hover="color:#c4a878;">Accueil</a>
+              <a href="#entreprise" onClick="{{ goEntreprise }}" class="me-link" style="text-decoration:none;color:rgba(245,240,232,0.72);font-size:14.5px;" style-hover="color:#c4a878;">L'entreprise</a>
+              <a href="#savoir-faire" onClick="{{ goSavoir }}" class="me-link" style="text-decoration:none;color:rgba(245,240,232,0.72);font-size:14.5px;" style-hover="color:#c4a878;">Savoir-faire</a>
+              <a href="#realisations" onClick="{{ goRealisations }}" class="me-link" style="text-decoration:none;color:rgba(245,240,232,0.72);font-size:14.5px;" style-hover="color:#c4a878;">Réalisations</a>
+              <a href="#terrains" onClick="{{ goTerrains }}" class="me-link" style="text-decoration:none;color:rgba(245,240,232,0.72);font-size:14.5px;" style-hover="color:#c4a878;">Terrains à bâtir</a>
+              <a href="#contact" onClick="{{ goContact }}" class="me-link" style="text-decoration:none;color:rgba(245,240,232,0.72);font-size:14.5px;" style-hover="color:#c4a878;">Contact</a>
+            </div>
+          </div>
+          <div>
+            <div style="font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(245,240,232,0.45);margin-bottom:18px;">Contact</div>
+            <div style="display:flex;flex-direction:column;gap:13px;font-size:14.5px;color:rgba(245,240,232,0.72);line-height:1.5;">
+              <a href="tel:+33474346643" class="me-link" style="text-decoration:none;color:rgba(245,240,232,0.72);" style-hover="color:#c4a878;">04 74 34 66 43</a>
+              <span>6 rue de Genève<br/>01800 Meximieux</span>
+              <span>Lun – Ven · 8h30 – 18h00</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="padding:26px 0 40px;display:flex;flex-wrap:wrap;gap:8px 18px;justify-content:space-between;align-items:center;">
+        <p style="margin:0;font-size:11.5px;line-height:1.7;color:rgba(245,240,232,0.4);max-width:78ch;">Maisons d'Excellence Constructeurs de Maisons Individuelles — SARL au capital de 50 000 € — SIREN 844 477 794 — RCS Bourg-en-Bresse — TVA FR04844477794 — Siège : 6 rue de Genève, 01800 Meximieux.</p>
+        <p style="margin:0;font-size:11.5px;color:rgba(245,240,232,0.4);">© {{ year }} — Tous droits réservés</p>
+      </div>
+    </div>
+  </footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { page: 'accueil', menuOpen: false, submitted: false, terrainFilter: 'Tout' };
+
+  componentDidMount() {
+    this._lastPage = this.state.page;
+    this._lastSubmitted = this.state.submitted;
+    this.syncFromHash();
+    this._onHash = () => this.syncFromHash();
+    window.addEventListener('hashchange', this._onHash);
+    this._onScroll = () => this.handleScroll();
+    window.addEventListener('scroll', this._onScroll, { passive: true });
+    this._onResize = () => this.handleScroll();
+    window.addEventListener('resize', this._onResize);
+    requestAnimationFrame(() => { this.handleScroll(); this.runReveals(); });
+  }
+  componentWillUnmount() {
+    window.removeEventListener('hashchange', this._onHash);
+    window.removeEventListener('scroll', this._onScroll);
+    window.removeEventListener('resize', this._onResize);
+    if (this._obs) this._obs.disconnect();
+  }
+  componentDidUpdate() {
+    if (this._lastPage !== this.state.page) {
+      this._lastPage = this.state.page;
+      this._lastSubmitted = this.state.submitted;
+      window.scrollTo(0, 0);
+      requestAnimationFrame(() => { this.runReveals(); this.handleScroll(); });
+    } else if (this._lastSubmitted !== this.state.submitted) {
+      this._lastSubmitted = this.state.submitted;
+      requestAnimationFrame(() => this.runReveals());
+    }
+  }
+  syncFromHash() {
+    const valid = ['accueil','entreprise','savoir-faire','realisations','terrains','contact'];
+    const h = (window.location.hash || '').replace('#','');
+    const page = valid.includes(h) ? h : 'accueil';
+    if (page !== this.state.page || this.state.menuOpen) this.setState({ page, menuOpen: false });
+  }
+  go(page) {
+    if ((window.location.hash || '').replace('#','') === page) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      this.setState({ menuOpen: false });
+      return;
+    }
+    window.location.hash = page;
+    this.setState({ page, menuOpen: false });
+  }
+  handleScroll() {
+    const y = window.pageYOffset || document.documentElement.scrollTop || 0;
+    const h = document.querySelector('[data-header]');
+    const overHero = (this.state.page === 'accueil' || this.state.page === 'terrains') && y <= 60;
+    if (h) {
+      if (y > 40) {
+        h.style.background = 'rgba(245,240,232,0.92)';
+        h.style.backdropFilter = 'saturate(140%) blur(14px)';
+        h.style.webkitBackdropFilter = 'saturate(140%) blur(14px)';
+        h.style.borderBottomColor = 'rgba(28,26,22,0.10)';
+        h.style.boxShadow = '0 10px 40px -30px rgba(28,26,22,0.7)';
+      } else if (overHero) {
+        h.style.background = 'transparent';
+        h.style.backdropFilter = 'none';
+        h.style.webkitBackdropFilter = 'none';
+        h.style.borderBottomColor = 'transparent';
+        h.style.boxShadow = 'none';
+      } else {
+        h.style.background = 'rgba(245,240,232,0.92)';
+        h.style.backdropFilter = 'saturate(140%) blur(14px)';
+        h.style.webkitBackdropFilter = 'saturate(140%) blur(14px)';
+        h.style.borderBottomColor = 'rgba(28,26,22,0.10)';
+        h.style.boxShadow = 'none';
+      }
+      const light = overHero;
+      h.style.color = light ? '#f5f0e8' : '#1c1a16';
+      h.querySelectorAll('[data-navitem]').forEach(a => {
+        a.style.color = light ? 'rgba(245,240,232,0.86)' : 'rgba(28,26,22,0.68)';
+      });
+    }
+    document.querySelectorAll('[data-parallax]').forEach(el => {
+      const speed = parseFloat(el.getAttribute('data-parallax')) || 0.1;
+      const r = el.getBoundingClientRect();
+      const off = (r.top + r.height / 2 - window.innerHeight / 2) * -speed;
+      el.style.transform = 'translate3d(0,' + off.toFixed(1) + 'px,0) scale(1.1)';
+    });
+    this.revealInView();
+  }
+  runReveals() {
+    if (this._obs) this._obs.disconnect();
+    const els = Array.from(document.querySelectorAll('[data-reveal]'));
+    els.forEach(el => {
+      const dir = el.getAttribute('data-reveal');
+      el.style.transition = 'opacity 0.95s cubic-bezier(.16,.84,.44,1), transform 0.95s cubic-bezier(.16,.84,.44,1)';
+      el.style.willChange = 'opacity, transform';
+      el.style.transitionDelay = '0ms';
+      el.style.opacity = '0';
+      el.style.transform = dir === 'left' ? 'translateX(-32px)' : dir === 'right' ? 'translateX(32px)' : 'translateY(36px)';
+      el.dataset.shown = '0';
+    });
+    this._revealEls = els;
+    try {
+      this._obs = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if (e.isIntersecting) this._reveal(e.target); });
+      }, { threshold: 0.1, rootMargin: '0px 0px -7% 0px' });
+      els.forEach(el => this._obs.observe(el));
+    } catch (err) { this._obs = null; }
+    // Reliable path: synchronous rect-based reveal for anything already in view.
+    requestAnimationFrame(() => this.revealInView());
+  }
+  _reveal(el) {
+    if (!el || el.dataset.shown === '1') return;
+    el.dataset.shown = '1';
+    const d = parseFloat(el.getAttribute('data-delay')) || 0;
+    el.style.transitionDelay = d + 'ms';
+    el.style.opacity = '1';
+    el.style.transform = 'none';
+    if (this._obs) this._obs.unobserve(el);
+  }
+  revealInView() {
+    const els = this._revealEls || document.querySelectorAll('[data-reveal]');
+    const vh = window.innerHeight || document.documentElement.clientHeight;
+    els.forEach(el => {
+      if (el.dataset.shown === '1') return;
+      const r = el.getBoundingClientRect();
+      if (r.top < vh * 0.94 && r.bottom > 0) this._reveal(el);
+    });
+  }
+  onSubmit(e) { e.preventDefault(); this.setState({ submitted: true }); }
+  resetForm() { this.setState({ submitted: false }); }
+  setTerrainFilter(f) { this.setState({ terrainFilter: f }); }
+  rawTerrains() {
+    const P = 'https://images.unsplash.com/photo-';
+    const imgs = [
+      P + '1500382017468-9049fed747ef?auto=format&fit=crop&w=1100&q=80',
+      P + '1416879595882-3373a0480b5b?auto=format&fit=crop&w=1100&q=80',
+      P + '1466692476868-aef1dfb1e735?auto=format&fit=crop&w=1100&q=80',
+      P + '1501785888041-af3ef285b470?auto=format&fit=crop&w=1100&q=80'
+    ];
+    const d = [
+      ['Meximieux', "Plaine de l'Ain", 612, 128000, 'Disponible', 'Viabilisé · libre constructeur'],
+      ['Pérouges', "Plaine de l'Ain", 540, 145000, 'Dernier lot', 'Vue dégagée · proche cité médiévale'],
+      ['Villieu-Loyes-Mollon', "Plaine de l'Ain", 720, 119000, 'Disponible', 'Au calme · hors lotissement'],
+      ['Montluel', 'Côtière', 480, 159000, 'Réservé', 'Proche A42 · commerces à pied'],
+      ['Chazey-sur-Ain', "Plaine de l'Ain", 845, 112000, 'Disponible', 'Grand terrain arboré'],
+      ['Lagnieu', 'Bugey', 600, 98000, 'Disponible', 'Belle exposition sud'],
+      ['Dagneux', 'Côtière', 510, 152000, 'Dernier lot', 'Quartier résidentiel recherché'],
+      ['Ambérieu-en-Bugey', 'Bugey', 680, 105000, 'Disponible', 'Proche gare · écoles']
+    ];
+    return d.map((r, i) => ({ commune: r[0], secteur: r[1], surface: r[2], price: r[3], status: r[4], note: r[5], photo: imgs[i % imgs.length] }));
+  }
+
+  renderVals() {
+    const p = this.state.page;
+    const fmt = n => n.toLocaleString('fr-FR');
+    const badge = { 'Disponible': 'background:#e7f0ea;color:#1f7a4d;', 'Dernier lot': 'background:#f4ecdd;color:#9a7838;', 'Réservé': 'background:#ece8e0;color:#8a8076;' };
+    const tf = this.state.terrainFilter;
+    const terrains = this.rawTerrains()
+      .filter(t => tf === 'Tout' || t.secteur === tf)
+      .map((t, i) => ({
+        commune: t.commune, secteur: t.secteur, note: t.note, photo: t.photo, status: t.status,
+        dept: '01',
+        surfaceLabel: fmt(t.surface) + ' m²',
+        priceLabel: fmt(t.price) + ' €',
+        badgeStyle: badge[t.status] || badge['Disponible'],
+        cardOpacity: t.status === 'Réservé' ? '0.6' : '1',
+        delay: (i % 3) * 90
+      }));
+    const filters = ['Tout', "Plaine de l'Ain", 'Côtière', 'Bugey'];
+    const terrainChips = filters.map(f => ({
+      label: f,
+      onClick: () => this.setTerrainFilter(f),
+      style: (tf === f
+        ? 'background:#1c1a16;color:#f5f0e8;border-color:#1c1a16;'
+        : 'background:transparent;color:#5a5247;border-color:rgba(28,26,22,0.2);')
+    }));
+    return {
+      page: p,
+      isTerrains: p === 'terrains',
+      goTerrains: () => this.go('terrains'),
+      terrains: terrains,
+      terrainChips: terrainChips,
+      terrainCount: terrains.length,
+      isAccueil: p === 'accueil',
+      isEntreprise: p === 'entreprise',
+      isSavoir: p === 'savoir-faire',
+      isRealisations: p === 'realisations',
+      isContact: p === 'contact',
+      menuOpen: this.state.menuOpen,
+      submitted: this.state.submitted,
+      notSubmitted: !this.state.submitted,
+      year: new Date().getFullYear(),
+      goAccueil: () => this.go('accueil'),
+      goEntreprise: () => this.go('entreprise'),
+      goSavoir: () => this.go('savoir-faire'),
+      goRealisations: () => this.go('realisations'),
+      goContact: () => this.go('contact'),
+      toggleMenu: () => this.setState(s => ({ menuOpen: !s.menuOpen })),
+      closeMenu: () => this.setState({ menuOpen: false }),
+      onSubmit: (e) => this.onSubmit(e),
+      resetForm: () => this.resetForm(),
+    };
+  }
+}
+</script>
+<script>
+(async () => {
+  if (!document.title || !document.title.trim()) document.title = "Maisons d'Excellence";
+  // Prepend so page-supplied @page / break rules (deck-stage's margin:0,
+  // author CSS) keep source-order precedence over the baseline.
+  const baseCss = document.createElement('style');
+  baseCss.textContent = "@media print {\n  figure, table { break-inside: avoid; }\n  *, *::before, *::after {\n    print-color-adjust: exact; -webkit-print-color-adjust: exact;\n    backdrop-filter: none !important; -webkit-backdrop-filter: none !important;\n    animation-delay: -99s !important; animation-duration: .001s !important;\n    animation-iteration-count: 1 !important; animation-fill-mode: both !important;\n    animation-play-state: running !important; transition-duration: 0s !important;\n  }\n}";
+  document.head.prepend(baseCss);
+  if (document.readyState === 'loading') {
+    await new Promise((r) => document.addEventListener('DOMContentLoaded', r, { once: true }));
+  }
+  let ds = document.querySelector('deck-stage');
+  // whenDefined never resolves when nothing registers the element, so only
+  // await it when a <deck-stage> tag exists (and race a timeout regardless).
+  if (ds && !customElements.get('deck-stage')) {
+    try {
+      await Promise.race([
+        customElements.whenDefined('deck-stage'),
+        new Promise((r) => setTimeout(r, 3000)),
+      ]);
+    } catch (e) {}
+    ds = document.querySelector('deck-stage');
+  }
+  // dc-runtime assigns window.DCLogic at init and mounts into #dc-root on
+  // DOMContentLoaded; settle on that subtree so React has rendered before
+  // print(). Non-DC pages fall through to weighing body.
+  const isDc = !ds && 'DCLogic' in window;
+  const settleRoot = ds || (isDc ? document.getElementById('dc-root') : null) || document.body;
+  if (settleRoot) {
+    // Weigh only content children — skip script/style/template so inline
+    // Babel/CSS doesn't register as stable "content" before the framework
+    // has mounted anything.
+    const MEDIA = 'img,svg,canvas,video,picture,iframe,embed,object';
+    const weigh = () => {
+      let text = 0, media = 0;
+      for (const c of settleRoot.children) {
+        const t = c.tagName;
+        if (t === 'SCRIPT' || t === 'STYLE' || t === 'TEMPLATE') continue;
+        text += (c.textContent || '').trim().length;
+        media += c.querySelectorAll(MEDIA).length + (c.matches(MEDIA) ? 1 : 0);
+      }
+      return text + media * 100;
+    };
+    // "Non-zero and stable" alone is not sufficient to mean rendered: generic
+    // body can carry a static shell while async main content is pending, and
+    // #dc-root can carry the root DC's static text while child refs are still
+    // .sc-placeholder boxes. Gate generic on readyState 'complete', and never
+    // accept stability while a dc-runtime placeholder is present.
+    const isGeneric = settleRoot === document.body;
+    const deadline = Date.now() + 15000;
+    let last = -1, stable = 0;
+    while (Date.now() < deadline) {
+      const n = weigh();
+      const ready =
+        (!isGeneric || document.readyState === 'complete') &&
+        !settleRoot.querySelector('.sc-placeholder');
+      if (n > 0 && n === last && ready) { if (++stable >= 2) break; } else { stable = 0; }
+      last = n;
+      await new Promise((r) => setTimeout(r, 250));
+    }
+  }
+  // Project support.js may predate runtime default-seeding; push via bridge.
+  if (isDc && window.__dcSetProps && window.__dcRootName) {
+    try {
+      const dpEl = document.querySelector('script[data-dc-script]');
+      const meta = JSON.parse((dpEl && dpEl.getAttribute('data-props')) || '{}');
+      const bag = {};
+      for (const k in meta)
+        if (k[0] !== '$' && meta[k] && meta[k].default !== undefined)
+          bag[k] = meta[k].default;
+      if (Object.keys(bag).length) {
+        window.__dcSetProps(window.__dcRootName(), bag);
+        await new Promise((r) => setTimeout(r, 50));
+      }
+    } catch (e) {}
+  }
+  // Reveal content gated on scroll or visibility before printing. Lazy <img>,
+  // IntersectionObserver fade-ins, and collapsed <details> don't render while
+  // off-screen, so a long page would print with them blank or closed. Open
+  // every <details>, force native-lazy images eager, and scroll the document
+  // through its full height to trip lazy-load + IO; then wait (bounded) for the
+  // newly-triggered images. Inert for deck-stage (slides aren't scroll-gated).
+  try {
+    for (const d of document.querySelectorAll('details')) d.open = true;
+    for (const img of document.querySelectorAll('img[loading="lazy"]'))
+      img.loading = 'eager';
+    const scroller = document.scrollingElement || document.documentElement;
+    const full = Math.max(scroller.scrollHeight, document.body.scrollHeight);
+    const step = window.innerHeight || 800;
+    for (let y = 0; y <= full; y += step) {
+      window.scrollTo(0, y);
+      await new Promise((r) => requestAnimationFrame(r));
+    }
+    window.scrollTo(0, 0);
+    await Promise.race([
+      Promise.all(
+        [...document.images].map((img) =>
+          img.complete
+            ? null
+            : new Promise((res) => {
+                img.addEventListener('load', res, { once: true });
+                img.addEventListener('error', res, { once: true });
+              })
+        )
+      ),
+      new Promise((r) => setTimeout(r, 4000)),
+    ]);
+  } catch (e) {}
+  try { await document.fonts.ready; } catch (e) {}
+  // Jump every animation to its end state so print() never captures a slide
+  // mid-entrance. Ordering matters: the 0s-transition style must be live
+  // BEFORE data-deck-active is set so attribute-keyed transitions don't
+  // start a (now-0s) run from the pre-active base.
+  const st = document.createElement('style');
+  st.textContent = '*,*::before,*::after{animation-delay:-99s !important;animation-duration:.001s !important;animation-iteration-count:1 !important;animation-fill-mode:both !important;animation-play-state:running !important;transition-duration:0s !important}';
+  document.head.appendChild(st);
+  for (const d of document.querySelectorAll('deck-stage')) {
+    for (const c of d.children) {
+      const t = c.tagName;
+      if (t === 'SCRIPT' || t === 'STYLE' || t === 'TEMPLATE') continue;
+      c.setAttribute('data-deck-active', '');
+    }
+  }
+  // Re-append deck-stage's @page last so no author @page can add a margin and
+  // spill each full-bleed slide onto two sheets. Backstop for old copies.
+  if (ds) {
+    let pg = document.getElementById('deck-stage-print-page');
+    if (!pg) {
+      pg = document.createElement('style');
+      pg.textContent = '@page{size:' + (+ds.getAttribute('width') || 1920) +
+        'px ' + (+ds.getAttribute('height') || 1080) + 'px;margin:0}';
+    }
+    document.body.appendChild(pg);
+  }
+  try {
+    const sweep = () => {
+      for (const a of document.getAnimations()) {
+        try { a.finish(); } catch (e) {
+          try { a.currentTime = (a.effect && a.effect.getComputedTiming().duration) || 0; a.pause(); } catch (e2) {}
+        }
+      }
+    };
+    sweep();
+    await new Promise((r) => requestAnimationFrame(r));
+    sweep();
+    await new Promise((r) => requestAnimationFrame(r));
+  } catch (e) {}
+  // Size the PDF page to the rendered design unless the file opted into
+  // standard paper via @page{size:letter|A4|…}. Decks own their own @page.
+  // Wrappers (body, …) lose padding+margin so the frame sits at (0,0); the
+  // frame itself loses only margin — its padding is INSIDE the measured
+  // rect and must stay, or content shifts and leaves a gap at bottom/right.
+  var __m = null;
+  try { __m = (() => {
+  var docEl = document.documentElement;
+  var doc = { width: docEl.scrollWidth, height: docEl.scrollHeight };
+
+  var ds = document.querySelector('deck-stage');
+  if (ds) {
+    var dw = Number(ds.getAttribute('width')) || 1920;
+    var dh = Number(ds.getAttribute('height')) || 1080;
+    var n = typeof ds.length === 'number' ? ds.length : ds.children.length;
+    var idx = typeof ds.index === 'number' ? ds.index : 0;
+    var frames = [];
+    for (var i = 0; i < n; i++) frames.push({ left: 0, top: 0, width: dw, height: dh });
+    return { kind: 'deck', doc: doc, frames: frames,
+      authored: frames.map(function(){return{width:true,height:true}}),
+      deck: { width: dw, height: dh, slideCount: n, index: idx },
+      signals: { paperPage: false, pxPage: false } };
+  }
+
+  var paperPage = false, pxPage = false;
+  var eachRule = function (fn) {
+    for (var s = 0; s < document.styleSheets.length; s++) {
+      var rs; try { rs = document.styleSheets[s].cssRules; } catch (e) { continue; }
+      for (var r = 0; r < rs.length; r++) {
+        fn(rs[r]);
+        if (rs[r].cssRules) for (var n = 0; n < rs[r].cssRules.length; n++) fn(rs[r].cssRules[n]);
+      }
+    }
+  };
+  eachRule(function (r) {
+    if (r.type !== 6) return;
+    var m = /\bsize\s*:\s*([^;}]+)/i.exec(r.cssText || '');
+    if (!m) return;
+    if (/\b(letter|a[3-5]|legal|ledger)\b/i.test(m[1])) paperPage = true;
+    if (/\d+(?:\.\d+)?px\b/i.test(m[1])) pxPage = true;
+  });
+  var signals = { paperPage: paperPage, pxPage: pxPage };
+
+  var pxVal = function (v) {
+    var m = /^(\d+(?:\.\d+)?)px$/.exec(v || ''); return m ? +m[1] : 0;
+  };
+  var authoredPx = function (el, prop) {
+    if (pxVal(el.style[prop])) return true;
+    var attr = el.getAttribute(prop);
+    if (attr && /^\d+$/.test(attr)) return true;
+    var hit = false;
+    eachRule(function (r) {
+      if (hit || r.type !== 1 || !r.style) return;
+      try { if (el.matches(r.selectorText) && pxVal(r.style[prop])) hit = true; } catch (e) {}
+    });
+    return hit;
+  };
+
+  var el = document.body, rootPxW = false;
+  for (;;) {
+    var kids = [];
+    for (var c = 0; c < el.children.length; c++) {
+      var t = el.children[c].tagName;
+      if (t !== 'SCRIPT' && t !== 'STYLE' && t !== 'TEMPLATE') kids.push(el.children[c]);
+    }
+    if (kids.length !== 1 || !(kids[0] instanceof HTMLElement)) break;
+    el.setAttribute('data-om-frame-wrap', '');
+    el = kids[0];
+    rootPxW = authoredPx(el, 'width');
+    if (rootPxW) break;
+  }
+  if (!rootPxW) rootPxW = authoredPx(el, 'width');
+
+  // @page{size:letter} alone is a flowing doc; with a px-width root it's a
+  // fixed sheet pretending to be paper — fall through and size to render.
+  if (paperPage && !rootPxW) {
+    return { kind: 'paper-doc', doc: doc, signals: signals,
+      frames: [{ left: 0, top: 0, width: doc.width, height: doc.height }],
+      authored: [{ width: false, height: false }] };
+  }
+
+  var sx = window.scrollX || 0, sy = window.scrollY || 0;
+  var rectOf = function (e) {
+    var r = e.getBoundingClientRect();
+    var oy; try { oy = getComputedStyle(e).overflowY; } catch (err) {}
+    var h = oy === 'visible' ? Math.max(r.height, e.scrollHeight || 0) : r.height;
+    return { left: r.left + sx, top: r.top + sy, width: r.width, height: h };
+  };
+
+  // Multi-frame: ≥2 visible non-fixed children, each with authored px width
+  // AND height, all within ±2px of each other. Off unless the page opts in
+  // via data-om-multi-frame on the stop element — guards against card grids
+  // and pricing tables that match the geometry but aren't separate canvases.
+  if (el.hasAttribute('data-om-multi-frame')) {
+    var cands = [];
+    for (var k = 0; k < el.children.length; k++) {
+      var ch = el.children[k];
+      var cs; try { cs = getComputedStyle(ch); } catch (e) { continue; }
+      if (cs.display === 'none' || cs.visibility === 'hidden' || cs.position === 'fixed') continue;
+      var rc = rectOf(ch);
+      if (rc.width < 2 || rc.height < 2) continue;
+      if (!authoredPx(ch, 'width') || !authoredPx(ch, 'height')) continue;
+      cands.push(rc);
+    }
+    if (cands.length >= 2) {
+      var w0 = cands[0].width, h0 = cands[0].height, ok = true;
+      for (var q = 1; q < cands.length; q++)
+        if (Math.abs(cands[q].width - w0) > 2 || Math.abs(cands[q].height - h0) > 2) ok = false;
+      if (ok) return { kind: 'multi-frame', doc: doc, signals: signals,
+        frames: cands, authored: cands.map(function(){return{width:true,height:true}}) };
+    }
+  }
+
+  el.setAttribute('data-om-frame', '');
+  return { kind: 'single-canvas', doc: doc, signals: signals,
+    frames: [rectOf(el)],
+    authored: [{ width: rootPxW, height: authoredPx(el, 'height') }] };
+})(); } catch (e) {}
+  var frame = null;
+  if (__m && __m.kind === 'single-canvas') {
+    var f = __m.frames && __m.frames[0];
+    if (f && f.width >= 200 && f.height >= 200) {
+      frame = f;
+      var fst = document.createElement('style');
+      fst.textContent = '@media print{@page{size:' + Math.ceil(f.width) + 'px ' +
+        Math.ceil(f.height) + 'px;margin:0}' +
+        'html,body,[data-om-frame-wrap]{padding:0!important;margin:0!important;background:none!important}' +
+        '[data-om-frame]{margin:0!important}}';
+      document.body.appendChild(fst);
+    }
+  }
+  // Relax break-inside on oversized elements. An element taller than a
+  // printable page can't honor break-inside: avoid — browsers either overflow
+  // it or push it whole to the next page, leaving a blank gap, then break it
+  // anyway at an arbitrary point. After the final layout (content revealed,
+  // animations jumped), find elements taller than a page that still compute
+  // break-inside: avoid and reset them to auto, so the browser breaks them at
+  // their children's boundaries instead (children keep their own avoid). PAGE_PX
+  // is a conservative portrait estimate at 96 CSS px/in — Letter/A4 usable
+  // height minus our 0.5in margins — so only clearly-oversized elements are
+  // touched and under-page elements still stay whole. Skipped for decks (slides
+  // are sized to the page) and for fixed-size canvases (frame set, or an author
+  // px-based @page) — runs as before for flowing docs on letter/A4.
+  try {
+    if (!ds && !frame && !(__m && __m.signals && __m.signals.pxPage)) {
+      const PAGE_PX = 1024;
+      // Our print defaults add a real @page margin only when the source has
+      // no @page of its own; computed style can't tell us (it reports screen
+      // media), so read the injected rule directly.
+      const defaults = document.querySelector('style[data-omelette-print-defaults]');
+      const pageInset = /@page\s*\{[^}]*margin/.test(defaults ? defaults.textContent || '' : '');
+      const SEL = 'section,article,figure,table,pre,blockquote,[class~="card" i],[class~="page" i],[class~="sheet" i]';
+      for (const el of document.body.querySelectorAll(SEL)) {
+        if (el instanceof HTMLElement && el.offsetHeight > PAGE_PX) {
+          el.setAttribute('data-om-oversized', '');
+          // Fake-paged docs simulate sheets with over-tall break-after:page
+          // boxes; honoring the break spills half-blank pages and ends a
+          // colored box mid-sheet. Flow them, and (only when we own the page
+          // inset) drop the redundant padding/background via the rule below.
+          const cs = getComputedStyle(el);
+          if (cs.breakAfter === 'page' || cs.pageBreakAfter === 'always') {
+            el.setAttribute('data-om-fakepage', '');
+          }
+        }
+      }
+      const ost = document.createElement('style');
+      ost.textContent = '@media print{' +
+        '[data-om-oversized]{break-inside:auto !important;page-break-inside:auto !important}' +
+        '[data-om-fakepage]{break-after:auto !important;page-break-after:auto !important}' +
+        (pageInset ? '[data-om-fakepage]{padding:0 !important;background:none !important}' : '') +
+        '}';
+      document.head.appendChild(ost);
+    }
+  } catch (e) {}
+  // macOS Preview renders Skia-PDF Luminosity soft-masks as opaque grey boxes;
+  // swap the CSS that triggers them for Preview-safe forms.
+  try {
+    for (const el of document.body.querySelectorAll('*')) {
+      const cs = getComputedStyle(el);
+
+      if (cs.boxShadow !== 'none' && cs.filter === 'none') {
+        const outs = [], kept = [];
+        for (const s of cs.boxShadow.split(/,(?![^(]*[)])/)) {
+          const t = s.trim();
+          const m = t.match(/^(rgba?[(][^)]+[)]) (-?[0-9.]+px) (-?[0-9.]+px) ([0-9.]+px) -?[0-9.]+px$/);
+          if (m && parseFloat(m[4]) > 0) outs.push('drop-shadow(' + m[2] + ' ' + m[3] + ' ' + m[4] + ' ' + m[1] + ')');
+          else kept.push(t);
+        }
+        if (outs.length) {
+          el.style.setProperty('filter', outs.join(' '), 'important');
+          el.style.setProperty('box-shadow', kept.join(', ') || 'none', 'important');
+        }
+      }
+
+      const mask = cs.maskImage && cs.maskImage !== 'none' ? cs.maskImage : cs.webkitMaskImage;
+      if (mask && mask !== 'none' && cs.filter === 'none') el.style.setProperty('filter', 'opacity(1)', 'important');
+    }
+  } catch (e) {}
+  setTimeout(() => { try { window.print(); } catch (e) {} }, 200);
+})();
+</script>
+</body>
+</html>
