@@ -117,6 +117,16 @@ const CORRECTIONS = [
       </div>`,
   ],
 
+  // Bandeau de la page Contact. Le cadrage d'origine colle à la vitrine : on
+  // est contre la façade, sans recul. La photo de la devanture entière, prise
+  // depuis le trottoir d'en face, était fournie mais inutilisée. Le cadrage
+  // remonte pour garder l'enseigne dans le champ malgré le zoom lent, qui est
+  // conservé tel quel.
+  [
+    'src="photos/bureau-meximieux-vitrine-bandeau.png" alt="Les vitrines du bureau Maisons d\'Excellence, 6 rue de Genève à Meximieux" style="width:100%;height:100%;object-fit:cover;object-position:50% 46%;animation:meKb 18s ease-out forwards;"',
+    'src="photos/bureau-meximieux-facade.png" alt="La devanture du bureau Maisons d\'Excellence, 6 rue de Genève à Meximieux" style="width:100%;height:100%;object-fit:cover;object-position:50% 16%;animation:meKb 18s ease-out forwards;"',
+  ],
+
   // Les liens WhatsApp de la maquette ouvraient une conversation vide. On y
   // ajoute un message pré-rempli : le visiteur n'a plus à trouver ses mots, et
   // le destinataire sait d'où vient la demande. Le texte reste court et neutre,
@@ -172,13 +182,18 @@ function corrections(s) {
 function componentFile(name, block, { tag = 'div' } = {}) {
   // Le relevé des liaisons se fait APRÈS correction : certaines corrections en
   // introduisent de nouvelles, comme l'adresse de la fiche Google.
-  const corrige = corrections(absolutePhotos(block));
+  // Corrections d'abord, réécriture des chemins ensuite : les corrections sont
+  // écrites contre la source d'origine, où les photos sont encore en relatif.
+  const corrige = absolutePhotos(corrections(block));
   const vars = bindings(corrige);
   const jsx = toJsx(corrige);
   const destructure = vars.length ? `  const { ${vars.join(', ')} } = v;\n` : '';
+  const besoinCss = jsx.includes('cssToStyle(');
   return (
     "'use client';\n\n" +
-    "import type { Vals } from '@/components/site-vals';\n\n" +
+    "import type { Vals } from '@/components/site-vals';\n" +
+    (besoinCss ? "import { cssToStyle } from '@/lib/css';\n" : '') +
+    '\n' +
     '/**\n' +
     ` * ${name} — balisage repris tel quel de la maquette Claude Design.\n` +
     ' * Seule la syntaxe change (JSX) : styles, classes et ordre des nœuds\n' +

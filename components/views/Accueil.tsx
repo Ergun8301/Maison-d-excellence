@@ -1,6 +1,7 @@
 'use client';
 
 import type { Vals } from '@/components/site-vals';
+import { cssToStyle } from '@/lib/css';
 
 /**
  * Accueil — balisage repris tel quel de la maquette Claude Design.
@@ -121,7 +122,7 @@ export default function Accueil(v: Vals) {
                     <div style={{ fontSize: "12px", fontWeight: "700", letterSpacing: "0.14em", textTransform: "uppercase", color: "#77807A", marginBottom: "14px" }}>Niveau de livraison</div>
                     <div style={{ display: "flex", flexWrap: "wrap", gap: "10px" }}>
                       {(finOptions ?? []).map((o, i) => (
-                        <button onClick={o.onClick} className="me-btn" style={{ cursor: "pointer", flex: "1", minWidth: "92px", padding: "14px 8px", borderRadius: "8px", border: "1px solid", fontFamily: "inherit", fontSize: "12.5px", fontWeight: "600", lineHeight: "1.3" }} key={i}>{o.label}</button>
+                        <button onClick={o.onClick} className="me-btn" style={{ cursor: "pointer", flex: "1", minWidth: "92px", padding: "14px 8px", borderRadius: "8px", border: "1px solid", fontFamily: "inherit", fontSize: "12.5px", fontWeight: "600", lineHeight: "1.3", ...cssToStyle(o.style) }} key={i}>{o.label}</button>
                       ))}
                     </div>
                     <p style={{ margin: "12px 0 0", fontSize: "12.5px", color: "#8D948E", lineHeight: "1.55" }}>Clé en main : maison livrée prête à vivre. Prêt à finir : hors d'air, isolation, cloisons et réseaux posés, finitions à votre charge. Hors d'eau / hors d'air : gros œuvre, charpente, couverture et menuiseries extérieures uniquement.</p>
@@ -140,7 +141,7 @@ export default function Accueil(v: Vals) {
                     <div style={{ fontSize: "12px", fontWeight: "700", letterSpacing: "0.14em", textTransform: "uppercase", color: "#77807A", marginBottom: "14px" }}>Plain-pied ou étage</div>
                     <div style={{ display: "flex", flexWrap: "wrap", gap: "10px" }}>
                       {(nivOptions ?? []).map((o, i) => (
-                        <button onClick={o.onClick} className="me-btn" style={{ cursor: "pointer", flex: "1", minWidth: "140px", padding: "15px 18px", borderRadius: "8px", border: "1px solid", fontFamily: "inherit", fontSize: "14px", fontWeight: "600" }} key={i}>{o.label}</button>
+                        <button onClick={o.onClick} className="me-btn" style={{ cursor: "pointer", flex: "1", minWidth: "140px", padding: "15px 18px", borderRadius: "8px", border: "1px solid", fontFamily: "inherit", fontSize: "14px", fontWeight: "600", ...cssToStyle(o.style) }} key={i}>{o.label}</button>
                       ))}
                     </div>
                   </div>
@@ -149,7 +150,7 @@ export default function Accueil(v: Vals) {
                     <div style={{ fontSize: "12px", fontWeight: "700", letterSpacing: "0.14em", textTransform: "uppercase", color: "#77807A", marginBottom: "14px" }}>Nombre de chambres</div>
                     <div style={{ display: "flex", flexWrap: "wrap", gap: "10px" }}>
                       {(chOptions ?? []).map((o, i) => (
-                        <button onClick={o.onClick} className="me-btn" style={{ cursor: "pointer", flex: "1", minWidth: "64px", padding: "15px 10px", borderRadius: "8px", border: "1px solid", fontFamily: "inherit", fontSize: "15px", fontWeight: "600" }} key={i}>{o.label}</button>
+                        <button onClick={o.onClick} className="me-btn" style={{ cursor: "pointer", flex: "1", minWidth: "64px", padding: "15px 10px", borderRadius: "8px", border: "1px solid", fontFamily: "inherit", fontSize: "15px", fontWeight: "600", ...cssToStyle(o.style) }} key={i}>{o.label}</button>
                       ))}
                     </div>
                   </div>
@@ -158,7 +159,7 @@ export default function Accueil(v: Vals) {
                     <div style={{ fontSize: "12px", fontWeight: "700", letterSpacing: "0.14em", textTransform: "uppercase", color: "#77807A", marginBottom: "14px" }}>Garage</div>
                     <div style={{ display: "flex", flexWrap: "wrap", gap: "10px" }}>
                       {(garOptions ?? []).map((o, i) => (
-                        <button onClick={o.onClick} className="me-btn" style={{ cursor: "pointer", flex: "1", minWidth: "100px", padding: "15px 14px", borderRadius: "8px", border: "1px solid", fontFamily: "inherit", fontSize: "14px", fontWeight: "600" }} key={i}>{o.label}</button>
+                        <button onClick={o.onClick} className="me-btn" style={{ cursor: "pointer", flex: "1", minWidth: "100px", padding: "15px 14px", borderRadius: "8px", border: "1px solid", fontFamily: "inherit", fontSize: "14px", fontWeight: "600", ...cssToStyle(o.style) }} key={i}>{o.label}</button>
                       ))}
                     </div>
                   </div>
@@ -167,7 +168,7 @@ export default function Accueil(v: Vals) {
                     <div style={{ fontSize: "12px", fontWeight: "700", letterSpacing: "0.14em", textTransform: "uppercase", color: "#77807A", marginBottom: "14px" }}>Vide sanitaire</div>
                     <div style={{ display: "flex", flexWrap: "wrap", gap: "10px" }}>
                       {(vsOptions ?? []).map((o, i) => (
-                        <button onClick={o.onClick} className="me-btn" style={{ cursor: "pointer", flex: "1", minWidth: "100px", padding: "15px 14px", borderRadius: "8px", border: "1px solid", fontFamily: "inherit", fontSize: "14px", fontWeight: "600" }} key={i}>{o.label}</button>
+                        <button onClick={o.onClick} className="me-btn" style={{ cursor: "pointer", flex: "1", minWidth: "100px", padding: "15px 14px", borderRadius: "8px", border: "1px solid", fontFamily: "inherit", fontSize: "14px", fontWeight: "600", ...cssToStyle(o.style) }} key={i}>{o.label}</button>
                       ))}
                     </div>
                     <p style={{ margin: "12px 0 0", fontSize: "12.5px", color: "#8D948E", lineHeight: "1.55" }}>Le vide sanitaire isole la maison du sol et facilite le passage des réseaux. Nous le recommandons sur la plupart des terrains de la Plaine de l'Ain.</p>

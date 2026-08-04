@@ -108,7 +108,16 @@ function styleToObject(css) {
 
   const props = out.map((decl) => {
     const i = decl.indexOf(':');
-    if (i === -1) return null;
+
+    // Déclaration entièrement portée par une variable — la maquette écrit
+    // `style="...statique...;{{ o.style }}"` pour composer un style à
+    // l'exécution. On l'étale en fin d'objet, où elle prend le pas sur le
+    // statique, comme le ferait la cascade CSS d'origine.
+    if (i === -1) {
+      const m = /^\s*\{\{\s*([\s\S]*?)\s*\}\}\s*$/.exec(decl);
+      return m ? `...cssToStyle(${m[1]})` : null;
+    }
+
     const prop = decl.slice(0, i).trim();
     const val = decl.slice(i + 1).trim();
     const key = /^[a-zA-Z][a-zA-Z0-9]*$/.test(camel(prop)) ? camel(prop) : JSON.stringify(prop);

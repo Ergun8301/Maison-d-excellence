@@ -1,6 +1,7 @@
 'use client';
 
 import type { Vals } from '@/components/site-vals';
+import { cssToStyle } from '@/lib/css';
 
 /**
  * Terrains — balisage repris tel quel de la maquette Claude Design.
@@ -34,7 +35,7 @@ export default function Terrains(v: Vals) {
 
               <div data-reveal="" style={{ display: "flex", flexWrap: "wrap", gap: "10px", marginBottom: "clamp(28px,3.4vw,40px)" }}>
                 {(terrainChips ?? []).map((chip, i) => (
-                  <button onClick={chip.onClick} className="me-btn" style={{ cursor: "pointer", padding: "10px 20px", borderRadius: "100px", border: "1px solid", fontFamily: "inherit", fontSize: "13px", fontWeight: "600", letterSpacing: "0.01em" }} key={i}>{chip.label}</button>
+                  <button onClick={chip.onClick} className="me-btn" style={{ cursor: "pointer", padding: "10px 20px", borderRadius: "100px", border: "1px solid", fontFamily: "inherit", fontSize: "13px", fontWeight: "600", letterSpacing: "0.01em", ...cssToStyle(chip.style) }} key={i}>{chip.label}</button>
                 ))}
               </div>
 
@@ -43,7 +44,7 @@ export default function Terrains(v: Vals) {
                   <a href={t.href} onClick={t.onOpen} data-reveal="" data-delay={t.delay} className="me-card" style={{ display: "block", textDecoration: "none", borderRadius: "9px", overflow: "hidden", background: "#FFFFFF", border: "1px solid rgba(17,20,18,0.07)", opacity: `${t.cardOpacity}`, color: "#111412" }} key={i}>
                     <div style={{ position: "relative", overflow: "hidden", aspectRatio: "16/11" }}>
                       <img className="me-zoom" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3C/svg%3E" alt={`Terrain à bâtir à ${t.commune} dans l'Ain`} style={{ width: "100%", height: "100%", objectFit: "cover", backgroundColor: "#EDEDE7", backgroundSize: "cover", backgroundPosition: "center", backgroundImage: `${t.bg}` }} />
-                      <span style={{ position: "absolute", top: "13px", left: "13px", padding: "6px 13px", borderRadius: "100px", fontSize: "10.5px", fontWeight: "700", letterSpacing: "0.05em", textTransform: "uppercase" }}>{t.status}</span>
+                      <span style={{ position: "absolute", top: "13px", left: "13px", padding: "6px 13px", borderRadius: "100px", fontSize: "10.5px", fontWeight: "700", letterSpacing: "0.05em", textTransform: "uppercase", ...cssToStyle(t.badgeStyle) }}>{t.status}</span>
                       <span style={{ position: "absolute", top: "13px", right: "13px", padding: "6px 12px", borderRadius: "100px", background: "rgba(11,13,12,0.6)", color: "#F7F7F4", fontSize: "12px", fontWeight: "600", backdropFilter: "blur(4px)" }}>{t.surfaceLabel}</span>
                     </div>
                     <div style={{ padding: "22px 24px 24px" }}>

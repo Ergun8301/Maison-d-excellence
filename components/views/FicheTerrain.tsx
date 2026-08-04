@@ -1,6 +1,7 @@
 'use client';
 
 import type { Vals } from '@/components/site-vals';
+import { cssToStyle } from '@/lib/css';
 
 /**
  * FicheTerrain — balisage repris tel quel de la maquette Claude Design.
@@ -20,7 +21,7 @@ export default function FicheTerrain(v: Vals) {
             <div style={{ position: "relative", width: "100%", maxWidth: "1440px", margin: "0 auto", padding: "clamp(100px,10.5vw,124px) clamp(20px,5vw,64px) clamp(40px,5vw,70px)" }}>
               <a href="#terrains" onClick={goTerrains} className="me-link" style={{ display: "inline-flex", alignItems: "center", gap: "8px", textDecoration: "none", color: "rgba(247,247,244,0.8)", fontSize: "13px", fontWeight: "600", marginBottom: "18px" }} style-hover="color:#9CC4B2;">← Tous les terrains</a>
               <div style={{ display: "flex", alignItems: "center", gap: "12px", flexWrap: "wrap", marginBottom: "16px" }}>
-                <span style={{ padding: "6px 13px", borderRadius: "100px", fontSize: "10.5px", fontWeight: "700", letterSpacing: "0.05em", textTransform: "uppercase" }}>{t.status}</span>
+                <span style={{ padding: "6px 13px", borderRadius: "100px", fontSize: "10.5px", fontWeight: "700", letterSpacing: "0.05em", textTransform: "uppercase", ...cssToStyle(t.badgeStyle) }}>{t.status}</span>
                 <span style={{ color: "#CFE0D6", fontSize: "12px", fontWeight: "600", letterSpacing: "0.22em", textTransform: "uppercase" }}>{t.secteur} · Réf. {t.ref}</span>
               </div>
               <h1 style={{ margin: "0", color: "#FFFFFF", fontFamily: "'Cormorant Garamond',serif", fontWeight: "300", fontSize: "clamp(33px,4.3vw,60px)", lineHeight: "1.02", letterSpacing: "-0.02em" }}>Terrain à bâtir à {t.commune}</h1>
