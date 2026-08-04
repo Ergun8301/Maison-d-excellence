@@ -1,13 +1,13 @@
 import type { Metadata } from 'next';
 import Site from '@/components/Site';
-import View from '@/components/hosts/AccueilHost';
+import View from '@/components/hosts/RealisationsHost';
 import { pageMetadata } from '@/lib/seo';
 
-export const metadata: Metadata = pageMetadata('accueil');
+export const metadata: Metadata = pageMetadata('realisations');
 
 export default function Page() {
   return (
-    <Site page="accueil">
+    <Site page="realisations">
       <View />
     </Site>
   );
