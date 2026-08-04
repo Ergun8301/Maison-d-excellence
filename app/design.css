@@ -127,3 +127,15 @@ a:hover{color:#111412;}
    variante part de la taille réelle et bouge à peine — le mouvement reste
    perceptible, mais on voit la façade entière. */
 @keyframes meKbDoux { 0% { transform: scale(1); } 100% { transform: scale(1.05); } }
+
+/* Position du bouton de menu sur mobile.
+   La barre est une grille de trois colonnes : marque, navigation, groupe de
+   droite. Sous 1120 px la navigation passe en display:none, ce qui supprime sa
+   cellule — le groupe de droite glisse alors dans la colonne du milieu et le
+   bouton se retrouve à 82 px du bord au lieu d'y être collé. Deux colonnes
+   suffisent dès lors que la navigation a disparu. */
+@media (max-width: 1120px) {
+  /* !important : la maquette pose ces colonnes en style en ligne, qui prime
+     sur une feuille de style — la règle voisine .me-desk-nav fait de même. */
+  [data-header] > div { grid-template-columns: 1fr auto !important; }
+}
