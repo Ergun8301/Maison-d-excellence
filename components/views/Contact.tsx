@@ -48,8 +48,8 @@ export default function Contact(v: Vals) {
                   {(submitted) ? (<>
                     <div style={{ padding: "8px 0" }}>
                       <div style={{ width: "54px", height: "54px", borderRadius: "50%", background: "#111412", display: "flex", alignItems: "center", justifyContent: "center", color: "#9CC4B2", fontSize: "25px" }}>✓</div>
-                      <h3 style={{ margin: "20px 0 0", fontFamily: "'Cormorant Garamond',serif", fontWeight: "400", fontSize: "clamp(22px,2.3vw,30px)", color: "#111412", lineHeight: "1.1" }}>Dernière étape dans WhatsApp.</h3>
-                      <p style={{ margin: "10px 0 0", color: "#565B56", fontSize: "14.5px", lineHeight: "1.7" }}>WhatsApp vient de s'ouvrir avec votre demande déjà rédigée. Appuyez sur Envoyer : sans ce dernier geste, elle ne nous parviendra pas. Vous préférez le téléphone ? 04 74 34 66 43.</p>
+                      <h3 style={{ margin: "20px 0 0", fontFamily: "'Cormorant Garamond',serif", fontWeight: "400", fontSize: "clamp(22px,2.3vw,30px)", color: "#111412", lineHeight: "1.1" }}>Merci, votre demande est partie.</h3>
+                      <p style={{ margin: "10px 0 0", color: "#565B56", fontSize: "14.5px", lineHeight: "1.7" }}>Nous vous répondons sous 48 h ouvrées. Pour une demande urgente, appelez le 04 74 34 66 43 ou écrivez-nous sur WhatsApp.</p>
                       <button onClick={resetForm} className="me-btn" style={{ marginTop: "24px", cursor: "pointer", padding: "13px 26px", borderRadius: "100px", background: "transparent", border: "1px solid rgba(17,20,18,0.28)", color: "#111412", fontSize: "13.5px", fontWeight: "600", fontFamily: "inherit" }} style-hover="border-color:#2E5A49;color:#2E5A49;">Envoyer un autre message</button>
                     </div>
                   </>) : null}
@@ -59,27 +59,27 @@ export default function Contact(v: Vals) {
                       <span style={{ fontSize: "11px", fontWeight: "600", letterSpacing: "0.18em", textTransform: "uppercase", color: "#2E5A49", whiteSpace: "nowrap" }}>Réponse 48 h</span>
                     </div>
                     <p style={{ margin: "clamp(16px,1.8vw,22px) 0 0", color: "#77807A", fontSize: "13.5px", lineHeight: "1.7" }}>Décrivez votre projet en quelques lignes. Nous vous rappelons pour fixer un premier rendez-vous au bureau, gratuit et sans engagement.</p>
-                    <form onSubmit={onSubmit} style={{ marginTop: "22px" }}>
+                    <form onSubmit={onSubmit} name="contact" method="POST" data-netlify="true" data-netlify-honeypot="piege" style={{ marginTop: "22px" }}><input type="hidden" name="form-name" value="contact" /><p style={{ display: "none" }}><label>Ne pas remplir : <input name="piege" /></label></p>
                       <div style={{ display: "flex", flexDirection: "column", gap: "18px" }}>
                         <div>
                           <label style={{ display: "block", fontSize: "12px", fontWeight: "600", letterSpacing: "0.08em", textTransform: "uppercase", color: "#77807A", marginBottom: "9px" }}>Nom complet *</label>
-                          <input required={true} type="text" placeholder="Votre nom" style={{ width: "100%", padding: "15px 16px", border: "1px solid rgba(17,20,18,0.16)", borderRadius: "6px", background: "#fff", fontFamily: "inherit", fontSize: "15px", color: "#111412", outline: "none" }} style-focus="border-color:#2E5A49;box-shadow:0 0 0 3px rgba(46,90,73,0.14);" />
+                          <input required={true} name="nom" type="text" placeholder="Votre nom" aria-label="Nom complet" style={{ width: "100%", padding: "15px 16px", border: "1px solid rgba(17,20,18,0.16)", borderRadius: "6px", background: "#fff", fontFamily: "inherit", fontSize: "15px", color: "#111412", outline: "none" }} style-focus="border-color:#2E5A49;box-shadow:0 0 0 3px rgba(46,90,73,0.14);" />
                         </div>
                         <div className="me-g2" style={{ gap: "16px" }}>
                           <div>
                             <label style={{ display: "block", fontSize: "12px", fontWeight: "600", letterSpacing: "0.08em", textTransform: "uppercase", color: "#77807A", marginBottom: "9px" }}>Téléphone *</label>
-                            <input required={true} type="tel" placeholder="06 00 00 00 00" style={{ width: "100%", padding: "15px 16px", border: "1px solid rgba(17,20,18,0.16)", borderRadius: "6px", background: "#fff", fontFamily: "inherit", fontSize: "15px", color: "#111412", outline: "none" }} style-focus="border-color:#2E5A49;box-shadow:0 0 0 3px rgba(46,90,73,0.14);" />
+                            <input required={true} name="telephone" type="tel" placeholder="06 00 00 00 00" aria-label="Téléphone" style={{ width: "100%", padding: "15px 16px", border: "1px solid rgba(17,20,18,0.16)", borderRadius: "6px", background: "#fff", fontFamily: "inherit", fontSize: "15px", color: "#111412", outline: "none" }} style-focus="border-color:#2E5A49;box-shadow:0 0 0 3px rgba(46,90,73,0.14);" />
                           </div>
                           <div>
                             <label style={{ display: "block", fontSize: "12px", fontWeight: "600", letterSpacing: "0.08em", textTransform: "uppercase", color: "#77807A", marginBottom: "9px" }}>Email *</label>
-                            <input required={true} type="email" placeholder="vous@email.fr" style={{ width: "100%", padding: "15px 16px", border: "1px solid rgba(17,20,18,0.16)", borderRadius: "6px", background: "#fff", fontFamily: "inherit", fontSize: "15px", color: "#111412", outline: "none" }} style-focus="border-color:#2E5A49;box-shadow:0 0 0 3px rgba(46,90,73,0.14);" />
+                            <input required={true} name="email" type="email" placeholder="vous@email.fr" aria-label="Email" style={{ width: "100%", padding: "15px 16px", border: "1px solid rgba(17,20,18,0.16)", borderRadius: "6px", background: "#fff", fontFamily: "inherit", fontSize: "15px", color: "#111412", outline: "none" }} style-focus="border-color:#2E5A49;box-shadow:0 0 0 3px rgba(46,90,73,0.14);" />
                           </div>
                         </div>
                         <div className="me-g2" style={{ gap: "16px" }}>
                           <div>
                             <label style={{ display: "block", fontSize: "12px", fontWeight: "600", letterSpacing: "0.08em", textTransform: "uppercase", color: "#77807A", marginBottom: "9px" }}>Nature du projet *</label>
                             <span style={{ position: "relative", display: "block" }}>
-                            <select required={true} className="me-select" value={formNature} onChange={setNature} style={{ width: "100%", padding: "15px 16px", border: "1px solid rgba(17,20,18,0.16)", borderRadius: "6px", backgroundColor: "#fff", fontFamily: "inherit", fontSize: "15px", color: "#111412", outline: "none" }} style-focus="border-color:#2E5A49;box-shadow:0 0 0 3px rgba(46,90,73,0.14);">
+                            <select required={true} name="nature" className="me-select" value={formNature} onChange={setNature} style={{ width: "100%", padding: "15px 16px", border: "1px solid rgba(17,20,18,0.16)", borderRadius: "6px", backgroundColor: "#fff", fontFamily: "inherit", fontSize: "15px", color: "#111412", outline: "none" }} style-focus="border-color:#2E5A49;box-shadow:0 0 0 3px rgba(46,90,73,0.14);">
                               <option value="Construction neuve">Construction neuve</option>
                               <option value="Rénovation">Rénovation</option>
                               <option value="Extension">Extension</option>
@@ -90,12 +90,12 @@ export default function Contact(v: Vals) {
                           </div>
                           <div>
                             <label style={{ display: "block", fontSize: "12px", fontWeight: "600", letterSpacing: "0.08em", textTransform: "uppercase", color: "#77807A", marginBottom: "9px" }}>Surface souhaitée</label>
-                            <input type="text" placeholder="ex. 110 m²" style={{ width: "100%", padding: "15px 16px", border: "1px solid rgba(17,20,18,0.16)", borderRadius: "6px", background: "#fff", fontFamily: "inherit", fontSize: "15px", color: "#111412", outline: "none" }} style-focus="border-color:#2E5A49;box-shadow:0 0 0 3px rgba(46,90,73,0.14);" />
+                            <input type="text" name="surface" placeholder="ex. 110 m²" aria-label="Surface envisagée" style={{ width: "100%", padding: "15px 16px", border: "1px solid rgba(17,20,18,0.16)", borderRadius: "6px", background: "#fff", fontFamily: "inherit", fontSize: "15px", color: "#111412", outline: "none" }} style-focus="border-color:#2E5A49;box-shadow:0 0 0 3px rgba(46,90,73,0.14);" />
                           </div>
                         </div>
                         <div>
                           <label style={{ display: "block", fontSize: "12px", fontWeight: "600", letterSpacing: "0.08em", textTransform: "uppercase", color: "#77807A", marginBottom: "9px" }}>Votre message *</label>
-                          <textarea required={true} rows={5} value={formMessage} onChange={setMessage} placeholder="Terrain, style souhaité, budget approximatif, délais…" style={{ width: "100%", padding: "15px 16px", border: "1px solid rgba(17,20,18,0.16)", borderRadius: "6px", background: "#fff", fontFamily: "inherit", fontSize: "15px", color: "#111412", outline: "none", resize: "vertical", lineHeight: "1.6" }} style-focus="border-color:#2E5A49;box-shadow:0 0 0 3px rgba(46,90,73,0.14);"></textarea>
+                          <textarea required={true} name="message" rows={5} value={formMessage} onChange={setMessage} placeholder="Terrain, style souhaité, budget approximatif, délais…" style={{ width: "100%", padding: "15px 16px", border: "1px solid rgba(17,20,18,0.16)", borderRadius: "6px", background: "#fff", fontFamily: "inherit", fontSize: "15px", color: "#111412", outline: "none", resize: "vertical", lineHeight: "1.6" }} style-focus="border-color:#2E5A49;box-shadow:0 0 0 3px rgba(46,90,73,0.14);"></textarea>
                         </div>
                         <label style={{ display: "flex", gap: "11px", alignItems: "flex-start", fontSize: "12.5px", color: "#77807A", lineHeight: "1.6", cursor: "pointer" }}>
                           <input required={true} type="checkbox" style={{ marginTop: "2px", width: "17px", height: "17px", accentColor: "#2E5A49", flex: "none" }} />

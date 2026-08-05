@@ -9,7 +9,7 @@ import { cssToStyle } from '@/lib/css';
  * sont identiques au fichier de référence dans design/.
  */
 export default function Accueil(v: Vals) {
-  const { avis, avisCount, avisUrl, chOptions, estChambres, estFinition, estGarage, estHigh, estLow, estM2, estNiveau, estNotSent, estSent, estSurface, estVs, finOptions, garOptions, goContact, goEntreprise, goEstimation, goModeles, goRealisations, nivOptions, onEstSubmit, setSurface, vsOptions } = v;
+  const { avis, avisCount, avisUrl, chOptions, estChambres, estFinition, estGarage, estHigh, estLow, estM2, estNiveau, estNotSent, estResume, estSent, estSurface, estVs, finOptions, garOptions, goContact, goEntreprise, goEstimation, goModeles, goRealisations, nivOptions, onEstSubmit, setSurface, vsOptions } = v;
   return (
     <>
       <main data-screen-label="Accueil">
@@ -213,11 +213,11 @@ export default function Accueil(v: Vals) {
                         <h3 style={{ margin: "0", fontFamily: "'Cormorant Garamond',serif", fontWeight: "400", fontSize: "clamp(21px,2.2vw,28px)", color: "#111412", lineHeight: "1.12" }}>Recevoir le détail par mail</h3>
                         <span style={{ fontSize: "11px", fontWeight: "600", letterSpacing: "0.18em", textTransform: "uppercase", color: "#8D948E", whiteSpace: "nowrap" }}>3 champs</span>
                       </div>
-                      <form onSubmit={onEstSubmit} style={{ marginTop: "clamp(18px,2vw,24px)", display: "flex", flexDirection: "column", gap: "12px" }}>
-                        <input required={true} type="text" placeholder="Nom et prénom" aria-label="Nom et prénom" style={{ width: "100%", padding: "15px 16px", border: "1px solid rgba(17,20,18,0.16)", borderRadius: "6px", background: "#fff", fontFamily: "inherit", fontSize: "15px", color: "#111412", outline: "none" }} style-focus="border-color:#2E5A49;box-shadow:0 0 0 3px rgba(46,90,73,0.14);" />
+                      <form onSubmit={onEstSubmit} name="estimation" method="POST" data-netlify="true" data-netlify-honeypot="piege" style={{ marginTop: "clamp(18px,2vw,24px)", display: "flex", flexDirection: "column", gap: "12px" }}><input type="hidden" name="form-name" value="estimation" /><input type="hidden" name="configuration" value={estResume} /><p style={{ display: "none" }}><label>Ne pas remplir : <input name="piege" /></label></p>
+                        <input required={true} name="nom" type="text" placeholder="Nom et prénom" aria-label="Nom et prénom" style={{ width: "100%", padding: "15px 16px", border: "1px solid rgba(17,20,18,0.16)", borderRadius: "6px", background: "#fff", fontFamily: "inherit", fontSize: "15px", color: "#111412", outline: "none" }} style-focus="border-color:#2E5A49;box-shadow:0 0 0 3px rgba(46,90,73,0.14);" />
                         <div className="me-g2" style={{ gap: "12px" }}>
-                          <input required={true} type="tel" placeholder="Téléphone" aria-label="Téléphone" style={{ width: "100%", padding: "15px 16px", border: "1px solid rgba(17,20,18,0.16)", borderRadius: "6px", background: "#fff", fontFamily: "inherit", fontSize: "15px", color: "#111412", outline: "none" }} style-focus="border-color:#2E5A49;box-shadow:0 0 0 3px rgba(46,90,73,0.14);" />
-                          <input required={true} type="email" placeholder="Email" aria-label="Email" style={{ width: "100%", padding: "15px 16px", border: "1px solid rgba(17,20,18,0.16)", borderRadius: "6px", background: "#fff", fontFamily: "inherit", fontSize: "15px", color: "#111412", outline: "none" }} style-focus="border-color:#2E5A49;box-shadow:0 0 0 3px rgba(46,90,73,0.14);" />
+                          <input required={true} name="telephone" type="tel" placeholder="Téléphone" aria-label="Téléphone" style={{ width: "100%", padding: "15px 16px", border: "1px solid rgba(17,20,18,0.16)", borderRadius: "6px", background: "#fff", fontFamily: "inherit", fontSize: "15px", color: "#111412", outline: "none" }} style-focus="border-color:#2E5A49;box-shadow:0 0 0 3px rgba(46,90,73,0.14);" />
+                          <input required={true} name="email" type="email" placeholder="Email" aria-label="Email" style={{ width: "100%", padding: "15px 16px", border: "1px solid rgba(17,20,18,0.16)", borderRadius: "6px", background: "#fff", fontFamily: "inherit", fontSize: "15px", color: "#111412", outline: "none" }} style-focus="border-color:#2E5A49;box-shadow:0 0 0 3px rgba(46,90,73,0.14);" />
                         </div>
                         <label style={{ display: "flex", gap: "11px", alignItems: "flex-start", fontSize: "12.5px", color: "#77807A", lineHeight: "1.55", cursor: "pointer" }}>
                           <input required={true} type="checkbox" style={{ marginTop: "1px", width: "17px", height: "17px", accentColor: "#2E5A49", flex: "none" }} />

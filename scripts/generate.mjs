@@ -161,10 +161,10 @@ const CORRECTIONS = [
   // texte déjà saisi, mais rien ne part tant que le visiteur n'appuie pas sur
   // Envoyer. Annoncer un envoi qui n'a pas eu lieu fait perdre des demandes
   // sans que personne ne s'en aperçoive.
-  ['Merci, votre demande est partie.', 'Dernière étape dans WhatsApp.'],
+  ['Merci, votre demande est partie.', 'Merci, votre demande est partie.'],
   [
     'Nous vous répondons sous 48 h ouvrées. Pour une demande urgente, appelez le 04 74 34 66 43 ou écrivez-nous sur WhatsApp.',
-    'WhatsApp vient de s\'ouvrir avec votre demande déjà rédigée. Appuyez sur Envoyer : sans ce dernier geste, elle ne nous parviendra pas. Vous préférez le téléphone ? 04 74 34 66 43.',
+    'Nous vous répondons sous 48 h ouvrées. Pour une demande urgente, appelez le 04 74 34 66 43 ou écrivez-nous sur WhatsApp.',
   ],
 
   // Liens secondaires du menu mobile. Disposés en ligne avec retour à la
@@ -202,6 +202,61 @@ const CORRECTIONS = [
           <span style="color:rgba(247,247,244,0.82);font-size:12.5px;font-weight:500;letter-spacing:0.02em;white-space:nowrap;">5,0 / 5 — {{ avisCount }} avis Google</span>
         </div>`,
     `<a href="{{ avisUrl }}" target="_blank" rel="noopener noreferrer" data-reveal="" data-delay="560" class="me-hero-avis me-pastille-google" aria-label="Voir les avis Google de Maisons d'Excellence" style="justify-self:start;display:inline-flex;align-items:center;gap:11px;text-decoration:none;background:#FFFFFF;border:1px solid rgba(0,0,0,0.08);border-radius:999px;padding:8px 16px;box-shadow:0 6px 18px -6px rgba(0,0,0,0.35);transition:transform .3s cubic-bezier(.16,.84,.44,1),box-shadow .3s;"><svg width="22" height="22" viewBox="0 0 48 48" aria-hidden="true" style="flex:none;display:block;"><path fill="#4285F4" d="M45.12 24.5c0-1.56-.14-3.06-.4-4.5H24v8.51h11.84c-.51 2.75-2.06 5.08-4.39 6.64v5.52h7.11c4.16-3.83 6.56-9.47 6.56-16.17z"></path><path fill="#34A853" d="M24 46c5.94 0 10.92-1.97 14.56-5.33l-7.11-5.52c-1.97 1.32-4.49 2.1-7.45 2.1-5.73 0-10.58-3.87-12.31-9.07H4.34v5.7C7.96 41.07 15.4 46 24 46z"></path><path fill="#FBBC05" d="M11.69 28.18C11.25 26.86 11 25.45 11 24s.25-2.86.69-4.18v-5.7H4.34C2.85 17.09 2 20.45 2 24s.85 6.91 2.34 9.88l7.35-5.7z"></path><path fill="#EA4335" d="M24 10.75c3.23 0 6.13 1.11 8.41 3.29l6.31-6.31C34.91 4.18 29.93 2 24 2 15.4 2 7.96 6.93 4.34 14.12l7.35 5.7c1.73-5.2 6.58-9.07 12.31-9.07z"></path></svg><span style="display:flex;flex-direction:column;line-height:1.25;"><span style="display:flex;align-items:center;gap:6px;"><span style="font-weight:700;font-size:14px;color:#202124;">5,0</span><span style="color:#FBBC04;font-size:13px;letter-spacing:1px;">★★★★★</span></span><span style="font-size:12px;color:#5F6368;white-space:nowrap;">{{ avisCount }} avis Google</span></span></a>`,
+  ],
+
+  // Déclaration des formulaires auprès de Netlify Forms.
+  //
+  // Netlify les repère en analysant le HTML produit à la construction : il
+  // lui faut un nom, la méthode POST, l'attribut data-netlify et des champs
+  // nommés. Les champs de la maquette n'ont pas d'attribut `name` — on les
+  // nomme ici plutôt que dans les fichiers produits, pour qu'une
+  // régénération depuis la maquette ne perde pas l'ajout.
+  //
+  // Le champ `piege` est un pot de miel : masqué, il n'est rempli que par
+  // les robots, et Netlify écarte alors l'envoi.
+  [
+    '<form onSubmit="{{ onEstSubmit }}" style="margin-top:clamp(18px,2vw,24px);display:flex;flex-direction:column;gap:12px;">',
+    '<form onSubmit="{{ onEstSubmit }}" name="estimation" method="POST" data-netlify="true" data-netlify-honeypot="piege" style="margin-top:clamp(18px,2vw,24px);display:flex;flex-direction:column;gap:12px;"><input type="hidden" name="form-name" value="estimation"><input type="hidden" name="configuration" value="{{ estResume }}"><p style="display:none;"><label>Ne pas remplir : <input name="piege"></label></p>',
+  ],
+  [
+    '<input required="" type="text" placeholder="Nom et prénom" aria-label="Nom et prénom"',
+    '<input required="" name="nom" type="text" placeholder="Nom et prénom" aria-label="Nom et prénom"',
+  ],
+  [
+    '<input required="" type="tel" placeholder="Téléphone" aria-label="Téléphone"',
+    '<input required="" name="telephone" type="tel" placeholder="Téléphone" aria-label="Téléphone"',
+  ],
+  [
+    '<input required="" type="email" placeholder="Email" aria-label="Email"',
+    '<input required="" name="email" type="email" placeholder="Email" aria-label="Email"',
+  ],
+  [
+    '<form onSubmit="{{ onSubmit }}" style="margin-top:22px;">',
+    '<form onSubmit="{{ onSubmit }}" name="contact" method="POST" data-netlify="true" data-netlify-honeypot="piege" style="margin-top:22px;"><input type="hidden" name="form-name" value="contact"><p style="display:none;"><label>Ne pas remplir : <input name="piege"></label></p>',
+  ],
+  [
+    '<input required="" type="text" placeholder="Votre nom"',
+    '<input required="" name="nom" type="text" placeholder="Votre nom" aria-label="Nom complet"',
+  ],
+  [
+    '<input required="" type="tel" placeholder="06 00 00 00 00"',
+    '<input required="" name="telephone" type="tel" placeholder="06 00 00 00 00" aria-label="Téléphone"',
+  ],
+  [
+    '<input required="" type="email" placeholder="vous@email.fr"',
+    '<input required="" name="email" type="email" placeholder="vous@email.fr" aria-label="Email"',
+  ],
+  [
+    '<select required="" class="me-select" value="{{ formNature }}" onChange="{{ setNature }}"',
+    '<select required="" name="nature" class="me-select" value="{{ formNature }}" onChange="{{ setNature }}"',
+  ],
+  [
+    '<input type="text" placeholder="ex. 110 m²"',
+    '<input type="text" name="surface" placeholder="ex. 110 m²" aria-label="Surface envisagée"',
+  ],
+  [
+    '<textarea required="" rows="5" value="{{ formMessage }}" onChange="{{ setMessage }}"',
+    '<textarea required="" name="message" rows="5" value="{{ formMessage }}" onChange="{{ setMessage }}"',
   ],
 
   // Les liens WhatsApp de la maquette ouvraient une conversation vide. On y

@@ -145,6 +145,33 @@ function envoyerVersWhatsApp(entete: string, champs: [string, string][]) {
   window.open(url, '_blank', 'noopener,noreferrer');
 }
 
+/**
+ * Transmet un formulaire à Netlify Forms.
+ *
+ * Le site est exporté en pages statiques : il n'y a pas de serveur à nous.
+ * Netlify intercepte les envois en POST vers n'importe quelle adresse du site
+ * dès lors que le corps porte `form-name`. On envoie donc en arrière-plan,
+ * sans quitter la page, ce qui laisse l'écran de confirmation prévu par la
+ * maquette faire son office.
+ */
+async function envoyerANetlify(form: HTMLFormElement): Promise<boolean> {
+  try {
+    const donnees = new URLSearchParams();
+    new FormData(form).forEach((valeur, cle) => {
+      if (typeof valeur === 'string') donnees.append(cle, valeur);
+    });
+
+    const reponse = await fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: donnees.toString(),
+    });
+    return reponse.ok;
+  } catch {
+    return false;
+  }
+}
+
 const ViewContext = createContext<Vals | null>(null);
 
 export default function Site({
@@ -350,6 +377,10 @@ export default function Site({
       estHigh: fmt(e.high),
       estM2: fmt(e.m2),
       teaserRange: `${fmt(e.low)} € – ${fmt(e.high)} €`,
+      estResume:
+        `${est.surface} m², ${est.niveau.toLowerCase()}, ${est.chambres} chambres, ` +
+        `garage ${est.garage.toLowerCase()}, vide sanitaire ${est.vs.toLowerCase()}, ` +
+        `${est.finition.toLowerCase()} — fourchette annoncée ${fmt(e.low)} € à ${fmt(e.high)} €`,
       setSurface: (ev: ChangeEvent<HTMLInputElement>) =>
         setEstKey('surface', parseInt(ev.target.value, 10)),
       nivOptions: opts(['Plain-pied', 'Avec étage'], 'niveau'),
@@ -361,27 +392,38 @@ export default function Site({
       estNotSent: !estSent,
       onEstSubmit: (ev: FormEvent) => {
         ev.preventDefault();
-        const champs = lireFormulaire(ev.currentTarget as HTMLFormElement);
-        envoyerVersWhatsApp(
-          `Bonjour, voici mon estimation depuis le site :\n` +
-            `${est.surface} m², ${est.niveau.toLowerCase()}, ${est.chambres} chambres, ` +
-            `garage ${est.garage.toLowerCase()}, vide sanitaire ${est.vs.toLowerCase()}, ` +
-            `${est.finition.toLowerCase()}.\n` +
-            `Fourchette annoncée : ${fmt(e.low)} € – ${fmt(e.high)} €.`,
-          champs
-        );
+        const form = ev.currentTarget as HTMLFormElement;
+        const champs = lireFormulaire(form);
         setEstSent(true);
+        // Si l'envoi échoue — réseau coupé, service indisponible — la demande
+        // bascule sur WhatsApp plutôt que d'être perdue en silence.
+        void envoyerANetlify(form).then((ok) => {
+          if (ok) return;
+          envoyerVersWhatsApp(
+            `Bonjour, voici mon estimation depuis le site :\n` +
+              `${est.surface} m², ${est.niveau.toLowerCase()}, ${est.chambres} chambres, ` +
+              `garage ${est.garage.toLowerCase()}, vide sanitaire ${est.vs.toLowerCase()}, ` +
+              `${est.finition.toLowerCase()}.\n` +
+              `Fourchette annoncée : ${fmt(e.low)} € – ${fmt(e.high)} €.`,
+            champs
+          );
+        });
       },
 
       submitted,
       notSubmitted: !submitted,
       onSubmit: (ev: FormEvent) => {
         ev.preventDefault();
-        envoyerVersWhatsApp(
-          'Bonjour, je vous écris depuis le site Maisons d’Excellence.',
-          lireFormulaire(ev.currentTarget as HTMLFormElement)
-        );
+        const form = ev.currentTarget as HTMLFormElement;
+        const champs = lireFormulaire(form);
         setSubmitted(true);
+        void envoyerANetlify(form).then((ok) => {
+          if (ok) return;
+          envoyerVersWhatsApp(
+            'Bonjour, je vous écris depuis le site Maisons d’Excellence.',
+            champs
+          );
+        });
       },
       resetForm: () => {
         setSubmitted(false);

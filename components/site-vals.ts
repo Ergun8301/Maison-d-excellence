@@ -111,6 +111,8 @@ export type Vals = {
   estHigh: string;
   estM2: string;
   teaserRange: string;
+  /** Configuration du simulateur, jointe à l'envoi du formulaire. */
+  estResume: string;
   setSurface: (e: ChangeEvent<HTMLInputElement>) => void;
   nivOptions: Opt[];
   chOptions: Opt[];
