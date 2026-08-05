@@ -184,6 +184,31 @@ a:hover{color:#111412;}
      16 px du bas. Même réserve ici : les deux se retrouvent sur le même axe,
      et la page se termine sur une ligne au lieu de deux. */
   .me-hero-bar { margin-bottom: 16px !important; }
+
+  /* Empilés, le repère et la pastille ne gardaient que 20 px entre eux —
+     trop peu pour deux blocs de cette taille, qui se lisaient comme un seul.
+     La barre traîne par ailleurs une troisième rangée vide, reliquat de la
+     grille à trois colonnes de l'affichage large : elle immobilisait 20 px
+     sous le repère.
+
+     On retire la rangée morte et on verse ses 20 px dans l'écart. La barre
+     garde exactement sa hauteur, donc la pastille ne bouge pas d'un pixel ;
+     seul le repère descend, jusqu'à ce que sa base tombe sur celle du bouton
+     WhatsApp. */
+  .me-hero-bar > span[aria-hidden] { display: none !important; }
+  .me-hero-bar { row-gap: 40px !important; }
+
+  /* L'accroche dorée se mesurait en `2.3vw`, valeur pensée pour les grands
+     écrans : sur téléphone elle retombait sur son plancher de 17 px, à un
+     cheveu de la barre de navigation (16 px) — d'où l'impression qu'elle
+     n'est pas mise en valeur. Pire, sous 370 px de large elle passait à la
+     ligne au milieu du nom.
+
+     Elle suit désormais la largeur de l'écran. Le plafond de 19 px n'est pas
+     arbitraire : le texte occupe 18,9 fois sa taille de police, et au-delà il
+     ne tient plus sur une ligne sur un téléphone courant. */
+  .me-hero [data-hero-col] > div:first-child { font-size: clamp(15px, 4.6vw, 19px) !important; }
+
   .me-pastille-google { justify-self: center !important; padding: 7px 13px; gap: 9px; }
   .me-pastille-google svg { width: 18px; height: 18px; }
   .me-pastille-google .me-note { font-size: 13px; }
