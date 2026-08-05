@@ -11,6 +11,15 @@
 [build.environment]
   NODE_VERSION = "22"
 
+# Formulaires
+#
+# Les deux formulaires du site sont déclarés en HTML : ils portent un nom, la
+# méthode POST, l'attribut data-netlify et des champs nommés. Netlify les repère
+# en analysant les pages produites — mais uniquement pendant la construction, et
+# à condition que la détection des formulaires soit déjà active sur le projet
+# (Project configuration > Forms). L'activer après coup ne suffit pas : il faut
+# reconstruire pour que l'analyse ait lieu.
+
 # Les fichiers portant une empreinte dans leur nom ne changent jamais : on les
 # fait garder un an par les navigateurs. Les pages HTML, elles, doivent être
 # revérifiées à chaque visite, sinon une correction mettrait des jours à
