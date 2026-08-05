@@ -157,3 +157,22 @@ a:hover{color:#111412;}
   transform: translateY(-2px);
   box-shadow: 0 12px 26px -8px rgba(0, 0, 0, 0.45);
 }
+
+/* Bas du hero sur téléphone.
+   La maquette réservait 92 px sous la barre, calculés quand la pastille d'avis
+   y était masquée. Maintenant qu'elle s'affiche, la barre porte deux éléments
+   et cette réserve creuse un vide sous le repère « Découvrir ». On la ramène à
+   la mesure du reste de la page, et la pastille se centre avec le repère
+   plutôt que de rester calée à gauche, seule de son côté.
+
+   La pastille elle-même s'allège : à 22 px de logo et 16 px de rembourrage,
+   elle pesait autant que les boutons d'appel à l'action, avec lesquels elle
+   n'a pas à rivaliser. Elle signe, elle ne sollicite pas. */
+@media (max-width: 760px) {
+  .me-hero-bar { margin-bottom: 30px !important; }
+  .me-pastille-google { justify-self: center !important; padding: 7px 13px; gap: 9px; }
+  .me-pastille-google svg { width: 18px; height: 18px; }
+  .me-pastille-google .me-note { font-size: 13px; }
+  .me-pastille-google .me-etoiles { font-size: 11.5px; }
+  .me-pastille-google .me-nb-avis { font-size: 11px; }
+}
