@@ -60,6 +60,16 @@ const CORRECTIONS = [
   // affiche l'adresse réellement utilisée par le dirigeant.
   ['contact@maisons-dexcellence.fr', 'aykut.atak@sfr.fr'],
 
+  // Le bandeau d'accueil se mesure en `vh`. Sur mobile, cette unité vaut la
+  // hauteur de la fenêtre *barre d'adresse rétractée* : le bandeau dépasse
+  // donc le bas de l'écran tant que la barre est visible, et le repère
+  // « Découvrir » qu'il porte en pied se retrouve hors de portée. La classe
+  // permet de le remesurer en `svh` sous 760 px (voir app/design.css).
+  [
+    '<section style="position:relative;min-height:max(680px,100vh);display:flex;flex-direction:column;">',
+    '<section class="me-hero" style="position:relative;min-height:max(680px,100vh);display:flex;flex-direction:column;">',
+  ],
+
   // Mentions légales : SIRET du siège, date d'immatriculation et code APE
   // relevés sur le Kbis, plus une adresse de contact écrite.
   [

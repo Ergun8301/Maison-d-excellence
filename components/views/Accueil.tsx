@@ -15,7 +15,7 @@ export default function Accueil(v: Vals) {
       <main data-screen-label="Accueil">
 
           {/* HERO */}
-          <section style={{ position: "relative", minHeight: "max(680px,100vh)", display: "flex", flexDirection: "column" }}>
+          <section className="me-hero" style={{ position: "relative", minHeight: "max(680px,100vh)", display: "flex", flexDirection: "column" }}>
             <div style={{ position: "absolute", inset: "0", overflow: "hidden", background: "#111412" }}>
               <div data-slide="0" className="me-slide" role="img" aria-label="Maison individuelle construite dans l'Ain par Maisons d'Excellence" style={{ position: "absolute", inset: "0", opacity: "1", backgroundImage: "url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=2400&q=85')", backgroundSize: "cover", backgroundPosition: "center" }}></div>
               <div data-slide="1" className="me-slide" role="img" aria-label="Maison individuelle construite dans l'Ain par Maisons d'Excellence" style={{ position: "absolute", inset: "0", opacity: "0", backgroundImage: "url('https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=2400&q=85')", backgroundSize: "cover", backgroundPosition: "center" }}></div>
