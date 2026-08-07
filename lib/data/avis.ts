@@ -75,6 +75,16 @@ export const AVIS_RESERVE = [
 /** Nombre d'avis affiché à côté de la note. Relevé sur la fiche Google. */
 export const AVIS_COUNT = 36;
 
-/** Fiche Google de l'établissement, cible de la pastille d'avis. */
+/** Identifiant Google de l'établissement. */
+export const GOOGLE_PLACE_ID = 'ChIJ93t0HkWz9EcRIXzMIN2ZCAE';
+
+/**
+ * Page des avis Google de l'établissement, cible de la pastille.
+ *
+ * L'adresse `maps/place/?q=place_id:…` fonctionne dans un navigateur, mais
+ * l'application Google Maps l'intercepte sur Android et traite `place_id:…`
+ * comme du texte à chercher : elle répond « Aucun résultat ». Celle-ci ouvre
+ * directement la liste des avis, sur mobile comme sur ordinateur.
+ */
 export const GOOGLE_REVIEWS_URL =
-  'https://www.google.com/maps/place/?q=place_id:ChIJ93t0HkWz9EcRIXzMIN2ZCAE';
+  `https://search.google.com/local/reviews?placeid=${GOOGLE_PLACE_ID}`;
