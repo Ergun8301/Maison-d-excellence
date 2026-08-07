@@ -70,6 +70,28 @@ const CORRECTIONS = [
     '<section class="me-hero" style="position:relative;min-height:max(680px,100vh);display:flex;flex-direction:column;">',
   ],
 
+  // Logo de l'entreprise à gauche du nom, dans la barre de navigation.
+  //
+  // Le tracé est celui de public/logo-mono.svg, inséré dans le balisage plutôt
+  // qu'appelé par une balise `img` : `currentColor` ne peut hériter de rien
+  // depuis un fichier externe, et c'est justement de cette teinte héritée
+  // qu'on a besoin. La barre change de fond au défilement — transparente sur
+  // la photo sombre, crème ensuite — et aucune couleur ne tient sur les deux :
+  // le vert du logo tombe à 2,77:1 sur le crème, le vert du site à 1,95:1 sur
+  // la photo. Le logo suit donc la barre, comme le nom le fait déjà (voir
+  // handleScroll dans lib/site-runtime.js). La valeur posée ici est celle du
+  // haut de page, avant tout défilement.
+  [
+    `<a href="#accueil" onClick="{{ goAccueil }}" data-navitem="" style="display:flex;align-items:center;line-height:1;text-decoration:none;color:inherit;justify-self:start;">
+        <span class="me-hdr-mark"`,
+    `<a href="#accueil" onClick="{{ goAccueil }}" data-navitem="" style="display:flex;align-items:center;gap:clamp(9px,1vw,13px);line-height:1;text-decoration:none;color:inherit;justify-self:start;">
+        <svg data-logomark="" viewBox="0 0 100 100" aria-hidden="true" style="flex:none;display:block;width:clamp(21px,2.2vw,28px);height:clamp(21px,2.2vw,28px);color:#55A845;transition:color .4s;">
+          <path d="M 15.94 86 L 15.94 53.25 L 56.66 14 L 84.06 38.72" fill="none" stroke="currentColor" stroke-width="15.99" stroke-linecap="round" stroke-linejoin="round"></path>
+          <rect x="43.98" y="62.43" width="24.79" height="31.1" rx="2.93" fill="currentColor"></rect>
+        </svg>
+        <span class="me-hdr-mark"`,
+  ],
+
   // Mentions légales : SIRET du siège, date d'immatriculation et code APE
   // relevés sur le Kbis, plus une adresse de contact écrite.
   [
