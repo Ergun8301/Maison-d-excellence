@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img" aria-label="Maisons d'Excellence">
+  <title>Maisons d'Excellence</title>
+  <rect width="100" height="100" rx="22" fill="#202123"/>
+  <path d="M 15.94 86 L 15.94 53.25 L 56.66 14 L 84.06 38.72" fill="none" stroke="#55A845" stroke-width="15.99"
+        stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="43.98" y="62.43" width="24.79" height="31.1" rx="2.93" fill="#FEFEFE"/>
+</svg>
