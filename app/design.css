@@ -198,12 +198,11 @@ a:hover{color:#111412;}
   .me-hero-bar > span[aria-hidden] { display: none !important; }
   .me-hero-bar { row-gap: 40px !important; }
 
-  /* Le badge Instagram occupe la même case que cet espaceur, côté large
-     écran. Sur téléphone la barre est trop étroite pour trois rangées sans
-     rouvrir tout le calcul d'espacement ci-dessus, dont chaque pixel est
-     compté ; Instagram reste joignable par le pied de page, visible sur la
-     même visite. */
-  .me-hero-bar > a[aria-label*="Instagram"] { display: none !important; }
+  /* Le badge Instagram accompagne la pastille dans la colonne de gauche. Sur
+     téléphone, la barre passe en une seule colonne centrée dont chaque pixel
+     est compté : on ne lui ajoute pas un second élément. Instagram reste
+     joignable par le pied de page, visible au cours de la même visite. */
+  .me-hero-insta { display: none !important; }
 
   /* L'accroche dorée se mesurait en `2.3vw`, valeur pensée pour les grands
      écrans : sur téléphone elle retombait sur son plancher de 17 px, à un
@@ -216,7 +215,10 @@ a:hover{color:#111412;}
      ne tient plus sur une ligne sur un téléphone courant. */
   .me-hero [data-hero-col] > div:first-child { font-size: clamp(15px, 4.6vw, 19px) !important; }
 
-  .me-pastille-google { justify-self: center !important; padding: 7px 13px; gap: 9px; }
+  /* C'est l'enveloppe qui est fille de la grille, donc elle seule répond à
+     `justify-self` ; la pastille, elle, n'a plus qu'à s'alléger. */
+  .me-hero-social { justify-self: center !important; }
+  .me-pastille-google { padding: 7px 13px; gap: 9px; }
   .me-pastille-google svg { width: 18px; height: 18px; }
   .me-pastille-google .me-note { font-size: 13px; }
   .me-pastille-google .me-etoiles { font-size: 11.5px; }
