@@ -92,6 +92,43 @@ const CORRECTIONS = [
         <span class="me-hdr-mark"`,
   ],
 
+  // Le client n'a qu'un compte Instagram — le lien Facebook du pied de page
+  // était une invention de la maquette, jamais confirmée, et pointait vers
+  // une page qui n'existe pas. On le retire plutôt que de publier un lien
+  // mort ou, pire, une page qui n'est pas la sienne.
+  [
+    '<a href="https://www.facebook.com/maisonsdexcellence" target="_blank" rel="noopener" class="me-soc" aria-label="Maisons d\'Excellence sur Facebook" style="width:40px;height:40px;border-radius:50%;border:1px solid rgba(247,247,244,0.25);color:rgba(247,247,244,0.8);display:inline-flex;align-items:center;justify-content:center;text-decoration:none;">\n              <svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor" aria-hidden="true"><path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.412c0-3.025 1.792-4.696 4.533-4.696 1.313 0 2.686.236 2.686.236v2.971H15.83c-1.491 0-1.956.93-1.956 1.886v2.264h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073"></path></svg>\n            </a>\n            ',
+    '',
+  ],
+
+  // Instagram sur la page d'accueil, pas seulement en pied de page. La
+  // troisième colonne de la barre du hero était un espaceur muet, posé là
+  // pour que la pastille Google (à gauche) et le repère « Découvrir » (au
+  // centre) gardent leurs places dans une grille à trois colonnes. Le badge
+  // Instagram y prend le rôle que cette colonne attendait : symétrique à la
+  // pastille, à l'autre bout de la barre. Sous 760 px, une règle dédiée le
+  // masque : la barre y passe déjà en une seule colonne centrée, mesurée au
+  // pixel près pour la pastille et la flèche seules (voir app/design.css).
+  [
+    '<span aria-hidden="true"></span>',
+    '<a href="https://www.instagram.com/maisonsdexcellence" target="_blank" rel="noopener" data-reveal="" data-delay="580" aria-label="Maisons d\'Excellence sur Instagram" style="justify-self:end;display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;border:1px solid rgba(247,247,244,0.32);color:rgba(247,247,244,0.86);text-decoration:none;transition:transform .3s cubic-bezier(.16,.84,.44,1),border-color .3s,color .3s;" style-hover="border-color:#F7F7F4;color:#F7F7F4;transform:translateY(-2px);"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0m0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06zm0 3.678a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324M12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8m7.846-10.405a1.441 1.441 0 0 1-2.88 0 1.44 1.44 0 0 1 2.88 0"></path></svg></a>',
+  ],
+
+  // Voile du hero. Les valeurs de la maquette correspondaient à un réglage
+  // (46 %) que lib/site-runtime.js ne pose plus au chargement — le composant
+  // applique 22 % (`props.heroVoile`) dès le montage, si bien que la page
+  // s'assombrissait sur ces valeurs-ci avant de s'éclaircir d'un coup sitôt
+  // le script exécuté. On les fait correspondre pour que le premier rendu
+  // soit déjà le bon.
+  [
+    'radial-gradient(120% 92% at 50% 44%,rgba(11,13,12,0.26) 0%,rgba(11,13,12,0.46) 58%,rgba(11,13,12,0.72) 100%)',
+    'radial-gradient(120% 92% at 50% 44%,rgba(11,13,12,0.125) 0%,rgba(11,13,12,0.22) 58%,rgba(11,13,12,0.343) 100%)',
+  ],
+  [
+    'linear-gradient(180deg,rgba(11,13,12,0.58) 0%,rgba(11,13,12,0.12) 26%,rgba(11,13,12,0.18) 60%,rgba(11,13,12,0.62) 100%)',
+    'linear-gradient(180deg,rgba(11,13,12,0.277) 0%,rgba(11,13,12,0.057) 26%,rgba(11,13,12,0.086) 60%,rgba(11,13,12,0.297) 100%)',
+  ],
+
   // Mentions légales : SIRET du siège, date d'immatriculation et code APE
   // relevés sur le Kbis, plus une adresse de contact écrite.
   [

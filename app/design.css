@@ -198,6 +198,13 @@ a:hover{color:#111412;}
   .me-hero-bar > span[aria-hidden] { display: none !important; }
   .me-hero-bar { row-gap: 40px !important; }
 
+  /* Le badge Instagram occupe la même case que cet espaceur, côté large
+     écran. Sur téléphone la barre est trop étroite pour trois rangées sans
+     rouvrir tout le calcul d'espacement ci-dessus, dont chaque pixel est
+     compté ; Instagram reste joignable par le pied de page, visible sur la
+     même visite. */
+  .me-hero-bar > a[aria-label*="Instagram"] { display: none !important; }
+
   /* L'accroche dorée se mesurait en `2.3vw`, valeur pensée pour les grands
      écrans : sur téléphone elle retombait sur son plancher de 17 px, à un
      cheveu de la barre de navigation (16 px) — d'où l'impression qu'elle
@@ -229,4 +236,29 @@ a:hover{color:#111412;}
   .me-hero [data-hero-col] > div:has(.me-hero-eyebrow) { margin-top: 16px !important; }
   .me-hero-cta { margin-top: 16px !important; }
   .me-hero-proofs { margin-top: 12px !important; }
+}
+
+/* Fenêtres courtes d'ordinateur — portable non maximisé, barres d'outils du
+   navigateur, petit écran. Le contenu du bandeau demande environ 785 px de
+   haut ; le bandeau se mesure en `100vh`, un plancher, pas un plafond : sous
+   cette barre, le contenu excède la fenêtre et il grandit à sa place, si
+   bien que la pastille Google et la flèche « Découvrir » ne sont plus dans
+   ce qu'on voit à l'arrivée sur la page — il faut défiler pour les trouver,
+   ce que rien ne suggère de faire.
+
+   Les respirations verticales se resserrent à proportion du vide disponible
+   plutôt qu'à un palier fixe : `vh` les fait réagir en continu à la hauteur
+   réelle, sans à-coup au franchissement d'un seuil. Bornée à 761 px et plus
+   pour ne pas interférer avec le réglage du téléphone, réglé indépendamment
+   ci-dessus. */
+@media (min-width: 761px) and (max-height: 860px) {
+  .me-hero [data-hero-col] {
+    padding-top: clamp(64px, 11vh, 150px) !important;
+    padding-bottom: clamp(10px, 2vh, 32px) !important;
+  }
+  .me-hero [data-hero-col] > span { height: clamp(20px, 4vh, 60px) !important; margin: clamp(6px, 1vh, 18px) 0 clamp(6px, 1vh, 16px) !important; }
+  .me-hero [data-hero-col] > div:has(.me-hero-eyebrow) { margin-top: clamp(14px, 2.4vh, 40px) !important; }
+  .me-hero-cta { margin-top: clamp(14px, 2.2vh, 38px) !important; }
+  .me-hero-proofs { margin-top: clamp(10px, 1.6vh, 30px) !important; }
+  .me-hero-bar { margin-bottom: clamp(10px, 1.6vh, 28px) !important; }
 }

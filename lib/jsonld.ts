@@ -115,7 +115,6 @@ export const ORGANISATION_JSONLD = {
     "bestRating": "5"
   },
   "sameAs": [
-    "https://www.facebook.com/maisonsdexcellence",
     "https://www.instagram.com/maisonsdexcellence"
   ],
   "knowsAbout": [

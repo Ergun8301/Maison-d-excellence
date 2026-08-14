@@ -1,9 +1,9 @@
 // Coordonnées & constantes centralisées — MAISONS D'EXCELLENCE
 // Source : audit du 31/07/2026 + coordonnées fournies par le client.
 //
-// Note de marque : la raison sociale (SIRET) et la page Facebook utilisent
-// « MAISONS d'Excellence » au pluriel. L'ancien site Wix utilisait le
-// singulier. On uniformise sur le pluriel partout.
+// Note de marque : la raison sociale (SIRET) utilise « MAISONS d'Excellence »
+// au pluriel. L'ancien site Wix utilisait le singulier. On uniformise sur le
+// pluriel partout.
 
 export const COMPANY = {
   name: "MAISONS D'EXCELLENCE",
