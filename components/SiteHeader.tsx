@@ -13,7 +13,11 @@ export default function SiteHeader(v: Vals) {
     <>
       <header data-header="" style={{ position: "fixed", top: "0", left: "0", right: "0", zIndex: "120", color: "#F7F7F4", borderBottom: "1px solid transparent", transition: "background .5s,color .4s,box-shadow .5s,border-color .5s" }}>
           <div style={{ maxWidth: "1440px", margin: "0 auto", padding: "clamp(17px,2vw,26px) clamp(20px,5vw,64px)", display: "grid", gridTemplateColumns: "1fr auto 1fr", alignItems: "center", gap: "clamp(18px,3.4vw,48px)" }}>
-            <a href="#accueil" onClick={goAccueil} data-navitem="" style={{ display: "flex", alignItems: "center", lineHeight: "1", textDecoration: "none", color: "inherit", justifySelf: "start" }}>
+            <a href="#accueil" onClick={goAccueil} data-navitem="" style={{ display: "flex", alignItems: "center", gap: "clamp(9px,1vw,13px)", lineHeight: "1", textDecoration: "none", color: "inherit", justifySelf: "start" }}>
+              <svg data-logomark="" viewBox="0 0 100 100" aria-hidden="true" style={{ flex: "none", display: "block", width: "clamp(21px,2.2vw,28px)", height: "clamp(21px,2.2vw,28px)", color: "#55A845", transition: "color .4s" }}>
+                <path d="M 15.94 86 L 15.94 53.25 L 56.66 14 L 84.06 38.72" fill="none" stroke="currentColor" strokeWidth="15.99" strokeLinecap="round" strokeLinejoin="round"></path>
+                <rect x="43.98" y="62.43" width="24.79" height="31.1" rx="2.93" fill="currentColor"></rect>
+              </svg>
               <span className="me-hdr-mark" style={{ fontFamily: "'Cormorant Garamond',serif", fontWeight: "500", fontSize: "clamp(18px,2vw,25px)", letterSpacing: "0.08em", whiteSpace: "nowrap" }}>MAISONS D'EXCELLENCE</span>
             </a>
             <nav className="me-desk-nav" style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "clamp(12px,1.6vw,26px)" }}>

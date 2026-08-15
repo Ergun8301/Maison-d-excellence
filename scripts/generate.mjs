@@ -70,6 +70,52 @@ const CORRECTIONS = [
     '<section class="me-hero" style="position:relative;min-height:max(680px,100vh);display:flex;flex-direction:column;">',
   ],
 
+  // Logo de l'entreprise à gauche du nom, dans la barre de navigation.
+  //
+  // Le tracé est celui de public/logo-mono.svg, inséré dans le balisage plutôt
+  // qu'appelé par une balise `img` : `currentColor` ne peut hériter de rien
+  // depuis un fichier externe, et c'est justement de cette teinte héritée
+  // qu'on a besoin. La barre change de fond au défilement — transparente sur
+  // la photo sombre, crème ensuite — et aucune couleur ne tient sur les deux :
+  // le vert du logo tombe à 2,77:1 sur le crème, le vert du site à 1,95:1 sur
+  // la photo. Le logo suit donc la barre, comme le nom le fait déjà (voir
+  // handleScroll dans lib/site-runtime.js). La valeur posée ici est celle du
+  // haut de page, avant tout défilement.
+  [
+    `<a href="#accueil" onClick="{{ goAccueil }}" data-navitem="" style="display:flex;align-items:center;line-height:1;text-decoration:none;color:inherit;justify-self:start;">
+        <span class="me-hdr-mark"`,
+    `<a href="#accueil" onClick="{{ goAccueil }}" data-navitem="" style="display:flex;align-items:center;gap:clamp(9px,1vw,13px);line-height:1;text-decoration:none;color:inherit;justify-self:start;">
+        <svg data-logomark="" viewBox="0 0 100 100" aria-hidden="true" style="flex:none;display:block;width:clamp(21px,2.2vw,28px);height:clamp(21px,2.2vw,28px);color:#55A845;transition:color .4s;">
+          <path d="M 15.94 86 L 15.94 53.25 L 56.66 14 L 84.06 38.72" fill="none" stroke="currentColor" stroke-width="15.99" stroke-linecap="round" stroke-linejoin="round"></path>
+          <rect x="43.98" y="62.43" width="24.79" height="31.1" rx="2.93" fill="currentColor"></rect>
+        </svg>
+        <span class="me-hdr-mark"`,
+  ],
+
+  // Le client n'a qu'un compte Instagram — le lien Facebook du pied de page
+  // était une invention de la maquette, jamais confirmée, et pointait vers
+  // une page qui n'existe pas. On le retire plutôt que de publier un lien
+  // mort ou, pire, une page qui n'est pas la sienne.
+  [
+    '<a href="https://www.facebook.com/maisonsdexcellence" target="_blank" rel="noopener" class="me-soc" aria-label="Maisons d\'Excellence sur Facebook" style="width:40px;height:40px;border-radius:50%;border:1px solid rgba(247,247,244,0.25);color:rgba(247,247,244,0.8);display:inline-flex;align-items:center;justify-content:center;text-decoration:none;">\n              <svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor" aria-hidden="true"><path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.412c0-3.025 1.792-4.696 4.533-4.696 1.313 0 2.686.236 2.686.236v2.971H15.83c-1.491 0-1.956.93-1.956 1.886v2.264h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073"></path></svg>\n            </a>\n            ',
+    '',
+  ],
+
+  // Voile du hero. Les valeurs de la maquette correspondaient à un réglage
+  // (46 %) que lib/site-runtime.js ne pose plus au chargement — le composant
+  // applique 22 % (`props.heroVoile`) dès le montage, si bien que la page
+  // s'assombrissait sur ces valeurs-ci avant de s'éclaircir d'un coup sitôt
+  // le script exécuté. On les fait correspondre pour que le premier rendu
+  // soit déjà le bon.
+  [
+    'radial-gradient(120% 92% at 50% 44%,rgba(11,13,12,0.26) 0%,rgba(11,13,12,0.46) 58%,rgba(11,13,12,0.72) 100%)',
+    'radial-gradient(120% 92% at 50% 44%,rgba(11,13,12,0.125) 0%,rgba(11,13,12,0.22) 58%,rgba(11,13,12,0.343) 100%)',
+  ],
+  [
+    'linear-gradient(180deg,rgba(11,13,12,0.58) 0%,rgba(11,13,12,0.12) 26%,rgba(11,13,12,0.18) 60%,rgba(11,13,12,0.62) 100%)',
+    'linear-gradient(180deg,rgba(11,13,12,0.277) 0%,rgba(11,13,12,0.057) 26%,rgba(11,13,12,0.086) 60%,rgba(11,13,12,0.297) 100%)',
+  ],
+
   // Mentions légales : SIRET du siège, date d'immatriculation et code APE
   // relevés sur le Kbis, plus une adresse de contact écrite.
   [
@@ -211,7 +257,7 @@ const CORRECTIONS = [
           <span style="color:#D3B27A;font-size:12.5px;letter-spacing:0.16em;">★★★★★</span>
           <span style="color:rgba(247,247,244,0.82);font-size:12.5px;font-weight:500;letter-spacing:0.02em;white-space:nowrap;">5,0 / 5 — {{ avisCount }} avis Google</span>
         </div>`,
-    `<a href="{{ avisUrl }}" target="_blank" rel="noopener noreferrer" data-reveal="" data-delay="560" class="me-hero-avis me-pastille-google" aria-label="Voir les avis Google de Maisons d'Excellence" style="justify-self:start;display:inline-flex;align-items:center;gap:11px;text-decoration:none;background:#FFFFFF;border:1px solid rgba(0,0,0,0.08);border-radius:999px;padding:8px 16px;box-shadow:0 6px 18px -6px rgba(0,0,0,0.35);transition:transform .3s cubic-bezier(.16,.84,.44,1),box-shadow .3s;"><svg width="22" height="22" viewBox="0 0 48 48" aria-hidden="true" style="flex:none;display:block;"><path fill="#4285F4" d="M45.12 24.5c0-1.56-.14-3.06-.4-4.5H24v8.51h11.84c-.51 2.75-2.06 5.08-4.39 6.64v5.52h7.11c4.16-3.83 6.56-9.47 6.56-16.17z"></path><path fill="#34A853" d="M24 46c5.94 0 10.92-1.97 14.56-5.33l-7.11-5.52c-1.97 1.32-4.49 2.1-7.45 2.1-5.73 0-10.58-3.87-12.31-9.07H4.34v5.7C7.96 41.07 15.4 46 24 46z"></path><path fill="#FBBC05" d="M11.69 28.18C11.25 26.86 11 25.45 11 24s.25-2.86.69-4.18v-5.7H4.34C2.85 17.09 2 20.45 2 24s.85 6.91 2.34 9.88l7.35-5.7z"></path><path fill="#EA4335" d="M24 10.75c3.23 0 6.13 1.11 8.41 3.29l6.31-6.31C34.91 4.18 29.93 2 24 2 15.4 2 7.96 6.93 4.34 14.12l7.35 5.7c1.73-5.2 6.58-9.07 12.31-9.07z"></path></svg><span style="display:flex;flex-direction:column;line-height:1.25;"><span style="display:flex;align-items:center;gap:6px;"><span class="me-note" style="font-weight:700;font-size:14px;color:#202124;">5,0</span><span class="me-etoiles" style="color:#FBBC04;font-size:13px;letter-spacing:1px;">★★★★★</span></span><span class="me-nb-avis" style="font-size:12px;color:#5F6368;white-space:nowrap;">{{ avisCount }} avis Google</span></span></a>`,
+    `<div class="me-hero-social" style="justify-self:start;display:inline-flex;align-items:center;gap:14px;"><a href="{{ avisUrl }}" target="_blank" rel="noopener noreferrer" data-reveal="" data-delay="560" class="me-hero-avis me-pastille-google" aria-label="Voir les avis Google de Maisons d'Excellence" style="flex:none;display:inline-flex;align-items:center;gap:11px;text-decoration:none;background:#FFFFFF;border:1px solid rgba(0,0,0,0.08);border-radius:999px;padding:8px 16px;box-shadow:0 6px 18px -6px rgba(0,0,0,0.35);transition:transform .3s cubic-bezier(.16,.84,.44,1),box-shadow .3s;"><svg width="22" height="22" viewBox="0 0 48 48" aria-hidden="true" style="flex:none;display:block;"><path fill="#4285F4" d="M45.12 24.5c0-1.56-.14-3.06-.4-4.5H24v8.51h11.84c-.51 2.75-2.06 5.08-4.39 6.64v5.52h7.11c4.16-3.83 6.56-9.47 6.56-16.17z"></path><path fill="#34A853" d="M24 46c5.94 0 10.92-1.97 14.56-5.33l-7.11-5.52c-1.97 1.32-4.49 2.1-7.45 2.1-5.73 0-10.58-3.87-12.31-9.07H4.34v5.7C7.96 41.07 15.4 46 24 46z"></path><path fill="#FBBC05" d="M11.69 28.18C11.25 26.86 11 25.45 11 24s.25-2.86.69-4.18v-5.7H4.34C2.85 17.09 2 20.45 2 24s.85 6.91 2.34 9.88l7.35-5.7z"></path><path fill="#EA4335" d="M24 10.75c3.23 0 6.13 1.11 8.41 3.29l6.31-6.31C34.91 4.18 29.93 2 24 2 15.4 2 7.96 6.93 4.34 14.12l7.35 5.7c1.73-5.2 6.58-9.07 12.31-9.07z"></path></svg><span style="display:flex;flex-direction:column;line-height:1.25;"><span style="display:flex;align-items:center;gap:6px;"><span class="me-note" style="font-weight:700;font-size:14px;color:#202124;">5,0</span><span class="me-etoiles" style="color:#FBBC04;font-size:13px;letter-spacing:1px;">★★★★★</span></span><span class="me-nb-avis" style="font-size:12px;color:#5F6368;white-space:nowrap;">{{ avisCount }} avis Google</span></span></a><a href="https://www.instagram.com/maisonsdexcellence" target="_blank" rel="noopener" data-reveal="" data-delay="580" class="me-hero-insta" aria-label="Maisons d'Excellence sur Instagram" style="flex:none;display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:50%;border:1px solid rgba(247,247,244,0.32);color:rgba(247,247,244,0.86);text-decoration:none;transition:transform .3s cubic-bezier(.16,.84,.44,1),border-color .3s,color .3s;" style-hover="border-color:#F7F7F4;color:#F7F7F4;transform:translateY(-2px);"><svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor" aria-hidden="true"><path d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0m0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06zm0 3.678a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324M12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8m7.846-10.405a1.441 1.441 0 0 1-2.88 0 1.44 1.44 0 0 1 2.88 0"></path></svg></a></div>`,
   ],
 
   // Déclaration des formulaires auprès de Netlify Forms.
