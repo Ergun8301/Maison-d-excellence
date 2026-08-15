@@ -9,9 +9,8 @@
 // confirmée. Un constructeur CCMI est tenu par ce qu'il affiche.
 //
 // Les fiches encore illustrées par une photo d'Unsplash gardent le texte de la
-// maquette ; elles attendent leurs vraies photos. Il reste les deux fiches de
-// plain-pied Pérouges et Chalamont : toutes les photos fournies à ce jour
-// montrent des maisons à étage.
+// maquette ; elles attendent leurs vraies photos. Il n'en reste qu'une :
+// Chalamont, plain-pied.
 
 export const MODELES = [
   {
@@ -25,8 +24,8 @@ export const MODELES = [
     "name": "Pérouges",
     "fam": "pp",
     "niveau": "Plain-pied",
-    "desc": "Un L ouvert plein sud qui abrite la terrasse des vents dominants. Suite parentale d'un côté, chambres de l'autre.",
-    "photo": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1400&q=80"
+    "desc": "Volumes bas à toiture terrasse et garage intégré au corps de la maison. Enduit clair, menuiseries anthracite, entrée abritée en retrait.",
+    "photo": "/photos/maison-plain-pied-toit-plat-garage.webp"
   },
   {
     "name": "Chalamont",
