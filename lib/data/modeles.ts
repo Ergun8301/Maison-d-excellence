@@ -9,7 +9,9 @@
 // confirmée. Un constructeur CCMI est tenu par ce qu'il affiche.
 //
 // Les fiches encore illustrées par une photo d'Unsplash gardent le texte de la
-// maquette ; elles attendent leurs vraies photos.
+// maquette ; elles attendent leurs vraies photos. Il reste les deux fiches de
+// plain-pied Pérouges et Chalamont : toutes les photos fournies à ce jour
+// montrent des maisons à étage.
 
 export const MODELES = [
   {
@@ -44,8 +46,8 @@ export const MODELES = [
     "name": "Bugey",
     "fam": "et",
     "niveau": "Avec étage",
-    "desc": "Séjour en double hauteur, étage complet avec salle d'eau indépendante, double garage accolé.",
-    "photo": "https://images.unsplash.com/photo-1568605114967-8130f3a36994?auto=format&fit=crop&w=1400&q=80"
+    "desc": "Enduit clair et parement pierre, double garage logé sous l'étage. Toiture ardoise à quatre pans, entrée en retrait sous auvent.",
+    "photo": "/photos/maison-etage-enduit-pierre-double-garage.webp"
   },
   {
     "name": "Meximieux",
@@ -65,7 +67,7 @@ export const MODELES = [
     "name": "Ambronay",
     "fam": "ec",
     "niveau": "Avec étage",
-    "desc": "Conception bioclimatique : casquettes solaires dimensionnées, inertie maîtrisée, pompe à chaleur et poêle bois en appoint.",
-    "photo": "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&w=1400&q=80"
+    "desc": "Enduit anthracite et toiture quatre pans, garage intégré au volume principal. Implantation reculée qui dégage le terrain devant la maison.",
+    "photo": "/photos/maison-etage-anthracite-toiture-quatre-pans.webp"
   }
 ] as const;
