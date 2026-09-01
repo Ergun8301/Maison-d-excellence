@@ -1,6 +1,7 @@
 'use client';
 
 import type { Vals } from '@/components/site-vals';
+import { rendreTexte } from '@/lib/texte';
 
 /**
  * Article — balisage repris tel quel de la maquette Claude Design.
@@ -34,7 +35,7 @@ export default function Article(v: Vals) {
               {(artBody ?? []).map((b, i) => (
                 <div data-reveal="" style={{ marginBottom: "clamp(30px,3.4vw,44px)" }} key={i}>
                   <h2 style={{ margin: "0", fontFamily: "'Cormorant Garamond',serif", fontWeight: "400", fontSize: "clamp(24px,2.8vw,36px)", lineHeight: "1.14", color: "#111412" }}>{b.h}</h2>
-                  <p style={{ margin: "14px 0 0", color: "#4a443c", fontSize: "clamp(16px,1.5vw,18px)", lineHeight: "1.85", textWrap: "pretty" }}>{b.p}</p>
+                  <p style={{ margin: "14px 0 0", color: "#4a443c", fontSize: "clamp(16px,1.5vw,18px)", lineHeight: "1.85", textWrap: "pretty" }}>{rendreTexte(b.p)}</p>
                 </div>
               ))}
 

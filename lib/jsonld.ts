@@ -17,6 +17,14 @@ export const ORGANISATION_JSONLD = {
   "alternateName": "Maisons d'Excellence Constructeurs de Maisons Individuelles",
   "description": "Constructeur de maisons individuelles sur-mesure dans l'Ain : maison en brique, siporex, vide sanitaire, charpente traditionnelle, conformité RE2020. CCMI et garanties complètes.",
   "url": "https://www.maisons-dexcellence.fr/",
+  // Le logo alimente le panneau de connaissances de Google ; la photo sert
+  // d'illustration de l'établissement. Adresses absolues obligatoires : un
+  // chemin relatif n'a pas de sens pour un moteur qui lit le balisage seul.
+  "logo": "https://www.maisons-dexcellence.fr/logo-fond.svg",
+  "image": [
+    "https://www.maisons-dexcellence.fr/photos/bureau-meximieux-facade.webp",
+    "https://www.maisons-dexcellence.fr/photos/devanture-rue.webp"
+  ],
   "telephone": "+33474346643",
   "email": "aykut.atak@sfr.fr",
   "priceRange": "€€€",
@@ -114,8 +122,11 @@ export const ORGANISATION_JSONLD = {
     "reviewCount": "36",
     "bestRating": "5"
   },
+  // `sameAs` relie l'entité décrite ici à ses profils publics. La fiche
+  // Google est celle qui porte les 36 avis repris plus haut.
   "sameAs": [
-    "https://www.instagram.com/maisonsdexcellence"
+    "https://www.instagram.com/maisonsdexcellence",
+    "https://search.google.com/local/reviews?placeid=ChIJ93t0HkWz9EcRIXzMIN2ZCAE"
   ],
   "knowsAbout": [
     "construction de maison individuelle",

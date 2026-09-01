@@ -30,12 +30,21 @@ const VIEWS = [
 ];
 
 /** Identifiants de premier niveau consommés par un bloc de gabarit. */
+/**
+ * Fonctions importées par le gabarit, et non fournies par la surface de
+ * données : les déstructurer depuis `v` masquerait l'import et renverrait
+ * `undefined` à l'exécution.
+ */
+const AIDES = new Set(['cssToStyle', 'rendreTexte']);
+
 function bindings(block) {
   const loopVars = new Set([...block.matchAll(/<sc-for[^>]*\bas="([^"]+)"/g)].map((m) => m[1]));
   const used = new Set();
   for (const m of block.matchAll(/\{\{\s*([A-Za-z_$][\w$]*)/g)) {
     const id = m[1];
-    if (!loopVars.has(id) && id !== 'true' && id !== 'false' && id !== 'null') used.add(id);
+    if (!loopVars.has(id) && !AIDES.has(id) && id !== 'true' && id !== 'false' && id !== 'null') {
+      used.add(id);
+    }
   }
   return [...used].sort();
 }
@@ -68,6 +77,154 @@ const CORRECTIONS = [
   [
     '<section style="position:relative;min-height:max(680px,100vh);display:flex;flex-direction:column;">',
     '<section class="me-hero" style="position:relative;min-height:max(680px,100vh);display:flex;flex-direction:column;">',
+  ],
+
+  // Articles : les liens internes écrits dans le corps deviennent cliquables.
+  //
+  // Les corps d'articles sont du texte brut, ce qui interdisait tout lien au
+  // fil de la lecture. `rendreTexte` y active la seule notation admise,
+  // `[texte](/chemin)`, sans interpréter quoi que ce soit d'autre.
+  [
+    '<p style="margin:14px 0 0;color:#4a443c;font-size:clamp(16px,1.5vw,18px);line-height:1.85;text-wrap:pretty;">{{ b.p }}</p>',
+    '<p style="margin:14px 0 0;color:#4a443c;font-size:clamp(16px,1.5vw,18px);line-height:1.85;text-wrap:pretty;">{{ rendreTexte(b.p) }}</p>',
+  ],
+
+  // Investisseurs : les deux « exemples chiffrés » sont retirés.
+  //
+  // La maquette affichait deux opérations complètes — terrain de 700 m² à
+  // 128 000 €, terrain de 980 m² à 196 000 € sur la Côtière, coûts de
+  // construction, loyers et rendements — présentées comme constatées dans le
+  // secteur. Aucun de ces chiffres ne repose sur une opération réelle. Même
+  // annoncés comme des ordres de grandeur, ils engagent un constructeur
+  // soumis au CCMI. La section garde son propos et son appel à l'action, sans
+  // avancer de montant.
+  [
+    '<h2 data-reveal="" style="margin:clamp(56px,7vw,96px) 0 0;font-family:\'Cormorant Garamond\',serif;font-weight:300;font-size:clamp(30px,4vw,52px);line-height:1.05;color:#111412;">Deux exemples chiffrés.</h2>\n' +
+      '        <p data-reveal="" data-delay="80" style="margin:14px 0 0;color:#77807A;font-size:14.5px;line-height:1.65;max-width:70ch;">Ordres de grandeur constatés dans notre secteur en 2026, hors frais de notaire et hors fiscalité. Chaque opération est rechiffrée sur la parcelle réelle et le PLU applicable.</p>\n' +
+      '        <div class="me-g2" style="gap:clamp(16px,2vw,26px);margin-top:clamp(28px,3.4vw,44px);">\n' +
+      '          <div data-reveal="" class="me-card" style="background:#111412;color:#F7F7F4;border-radius:12px;padding:clamp(28px,3.4vw,44px);">\n' +
+      '            <div style="font-size:11.5px;letter-spacing:0.22em;text-transform:uppercase;color:#9CC4B2;">Exemple A · Plaine de l\'Ain</div>\n' +
+      '            <h3 style="margin:14px 0 0;font-family:\'Cormorant Garamond\',serif;font-weight:300;font-size:clamp(26px,3vw,38px);line-height:1.08;">Jumelé, 2 × 85 m², 3 chambres</h3>\n' +
+      '            <div style="margin-top:26px;display:flex;flex-direction:column;gap:12px;font-size:14.5px;">\n' +
+      '              <span style="display:flex;justify-content:space-between;gap:16px;padding-bottom:12px;border-bottom:1px solid rgba(247,247,244,0.12);"><span style="color:rgba(247,247,244,0.66);">Terrain (700 m²)</span><span style="font-weight:600;">128 000 €</span></span>\n' +
+      '              <span style="display:flex;justify-content:space-between;gap:16px;padding-bottom:12px;border-bottom:1px solid rgba(247,247,244,0.12);"><span style="color:rgba(247,247,244,0.66);">Construction (170 m² au total)</span><span style="font-weight:600;">248 000 €</span></span>\n' +
+      '              <span style="display:flex;justify-content:space-between;gap:16px;padding-bottom:12px;border-bottom:1px solid rgba(247,247,244,0.12);"><span style="color:rgba(247,247,244,0.66);">Frais annexes estimés</span><span style="font-weight:600;">34 000 €</span></span>\n' +
+      '              <span style="display:flex;justify-content:space-between;gap:16px;padding-bottom:12px;border-bottom:1px solid rgba(247,247,244,0.12);"><span style="color:rgba(247,247,244,0.66);">Coût total de l\'opération</span><span style="font-weight:700;color:#CFE0D6;">410 000 €</span></span>\n' +
+      '              <span style="display:flex;justify-content:space-between;gap:16px;padding-bottom:12px;border-bottom:1px solid rgba(247,247,244,0.12);"><span style="color:rgba(247,247,244,0.66);">Loyers mensuels (2 × 990 €)</span><span style="font-weight:600;">1 980 €</span></span>\n' +
+      '              <span style="display:flex;justify-content:space-between;gap:16px;"><span style="color:rgba(247,247,244,0.66);">Rendement brut</span><span style="font-family:\'Cormorant Garamond\',serif;font-size:30px;line-height:1;color:#9CC4B2;">5,8 %</span></span>\n' +
+      '            </div>\n' +
+      '          </div>\n' +
+      '          <div data-reveal="" data-delay="120" class="me-card" style="background:#FFFFFF;border:1px solid rgba(17,20,18,0.08);border-radius:12px;padding:clamp(28px,3.4vw,44px);">\n' +
+      '            <div style="font-size:11.5px;letter-spacing:0.22em;text-transform:uppercase;color:#2E5A49;">Exemple B · Côtière</div>\n' +
+      '            <h3 style="margin:14px 0 0;font-family:\'Cormorant Garamond\',serif;font-weight:300;font-size:clamp(26px,3vw,38px);line-height:1.08;color:#111412;">3 mitoyennes, 3 × 78 m², 2 chambres</h3>\n' +
+      '            <div style="margin-top:26px;display:flex;flex-direction:column;gap:12px;font-size:14.5px;color:#333834;">\n' +
+      '              <span style="display:flex;justify-content:space-between;gap:16px;padding-bottom:12px;border-bottom:1px solid rgba(17,20,18,0.1);"><span style="color:#77807A;">Terrain (980 m²)</span><span style="font-weight:600;">196 000 €</span></span>\n' +
+      '              <span style="display:flex;justify-content:space-between;gap:16px;padding-bottom:12px;border-bottom:1px solid rgba(17,20,18,0.1);"><span style="color:#77807A;">Construction (234 m² au total)</span><span style="font-weight:600;">316 000 €</span></span>\n' +
+      '              <span style="display:flex;justify-content:space-between;gap:16px;padding-bottom:12px;border-bottom:1px solid rgba(17,20,18,0.1);"><span style="color:#77807A;">Frais annexes estimés</span><span style="font-weight:600;">48 000 €</span></span>\n' +
+      '              <span style="display:flex;justify-content:space-between;gap:16px;padding-bottom:12px;border-bottom:1px solid rgba(17,20,18,0.1);"><span style="color:#77807A;">Coût total de l\'opération</span><span style="font-weight:700;color:#111412;">560 000 €</span></span>\n' +
+      '              <span style="display:flex;justify-content:space-between;gap:16px;padding-bottom:12px;border-bottom:1px solid rgba(17,20,18,0.1);"><span style="color:#77807A;">Loyers mensuels (3 × 880 €)</span><span style="font-weight:600;">2 640 €</span></span>\n' +
+      '              <span style="display:flex;justify-content:space-between;gap:16px;"><span style="color:#77807A;">Rendement brut</span><span style="font-family:\'Cormorant Garamond\',serif;font-size:30px;line-height:1;color:#2E5A49;">5,7 %</span></span>\n' +
+      '            </div>\n' +
+      '          </div>\n' +
+      '        </div>',
+    '<h2 data-reveal="" style="margin:0;font-family:\'Cormorant Garamond\',serif;font-weight:300;font-size:clamp(30px,4vw,52px);line-height:1.05;color:#111412;">Chiffré sur votre parcelle, pas sur un exemple.</h2>\n' +
+      '        <p data-reveal="" data-delay="80" style="margin:14px 0 0;color:#77807A;font-size:14.5px;line-height:1.65;max-width:70ch;">Le coût au mètre carré, le loyer de marché et le rendement dépendent de la parcelle, du PLU applicable et de la commune : un ordre de grandeur affiché ici n\'aurait de valeur pour personne. Nous chiffrons l\'opération sur votre terrain, avec les règles d\'urbanisme qui s\'y appliquent réellement.</p>\n' +
+      '        <a href="#contact" onClick="{{ goContact }}" data-reveal="" data-delay="140" class="me-btn" style="margin-top:clamp(24px,3vw,36px);text-decoration:none;display:inline-flex;align-items:center;gap:10px;padding:16px 30px;border-radius:100px;background:#2E5A49;color:#fff;font-size:14px;font-weight:600;" style-hover="background:#3B7059;transform:translateY(-3px);">Faire chiffrer mon opération →</a>',
+  ],
+
+  // Bandeau des terrains : la phrase d'origine annonçait « voici les parcelles
+  // que nous suivons », ce qui promet une liste juste en dessous. Elle est
+  // reformulée pour rester vraie que le portefeuille soit garni ou vide.
+  ['Nous ne vendons pas de terrains : nous construisons dessus. Voici les parcelles que nous suivons actuellement dans le secteur, dont nous avons vérifié la faisabilité pour un projet de maison.',
+   'Nous ne vendons pas de terrains : nous construisons dessus. Nous suivons les parcelles qui se libèrent dans le secteur et vérifions leur faisabilité pour votre projet de maison.'],
+
+  // Terrains : la page bascule sur un état vide tant que rien n'est publié.
+  //
+  // Le balisage d'origine n'est pas modifié — il est placé sous condition,
+  // tel quel, et repart dès que lib/data/terrains.ts est rempli. La branche
+  // complémentaire remplace la liste, ses filtres, son compteur et la mention
+  // légale de commercialisation, qui ne veulent rien dire sans parcelle.
+  [
+    '<div style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:24px;margin-bottom:clamp(28px,3.4vw,40px);">\n' +
+      '          <div>\n' +
+      '            <h2 data-reveal="" style="margin:0;font-family:\'Cormorant Garamond\',serif;font-weight:300;font-size:clamp(28px,3.8vw,50px);line-height:1.04;color:#111412;">Parcelles suivies en ce moment.</h2>\n' +
+      '            <p data-reveal="" data-delay="80" style="margin:14px 0 0;color:#77807A;font-size:14.5px;line-height:1.65;max-width:60ch;">Fiches tenues à jour manuellement. Une parcelle qui vous intéresse ? Nous étudions gratuitement si votre projet de maison y entre.</p>\n' +
+      '          </div>\n' +
+      '          <div data-reveal="" data-delay="160" style="font-size:14px;color:#77807A;"><span style="font-family:\'Cormorant Garamond\',serif;font-size:30px;color:#111412;vertical-align:-3px;">{{ terrainCount }}</span> terrain(s) affiché(s)</div>\n' +
+      '        </div>\n' +
+      '\n' +
+      '        <div data-reveal="" style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:clamp(28px,3.4vw,40px);">\n' +
+      '          <sc-for list="{{ terrainChips }}" as="chip" hint-placeholder-count="4">\n' +
+      '            <button onClick="{{ chip.onClick }}" class="me-btn" style="cursor:pointer;padding:10px 20px;border-radius:100px;border:1px solid;font-family:inherit;font-size:13px;font-weight:600;letter-spacing:0.01em;{{ chip.style }}">{{ chip.label }}</button>\n' +
+      '          </sc-for>\n' +
+      '        </div>\n' +
+      '\n' +
+      '        <div class="me-g3" style="gap:clamp(16px,1.8vw,26px);">\n' +
+      '          <sc-for list="{{ terrains }}" as="t">\n' +
+      '            <a href="{{ t.href }}" onClick="{{ t.onOpen }}" data-reveal="" data-delay="{{ t.delay }}" class="me-card" style="display:block;text-decoration:none;border-radius:9px;overflow:hidden;background:#FFFFFF;border:1px solid rgba(17,20,18,0.07);opacity:{{ t.cardOpacity }};color:#111412;">\n' +
+      '              <div style="position:relative;overflow:hidden;aspect-ratio:16/11;">\n' +
+      '                <img class="me-zoom" src="data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\'%3E%3C/svg%3E" alt="Terrain à bâtir à {{ t.commune }} dans l\'Ain" style="width:100%;height:100%;object-fit:cover;background-color:#EDEDE7;background-size:cover;background-position:center;background-image:{{ t.bg }};">\n' +
+      '                <span style="position:absolute;top:13px;left:13px;padding:6px 13px;border-radius:100px;font-size:10.5px;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;{{ t.badgeStyle }}">{{ t.status }}</span>\n' +
+      '                <span style="position:absolute;top:13px;right:13px;padding:6px 12px;border-radius:100px;background:rgba(11,13,12,0.6);color:#F7F7F4;font-size:12px;font-weight:600;backdrop-filter:blur(4px);">{{ t.surfaceLabel }}</span>\n' +
+      '              </div>\n' +
+      '              <div style="padding:22px 24px 24px;">\n' +
+      '                <h3 style="margin:0;font-family:\'Cormorant Garamond\',serif;font-weight:500;font-size:26px;color:#111412;line-height:1;">{{ t.commune }}</h3>\n' +
+      '                <div style="margin-top:6px;font-size:11.5px;letter-spacing:0.12em;text-transform:uppercase;color:#2E5A49;">{{ t.secteur }} · Réf. {{ t.ref }}</div>\n' +
+      '                <p style="margin:14px 0 0;color:#77807A;font-size:13.5px;line-height:1.55;">{{ t.note }}</p>\n' +
+      '                <div style="margin-top:18px;padding-top:16px;border-top:1px solid rgba(17,20,18,0.1);display:flex;align-items:center;justify-content:space-between;gap:12px;">\n' +
+      '                  <span><span style="display:block;font-size:11px;color:#8D948E;">Terrain à partir de</span><span style="display:block;font-family:\'Cormorant Garamond\',serif;font-size:25px;color:#111412;line-height:1.1;">{{ t.priceLabel }}</span></span>\n' +
+      '                  <span style="padding:11px 18px;border-radius:100px;background:#111412;color:#F7F7F4;font-size:12.5px;font-weight:600;white-space:nowrap;">Voir la fiche →</span>\n' +
+      '                </div>\n' +
+      '              </div>\n' +
+      '            </a>\n' +
+      '          </sc-for>\n' +
+      '        </div>\n' +
+      '\n' +
+      '        <p data-reveal="" style="margin:clamp(34px,4vw,48px) 0 0;font-size:13px;color:#8D948E;line-height:1.6;max-width:78ch;">Informations communiquées à titre indicatif, hors frais de notaire et sous réserve de disponibilité. Les terrains sont commercialisés par leurs propriétaires ou par notre partenaire foncier : vous restez libre de votre constructeur.</p>',
+    '<sc-if value="{{ hasTerrains }}"><div style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:24px;margin-bottom:clamp(28px,3.4vw,40px);">\n' +
+      '          <div>\n' +
+      '            <h2 data-reveal="" style="margin:0;font-family:\'Cormorant Garamond\',serif;font-weight:300;font-size:clamp(28px,3.8vw,50px);line-height:1.04;color:#111412;">Parcelles suivies en ce moment.</h2>\n' +
+      '            <p data-reveal="" data-delay="80" style="margin:14px 0 0;color:#77807A;font-size:14.5px;line-height:1.65;max-width:60ch;">Fiches tenues à jour manuellement. Une parcelle qui vous intéresse ? Nous étudions gratuitement si votre projet de maison y entre.</p>\n' +
+      '          </div>\n' +
+      '          <div data-reveal="" data-delay="160" style="font-size:14px;color:#77807A;"><span style="font-family:\'Cormorant Garamond\',serif;font-size:30px;color:#111412;vertical-align:-3px;">{{ terrainCount }}</span> terrain(s) affiché(s)</div>\n' +
+      '        </div>\n' +
+      '\n' +
+      '        <div data-reveal="" style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:clamp(28px,3.4vw,40px);">\n' +
+      '          <sc-for list="{{ terrainChips }}" as="chip" hint-placeholder-count="4">\n' +
+      '            <button onClick="{{ chip.onClick }}" class="me-btn" style="cursor:pointer;padding:10px 20px;border-radius:100px;border:1px solid;font-family:inherit;font-size:13px;font-weight:600;letter-spacing:0.01em;{{ chip.style }}">{{ chip.label }}</button>\n' +
+      '          </sc-for>\n' +
+      '        </div>\n' +
+      '\n' +
+      '        <div class="me-g3" style="gap:clamp(16px,1.8vw,26px);">\n' +
+      '          <sc-for list="{{ terrains }}" as="t">\n' +
+      '            <a href="{{ t.href }}" onClick="{{ t.onOpen }}" data-reveal="" data-delay="{{ t.delay }}" class="me-card" style="display:block;text-decoration:none;border-radius:9px;overflow:hidden;background:#FFFFFF;border:1px solid rgba(17,20,18,0.07);opacity:{{ t.cardOpacity }};color:#111412;">\n' +
+      '              <div style="position:relative;overflow:hidden;aspect-ratio:16/11;">\n' +
+      '                <img class="me-zoom" src="data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\'%3E%3C/svg%3E" alt="Terrain à bâtir à {{ t.commune }} dans l\'Ain" style="width:100%;height:100%;object-fit:cover;background-color:#EDEDE7;background-size:cover;background-position:center;background-image:{{ t.bg }};">\n' +
+      '                <span style="position:absolute;top:13px;left:13px;padding:6px 13px;border-radius:100px;font-size:10.5px;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;{{ t.badgeStyle }}">{{ t.status }}</span>\n' +
+      '                <span style="position:absolute;top:13px;right:13px;padding:6px 12px;border-radius:100px;background:rgba(11,13,12,0.6);color:#F7F7F4;font-size:12px;font-weight:600;backdrop-filter:blur(4px);">{{ t.surfaceLabel }}</span>\n' +
+      '              </div>\n' +
+      '              <div style="padding:22px 24px 24px;">\n' +
+      '                <h3 style="margin:0;font-family:\'Cormorant Garamond\',serif;font-weight:500;font-size:26px;color:#111412;line-height:1;">{{ t.commune }}</h3>\n' +
+      '                <div style="margin-top:6px;font-size:11.5px;letter-spacing:0.12em;text-transform:uppercase;color:#2E5A49;">{{ t.secteur }} · Réf. {{ t.ref }}</div>\n' +
+      '                <p style="margin:14px 0 0;color:#77807A;font-size:13.5px;line-height:1.55;">{{ t.note }}</p>\n' +
+      '                <div style="margin-top:18px;padding-top:16px;border-top:1px solid rgba(17,20,18,0.1);display:flex;align-items:center;justify-content:space-between;gap:12px;">\n' +
+      '                  <span><span style="display:block;font-size:11px;color:#8D948E;">Terrain à partir de</span><span style="display:block;font-family:\'Cormorant Garamond\',serif;font-size:25px;color:#111412;line-height:1.1;">{{ t.priceLabel }}</span></span>\n' +
+      '                  <span style="padding:11px 18px;border-radius:100px;background:#111412;color:#F7F7F4;font-size:12.5px;font-weight:600;white-space:nowrap;">Voir la fiche →</span>\n' +
+      '                </div>\n' +
+      '              </div>\n' +
+      '            </a>\n' +
+      '          </sc-for>\n' +
+      '        </div>\n' +
+      '\n' +
+      '        <p data-reveal="" style="margin:clamp(34px,4vw,48px) 0 0;font-size:13px;color:#8D948E;line-height:1.6;max-width:78ch;">Informations communiquées à titre indicatif, hors frais de notaire et sous réserve de disponibilité. Les terrains sont commercialisés par leurs propriétaires ou par notre partenaire foncier : vous restez libre de votre constructeur.</p></sc-if>\n' +
+      '\n' +
+      '        <sc-if value="{{ sansTerrains }}">\n' +
+      '        <div data-reveal="" style="max-width:60ch;">\n' +
+      '          <h2 style="margin:0;font-family:\'Cormorant Garamond\',serif;font-weight:300;font-size:clamp(28px,3.8vw,50px);line-height:1.04;color:#111412;">Terrains à bâtir.</h2>\n' +
+      '          <p style="margin:18px 0 0;color:#565B56;font-size:clamp(15px,1.4vw,17px);line-height:1.75;">Nos terrains disponibles sont mis à jour chaque semaine. Contactez-nous pour connaître les opportunités en cours.</p>\n' +
+      '          <a href="#contact" onClick="{{ goContact }}" class="me-btn" style="margin-top:28px;text-decoration:none;display:inline-flex;align-items:center;gap:10px;padding:16px 30px;border-radius:100px;background:#2E5A49;color:#fff;font-size:14px;font-weight:600;" style-hover="background:#3B7059;transform:translateY(-3px);">Nous contacter →</a>\n' +
+      '        </div>\n' +
+      '        </sc-if>',
   ],
 
   // Logo de l'entreprise à gauche du nom, dans la barre de navigation.
@@ -367,6 +524,32 @@ function corrections(s) {
   return out;
 }
 
+/**
+ * Diffère le chargement des images situées hors du premier écran.
+ *
+ * Aucune image du site ne portait `loading`, donc toutes se chargeaient
+ * d'emblée : sur « Nos modèles », les huit visuels de cartes se disputaient la
+ * bande passante avec celui qui décide de la vitesse perçue. On laisse la
+ * première image de chaque gabarit en chargement immédiat — c'est elle qui
+ * porte le bandeau, et la différer retarderait précisément ce qu'on veut voir
+ * en premier — et on diffère toutes les suivantes.
+ *
+ * Le repère est volontairement grossier : sur l'accueil, le bandeau est un
+ * fond CSS et non une balise `img`, si bien que la première image y est déjà
+ * hors écran. La laisser immédiate ne coûte qu'une requête ; se tromper dans
+ * l'autre sens coûterait le rendu du bandeau.
+ */
+function differerLesImages(jsx) {
+  let premiere = true;
+  return jsx.replace(/<img\b/g, (m) => {
+    if (premiere) {
+      premiere = false;
+      return m;
+    }
+    return '<img loading="lazy"';
+  });
+}
+
 function componentFile(name, block, { tag = 'div' } = {}) {
   // Le relevé des liaisons se fait APRÈS correction : certaines corrections en
   // introduisent de nouvelles, comme l'adresse de la fiche Google.
@@ -374,13 +557,15 @@ function componentFile(name, block, { tag = 'div' } = {}) {
   // écrites contre la source d'origine, où les photos sont encore en relatif.
   const corrige = absolutePhotos(corrections(block));
   const vars = bindings(corrige);
-  const jsx = toJsx(corrige);
+  const jsx = differerLesImages(toJsx(corrige));
   const destructure = vars.length ? `  const { ${vars.join(', ')} } = v;\n` : '';
   const besoinCss = jsx.includes('cssToStyle(');
+  const besoinTexte = jsx.includes('rendreTexte(');
   return (
     "'use client';\n\n" +
     "import type { Vals } from '@/components/site-vals';\n" +
     (besoinCss ? "import { cssToStyle } from '@/lib/css';\n" : '') +
+    (besoinTexte ? "import { rendreTexte } from '@/lib/texte';\n" : '') +
     '\n' +
     '/**\n' +
     ` * ${name} — balisage repris tel quel de la maquette Claude Design.\n` +

@@ -136,6 +136,10 @@ export type Vals = {
   // terrains
   terrains: TerrainCard[];
   terrainCount: number;
+  /** Vrai dès qu'un terrain est publié ; faux tant que le portefeuille est vide. */
+  hasTerrains: boolean;
+  /** Complément de `hasTerrains`, pour la branche « état vide » du gabarit. */
+  sansTerrains: boolean;
   terrainChips: { label: string; onClick: () => void; style: string }[];
   t: Record<string, string>;
   hasTerrain: boolean;
