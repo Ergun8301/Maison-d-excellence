@@ -436,6 +436,12 @@ export default function Site({
 
       terrains,
       terrainCount: terrains.length,
+      // Aucun terrain réel à publier pour l'instant : la vue bascule sur un
+      // état vide plutôt que d'afficher une liste, des filtres et un compteur
+      // qui ne portent sur rien. Remplir lib/data/terrains.ts suffit à tout
+      // faire réapparaître.
+      hasTerrains: terrains.length > 0,
+      sansTerrains: terrains.length === 0,
       terrainChips: ['Tout', "Plaine de l'Ain", 'Côtière', 'Bugey'].map((f) => ({
         label: f,
         onClick: () => setTerrainFilter(f),

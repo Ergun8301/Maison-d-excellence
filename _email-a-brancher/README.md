@@ -1,8 +1,13 @@
 # Envoi des formulaires par e-mail — prêt à brancher
 
-Les deux formulaires du site passent aujourd'hui par WhatsApp : ils ouvrent une
-conversation vers le numéro de l'entreprise avec la demande mise en forme.
-Aucune clé, aucun compte, et rien à payer.
+Les deux formulaires du site passent aujourd'hui par Netlify Forms : l'envoi
+est intercepté par l'hébergeur, la demande atterrit dans le tableau de bord du
+projet et part par courriel selon les notifications qui y sont réglées. Aucune
+clé, aucun compte, et rien à payer.
+
+WhatsApp n'intervient qu'en secours : si l'envoi échoue — réseau coupé, service
+indisponible — la demande bascule vers une conversation pré-remplie plutôt que
+d'être perdue en silence. Ce n'est pas le chemin normal, c'est le filet.
 
 Ce dossier conserve la tuyauterie d'envoi par e-mail, écrite et fonctionnelle,
 mais volontairement sortie de la construction : le site est exporté en pages

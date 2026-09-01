@@ -45,7 +45,7 @@ export default function NosModeles(v: Vals) {
                 {(modelesPP ?? []).map((m, i) => (
                   <div data-reveal="" data-delay={m.delay} className="me-card" style={{ background: "#FFFFFF", border: "1px solid rgba(17,20,18,0.07)", borderRadius: "9px", overflow: "hidden", display: "flex", flexDirection: "column" }} key={i}>
                     <div style={{ position: "relative", overflow: "hidden", aspectRatio: "16/11" }}>
-                      <img className="me-zoom" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3C/svg%3E" alt={`Modèle de maison ${m.name} — maison neuve construite sur-mesure dans l'Ain`} style={{ width: "100%", height: "100%", objectFit: "cover", backgroundColor: "#EDEDE7", backgroundSize: "cover", backgroundPosition: "center", backgroundImage: `${m.bg}` }} />
+                      <img loading="lazy" className="me-zoom" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3C/svg%3E" alt={`Modèle de maison ${m.name} — maison neuve construite sur-mesure dans l'Ain`} style={{ width: "100%", height: "100%", objectFit: "cover", backgroundColor: "#EDEDE7", backgroundSize: "cover", backgroundPosition: "center", backgroundImage: `${m.bg}` }} />
                     </div>
                     <div style={{ padding: "26px 24px 24px", display: "flex", flexDirection: "column", flex: "1" }}>
                       <h3 style={{ margin: "0", fontFamily: "'Cormorant Garamond',serif", fontWeight: "400", fontSize: "28px", lineHeight: "1.08", color: "#111412" }}>{m.name}</h3>
@@ -71,7 +71,7 @@ export default function NosModeles(v: Vals) {
                 {(modelesEtage ?? []).map((m, i) => (
                   <div data-reveal="" data-delay={m.delay} className="me-card" style={{ background: "#FFFFFF", border: "1px solid rgba(17,20,18,0.07)", borderRadius: "9px", overflow: "hidden", display: "flex", flexDirection: "column" }} key={i}>
                     <div style={{ position: "relative", overflow: "hidden", aspectRatio: "16/11" }}>
-                      <img className="me-zoom" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3C/svg%3E" alt={`Modèle de maison ${m.name} — maison neuve construite sur-mesure dans l'Ain`} style={{ width: "100%", height: "100%", objectFit: "cover", backgroundColor: "#EDEDE7", backgroundSize: "cover", backgroundPosition: "center", backgroundImage: `${m.bg}` }} />
+                      <img loading="lazy" className="me-zoom" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3C/svg%3E" alt={`Modèle de maison ${m.name} — maison neuve construite sur-mesure dans l'Ain`} style={{ width: "100%", height: "100%", objectFit: "cover", backgroundColor: "#EDEDE7", backgroundSize: "cover", backgroundPosition: "center", backgroundImage: `${m.bg}` }} />
                     </div>
                     <div style={{ padding: "26px 24px 24px", display: "flex", flexDirection: "column", flex: "1" }}>
                       <h3 style={{ margin: "0", fontFamily: "'Cormorant Garamond',serif", fontWeight: "400", fontSize: "28px", lineHeight: "1.08", color: "#111412" }}>{m.name}</h3>
@@ -97,7 +97,7 @@ export default function NosModeles(v: Vals) {
                 {(modelesEco ?? []).map((m, i) => (
                   <div data-reveal="" data-delay={m.delay} className="me-card" style={{ background: "#FFFFFF", border: "1px solid rgba(17,20,18,0.07)", borderRadius: "9px", overflow: "hidden", display: "flex", flexDirection: "column" }} key={i}>
                     <div style={{ position: "relative", overflow: "hidden", aspectRatio: "16/11" }}>
-                      <img className="me-zoom" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3C/svg%3E" alt={`Modèle de maison ${m.name} — maison neuve construite sur-mesure dans l'Ain`} style={{ width: "100%", height: "100%", objectFit: "cover", backgroundColor: "#EDEDE7", backgroundSize: "cover", backgroundPosition: "center", backgroundImage: `${m.bg}` }} />
+                      <img loading="lazy" className="me-zoom" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3C/svg%3E" alt={`Modèle de maison ${m.name} — maison neuve construite sur-mesure dans l'Ain`} style={{ width: "100%", height: "100%", objectFit: "cover", backgroundColor: "#EDEDE7", backgroundSize: "cover", backgroundPosition: "center", backgroundImage: `${m.bg}` }} />
                     </div>
                     <div style={{ padding: "26px 24px 24px", display: "flex", flexDirection: "column", flex: "1" }}>
                       <h3 style={{ margin: "0", fontFamily: "'Cormorant Garamond',serif", fontWeight: "400", fontSize: "28px", lineHeight: "1.08", color: "#111412" }}>{m.name}</h3>

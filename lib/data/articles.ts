@@ -1,4 +1,10 @@
 // Repris tel quel de la maquette Claude Design (articles de blog).
+//
+// `seoTitle` s'ajoute au titre d'origine : celui-ci reste affiché en tête
+// d'article, entier, tandis que la balise <title> reçoit une version courte
+// qui tient dans ce que Google affiche. Les cinq titres complets faisaient
+// 71 à 94 caractères une fois le nom de l'entreprise ajouté, et étaient tous
+// tronqués dans les résultats de recherche.
 // Ne pas reformuler : le rendu des vues en dépend mot pour mot.
 
 export const ARTICLES = [
@@ -8,6 +14,7 @@ export const ARTICLES = [
     "date": "12 janvier 2026",
     "read": "6 min",
     "title": "RE2020 en 2026 : ce qui change vraiment pour votre maison individuelle",
+    "seoTitle": "RE2020 en 2026 : ce qui change pour votre maison",
     "excerpt": "Nouveaux seuils carbone, confort d’été, choix des matériaux : ce que la RE2020 impose en 2026 à une maison neuve dans l’Ain, et ce que cela change sur le devis.",
     "img": "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1800&q=80",
     "alt": "Maison individuelle neuve conforme à la RE2020 dans l’Ain",
@@ -22,7 +29,7 @@ export const ARTICLES = [
       },
       {
         "h": "Brique, béton cellulaire : quel impact sur le calcul",
-        "p": "La brique de terre cuite à alvéoles et le béton cellulaire (siporex) affichent tous deux de bonnes performances thermiques intrinsèques, ce qui limite l’épaisseur d’isolant rapporté. Le choix se fait surtout sur l’étanchéité à l’air, la mise en œuvre et le confort d’été — chaque projet est calculé, jamais décidé par habitude."
+        "p": "La brique de terre cuite à alvéoles et le béton cellulaire (siporex), [les deux modes constructifs que nous employons](/entreprise), affichent tous deux de bonnes performances thermiques intrinsèques, ce qui limite l’épaisseur d’isolant rapporté. Le choix se fait surtout sur l’étanchéité à l’air, la mise en œuvre et le confort d’été — chaque projet est calculé, jamais décidé par habitude."
       },
       {
         "h": "Le chauffage au gaz est de fait écarté",
@@ -40,6 +47,7 @@ export const ARTICLES = [
     "date": "4 février 2026",
     "read": "7 min",
     "title": "Prix de construction au m² dans l’Ain : les repères 2026",
+    "seoTitle": "Prix de construction au m² dans l’Ain — repères 2026",
     "excerpt": "Ce que couvre réellement un prix au m², pourquoi il varie de 1 400 à 2 100 € dans l’Ain, et comment lire une annonce de constructeur sans se tromper.",
     "img": "https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1800&q=80",
     "alt": "Chantier de maison individuelle dans l’Ain, gros œuvre en cours",
@@ -50,7 +58,7 @@ export const ARTICLES = [
       },
       {
         "h": "La fourchette observée dans l’Ain en 2026",
-        "p": "Pour une maison sur-mesure conforme à la RE2020, on se situe généralement entre 1 450 et 2 100 € le mètre carré habitable, hors terrain. En dessous, il s’agit le plus souvent d’un modèle catalogue à finitions minimales ; au-dessus, d’une architecture ambitieuse ou de prestations haut de gamme."
+        "p": "Pour une maison sur-mesure conforme à la RE2020, on se situe généralement entre 1 450 et 2 100 € le mètre carré habitable, hors terrain — [notre simulateur](/#estimation) applique ces repères à votre projet. En dessous, il s’agit le plus souvent d’un modèle catalogue à finitions minimales ; au-dessus, d’une architecture ambitieuse ou de prestations haut de gamme."
       },
       {
         "h": "Pourquoi un plain-pied coûte plus cher au m²",
@@ -72,6 +80,7 @@ export const ARTICLES = [
     "date": "26 février 2026",
     "read": "6 min",
     "title": "Le budget réel d’une maison de 100 m² dans l’Ain",
+    "seoTitle": "Le budget réel d’une maison de 100 m² dans l’Ain",
     "excerpt": "Décomposition complète d’un projet de 100 m² : construction, terrain, frais annexes, et le montant à prévoir avant le premier coup de pelle.",
     "img": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=1800&q=80",
     "alt": "Maison familiale de 100 m² construite dans l’Ain",
@@ -82,7 +91,7 @@ export const ARTICLES = [
       },
       {
         "h": "Le terrain : de 90 000 à 170 000 € selon la commune",
-        "p": "Un terrain de 500 à 700 m² s’échange autour de 100 000 € du côté de Lagnieu ou Chazey-sur-Ain, et dépasse 150 000 € sur la Côtière et à Montluel. L’écart de prix au mètre carré entre deux communes voisines dépasse souvent le coût d’une chambre supplémentaire."
+        "p": "Un terrain de 500 à 700 m² s’échange autour de 100 000 € du côté de Lagnieu ou Chazey-sur-Ain, [dans notre secteur d’intervention](/zone-intervention), et dépasse 150 000 € sur la Côtière et à Montluel. L’écart de prix au mètre carré entre deux communes voisines dépasse souvent le coût d’une chambre supplémentaire."
       },
       {
         "h": "Les frais annexes, trop souvent oubliés",
@@ -104,6 +113,7 @@ export const ARTICLES = [
     "date": "18 mars 2026",
     "read": "8 min",
     "title": "Les étapes d’un projet de construction, du premier rendez-vous aux clés",
+    "seoTitle": "Les étapes d’un projet de construction de maison",
     "excerpt": "Ce qui se passe réellement entre le jour où vous poussez la porte du bureau et celui où vous récupérez vos clés — avec les délais moyens de chaque étape.",
     "img": "https://images.unsplash.com/photo-1503387837-b154d5074bd2?auto=format&fit=crop&w=1800&q=80",
     "alt": "Plans de conception d’une maison individuelle sur-mesure",
@@ -114,7 +124,7 @@ export const ARTICLES = [
       },
       {
         "h": "2. Les plans sur-mesure : deux à quatre semaines",
-        "p": "Nous dessinons votre maison sur la base de cet échange, avec deux à trois allers-retours pour ajuster les volumes, les ouvertures et l’implantation sur la parcelle. C’est le moment le plus créatif du projet, et celui où l’on gagne le plus d’argent : chaque mètre carré inutile supprimé au plan est un mètre carré non payé."
+        "p": "Nous dessinons votre maison sur la base de cet échange — [nos modèles](/nos-modeles) servent de point de départ, jamais de catalogue figé — avec deux à trois allers-retours pour ajuster les volumes, les ouvertures et l’implantation sur la parcelle. C’est le moment le plus créatif du projet, et celui où l’on gagne le plus d’argent : chaque mètre carré inutile supprimé au plan est un mètre carré non payé."
       },
       {
         "h": "3. Le CCMI et le permis : deux à quatre mois",
@@ -136,6 +146,7 @@ export const ARTICLES = [
     "date": "9 avril 2026",
     "read": "7 min",
     "title": "Comment fonctionne l’échéancier de paiement d’un CCMI",
+    "seoTitle": "L’échéancier de paiement d’un CCMI, étape par étape",
     "excerpt": "Vous ne payez jamais en avance : les appels de fonds d’un CCMI sont plafonnés par la loi et suivent l’avancement réel du chantier. Explication étape par étape.",
     "img": "https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=1800&q=80",
     "alt": "Chantier de construction en cours d’élévation des murs",
@@ -146,7 +157,7 @@ export const ARTICLES = [
       },
       {
         "h": "Le paiement suit l’avancement, jamais l’inverse",
-        "p": "Chaque appel de fonds correspond à un stade de chantier constaté : fondations achevées, murs élevés, mise hors d’eau, mise hors d’air, équipements terminés. Si l’étape n’est pas atteinte, la somme n’est pas due. Votre banque débloque les fonds sur cette base."
+        "p": "Chaque appel de fonds correspond à un stade de chantier constaté, [comme le détaille notre page entreprise](/entreprise) : fondations achevées, murs élevés, mise hors d’eau, mise hors d’air, équipements terminés. Si l’étape n’est pas atteinte, la somme n’est pas due. Votre banque débloque les fonds sur cette base."
       },
       {
         "h": "Les plafonds légaux, dans l’ordre",

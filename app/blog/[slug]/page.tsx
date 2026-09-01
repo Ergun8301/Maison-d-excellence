@@ -18,7 +18,11 @@ export async function generateMetadata({
   const a = ARTICLES.find((x) => x.slug === slug);
   const base = pageMetadata('article', `/blog/${slug}`);
   if (!a) return base;
-  return { ...base, title: `${a.title} | Maisons d’Excellence`, description: a.excerpt };
+  // Titre court, sans suffixe de marque : le nom de l'entreprise coûterait ici
+  // les caractères qui servent au sujet de l'article. Pas de valeur de repli —
+  // un article ajouté sans `seoTitle` doit être signalé à la compilation, pas
+  // repartir en silence sur un titre de 90 caractères.
+  return { ...base, title: a.seoTitle, description: a.excerpt };
 }
 
 export default async function Page({ params }: { params: Promise<{ slug: string }> }) {

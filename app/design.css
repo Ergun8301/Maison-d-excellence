@@ -264,3 +264,19 @@ a:hover{color:#111412;}
   .me-hero-proofs { margin-top: clamp(10px, 1.6vh, 30px) !important; }
   .me-hero-bar { margin-bottom: clamp(10px, 1.6vh, 28px) !important; }
 }
+
+/* Liens au fil du texte, dans le corps des articles.
+   Soulignés en retrait plutôt qu'en trait plein : la lecture n'est pas hachée,
+   mais le lien reste identifiable sans dépendre de la seule couleur — ce que
+   ne verrait pas un lecteur daltonien. */
+.me-link-texte {
+  color: #2E5A49;
+  text-decoration: underline;
+  text-decoration-color: rgba(46, 90, 73, 0.35);
+  text-underline-offset: 3px;
+  transition: text-decoration-color .25s, color .25s;
+}
+.me-link-texte:hover {
+  color: #111412;
+  text-decoration-color: rgba(17, 20, 18, 0.6);
+}

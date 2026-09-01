@@ -27,12 +27,12 @@ export default function Realisations(v: Vals) {
             <div style={{ maxWidth: "1440px", margin: "0 auto", padding: "0 clamp(20px,5vw,64px)" }}>
               <div className="me-g2" style={{ gap: "clamp(16px,2vw,28px)" }}>
                 <div data-reveal="" className="me-card me-projbig" style={{ position: "relative", borderRadius: "8px", overflow: "hidden", minHeight: "clamp(320px,40vw,460px)" }}>
-                  <img className="me-zoom" src="/photos/maison-contemporaine-etage-porche.webp" alt="Maison contemporaine à étage avec porche d'entrée et garage double" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "cover" }} />
+                  <img loading="lazy" className="me-zoom" src="/photos/maison-contemporaine-etage-porche.webp" alt="Maison contemporaine à étage avec porche d'entrée et garage double" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "cover" }} />
                   <div style={{ position: "absolute", inset: "0", background: "linear-gradient(180deg,rgba(11,13,12,0) 40%,rgba(11,13,12,0.86) 100%)" }}></div>
                   <div style={{ position: "absolute", left: "0", right: "0", bottom: "0", padding: "clamp(26px,3vw,40px)", color: "#F7F7F4" }}><div style={{ fontSize: "11px", letterSpacing: "0.22em", textTransform: "uppercase", color: "#9CC4B2" }}>Contemporain · Garage double</div><h2 style={{ margin: "7px 0 0", fontFamily: "'Cormorant Garamond',serif", fontWeight: "400", fontSize: "clamp(26px,3vw,38px)" }}>Maison à étage, porche d'entrée</h2></div>
                 </div>
                 <div data-reveal="" data-delay="120" className="me-card me-projbig" style={{ position: "relative", borderRadius: "8px", overflow: "hidden", minHeight: "clamp(320px,40vw,460px)" }}>
-                  <img className="me-zoom" src="/photos/maison-traditionnelle-etage.webp" alt="Maison traditionnelle à étage, enduit ton pierre, construite dans l'Ain" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "cover" }} />
+                  <img loading="lazy" className="me-zoom" src="/photos/maison-traditionnelle-etage.webp" alt="Maison traditionnelle à étage, enduit ton pierre, construite dans l'Ain" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "cover" }} />
                   <div style={{ position: "absolute", inset: "0", background: "linear-gradient(180deg,rgba(11,13,12,0) 40%,rgba(11,13,12,0.86) 100%)" }}></div>
                   <div style={{ position: "absolute", left: "0", right: "0", bottom: "0", padding: "clamp(26px,3vw,40px)", color: "#F7F7F4" }}><div style={{ fontSize: "11px", letterSpacing: "0.22em", textTransform: "uppercase", color: "#9CC4B2" }}>Traditionnel · Enduit ton pierre</div><h2 style={{ margin: "7px 0 0", fontFamily: "'Cormorant Garamond',serif", fontWeight: "400", fontSize: "clamp(26px,3vw,38px)" }}>Maison familiale à étage</h2></div>
                 </div>
@@ -40,17 +40,17 @@ export default function Realisations(v: Vals) {
 
               <div className="me-g3" style={{ gap: "clamp(16px,2vw,28px)", marginTop: "clamp(16px,2vw,28px)" }}>
                 <div data-reveal="" className="me-card me-projbig" style={{ position: "relative", borderRadius: "8px", overflow: "hidden", aspectRatio: "4/5" }}>
-                  <img className="me-zoom" src="/photos/maison-etage-terrain-en-pente.webp" alt="Maison à étage bâtie sur terrain en pente avec terrasses en béton" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "cover" }} />
+                  <img loading="lazy" className="me-zoom" src="/photos/maison-etage-terrain-en-pente.webp" alt="Maison à étage bâtie sur terrain en pente avec terrasses en béton" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "cover" }} />
                   <div style={{ position: "absolute", inset: "0", background: "linear-gradient(180deg,rgba(11,13,12,0) 45%,rgba(11,13,12,0.85) 100%)" }}></div>
                   <div style={{ position: "absolute", left: "0", right: "0", bottom: "0", padding: "clamp(22px,2.4vw,32px)", color: "#F7F7F4" }}><div style={{ fontSize: "10.5px", letterSpacing: "0.22em", textTransform: "uppercase", color: "#9CC4B2" }}>Terrain en pente</div><h2 style={{ margin: "6px 0 0", fontFamily: "'Cormorant Garamond',serif", fontWeight: "400", fontSize: "clamp(22px,2.4vw,30px)" }}>Étage &amp; terrasses béton</h2></div>
                 </div>
                 <div data-reveal="" data-delay="100" className="me-card me-projbig" style={{ position: "relative", borderRadius: "8px", overflow: "hidden", aspectRatio: "4/5" }}>
-                  <img className="me-zoom" src="/photos/maison-monopente-garage-independant.webp" alt="Maison contemporaine à toit monopente avec garage indépendant" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "cover" }} />
+                  <img loading="lazy" className="me-zoom" src="/photos/maison-monopente-garage-independant.webp" alt="Maison contemporaine à toit monopente avec garage indépendant" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "cover" }} />
                   <div style={{ position: "absolute", inset: "0", background: "linear-gradient(180deg,rgba(11,13,12,0) 45%,rgba(11,13,12,0.85) 100%)" }}></div>
                   <div style={{ position: "absolute", left: "0", right: "0", bottom: "0", padding: "clamp(22px,2.4vw,32px)", color: "#F7F7F4" }}><div style={{ fontSize: "10.5px", letterSpacing: "0.22em", textTransform: "uppercase", color: "#9CC4B2" }}>Contemporain</div><h2 style={{ margin: "6px 0 0", fontFamily: "'Cormorant Garamond',serif", fontWeight: "400", fontSize: "clamp(22px,2.4vw,30px)" }}>Façade bi-ton</h2></div>
                 </div>
                 <div data-reveal="" data-delay="200" className="me-card me-projbig" style={{ position: "relative", borderRadius: "8px", overflow: "hidden", aspectRatio: "4/5" }}>
-                  <img className="me-zoom" src="/photos/maison-plain-pied-angle-livraison.webp" alt="Maison de plain-pied en L, enduit ton pierre et toiture tuile, avant aménagement du terrain" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "cover" }} />
+                  <img loading="lazy" className="me-zoom" src="/photos/maison-plain-pied-angle-livraison.webp" alt="Maison de plain-pied en L, enduit ton pierre et toiture tuile, avant aménagement du terrain" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "cover" }} />
                   <div style={{ position: "absolute", inset: "0", background: "linear-gradient(180deg,rgba(11,13,12,0) 45%,rgba(11,13,12,0.85) 100%)" }}></div>
                   <div style={{ position: "absolute", left: "0", right: "0", bottom: "0", padding: "clamp(22px,2.4vw,32px)", color: "#F7F7F4" }}><div style={{ fontSize: "10.5px", letterSpacing: "0.22em", textTransform: "uppercase", color: "#9CC4B2" }}>Traditionnel</div><h2 style={{ margin: "6px 0 0", fontFamily: "'Cormorant Garamond',serif", fontWeight: "400", fontSize: "clamp(22px,2.4vw,30px)" }}>Plain-pied, angle ouvert</h2></div>
                 </div>
@@ -58,12 +58,12 @@ export default function Realisations(v: Vals) {
 
               <div className="me-split" style={{ gap: "clamp(16px,2vw,28px)", marginTop: "clamp(16px,2vw,28px)" }}>
                 <div data-reveal="" className="me-card me-projbig" style={{ position: "relative", borderRadius: "8px", overflow: "hidden", minHeight: "clamp(300px,34vw,420px)" }}>
-                  <img className="me-zoom" src="/photos/maison-plain-pied-en-l.webp" alt="Maison de plain-pied en L, toiture tuile, construite dans l'Ain" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "cover" }} />
+                  <img loading="lazy" className="me-zoom" src="/photos/maison-plain-pied-en-l.webp" alt="Maison de plain-pied en L, toiture tuile, construite dans l'Ain" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "cover" }} />
                   <div style={{ position: "absolute", inset: "0", background: "linear-gradient(180deg,rgba(11,13,12,0) 45%,rgba(11,13,12,0.85) 100%)" }}></div>
                   <div style={{ position: "absolute", left: "0", right: "0", bottom: "0", padding: "clamp(24px,2.6vw,36px)", color: "#F7F7F4" }}><div style={{ fontSize: "11px", letterSpacing: "0.22em", textTransform: "uppercase", color: "#9CC4B2" }}>Plain-pied · Toiture tuile</div><h2 style={{ margin: "7px 0 0", fontFamily: "'Cormorant Garamond',serif", fontWeight: "400", fontSize: "clamp(24px,2.8vw,34px)" }}>Plain-pied contemporaine</h2></div>
                 </div>
                 <div data-reveal="" data-delay="120" className="me-card me-projbig" style={{ position: "relative", borderRadius: "8px", overflow: "hidden", minHeight: "clamp(300px,34vw,420px)" }}>
-                  <img className="me-zoom" src="/photos/maison-plain-pied-contemporaine.webp" alt="Maison de plain-pied contemporaine, toiture ardoisée, garage intégré" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "cover" }} />
+                  <img loading="lazy" className="me-zoom" src="/photos/maison-plain-pied-contemporaine.webp" alt="Maison de plain-pied contemporaine, toiture ardoisée, garage intégré" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "cover" }} />
                   <div style={{ position: "absolute", inset: "0", background: "linear-gradient(180deg,rgba(11,13,12,0) 45%,rgba(11,13,12,0.85) 100%)" }}></div>
                   <div style={{ position: "absolute", left: "0", right: "0", bottom: "0", padding: "clamp(24px,2.6vw,36px)", color: "#F7F7F4" }}><div style={{ fontSize: "11px", letterSpacing: "0.22em", textTransform: "uppercase", color: "#9CC4B2" }}>Plain-pied · Toiture ardoisée</div><h2 style={{ margin: "7px 0 0", fontFamily: "'Cormorant Garamond',serif", fontWeight: "400", fontSize: "clamp(24px,2.8vw,34px)" }}>Plain-pied en L</h2></div>
                 </div>
