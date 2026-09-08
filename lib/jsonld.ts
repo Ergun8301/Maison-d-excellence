@@ -1,29 +1,36 @@
+import { SITE_URL } from '@/lib/site';
+
 /**
  * Balisage JSON-LD de l'établissement, repris de la maquette Claude Design.
  *
- * Deux écarts assumés :
+ * Trois écarts assumés :
  *  - l'adresse e-mail passe à celle du dirigeant, la boîte contact@ du domaine
  *    n'existant pas encore ;
  *  - ajout des identifiants légaux relevés sur le Kbis (SIREN, SIRET, TVA) et
- *    de l'effectif, qui renforcent le balisage local.
+ *    de l'effectif, qui renforcent le balisage local ;
+ *  - les adresses du site viennent de SITE_URL et non de la maquette, qui les
+ *    écrivait en dur avec le www. Le reste du site — balises canoniques, plan
+ *    du site, robots.txt, llms.txt — lit déjà cette même constante : le
+ *    balisage annonçait donc une adresse que rien d'autre ne confirmait.
+ *    Une seule source de vérité, réglée par NEXT_PUBLIC_SITE_URL.
  *
  * La note 5,0 sur 36 avis correspond bien à la fiche Google de l'établissement.
  */
 export const ORGANISATION_JSONLD = {
   "@context": "https://schema.org",
   "@type": "GeneralContractor",
-  "@id": "https://www.maisons-dexcellence.fr/#entreprise",
+  "@id": `${SITE_URL}/#entreprise`,
   "name": "Maisons d'Excellence",
   "alternateName": "Maisons d'Excellence Constructeurs de Maisons Individuelles",
   "description": "Constructeur de maisons individuelles sur-mesure dans l'Ain : maison en brique, siporex, vide sanitaire, charpente traditionnelle, conformité RE2020. CCMI et garanties complètes.",
-  "url": "https://www.maisons-dexcellence.fr/",
+  "url": `${SITE_URL}/`,
   // Le logo alimente le panneau de connaissances de Google ; la photo sert
   // d'illustration de l'établissement. Adresses absolues obligatoires : un
   // chemin relatif n'a pas de sens pour un moteur qui lit le balisage seul.
-  "logo": "https://www.maisons-dexcellence.fr/logo-fond.svg",
+  "logo": `${SITE_URL}/logo-fond.svg`,
   "image": [
-    "https://www.maisons-dexcellence.fr/photos/bureau-meximieux-facade.webp",
-    "https://www.maisons-dexcellence.fr/photos/devanture-rue.webp"
+    `${SITE_URL}/photos/bureau-meximieux-facade.webp`,
+    `${SITE_URL}/photos/devanture-rue.webp`
   ],
   "telephone": "+33474346643",
   "email": "aykut.atak@sfr.fr",
