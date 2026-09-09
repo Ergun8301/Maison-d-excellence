@@ -15,7 +15,7 @@ export default function Article(v: Vals) {
       <main data-screen-label="Article de blog">
           <section style={{ background: "#111412", color: "#F7F7F4", padding: "clamp(102px,10vw,124px) 0 clamp(26px,3vw,38px)" }}>
             <div style={{ maxWidth: "900px", margin: "0 auto", padding: "0 clamp(20px,5vw,64px)" }}>
-              <a href="#blog" onClick={goBlog} className="me-link" style={{ display: "inline-flex", alignItems: "center", gap: "8px", textDecoration: "none", color: "rgba(247,247,244,0.72)", fontSize: "13px", fontWeight: "600", marginBottom: "22px" }} style-hover="color:#9CC4B2;">← Tous les articles</a>
+              <a href="/blog" onClick={goBlog} className="me-link" style={{ display: "inline-flex", alignItems: "center", gap: "8px", textDecoration: "none", color: "rgba(247,247,244,0.72)", fontSize: "13px", fontWeight: "600", marginBottom: "22px" }} style-hover="color:#9CC4B2;">← Tous les articles</a>
               <div style={{ display: "flex", flexWrap: "wrap", gap: "14px", alignItems: "center", fontSize: "11.5px", letterSpacing: "0.18em", textTransform: "uppercase", color: "#9CC4B2" }}>
                 <span>{art.cat}</span><span style={{ color: "rgba(247,247,244,0.5)" }}>{art.date}</span><span style={{ color: "rgba(247,247,244,0.5)" }}>{art.read} de lecture</span>
               </div>
@@ -43,8 +43,8 @@ export default function Article(v: Vals) {
                 <h2 style={{ margin: "0", fontFamily: "'Cormorant Garamond',serif", fontWeight: "300", fontSize: "clamp(26px,3vw,38px)", lineHeight: "1.08" }}>Votre projet, chiffré en une minute.</h2>
                 <p style={{ margin: "14px 0 0", color: "rgba(247,247,244,0.7)", fontSize: "15px", lineHeight: "1.7" }}>Surface, plain-pied ou étage, chambres, garage, vide sanitaire : notre simulateur vous donne une fourchette immédiate, sans formulaire préalable.</p>
                 <div style={{ display: "flex", flexWrap: "wrap", gap: "14px", marginTop: "26px" }}>
-                  <a href="#estimation" onClick={goEstimation} className="me-btn" style={{ textDecoration: "none", display: "inline-flex", alignItems: "center", gap: "10px", padding: "16px 30px", borderRadius: "100px", background: "#2E5A49", color: "#fff", fontSize: "14px", fontWeight: "600" }} style-hover="background:#3B7059;transform:translateY(-3px);">Estimer mon projet →</a>
-                  <a href="#contact" onClick={goContact} className="me-btn" style={{ textDecoration: "none", display: "inline-flex", alignItems: "center", gap: "10px", padding: "16px 30px", borderRadius: "100px", background: "transparent", color: "#F7F7F4", fontSize: "14px", fontWeight: "600", border: "1px solid rgba(247,247,244,0.4)" }} style-hover="background:rgba(247,247,244,0.14);transform:translateY(-3px);">Prendre rendez-vous</a>
+                  <a href="/#estimation" onClick={goEstimation} className="me-btn" style={{ textDecoration: "none", display: "inline-flex", alignItems: "center", gap: "10px", padding: "16px 30px", borderRadius: "100px", background: "#2E5A49", color: "#fff", fontSize: "14px", fontWeight: "600" }} style-hover="background:#3B7059;transform:translateY(-3px);">Estimer mon projet →</a>
+                  <a href="/contact" onClick={goContact} className="me-btn" style={{ textDecoration: "none", display: "inline-flex", alignItems: "center", gap: "10px", padding: "16px 30px", borderRadius: "100px", background: "transparent", color: "#F7F7F4", fontSize: "14px", fontWeight: "600", border: "1px solid rgba(247,247,244,0.4)" }} style-hover="background:rgba(247,247,244,0.14);transform:translateY(-3px);">Prendre rendez-vous</a>
                 </div>
               </div>
             </div>

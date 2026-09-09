@@ -3,7 +3,7 @@ import fs from 'node:fs';
 const j = JSON.parse(fs.readFileSync('/tmp/design/jsonld.json', 'utf8'));
 
 // Coordonnées réelles fournies par le client + identifiants légaux (Kbis).
-j.email = 'aykut.atak@sfr.fr';
+j.email = 'contact@maisons-dexcellence.fr';
 j.legalName = "MAISONS D'EXCELLENCE CONSTRUCTEURS DE MAISONS INDIVIDUELLES";
 j.vatID = 'FR04844477794';
 j.taxID = '84447779400011';

@@ -19,7 +19,7 @@ export default function FicheTerrain(v: Vals) {
             </div>
             <div style={{ position: "absolute", inset: "0", background: "linear-gradient(180deg,rgba(11,13,12,0.5) 0%,rgba(11,13,12,0.15) 36%,rgba(11,13,12,0.88) 100%)" }}></div>
             <div style={{ position: "relative", width: "100%", maxWidth: "1440px", margin: "0 auto", padding: "clamp(100px,10.5vw,124px) clamp(20px,5vw,64px) clamp(40px,5vw,70px)" }}>
-              <a href="#terrains" onClick={goTerrains} className="me-link" style={{ display: "inline-flex", alignItems: "center", gap: "8px", textDecoration: "none", color: "rgba(247,247,244,0.8)", fontSize: "13px", fontWeight: "600", marginBottom: "18px" }} style-hover="color:#9CC4B2;">← Tous les terrains</a>
+              <a href="/terrains" onClick={goTerrains} className="me-link" style={{ display: "inline-flex", alignItems: "center", gap: "8px", textDecoration: "none", color: "rgba(247,247,244,0.8)", fontSize: "13px", fontWeight: "600", marginBottom: "18px" }} style-hover="color:#9CC4B2;">← Tous les terrains</a>
               <div style={{ display: "flex", alignItems: "center", gap: "12px", flexWrap: "wrap", marginBottom: "16px" }}>
                 <span style={{ padding: "6px 13px", borderRadius: "100px", fontSize: "10.5px", fontWeight: "700", letterSpacing: "0.05em", textTransform: "uppercase", ...cssToStyle(t.badgeStyle) }}>{t.status}</span>
                 <span style={{ color: "#CFE0D6", fontSize: "12px", fontWeight: "600", letterSpacing: "0.22em", textTransform: "uppercase" }}>{t.secteur} · Réf. {t.ref}</span>
@@ -57,7 +57,7 @@ export default function FicheTerrain(v: Vals) {
                   <div style={{ marginTop: "24px", paddingTop: "20px", borderTop: "1px solid rgba(247,247,244,0.14)", display: "flex", flexDirection: "column", gap: "10px" }}>
                     <a href="tel:+33474346643" className="me-link" style={{ textDecoration: "none", color: "rgba(247,247,244,0.82)", fontSize: "14px", fontWeight: "600" }} style-hover="color:#9CC4B2;">✆ 04 74 34 66 43</a>
                     <a href="https://wa.me/33615191647?text=Bonjour%2C%20je%20vous%20%C3%A9cris%20depuis%20votre%20site.%20J'aimerais%20%C3%A9changer%20sur%20mon%20projet%20de%20construction." target="_blank" rel="noopener" className="me-link" style={{ textDecoration: "none", color: "rgba(247,247,244,0.82)", fontSize: "14px", fontWeight: "600" }} style-hover="color:#25D366;">WhatsApp · 06 15 19 16 47</a>
-                    <a href="#estimation" onClick={goEstimation} className="me-link" style={{ textDecoration: "none", color: "rgba(247,247,244,0.82)", fontSize: "14px", fontWeight: "600" }} style-hover="color:#9CC4B2;">Estimer la maison →</a>
+                    <a href="/#estimation" onClick={goEstimation} className="me-link" style={{ textDecoration: "none", color: "rgba(247,247,244,0.82)", fontSize: "14px", fontWeight: "600" }} style-hover="color:#9CC4B2;">Estimer la maison →</a>
                   </div>
                 </div>
               </div>

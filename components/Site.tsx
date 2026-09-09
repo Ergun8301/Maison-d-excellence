@@ -224,8 +224,18 @@ export default function Site({
     }
   }, [page]);
 
+  /**
+   * Change de page.
+   *
+   * L'événement est reçu parce que les liens portent maintenant un vrai chemin
+   * dans leur `href` : sans `preventDefault`, le navigateur ferait en plus sa
+   * propre navigation et la page se rechargerait entièrement. On le retient
+   * donc, et c'est le routeur qui travaille — comportement identique à ce
+   * qu'il était quand l'`href` n'était qu'une ancre.
+   */
   const navigate = useCallback(
-    (view: string) => {
+    (view: string, e?: MouseEvent) => {
+      e?.preventDefault();
       setMenuOpen(false);
       router.push(ROUTES[view] ?? '/');
     },
@@ -336,33 +346,29 @@ export default function Site({
     const art = ARTICLES.find((a) => a.slug === articleSlug);
 
     return {
-      goAccueil: () => navigate('accueil'),
-      goRealisations: () => navigate('realisations'),
-      goModeles: () => navigate('modeles'),
-      goEntreprise: () => navigate('entreprise'),
+      goAccueil: (ev?: MouseEvent) => navigate('accueil', ev),
+      goRealisations: (ev?: MouseEvent) => navigate('realisations', ev),
+      goModeles: (ev?: MouseEvent) => navigate('modeles', ev),
+      goEntreprise: (ev?: MouseEvent) => navigate('entreprise', ev),
       goEstimation: (ev?: MouseEvent) => goAnchor(ev, 'estimation', 'accueil'),
-      goContact: () => navigate('contact'),
+      goContact: (ev?: MouseEvent) => navigate('contact', ev),
       goContactForm: (ev?: MouseEvent) => goAnchor(ev, 'contact', 'contact'),
       goTrouver: (ev?: MouseEvent) => goAnchor(ev, 'nous-trouver', 'contact'),
-      goTerrains: () => navigate('terrains'),
-      goInvestisseurs: () => navigate('investisseurs'),
-      goBlog: () => navigate('blog'),
-      goZone: () => navigate('zone'),
-      goRenovation: () => navigate('renovation'),
-      // Le lien porte désormais le vrai chemin (/mentions-legales) et non
-      // une ancre : il est donc suivable par un robot, un clic milieu ou un
-      // copier-lien. On retire la navigation du navigateur pour conserver le
-      // changement de page sans rechargement.
-      goMentions: (ev?: MouseEvent) => {
+      goTerrains: (ev?: MouseEvent) => navigate('terrains', ev),
+      goInvestisseurs: (ev?: MouseEvent) => navigate('investisseurs', ev),
+      goBlog: (ev?: MouseEvent) => navigate('blog', ev),
+      goZone: (ev?: MouseEvent) => navigate('zone', ev),
+      goRenovation: (ev?: MouseEvent) => navigate('renovation', ev),
+      goMentions: (ev?: MouseEvent) => navigate('mentions', ev),
+      goConfidentialite: (ev?: MouseEvent) => navigate('confidentialite', ev),
+      goArticlePrix: (ev?: MouseEvent) => {
         ev?.preventDefault();
-        navigate('mentions');
+        router.push('/blog/prix-construction-m2');
       },
-      goConfidentialite: (ev?: MouseEvent) => {
+      goArticleEch: (ev?: MouseEvent) => {
         ev?.preventDefault();
-        navigate('confidentialite');
+        router.push('/blog/echeancier-ccmi');
       },
-      goArticlePrix: () => router.push('/blog/prix-construction-m2'),
-      goArticleEch: () => router.push('/blog/echeancier-ccmi'),
       menuOpen,
       toggleMenu: () => setMenuOpen((o) => !o),
       closeMenu: () => setMenuOpen(false),

@@ -50,7 +50,7 @@ export default function Renovation(v: Vals) {
               </div>
 
               <div data-reveal="" style={{ marginTop: "clamp(44px,6vw,80px)", display: "flex", flexWrap: "wrap", gap: "16px", alignItems: "center" }}>
-                <a href="#contact" onClick={goContact} className="me-btn" style={{ textDecoration: "none", display: "inline-flex", alignItems: "center", gap: "10px", padding: "17px 32px", borderRadius: "100px", background: "#2E5A49", color: "#fff", fontSize: "14px", fontWeight: "600", boxShadow: "0 22px 44px -22px rgba(46,90,73,1)" }} style-hover="background:#3B7059;transform:translateY(-3px);">Décrire mon projet d'extension →</a>
+                <a href="/contact" onClick={goContact} className="me-btn" style={{ textDecoration: "none", display: "inline-flex", alignItems: "center", gap: "10px", padding: "17px 32px", borderRadius: "100px", background: "#2E5A49", color: "#fff", fontSize: "14px", fontWeight: "600", boxShadow: "0 22px 44px -22px rgba(46,90,73,1)" }} style-hover="background:#3B7059;transform:translateY(-3px);">Décrire mon projet d'extension →</a>
                 <span style={{ fontSize: "13.5px", color: "#77807A" }}>Visite sur place avant tout chiffrage.</span>
               </div>
             </div>

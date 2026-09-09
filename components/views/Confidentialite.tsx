@@ -6,6 +6,10 @@
  * sections, mêmes styles, mêmes espacements — pour qu'elle ne se remarque pas
  * comme une pièce rapportée.
  *
+ * L'adresse publiée est la boîte professionnelle du domaine, jamais l'adresse
+ * personnelle du dirigeant : une page de confidentialité qui exposerait une
+ * boîte privée à tous les moissonneurs du web se contredirait elle-même.
+ *
  * Son contenu n'est pas un modèle recopié. Les sous-traitants nommés plus bas
  * sont ceux que le navigateur du visiteur appelle réellement, relevés page par
  * page en enregistrant le trafic sortant du site construit. Toute modification
@@ -41,7 +45,7 @@ export default function Confidentialite() {
 
           <div>
             <h2 style={H2}>Qui est responsable de vos données</h2>
-            <p style={P}>Maisons d&rsquo;Excellence Constructeurs de Maisons Individuelles, SARL immatriculée au RCS de Bourg-en-Bresse sous le numéro 844&nbsp;477&nbsp;794, dont le siège est au 6 rue de Genève, 01800 Meximieux. Responsable du traitement : Aykut Atak, gérant. Pour toute question ou demande relative à vos données : par courrier à l&rsquo;adresse ci-dessus, par téléphone au 04 74 34 66 43, ou par courriel à aykut.atak@sfr.fr.</p>
+            <p style={P}>Maisons d&rsquo;Excellence Constructeurs de Maisons Individuelles, SARL immatriculée au RCS de Bourg-en-Bresse sous le numéro 844&nbsp;477&nbsp;794, dont le siège est au 6 rue de Genève, 01800 Meximieux. Responsable du traitement : Aykut Atak, gérant. Pour toute question ou demande relative à vos données : par courrier à l&rsquo;adresse ci-dessus, par téléphone au 04 74 34 66 43, ou par courriel à contact@maisons-dexcellence.fr.</p>
           </div>
 
           <div>
@@ -78,7 +82,7 @@ export default function Confidentialite() {
 
           <div>
             <h2 style={H2}>Vos droits</h2>
-            <p style={P}>Vous pouvez demander à consulter les informations que nous détenons sur vous, les faire corriger, les faire effacer, en obtenir une copie, en limiter l&rsquo;usage ou vous opposer à leur traitement. Écrivez au 6 rue de Genève, 01800 Meximieux, ou à aykut.atak@sfr.fr. Nous répondons dans le mois qui suit la demande.</p>
+            <p style={P}>Vous pouvez demander à consulter les informations que nous détenons sur vous, les faire corriger, les faire effacer, en obtenir une copie, en limiter l&rsquo;usage ou vous opposer à leur traitement. Écrivez au 6 rue de Genève, 01800 Meximieux, ou à contact@maisons-dexcellence.fr. Nous répondons dans le mois qui suit la demande.</p>
             <p style={LI}>Si notre réponse ne vous convient pas, vous pouvez saisir la Commission nationale de l&rsquo;informatique et des libertés, 3 place de Fontenoy, TSA 80715, 75334 Paris Cedex 07, ou déposer une réclamation sur cnil.fr.</p>
           </div>
 

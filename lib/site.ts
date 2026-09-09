@@ -18,7 +18,7 @@ export const COMPANY = {
   country: 'FR',
 } as const;
 
-export const EMAIL = 'aykut.atak@sfr.fr';
+export const EMAIL = 'contact@maisons-dexcellence.fr';
 export const EMAIL_HREF = `mailto:${EMAIL}`;
 
 export const PHONE_DISPLAY = '06 15 19 16 47';

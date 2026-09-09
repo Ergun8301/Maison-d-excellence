@@ -102,7 +102,7 @@ export default function Entreprise(v: Vals) {
                 </div>
               </div>
               <div data-reveal="" style={{ marginTop: "clamp(36px,4vw,52px)", display: "flex", flexWrap: "wrap", gap: "16px", alignItems: "center" }}>
-                <a href="#contact" onClick={goContact} className="me-btn" style={{ textDecoration: "none", display: "inline-flex", alignItems: "center", gap: "10px", padding: "17px 32px", borderRadius: "100px", background: "#111412", color: "#F7F7F4", fontSize: "14px", fontWeight: "600" }} style-hover="background:#1C201D;transform:translateY(-3px);">Prendre le premier rendez-vous →</a>
+                <a href="/contact" onClick={goContact} className="me-btn" style={{ textDecoration: "none", display: "inline-flex", alignItems: "center", gap: "10px", padding: "17px 32px", borderRadius: "100px", background: "#111412", color: "#F7F7F4", fontSize: "14px", fontWeight: "600" }} style-hover="background:#1C201D;transform:translateY(-3px);">Prendre le premier rendez-vous →</a>
                 <span style={{ fontSize: "13.5px", color: "#77807A" }}>Gratuit, au bureau de Meximieux, sans engagement.</span>
               </div>
             </div>
@@ -216,7 +216,7 @@ export default function Entreprise(v: Vals) {
                   ))}
                 </div>
               </div>
-              <p data-reveal="" style={{ margin: "clamp(28px,3vw,40px) 0 0", fontSize: "12.5px", color: "#8D948E", lineHeight: "1.6", maxWidth: "80ch" }}>Plafonds fixés par les articles L. 231-1 et suivants du Code de la construction et de l'habitation, pour un CCMI avec fourniture de plan. <a href="#blog-echeancier-ccmi" onClick={goArticleEch} style={{ color: "#2E5A49", fontWeight: "600" }}>Lire l'article détaillé →</a></p>
+              <p data-reveal="" style={{ margin: "clamp(28px,3vw,40px) 0 0", fontSize: "12.5px", color: "#8D948E", lineHeight: "1.6", maxWidth: "80ch" }}>Plafonds fixés par les articles L. 231-1 et suivants du Code de la construction et de l'habitation, pour un CCMI avec fourniture de plan. <a href="/blog/echeancier-ccmi" onClick={goArticleEch} style={{ color: "#2E5A49", fontWeight: "600" }}>Lire l'article détaillé →</a></p>
             </div>
           </section>
 
@@ -251,8 +251,8 @@ export default function Entreprise(v: Vals) {
                 </div>
               </div>
               <div data-reveal="" style={{ marginTop: "clamp(40px,5vw,60px)", display: "flex", flexWrap: "wrap", gap: "16px" }}>
-                <a href="#estimation" onClick={goEstimation} className="me-btn" style={{ textDecoration: "none", display: "inline-flex", alignItems: "center", gap: "10px", padding: "17px 32px", borderRadius: "100px", background: "#2E5A49", color: "#fff", fontSize: "14px", fontWeight: "600", boxShadow: "0 22px 44px -22px rgba(46,90,73,1)" }} style-hover="background:#3B7059;transform:translateY(-3px);">Estimer mon projet →</a>
-                <a href="#realisations" onClick={goRealisations} className="me-btn" style={{ textDecoration: "none", display: "inline-flex", alignItems: "center", gap: "10px", padding: "17px 32px", borderRadius: "100px", background: "transparent", color: "#111412", fontSize: "14px", fontWeight: "600", border: "1px solid rgba(17,20,18,0.28)" }} style-hover="border-color:#2E5A49;color:#2E5A49;transform:translateY(-3px);">Voir nos réalisations</a>
+                <a href="/#estimation" onClick={goEstimation} className="me-btn" style={{ textDecoration: "none", display: "inline-flex", alignItems: "center", gap: "10px", padding: "17px 32px", borderRadius: "100px", background: "#2E5A49", color: "#fff", fontSize: "14px", fontWeight: "600", boxShadow: "0 22px 44px -22px rgba(46,90,73,1)" }} style-hover="background:#3B7059;transform:translateY(-3px);">Estimer mon projet →</a>
+                <a href="/realisations" onClick={goRealisations} className="me-btn" style={{ textDecoration: "none", display: "inline-flex", alignItems: "center", gap: "10px", padding: "17px 32px", borderRadius: "100px", background: "transparent", color: "#111412", fontSize: "14px", fontWeight: "600", border: "1px solid rgba(17,20,18,0.28)" }} style-hover="border-color:#2E5A49;color:#2E5A49;transform:translateY(-3px);">Voir nos réalisations</a>
               </div>
             </div>
           </section>
