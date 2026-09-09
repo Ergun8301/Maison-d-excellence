@@ -78,7 +78,8 @@ export type Vals = {
   goBlog: () => void;
   goZone: () => void;
   goRenovation: () => void;
-  goMentions: () => void;
+  goMentions: (e?: MouseEvent) => void;
+  goConfidentialite: (e?: MouseEvent) => void;
   goArticlePrix: () => void;
   goArticleEch: () => void;
   menuOpen: boolean;

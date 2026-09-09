@@ -38,6 +38,7 @@ export const ROUTES: Record<string, string> = {
   zone: '/zone-intervention',
   renovation: '/renovation-extension',
   mentions: '/mentions-legales',
+  confidentialite: '/politique-confidentialite',
 };
 
 /**
@@ -348,7 +349,18 @@ export default function Site({
       goBlog: () => navigate('blog'),
       goZone: () => navigate('zone'),
       goRenovation: () => navigate('renovation'),
-      goMentions: () => navigate('mentions'),
+      // Le lien porte désormais le vrai chemin (/mentions-legales) et non
+      // une ancre : il est donc suivable par un robot, un clic milieu ou un
+      // copier-lien. On retire la navigation du navigateur pour conserver le
+      // changement de page sans rechargement.
+      goMentions: (ev?: MouseEvent) => {
+        ev?.preventDefault();
+        navigate('mentions');
+      },
+      goConfidentialite: (ev?: MouseEvent) => {
+        ev?.preventDefault();
+        navigate('confidentialite');
+      },
       goArticlePrix: () => router.push('/blog/prix-construction-m2'),
       goArticleEch: () => router.push('/blog/echeancier-ccmi'),
       menuOpen,

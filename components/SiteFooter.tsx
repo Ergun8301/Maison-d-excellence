@@ -8,7 +8,7 @@ import type { Vals } from '@/components/site-vals';
  * sont identiques au fichier de référence dans design/.
  */
 export default function SiteFooter(v: Vals) {
-  const { avisCount, goAccueil, goBlog, goContact, goEntreprise, goEstimation, goInvestisseurs, goMentions, goModeles, goRealisations, goRenovation, goTerrains, goZone, year } = v;
+  const { avisCount, goAccueil, goBlog, goContact, goEntreprise, goEstimation, goInvestisseurs, goConfidentialite, goMentions, goModeles, goRealisations, goRenovation, goTerrains, goZone, year } = v;
   return (
     <>
       <footer style={{ background: "#0B0D0C", color: "rgba(247,247,244,0.7)", padding: "clamp(60px,8vw,96px) 0 0" }}>
@@ -49,7 +49,8 @@ export default function SiteFooter(v: Vals) {
                     <a href="#investisseurs" onClick={goInvestisseurs} className="me-link" style={{ textDecoration: "none", color: "rgba(247,247,244,0.72)", fontSize: "14.5px" }} style-hover="color:#9CC4B2;">Projets investisseurs</a>
                     <a href="#blog" onClick={goBlog} className="me-link" style={{ textDecoration: "none", color: "rgba(247,247,244,0.72)", fontSize: "14.5px" }} style-hover="color:#9CC4B2;">Blog</a>
                     <a href="#zone" onClick={goZone} className="me-link" style={{ textDecoration: "none", color: "rgba(247,247,244,0.72)", fontSize: "14.5px" }} style-hover="color:#9CC4B2;">Zone d'intervention</a>
-                    <a href="#mentions" onClick={goMentions} className="me-link" style={{ textDecoration: "none", color: "rgba(247,247,244,0.72)", fontSize: "14.5px" }} style-hover="color:#9CC4B2;">Mentions légales</a>
+                    <a href="/mentions-legales" onClick={goMentions} className="me-link" style={{ textDecoration: "none", color: "rgba(247,247,244,0.72)", fontSize: "14.5px" }} style-hover="color:#9CC4B2;">Mentions légales</a>
+                    <a href="/politique-confidentialite" onClick={goConfidentialite} className="me-link" style={{ textDecoration: "none", color: "rgba(247,247,244,0.72)", fontSize: "14.5px" }} style-hover="color:#9CC4B2;">Politique de confidentialité</a>
                   </div>
                 </div>
                 <div>

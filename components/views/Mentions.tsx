@@ -29,7 +29,7 @@ export default function Mentions(v: Vals) {
               </div>
               <div>
                 <h2 style={{ margin: "0", fontFamily: "'Cormorant Garamond',serif", fontWeight: "400", fontSize: "clamp(22px,2.6vw,32px)", color: "#111412" }}>Hébergement</h2>
-                <p style={{ margin: "12px 0 0", color: "#4a443c", fontSize: "16px", lineHeight: "1.85" }}>Le site est hébergé par Vercel Inc., 440 N Barranca Ave #4133, Covina, CA 91723, États-Unis — vercel.com.</p>
+                <p style={{ margin: "12px 0 0", color: "#4a443c", fontSize: "16px", lineHeight: "1.85" }}>Le site est hébergé par Netlify, Inc., San Francisco, Californie, États-Unis — netlify.com.</p>
               </div>
               <div>
                 <h2 style={{ margin: "0", fontFamily: "'Cormorant Garamond',serif", fontWeight: "400", fontSize: "clamp(22px,2.6vw,32px)", color: "#111412" }}>Données personnelles (RGPD)</h2>

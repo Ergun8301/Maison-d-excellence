@@ -65,6 +65,17 @@ const absolutePhotos = (s) =>
  * style, aucune classe, aucun nœud n'est touché.
  */
 const CORRECTIONS = [
+  // Pied de page : « Mentions légales » portait `href="#mentions"`, une
+  // ancre qui ne mène nulle part. Le clic fonctionnait — un gestionnaire
+  // poussait la route — mais le lien lui-même était vide : illisible pour un
+  // robot, faux au clic milieu, faux au copier-lien. Il porte maintenant le
+  // chemin réel, et le gestionnaire annule la navigation du navigateur.
+  [
+    `<a href="#mentions" onClick="{{ goMentions }}" class="me-link" style="text-decoration:none;color:rgba(247,247,244,0.72);font-size:14.5px;" style-hover="color:#9CC4B2;">Mentions légales</a>`,
+    `<a href="/mentions-legales" onClick="{{ goMentions }}" class="me-link" style="text-decoration:none;color:rgba(247,247,244,0.72);font-size:14.5px;" style-hover="color:#9CC4B2;">Mentions légales</a>
+                    <a href="/politique-confidentialite" onClick="{{ goConfidentialite }}" class="me-link" style="text-decoration:none;color:rgba(247,247,244,0.72);font-size:14.5px;" style-hover="color:#9CC4B2;">Politique de confidentialité</a>`,
+  ],
+
   // La boîte contact@ suppose un domaine qui n'est pas encore déposé. On
   // affiche l'adresse réellement utilisée par le dirigeant.
   ['contact@maisons-dexcellence.fr', 'aykut.atak@sfr.fr'],
@@ -288,12 +299,17 @@ const CORRECTIONS = [
   // L'article 6 III de la loi pour la confiance dans l'économie numérique
   // impose de nommer l'hébergeur avec ses coordonnées : « disponibles sur
   // demande » ne satisfait pas cette obligation.
+  //
+  // Cette correction nommait Vercel, retenu au moment où elle a été écrite.
+  // Le site est hébergé sur Netlify depuis sa mise en ligne : la page la plus
+  // engageante juridiquement affichait donc un hébergeur qui n'était pas le
+  // sien.
   [
     "Le site est hébergé par un prestataire situé dans l'Union européenne. " +
       "Les coordonnées complètes de l'hébergeur sont disponibles sur demande écrite " +
       "adressée au siège de l'entreprise.",
-    'Le site est hébergé par Vercel Inc., 440 N Barranca Ave #4133, Covina, ' +
-      'CA 91723, États-Unis — vercel.com.',
+    'Le site est hébergé par Netlify, Inc., San Francisco, Californie, ' +
+      'États-Unis — netlify.com.',
   ],
 
   // Signature de réalisation, en bas du pied de page.
