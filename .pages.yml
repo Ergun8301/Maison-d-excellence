@@ -1,0 +1,1 @@
+media: [{name: photos, label: Photos du site, input: public/photos, output: /photos, extensions: [jpg, jpeg, png, webp, avif]}, {name: partage, label: Image de partage, input: public/partage, output: /partage, extensions: [jpg, jpeg, png]}]
