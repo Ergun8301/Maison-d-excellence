@@ -31,7 +31,7 @@ export default function Zone(v: Vals) {
                 <div>
                   <h2 data-reveal="" style={{ margin: "0", fontFamily: "'Cormorant Garamond',serif", fontWeight: "300", fontSize: "clamp(28px,3.8vw,50px)", lineHeight: "1.05", color: "#111412" }}>Les communes où nous construisons</h2>
                   <p data-reveal="" data-delay="80" style={{ margin: "18px 0 0", color: "#4E534E", fontSize: "clamp(15px,1.4vw,18px)", lineHeight: "1.8", maxWidth: "52ch" }}>Cette liste n'est pas limitative : si votre terrain se trouve à la limite de notre zone, appelez-nous — nous préférons le dire franchement plutôt que d'accepter un chantier que nous suivrions mal.</p>
-                  <a href="#contact" onClick={goContact} className="me-btn" data-reveal="" data-delay="140" style={{ marginTop: "28px", textDecoration: "none", display: "inline-flex", alignItems: "center", gap: "10px", padding: "17px 32px", borderRadius: "100px", background: "#111412", color: "#F7F7F4", fontSize: "14px", fontWeight: "600" }} style-hover="background:#1C201D;transform:translateY(-3px);">Vérifier pour mon terrain →</a>
+                  <a href="/contact" onClick={goContact} className="me-btn" data-reveal="" data-delay="140" style={{ marginTop: "28px", textDecoration: "none", display: "inline-flex", alignItems: "center", gap: "10px", padding: "17px 32px", borderRadius: "100px", background: "#111412", color: "#F7F7F4", fontSize: "14px", fontWeight: "600" }} style-hover="background:#1C201D;transform:translateY(-3px);">Vérifier pour mon terrain →</a>
                 </div>
                 <div data-reveal="" data-delay="120" style={{ display: "flex", flexWrap: "wrap", gap: "10px" }}>
                   {(communes ?? []).map((c, i) => (

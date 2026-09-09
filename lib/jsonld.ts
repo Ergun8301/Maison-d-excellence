@@ -3,9 +3,7 @@ import { SITE_URL } from '@/lib/site';
 /**
  * Balisage JSON-LD de l'établissement, repris de la maquette Claude Design.
  *
- * Trois écarts assumés :
- *  - l'adresse e-mail passe à celle du dirigeant, la boîte contact@ du domaine
- *    n'existant pas encore ;
+ * Deux écarts assumés :
  *  - ajout des identifiants légaux relevés sur le Kbis (SIREN, SIRET, TVA) et
  *    de l'effectif, qui renforcent le balisage local ;
  *  - les adresses du site viennent de SITE_URL et non de la maquette, qui les
@@ -33,7 +31,7 @@ export const ORGANISATION_JSONLD = {
     `${SITE_URL}/photos/devanture-rue.webp`
   ],
   "telephone": "+33474346643",
-  "email": "aykut.atak@sfr.fr",
+  "email": "contact@maisons-dexcellence.fr",
   "priceRange": "€€€",
   "founder": {
     "@type": "Person",

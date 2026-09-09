@@ -28,7 +28,7 @@ export default function NosModeles(v: Vals) {
               <a href="#plain-pied" className="me-link" style={{ textDecoration: "none", color: "#111412", fontSize: "14px", fontWeight: "600" }} style-hover="color:#2E5A49;">Plain-pied</a>
               <a href="#etage" className="me-link" style={{ textDecoration: "none", color: "#111412", fontSize: "14px", fontWeight: "600" }} style-hover="color:#2E5A49;">À étage</a>
               <a href="#eco" className="me-link" style={{ textDecoration: "none", color: "#111412", fontSize: "14px", fontWeight: "600" }} style-hover="color:#2E5A49;">Éco-conçues</a>
-              <a href="#estimation" onClick={goEstimation} className="me-link" style={{ marginLeft: "auto", textDecoration: "none", color: "#2E5A49", fontSize: "14px", fontWeight: "600" }} style-hover="gap:12px;">Chiffrer un projet →</a>
+              <a href="/#estimation" onClick={goEstimation} className="me-link" style={{ marginLeft: "auto", textDecoration: "none", color: "#2E5A49", fontSize: "14px", fontWeight: "600" }} style-hover="gap:12px;">Chiffrer un projet →</a>
             </div>
           </section>
 
@@ -115,8 +115,8 @@ export default function NosModeles(v: Vals) {
               <h2 data-reveal="" style={{ margin: "0", fontFamily: "'Cormorant Garamond',serif", fontWeight: "300", fontSize: "clamp(28px,3.8vw,50px)", lineHeight: "1.06" }}>Aucun de ces modèles ne vous correspond exactement ?</h2>
               <p data-reveal="" data-delay="100" style={{ margin: "18px auto 0", color: "rgba(247,247,244,0.68)", fontSize: "16px", lineHeight: "1.7", maxWidth: "56ch" }}>C'est normal, et c'est même le point de départ habituel. Apportez vos idées et votre terrain, nous dessinons le plan qui va avec — et nous déposons le permis de construire.</p>
               <div data-reveal="" data-delay="180" style={{ display: "flex", flexWrap: "wrap", gap: "14px", justifyContent: "center", marginTop: "32px" }}>
-                <a href="#contact" onClick={goContact} className="me-btn" style={{ textDecoration: "none", display: "inline-flex", alignItems: "center", gap: "10px", padding: "17px 32px", borderRadius: "100px", background: "#2E5A49", color: "#fff", fontSize: "14px", fontWeight: "600" }} style-hover="background:#3B7059;transform:translateY(-3px);">Parler de mon projet →</a>
-                <a href="#realisations" onClick={goRealisations} className="me-btn" style={{ textDecoration: "none", display: "inline-flex", alignItems: "center", gap: "10px", padding: "17px 32px", borderRadius: "100px", background: "transparent", border: "1px solid rgba(247,247,244,0.3)", color: "#F7F7F4", fontSize: "14px", fontWeight: "600" }} style-hover="border-color:#9CC4B2;color:#9CC4B2;transform:translateY(-3px);">Voir des maisons livrées</a>
+                <a href="/contact" onClick={goContact} className="me-btn" style={{ textDecoration: "none", display: "inline-flex", alignItems: "center", gap: "10px", padding: "17px 32px", borderRadius: "100px", background: "#2E5A49", color: "#fff", fontSize: "14px", fontWeight: "600" }} style-hover="background:#3B7059;transform:translateY(-3px);">Parler de mon projet →</a>
+                <a href="/realisations" onClick={goRealisations} className="me-btn" style={{ textDecoration: "none", display: "inline-flex", alignItems: "center", gap: "10px", padding: "17px 32px", borderRadius: "100px", background: "transparent", border: "1px solid rgba(247,247,244,0.3)", color: "#F7F7F4", fontSize: "14px", fontWeight: "600" }} style-hover="border-color:#9CC4B2;color:#9CC4B2;transform:translateY(-3px);">Voir des maisons livrées</a>
               </div>
             </div>
           </section>

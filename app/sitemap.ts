@@ -31,6 +31,7 @@ const PAGES_FIXES: { chemin: string; priorite: number; frequence: MetadataRoute.
   { chemin: '/renovation-extension', priorite: 0.6, frequence: 'monthly' },
   { chemin: '/blog', priorite: 0.6, frequence: 'weekly' },
   { chemin: '/mentions-legales', priorite: 0.2, frequence: 'yearly' },
+  { chemin: '/politique-confidentialite', priorite: 0.2, frequence: 'yearly' },
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {

@@ -66,7 +66,7 @@ export default function Terrains(v: Vals) {
               <div data-reveal="" style={{ maxWidth: "60ch" }}>
                 <h2 style={{ margin: "0", fontFamily: "'Cormorant Garamond',serif", fontWeight: "300", fontSize: "clamp(28px,3.8vw,50px)", lineHeight: "1.04", color: "#111412" }}>Terrains à bâtir.</h2>
                 <p style={{ margin: "18px 0 0", color: "#565B56", fontSize: "clamp(15px,1.4vw,17px)", lineHeight: "1.75" }}>Nos terrains disponibles sont mis à jour chaque semaine. Contactez-nous pour connaître les opportunités en cours.</p>
-                <a href="#contact" onClick={goContact} className="me-btn" style={{ marginTop: "28px", textDecoration: "none", display: "inline-flex", alignItems: "center", gap: "10px", padding: "16px 30px", borderRadius: "100px", background: "#2E5A49", color: "#fff", fontSize: "14px", fontWeight: "600" }} style-hover="background:#3B7059;transform:translateY(-3px);">Nous contacter →</a>
+                <a href="/contact" onClick={goContact} className="me-btn" style={{ marginTop: "28px", textDecoration: "none", display: "inline-flex", alignItems: "center", gap: "10px", padding: "16px 30px", borderRadius: "100px", background: "#2E5A49", color: "#fff", fontSize: "14px", fontWeight: "600" }} style-hover="background:#3B7059;transform:translateY(-3px);">Nous contacter →</a>
               </div>
               </>) : null}
             </div>

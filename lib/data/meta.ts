@@ -25,5 +25,6 @@ export const META = {
       'article': ['Guide construction de maison | Maisons d’Excellence', 'Repères de prix, de délais et de garanties pour construire sa maison individuelle dans l’Ain, expliqués par un constructeur CCMI de Meximieux.', 'blog'],
       'zone': ['Zone d’intervention : 30 km autour de Meximieux', 'Nous construisons autour de Meximieux, Bourg-en-Bresse et Ambérieu-en-Bugey : Montluel, Lagnieu, Pérouges, Miribel, Villars-les-Dombes, Chalamont.', 'zone-intervention'],
       'renovation': ['Rénovation et extension de maison dans l’Ain', 'Extension, surélévation, agrandissement et mise aux normes dans l’Ain : une activité secondaire menée avec la même exigence technique qu’un neuf.', 'renovation-extension'],
-      'mentions': ['Mentions légales | Maisons d’Excellence', 'Mentions légales, hébergeur et informations RGPD de Maisons d’Excellence, SARL de construction de maisons individuelles basée à Meximieux (01).', 'mentions-legales']
+      'mentions': ['Mentions légales | Maisons d’Excellence', 'Mentions légales, hébergeur et informations RGPD de Maisons d’Excellence, SARL de construction de maisons individuelles basée à Meximieux (01).', 'mentions-legales'],
+      'confidentialite': ['Politique de confidentialité | Maisons d’Excellence', 'Quelles données le formulaire recueille, quels services techniques votre navigateur appelle, et combien de temps vos messages sont conservés.', 'politique-confidentialite']
     } as const satisfies Record<string, MetaEntry>;

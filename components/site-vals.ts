@@ -65,22 +65,23 @@ export type ModeleCard = {
  */
 export type Vals = {
   // navigation
-  goAccueil: () => void;
-  goRealisations: () => void;
-  goModeles: () => void;
-  goEntreprise: () => void;
+  goAccueil: (e?: MouseEvent) => void;
+  goRealisations: (e?: MouseEvent) => void;
+  goModeles: (e?: MouseEvent) => void;
+  goEntreprise: (e?: MouseEvent) => void;
   goEstimation: (e?: MouseEvent) => void;
-  goContact: () => void;
+  goContact: (e?: MouseEvent) => void;
   goContactForm: (e?: MouseEvent) => void;
   goTrouver: (e?: MouseEvent) => void;
-  goTerrains: () => void;
-  goInvestisseurs: () => void;
-  goBlog: () => void;
-  goZone: () => void;
-  goRenovation: () => void;
-  goMentions: () => void;
-  goArticlePrix: () => void;
-  goArticleEch: () => void;
+  goTerrains: (e?: MouseEvent) => void;
+  goInvestisseurs: (e?: MouseEvent) => void;
+  goBlog: (e?: MouseEvent) => void;
+  goZone: (e?: MouseEvent) => void;
+  goRenovation: (e?: MouseEvent) => void;
+  goMentions: (e?: MouseEvent) => void;
+  goConfidentialite: (e?: MouseEvent) => void;
+  goArticlePrix: (e?: MouseEvent) => void;
+  goArticleEch: (e?: MouseEvent) => void;
   menuOpen: boolean;
   toggleMenu: () => void;
   closeMenu: () => void;

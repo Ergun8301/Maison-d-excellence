@@ -65,9 +65,44 @@ const absolutePhotos = (s) =>
  * style, aucune classe, aucun nœud n'est touché.
  */
 const CORRECTIONS = [
-  // La boîte contact@ suppose un domaine qui n'est pas encore déposé. On
-  // affiche l'adresse réellement utilisée par le dirigeant.
-  ['contact@maisons-dexcellence.fr', 'aykut.atak@sfr.fr'],
+  // Navigation : les liens portaient une ancre au lieu d'un chemin.
+  //
+  // La maquette écrivait `href="#contact"`, `href="#modeles"` — des ancres
+  // qui n'existent sur aucune page. Le clic fonctionnait quand même, un
+  // gestionnaire poussant la bonne route, mais l'attribut lui-même ne menait
+  // nulle part : invisible pour un robot d'indexation, faux au clic milieu,
+  // faux au copier-lien. 355 liens sur 512 étaient dans ce cas.
+  //
+  // Le chemin de chaque lien se déduit du gestionnaire qu'il appelle déjà :
+  // `navigate('vue')` donne ROUTES['vue'], `goAnchor(ev, id, cible)` donne
+  // ROUTES[cible] + '#' + id. Les gestionnaires annulent désormais la
+  // navigation du navigateur, de sorte que le changement de page reste sans
+  // rechargement et que rien ne bouge à l'écran.
+  ['href="#accueil" onClick="{{ goAccueil }}"', 'href="/" onClick="{{ goAccueil }}"'],
+  ['href="#modeles" onClick="{{ goModeles }}"', 'href="/nos-modeles" onClick="{{ goModeles }}"'],
+  ['href="#realisations" onClick="{{ goRealisations }}"', 'href="/realisations" onClick="{{ goRealisations }}"'],
+  ['href="#entreprise" onClick="{{ goEntreprise }}"', 'href="/entreprise" onClick="{{ goEntreprise }}"'],
+  ['href="#terrains" onClick="{{ goTerrains }}"', 'href="/terrains" onClick="{{ goTerrains }}"'],
+  ['href="#investisseurs" onClick="{{ goInvestisseurs }}"', 'href="/investisseurs" onClick="{{ goInvestisseurs }}"'],
+  ['href="#blog" onClick="{{ goBlog }}"', 'href="/blog" onClick="{{ goBlog }}"'],
+  ['href="#zone" onClick="{{ goZone }}"', 'href="/zone-intervention" onClick="{{ goZone }}"'],
+  ['href="#renovation" onClick="{{ goRenovation }}"', 'href="/renovation-extension" onClick="{{ goRenovation }}"'],
+  ['href="#contact" onClick="{{ goContact }}"', 'href="/contact" onClick="{{ goContact }}"'],
+  ['href="#estimation" onClick="{{ goEstimation }}"', 'href="/#estimation" onClick="{{ goEstimation }}"'],
+  ['href="#contact" onClick="{{ goContactForm }}"', 'href="/contact#contact" onClick="{{ goContactForm }}"'],
+  ['href="#nous-trouver" onClick="{{ goTrouver }}"', 'href="/contact#nous-trouver" onClick="{{ goTrouver }}"'],
+  ['href="#blog-echeancier-ccmi" onClick="{{ goArticleEch }}"', 'href="/blog/echeancier-ccmi" onClick="{{ goArticleEch }}"'],
+
+  // Pied de page : « Mentions légales » portait `href="#mentions"`, une
+  // ancre qui ne mène nulle part. Le clic fonctionnait — un gestionnaire
+  // poussait la route — mais le lien lui-même était vide : illisible pour un
+  // robot, faux au clic milieu, faux au copier-lien. Il porte maintenant le
+  // chemin réel, et le gestionnaire annule la navigation du navigateur.
+  [
+    `<a href="#mentions" onClick="{{ goMentions }}" class="me-link" style="text-decoration:none;color:rgba(247,247,244,0.72);font-size:14.5px;" style-hover="color:#9CC4B2;">Mentions légales</a>`,
+    `<a href="/mentions-legales" onClick="{{ goMentions }}" class="me-link" style="text-decoration:none;color:rgba(247,247,244,0.72);font-size:14.5px;" style-hover="color:#9CC4B2;">Mentions légales</a>
+                    <a href="/politique-confidentialite" onClick="{{ goConfidentialite }}" class="me-link" style="text-decoration:none;color:rgba(247,247,244,0.72);font-size:14.5px;" style-hover="color:#9CC4B2;">Politique de confidentialité</a>`,
+  ],
 
   // Le bandeau d'accueil se mesure en `vh`. Sur mobile, cette unité vaut la
   // hauteur de la fenêtre *barre d'adresse rétractée* : le bandeau dépasse
@@ -282,18 +317,23 @@ const CORRECTIONS = [
       'immatriculée le 10 décembre 2018 — TVA intracommunautaire FR04844477794 — ' +
       'code APE 41.20A (construction de maisons individuelles). ' +
       'Gérant et responsable de la publication : Aykut Atak. ' +
-      'Téléphone : 04 74 34 66 43 — courriel : aykut.atak@sfr.fr.',
+      'Téléphone : 04 74 34 66 43 — courriel : contact@maisons-dexcellence.fr.',
   ],
 
   // L'article 6 III de la loi pour la confiance dans l'économie numérique
   // impose de nommer l'hébergeur avec ses coordonnées : « disponibles sur
   // demande » ne satisfait pas cette obligation.
+  //
+  // Cette correction nommait Vercel, retenu au moment où elle a été écrite.
+  // Le site est hébergé sur Netlify depuis sa mise en ligne : la page la plus
+  // engageante juridiquement affichait donc un hébergeur qui n'était pas le
+  // sien.
   [
     "Le site est hébergé par un prestataire situé dans l'Union européenne. " +
       "Les coordonnées complètes de l'hébergeur sont disponibles sur demande écrite " +
       "adressée au siège de l'entreprise.",
-    'Le site est hébergé par Vercel Inc., 440 N Barranca Ave #4133, Covina, ' +
-      'CA 91723, États-Unis — vercel.com.',
+    'Le site est hébergé par Netlify, Inc., 44 Montgomery Street, Suite 300, ' +
+      'San Francisco, CA 94104, États-Unis — netlify.com.',
   ],
 
   // Signature de réalisation, en bas du pied de page.

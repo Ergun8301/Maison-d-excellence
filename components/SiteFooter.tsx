@@ -8,7 +8,7 @@ import type { Vals } from '@/components/site-vals';
  * sont identiques au fichier de référence dans design/.
  */
 export default function SiteFooter(v: Vals) {
-  const { avisCount, goAccueil, goBlog, goContact, goEntreprise, goEstimation, goInvestisseurs, goMentions, goModeles, goRealisations, goRenovation, goTerrains, goZone, year } = v;
+  const { avisCount, goAccueil, goBlog, goContact, goEntreprise, goEstimation, goInvestisseurs, goConfidentialite, goMentions, goModeles, goRealisations, goRenovation, goTerrains, goZone, year } = v;
   return (
     <>
       <footer style={{ background: "#0B0D0C", color: "rgba(247,247,244,0.7)", padding: "clamp(60px,8vw,96px) 0 0" }}>
@@ -19,7 +19,7 @@ export default function SiteFooter(v: Vals) {
                 <div style={{ fontSize: "9px", fontWeight: "600", letterSpacing: "0.36em", color: "#2E5A49", marginTop: "6px" }}>CONSTRUCTEUR DE MAISONS INDIVIDUELLES · AIN</div>
                 <p style={{ margin: "22px 0 0", fontSize: "14px", lineHeight: "1.75", maxWidth: "46ch", color: "rgba(247,247,244,0.6)" }}>Constructeur de maisons individuelles sur-mesure à Meximieux : Bourg-en-Bresse, Ambérieu-en-Bugey, Villefranche-sur-Saône, Montluel, Lagnieu, Pérouges. Plans dessinés sur-mesure, CCMI, conformité RE2020.</p>
                 <div style={{ display: "flex", flexWrap: "wrap", gap: "12px", marginTop: "26px" }}>
-                  <a href="#estimation" onClick={goEstimation} className="me-btn" style={{ display: "inline-flex", alignItems: "center", gap: "9px", textDecoration: "none", padding: "14px 26px", borderRadius: "100px", background: "#2E5A49", color: "#fff", fontSize: "13.5px", fontWeight: "600" }} style-hover="background:#3B7059;transform:translateY(-3px);">Estimer mon projet →</a>
+                  <a href="/#estimation" onClick={goEstimation} className="me-btn" style={{ display: "inline-flex", alignItems: "center", gap: "9px", textDecoration: "none", padding: "14px 26px", borderRadius: "100px", background: "#2E5A49", color: "#fff", fontSize: "13.5px", fontWeight: "600" }} style-hover="background:#3B7059;transform:translateY(-3px);">Estimer mon projet →</a>
                   <a href="https://wa.me/33615191647?text=Bonjour%2C%20je%20vous%20%C3%A9cris%20depuis%20votre%20site.%20J'aimerais%20%C3%A9changer%20sur%20mon%20projet%20de%20construction." target="_blank" rel="noopener" className="me-btn" style={{ display: "inline-flex", alignItems: "center", gap: "9px", textDecoration: "none", padding: "14px 26px", borderRadius: "100px", background: "transparent", border: "1px solid rgba(247,247,244,0.28)", color: "rgba(247,247,244,0.85)", fontSize: "13.5px", fontWeight: "600" }} style-hover="border-color:#25D366;color:#25D366;transform:translateY(-3px);">✆ WhatsApp</a>
                 </div>
                 <div style={{ display: "flex", alignItems: "center", gap: "14px", marginTop: "26px" }}>
@@ -33,23 +33,24 @@ export default function SiteFooter(v: Vals) {
                 <div>
                   <div style={{ fontSize: "11px", letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(247,247,244,0.45)", marginBottom: "18px" }}>Navigation</div>
                   <div style={{ display: "flex", flexDirection: "column", gap: "13px" }}>
-                    <a href="#accueil" onClick={goAccueil} className="me-link" style={{ textDecoration: "none", color: "rgba(247,247,244,0.72)", fontSize: "14.5px" }} style-hover="color:#9CC4B2;">Accueil</a>
-                    <a href="#modeles" onClick={goModeles} className="me-link" style={{ textDecoration: "none", color: "rgba(247,247,244,0.72)", fontSize: "14.5px" }} style-hover="color:#9CC4B2;">Nos modèles</a>
-                    <a href="#realisations" onClick={goRealisations} className="me-link" style={{ textDecoration: "none", color: "rgba(247,247,244,0.72)", fontSize: "14.5px" }} style-hover="color:#9CC4B2;">Nos réalisations</a>
-                    <a href="#entreprise" onClick={goEntreprise} className="me-link" style={{ textDecoration: "none", color: "rgba(247,247,244,0.72)", fontSize: "14.5px" }} style-hover="color:#9CC4B2;">L'entreprise</a>
-                    <a href="#estimation" onClick={goEstimation} className="me-link" style={{ textDecoration: "none", color: "rgba(247,247,244,0.72)", fontSize: "14.5px" }} style-hover="color:#9CC4B2;">Estimer mon projet</a>
-                    <a href="#contact" onClick={goContact} className="me-link" style={{ textDecoration: "none", color: "rgba(247,247,244,0.72)", fontSize: "14.5px" }} style-hover="color:#9CC4B2;">Contact</a>
+                    <a href="/" onClick={goAccueil} className="me-link" style={{ textDecoration: "none", color: "rgba(247,247,244,0.72)", fontSize: "14.5px" }} style-hover="color:#9CC4B2;">Accueil</a>
+                    <a href="/nos-modeles" onClick={goModeles} className="me-link" style={{ textDecoration: "none", color: "rgba(247,247,244,0.72)", fontSize: "14.5px" }} style-hover="color:#9CC4B2;">Nos modèles</a>
+                    <a href="/realisations" onClick={goRealisations} className="me-link" style={{ textDecoration: "none", color: "rgba(247,247,244,0.72)", fontSize: "14.5px" }} style-hover="color:#9CC4B2;">Nos réalisations</a>
+                    <a href="/entreprise" onClick={goEntreprise} className="me-link" style={{ textDecoration: "none", color: "rgba(247,247,244,0.72)", fontSize: "14.5px" }} style-hover="color:#9CC4B2;">L'entreprise</a>
+                    <a href="/#estimation" onClick={goEstimation} className="me-link" style={{ textDecoration: "none", color: "rgba(247,247,244,0.72)", fontSize: "14.5px" }} style-hover="color:#9CC4B2;">Estimer mon projet</a>
+                    <a href="/contact" onClick={goContact} className="me-link" style={{ textDecoration: "none", color: "rgba(247,247,244,0.72)", fontSize: "14.5px" }} style-hover="color:#9CC4B2;">Contact</a>
                   </div>
                 </div>
                 <div>
                   <div style={{ fontSize: "11px", letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(247,247,244,0.45)", marginBottom: "18px" }}>Aller plus loin</div>
                   <div style={{ display: "flex", flexDirection: "column", gap: "13px" }}>
-                    <a href="#terrains" onClick={goTerrains} className="me-link" style={{ textDecoration: "none", color: "rgba(247,247,244,0.72)", fontSize: "14.5px" }} style-hover="color:#9CC4B2;">Terrains disponibles</a>
-                    <a href="#renovation" onClick={goRenovation} className="me-link" style={{ textDecoration: "none", color: "rgba(247,247,244,0.72)", fontSize: "14.5px" }} style-hover="color:#9CC4B2;">Rénovation &amp; extension</a>
-                    <a href="#investisseurs" onClick={goInvestisseurs} className="me-link" style={{ textDecoration: "none", color: "rgba(247,247,244,0.72)", fontSize: "14.5px" }} style-hover="color:#9CC4B2;">Projets investisseurs</a>
-                    <a href="#blog" onClick={goBlog} className="me-link" style={{ textDecoration: "none", color: "rgba(247,247,244,0.72)", fontSize: "14.5px" }} style-hover="color:#9CC4B2;">Blog</a>
-                    <a href="#zone" onClick={goZone} className="me-link" style={{ textDecoration: "none", color: "rgba(247,247,244,0.72)", fontSize: "14.5px" }} style-hover="color:#9CC4B2;">Zone d'intervention</a>
-                    <a href="#mentions" onClick={goMentions} className="me-link" style={{ textDecoration: "none", color: "rgba(247,247,244,0.72)", fontSize: "14.5px" }} style-hover="color:#9CC4B2;">Mentions légales</a>
+                    <a href="/terrains" onClick={goTerrains} className="me-link" style={{ textDecoration: "none", color: "rgba(247,247,244,0.72)", fontSize: "14.5px" }} style-hover="color:#9CC4B2;">Terrains disponibles</a>
+                    <a href="/renovation-extension" onClick={goRenovation} className="me-link" style={{ textDecoration: "none", color: "rgba(247,247,244,0.72)", fontSize: "14.5px" }} style-hover="color:#9CC4B2;">Rénovation &amp; extension</a>
+                    <a href="/investisseurs" onClick={goInvestisseurs} className="me-link" style={{ textDecoration: "none", color: "rgba(247,247,244,0.72)", fontSize: "14.5px" }} style-hover="color:#9CC4B2;">Projets investisseurs</a>
+                    <a href="/blog" onClick={goBlog} className="me-link" style={{ textDecoration: "none", color: "rgba(247,247,244,0.72)", fontSize: "14.5px" }} style-hover="color:#9CC4B2;">Blog</a>
+                    <a href="/zone-intervention" onClick={goZone} className="me-link" style={{ textDecoration: "none", color: "rgba(247,247,244,0.72)", fontSize: "14.5px" }} style-hover="color:#9CC4B2;">Zone d'intervention</a>
+                    <a href="/mentions-legales" onClick={goMentions} className="me-link" style={{ textDecoration: "none", color: "rgba(247,247,244,0.72)", fontSize: "14.5px" }} style-hover="color:#9CC4B2;">Mentions légales</a>
+                    <a href="/politique-confidentialite" onClick={goConfidentialite} className="me-link" style={{ textDecoration: "none", color: "rgba(247,247,244,0.72)", fontSize: "14.5px" }} style-hover="color:#9CC4B2;">Politique de confidentialité</a>
                   </div>
                 </div>
                 <div>
