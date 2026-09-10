@@ -14,6 +14,10 @@
  * sont ceux que le navigateur du visiteur appelle réellement, relevés page par
  * page en enregistrant le trafic sortant du site construit. Toute modification
  * du site qui ajoute ou retire un appel sortant doit être répercutée ici.
+ *
+ * Unsplash y a figuré tant que les photographies venaient de ses serveurs.
+ * Elles sont désormais des fichiers du dépôt, servis par le site lui-même :
+ * il n'est plus sous-traitant et a donc été retiré de la liste.
  */
 const H2 = {
   margin: '0',
@@ -68,8 +72,7 @@ export default function Confidentialite() {
             <p style={LI}><strong>Netlify, Inc.</strong> (San Francisco, États-Unis) héberge le site et reçoit les formulaires. Ses serveurs voient votre adresse IP à chaque page consultée et conservent les messages que vous envoyez.</p>
             <p style={LI}><strong>unpkg</strong>, distribué par <strong>Cloudflare, Inc.</strong> (États-Unis), fournit la bibliothèque d&rsquo;affichage des cartes. Elle est appelée sur toutes les pages.</p>
             <p style={LI}><strong>CARTO</strong>, distribué par <strong>Fastly, Inc.</strong> (États-Unis), fournit les fonds de carte. Uniquement sur les pages Contact et Zone d&rsquo;intervention, et seulement lorsque la carte s&rsquo;affiche.</p>
-            <p style={LI}><strong>Unsplash</strong> (Montréal, Canada), distribué par Fastly, fournit une partie des photographies d&rsquo;illustration. Uniquement sur la page d&rsquo;accueil, les articles du blog et une fiche modèle.</p>
-            <p style={LI}>Les polices de caractères, elles, sont servies depuis ce site et non depuis Google : aucune requête ne part chez Google lorsque vous ouvrez une page.</p>
+            <p style={LI}>Les polices de caractères et la totalité des photographies sont servies depuis ce site : aucune requête ne part chez Google ni chez une banque d’images lorsque vous ouvrez une page.</p>
             <p style={LI}>Ces sociétés sont établies hors de l&rsquo;Union européenne. Les transferts correspondants sont encadrés par les clauses contractuelles types de la Commission européenne et, pour les sociétés américaines qui y adhèrent, par le cadre de protection des données UE&ndash;États-Unis.</p>
           </div>
 
@@ -88,7 +91,7 @@ export default function Confidentialite() {
 
           <div>
             <h2 style={H2}>Mise à jour</h2>
-            <p style={P}>Cette politique décrit le site tel qu&rsquo;il fonctionne au 9 septembre 2026. Toute modification du site qui ajouterait ou retirerait un service appelé automatiquement sera reportée ici.</p>
+            <p style={P}>Cette politique décrit le site tel qu&rsquo;il fonctionne au 10 septembre 2026. Toute modification du site qui ajouterait ou retirerait un service appelé automatiquement sera reportée ici.</p>
           </div>
 
         </div>

@@ -16,7 +16,7 @@ export const ARTICLES = [
     "title": "RE2020 en 2026 : ce qui change vraiment pour votre maison individuelle",
     "seoTitle": "RE2020 en 2026 : ce qui change pour votre maison",
     "excerpt": "Nouveaux seuils carbone, confort d’été, choix des matériaux : ce que la RE2020 impose en 2026 à une maison neuve dans l’Ain, et ce que cela change sur le devis.",
-    "img": "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1800&q=80",
+    "img": "/photos/blog-re2020-2026.webp",
     "alt": "Maison individuelle neuve conforme à la RE2020 dans l’Ain",
     "body": [
       {
@@ -49,7 +49,7 @@ export const ARTICLES = [
     "title": "Prix de construction au m² dans l’Ain : les repères 2026",
     "seoTitle": "Prix de construction au m² dans l’Ain — repères 2026",
     "excerpt": "Ce que couvre réellement un prix au m², pourquoi il varie de 1 400 à 2 100 € dans l’Ain, et comment lire une annonce de constructeur sans se tromper.",
-    "img": "https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1800&q=80",
+    "img": "/photos/blog-prix-construction-m2.webp",
     "alt": "Chantier de maison individuelle dans l’Ain, gros œuvre en cours",
     "body": [
       {
@@ -82,7 +82,7 @@ export const ARTICLES = [
     "title": "Le budget réel d’une maison de 100 m² dans l’Ain",
     "seoTitle": "Le budget réel d’une maison de 100 m² dans l’Ain",
     "excerpt": "Décomposition complète d’un projet de 100 m² : construction, terrain, frais annexes, et le montant à prévoir avant le premier coup de pelle.",
-    "img": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=1800&q=80",
+    "img": "/photos/blog-budget-maison-100m2.webp",
     "alt": "Maison familiale de 100 m² construite dans l’Ain",
     "body": [
       {
@@ -115,7 +115,7 @@ export const ARTICLES = [
     "title": "Les étapes d’un projet de construction, du premier rendez-vous aux clés",
     "seoTitle": "Les étapes d’un projet de construction de maison",
     "excerpt": "Ce qui se passe réellement entre le jour où vous poussez la porte du bureau et celui où vous récupérez vos clés — avec les délais moyens de chaque étape.",
-    "img": "https://images.unsplash.com/photo-1503387837-b154d5074bd2?auto=format&fit=crop&w=1800&q=80",
+    "img": "/photos/blog-etapes-projet-construction.webp",
     "alt": "Plans de conception d’une maison individuelle sur-mesure",
     "body": [
       {
@@ -148,7 +148,7 @@ export const ARTICLES = [
     "title": "Comment fonctionne l’échéancier de paiement d’un CCMI",
     "seoTitle": "L’échéancier de paiement d’un CCMI, étape par étape",
     "excerpt": "Vous ne payez jamais en avance : les appels de fonds d’un CCMI sont plafonnés par la loi et suivent l’avancement réel du chantier. Explication étape par étape.",
-    "img": "https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=1800&q=80",
+    "img": "/photos/blog-echeancier-ccmi.webp",
     "alt": "Chantier de construction en cours d’élévation des murs",
     "body": [
       {
