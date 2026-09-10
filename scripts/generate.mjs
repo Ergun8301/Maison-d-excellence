@@ -65,6 +65,33 @@ const absolutePhotos = (s) =>
  * style, aucune classe, aucun nœud n'est touché.
  */
 const CORRECTIONS = [
+  // Bandeau d'accueil : les quatre photos venaient des serveurs d'Unsplash.
+  //
+  // Elles sont désormais des fichiers du dépôt, pour deux raisons. La
+  // première est que le client doit pouvoir les remplacer lui-même depuis
+  // son interface d'administration, ce qui suppose qu'elles lui
+  // appartiennent. La seconde est qu'une image distante fait partir
+  // l'adresse IP du visiteur chez un tiers à chaque ouverture de page.
+  //
+  // Les noms de fichiers sont stables et ne doivent pas changer : le client
+  // remplace le contenu en gardant le même nom.
+  [
+    "url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&amp;fit=crop&amp;w=2400&amp;q=85')",
+    "url('/photos/bandeau-accueil-1.webp')",
+  ],
+  [
+    "url('https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&amp;fit=crop&amp;w=2400&amp;q=85')",
+    "url('/photos/bandeau-accueil-2.webp')",
+  ],
+  [
+    "url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&amp;fit=crop&amp;w=2400&amp;q=85')",
+    "url('/photos/bandeau-accueil-3.webp')",
+  ],
+  [
+    "url('https://images.unsplash.com/photo-1503174971373-b1f69850bded?auto=format&amp;fit=crop&amp;w=2400&amp;q=85')",
+    "url('/photos/bandeau-accueil-4.webp')",
+  ],
+
   // Navigation : les liens portaient une ancre au lieu d'un chemin.
   //
   // La maquette écrivait `href="#contact"`, `href="#modeles"` — des ancres

@@ -32,7 +32,7 @@ export const MODELES = [
     "fam": "pp",
     "niveau": "Plain-pied",
     "desc": "Le plain-pied familial : double garage, grande pièce de vie sous plafond rampant et terrasse couverte.",
-    "photo": "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1400&q=80"
+    "photo": "/photos/modele-chalamont.webp"
   },
   {
     "name": "Lyon",
