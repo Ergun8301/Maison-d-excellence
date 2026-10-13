@@ -44,9 +44,11 @@ export function GET(): Response {
 - Forme : ${COMPANY.form}, gérant ${COMPANY.manager}, société créée en 2019
 - Adresse : 6 rue de Genève, 01800 Meximieux, France
 - Téléphone : ${PHONE_DISPLAY} — Courriel : ${EMAIL}
-- Zone d'intervention : environ 30 km autour de Meximieux (Bourg-en-Bresse,
-  Ambérieu-en-Bugey, Montluel, Lagnieu, Pérouges, Miribel, Villars-les-Dombes,
-  Chalamont), ainsi que Villefranche-sur-Saône
+- Zone d'intervention : environ 30 km autour de chacun des trois pôles —
+  Meximieux, Bourg-en-Bresse et Ambérieu-en-Bugey — ce qui couvre notamment
+  Péronnas, Viriat, Saint-Denis-lès-Bourg, Attignat, Ceyzériat, Montluel,
+  Lagnieu, Pérouges, Miribel, Villars-les-Dombes et Chalamont, ainsi que
+  Villefranche-sur-Saône
 - Contrat : CCMI, prix ferme et définitif, délai contractuel de 12 mois de
   chantier avec pénalités de retard, garantie de livraison à prix et délais convenus
 - Garanties : parfait achèvement (1 an), biennale (2 ans), décennale (10 ans),

@@ -2,16 +2,17 @@ import type { MetadataRoute } from 'next';
 import { SITE_URL } from '@/lib/site';
 import { ARTICLES } from '@/lib/data/articles';
 import { TERRAINS } from '@/lib/data/terrains';
+import { LOCALES } from '@/lib/data/locales';
 
 /**
  * Plan du site, pour Google.
  *
  * Sans ce fichier, Google doit découvrir chaque page en suivant les liens un
  * par un — ça marche, mais lentement, et rien ne garantit qu'il les visite
- * toutes. Le plan lui donne la liste complète d'un coup : les onze pages
- * fixes, plus chaque article de blog et chaque fiche terrain, générées à
- * partir des mêmes données que le reste du site pour qu'une fiche ajoutée
- * quelque part n'ait pas besoin d'être répétée ici.
+ * toutes. Le plan lui donne la liste complète d'un coup : les douze pages
+ * fixes, plus les dix pages locales, chaque article de blog et chaque fiche
+ * terrain, générées à partir des mêmes données que le reste du site pour
+ * qu'une fiche ajoutée quelque part n'ait pas besoin d'être répétée ici.
  *
  * `changeFrequency` et `priority` sont des indications, pas des ordres :
  * Google explore à son rythme quoi qu'il arrive. Elles restent posées parce
@@ -32,9 +33,6 @@ const PAGES_FIXES: { chemin: string; priorite: number; frequence: MetadataRoute.
   { chemin: '/blog', priorite: 0.6, frequence: 'weekly' },
   { chemin: '/mentions-legales', priorite: 0.2, frequence: 'yearly' },
   { chemin: '/politique-confidentialite', priorite: 0.2, frequence: 'yearly' },
-  { chemin: '/construction-maison-meximieux', priorite: 0.7, frequence: 'monthly' },
-  { chemin: '/construction-maison-bourg-en-bresse', priorite: 0.7, frequence: 'monthly' },
-  { chemin: '/construction-maison-amberieu-en-bugey', priorite: 0.7, frequence: 'monthly' },
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -54,6 +52,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.5,
   }));
 
+  // Les dix pages locales viennent des données, et non d'une liste recopiée :
+  // une commune ajoutée dans lib/data/locales.ts entre d'elle-même au plan du
+  // site. Les trois pôles passent avant les communes qu'ils couvrent.
+  const locales = LOCALES.map((l) => ({
+    url: `${SITE_URL}/${l.slug}`,
+    lastModified: maintenant,
+    changeFrequency: 'monthly' as const,
+    priority: l.pole ? 0.6 : 0.7,
+  }));
+
   const terrains = TERRAINS.map((t) => ({
     url: `${SITE_URL}/terrains/${t.slug}`,
     lastModified: maintenant,
@@ -61,5 +69,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.5,
   }));
 
-  return [...fixes, ...articles, ...terrains];
+  return [...fixes, ...locales, ...articles, ...terrains];
 }

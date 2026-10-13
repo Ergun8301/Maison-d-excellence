@@ -1,4 +1,4 @@
-// Les 13 couples title/description et les slugs canoniques.
+// Les 20 couples title/description et les slugs canoniques.
 // Le troisième élément est le slug de la route Next.js (chaîne vide pour
 // l'accueil).
 //
@@ -30,4 +30,11 @@ export const META = {
       'meximieux': ['Constructeur de maison à Meximieux (01) | MdE', 'Notre bureau est au 6 rue de Genève, à Meximieux : plans dessinés sur-mesure, CCMI, RE2020. Pérouges, Charnoz, Chazey, Villieu et la plaine de l’Ain.', 'construction-maison-meximieux'],
       'bourg': ['Constructeur de maison à Bourg-en-Bresse | MdE', 'Construire à Bourg-en-Bresse et dans sa couronne : étude de sol en terre bressane, plans dessinés sur-mesure, CCMI à prix ferme et garanties légales.', 'construction-maison-bourg-en-bresse'],
       'amberieu': ['Constructeur de maison à Ambérieu-en-Bugey | MdE', 'Maison neuve à Ambérieu-en-Bugey : terrains en pente, sous-sol ou demi-niveaux, étude de sol au pied du Bugey. Plans sur-mesure, CCMI et garanties.', 'construction-maison-amberieu-en-bugey'],
+      'viriat': ['Constructeur de maison à Viriat (01) | MdE', 'Construire à Viriat, au nord de Bourg-en-Bresse : hameaux dispersés, assainissement non collectif, étude de sol. Plans sur-mesure et CCMI à prix ferme.', 'construction-maison-viriat'],
+      'peronnas': ['Constructeur de maison à Péronnas (01) | MdE', 'Construire à Péronnas, au sud de Bourg-en-Bresse : terrain issu d’une division, accès, règles de vues et de recul. Plans sur-mesure, CCMI et garanties.', 'construction-maison-peronnas'],
+      'saintdenis': ['Constructeur de maison à Saint-Denis-lès-Bourg (01)', 'Construire à Saint-Denis-lès-Bourg : eaux de pluie à garder sur la parcelle, argile bressane, étude de sol. Plans dessinés sur-mesure et CCMI à prix ferme.', 'construction-maison-saint-denis-les-bourg'],
+      'attignat': ['Constructeur de maison à Attignat (01) | MdE', 'Construire à Attignat, au nord de Bourg-en-Bresse : secteurs d’extension du PLU, raccordements, taxe d’aménagement. Plans sur-mesure et CCMI à prix ferme.', 'construction-maison-attignat'],
+      'ceyzeriat': ['Constructeur de maison à Ceyzériat (01) | MdE', 'Construire à Ceyzériat, au pied du Revermont : terrain rocheux, terrassement, aspect extérieur encadré par le PLU. Plans sur-mesure et CCMI à prix ferme.', 'construction-maison-ceyzeriat'],
+      'montluel': ['Constructeur de maison à Montluel (01) | MdE', 'Construire à Montluel, sur la Côtière : petites parcelles, emprise au sol, maison à étage. Étude de faisabilité gratuite, plans sur-mesure et CCMI.', 'construction-maison-montluel'],
+      'lagnieu': ['Constructeur de maison à Lagnieu (01) | MdE', 'Construire à Lagnieu, en plaine de l’Ain : sol de graviers, niveau de la nappe, terrain plat. Plans dessinés sur-mesure, CCMI à prix ferme et garanties.', 'construction-maison-lagnieu'],
     } as const satisfies Record<string, MetaEntry>;

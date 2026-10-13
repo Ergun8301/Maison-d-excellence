@@ -72,6 +72,9 @@
   .me-pin.petit i{inset:11px}
   .me-pin.petit b{width:10px;height:10px;margin:-5px 0 0 -5px;background:var(--vert);box-shadow:0 0 0 3px rgba(11,13,12,.85),0 0 14px rgba(46,90,73,.9)}
   .me-lab{position:absolute;left:34px;top:50%;transform:translateY(-50%);white-space:nowrap;font:600 10px 'Manrope',system-ui,sans-serif;letter-spacing:.26em;text-transform:uppercase;color:var(--creme);background:rgba(11,13,12,.86);border:1px solid rgba(156,196,178,.4);padding:7px 10px}
+  /* « Maisons d'Excellence » fait deux fois la longueur d'un nom de commune :
+     l'interlettrage se resserre pour que l'étiquette tienne dans le cadre. */
+  .me-lab.long{letter-spacing:.14em}
   @keyframes mePulse{0%{transform:scale(.35);opacity:1}100%{transform:scale(1.25);opacity:0}}
 
   /* Sur un écran étroit, « Ambérieu-en-Bugey » posé à droite de son repère
@@ -121,7 +124,7 @@
   const epingle = (nom, petit) => L.divIcon({
     className: '', iconSize: [46, 46], iconAnchor: [23, 23],
     html: '<div class="me-pin' + (petit ? ' petit' : '') + '"><i></i><b></b>' +
-          (nom ? '<span class="me-lab">' + nom + '</span>' : '') + '</div>',
+          (nom ? '<span class="me-lab' + (nom.length > 18 ? ' long' : '') + '">' + nom + '</span>' : '') + '</div>',
   });
 
   let recentrer;
@@ -129,7 +132,10 @@
   if (vue === 'bureau') {
     const b = d.bureau;
     const dest = encodeURIComponent(b.adresse);
-    L.marker([b.lat, b.lng], { icon: epingle(null, false) })
+    /* Le repère porte le nom de l'entreprise : sur la page Contact, la carte
+       est la seule chose qui ne le dit pas, et un point lumineux sans légende
+       ne désigne rien. */
+    L.marker([b.lat, b.lng], { icon: epingle(b.nom.replace("'", '\u2019'), false) })
       .addTo(carte)
       .bindPopup(
         '<b>Maisons d&rsquo;Excellence</b>' + b.adresse.replace(', ', '<br>') + '<br>' + b.tel +
