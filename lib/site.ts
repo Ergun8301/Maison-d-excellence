@@ -58,7 +58,7 @@ export function waLink(
 
 export const WA_URL = waLink();
 
-/** Secteur de Meximieux — centre de la zone d'intervention (30 km). */
+/** Bureau de Meximieux — l'un des trois pôles de la zone d'intervention (30 km chacun). */
 export const GEO = {
   lat: 45.9081,
   lng: 5.1953,

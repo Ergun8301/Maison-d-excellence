@@ -65,6 +65,14 @@ const absolutePhotos = (s) =>
  * style, aucune classe, aucun nœud n'est touché.
  */
 const CORRECTIONS = [
+  // Pied de page : la maquette présente Bourg-en-Bresse et Ambérieu-en-Bugey
+  // comme des communes desservies depuis Meximieux. Ce sont deux des trois
+  // pôles, chacun avec son rayon de 30 km.
+  [
+    `Constructeur de maisons individuelles sur-mesure à Meximieux : Bourg-en-Bresse, Ambérieu-en-Bugey, Villefranche-sur-Saône, Montluel, Lagnieu, Pérouges. Plans dessinés sur-mesure, CCMI, conformité RE2020.`,
+    `Constructeur de maisons individuelles sur-mesure dans l’Ain : trois pôles, Meximieux, Bourg-en-Bresse et Ambérieu-en-Bugey, et 30 km autour de chacun. Plans dessinés sur-mesure, CCMI, conformité RE2020.`,
+  ],
+
   // Horaires du bureau : 9h–19h, et non les 8h30–18h00 de la maquette. Deux
   // chaînes, la page Contact et le pied de page ; le balisage JSON-LD
   // (lib/jsonld.ts) et les pages locales (lib/data/locales.ts) sont hors

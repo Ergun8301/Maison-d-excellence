@@ -1,4 +1,5 @@
 import { SITE_URL } from '@/lib/site';
+import { COMMUNES } from '@/lib/data/communes';
 
 /**
  * Balisage JSON-LD de l'établissement, repris de la maquette Claude Design.
@@ -6,6 +7,8 @@ import { SITE_URL } from '@/lib/site';
  * Deux écarts assumés :
  *  - ajout des identifiants légaux relevés sur le Kbis (SIREN, SIRET, TVA) et
  *    de l'effectif, qui renforcent le balisage local ;
+ *  - la zone desservie (`serviceArea`) compte trois cercles, un par pôle,
+ *    lus dans lib/data/communes.ts, et non le cercle unique de la maquette ;
  *  - les adresses du site viennent de SITE_URL et non de la maquette, qui les
  *    écrivait en dur avec le www. Le reste du site — balises canoniques, plan
  *    du site, robots.txt, llms.txt — lit déjà cette même constante : le
@@ -112,15 +115,19 @@ export const ORGANISATION_JSONLD = {
       "name": "Miribel"
     }
   ],
-  "serviceArea": {
+  // Trois cercles de 30 km, un par pôle — Meximieux, Bourg-en-Bresse,
+  // Ambérieu-en-Bugey — aux mêmes coordonnées que ceux de la carte de la page
+  // zone d'intervention. La maquette n'en déclarait qu'un, centré sur le
+  // bureau, ce qui laissait Bourg et Ambérieu au bord de la zone.
+  "serviceArea": COMMUNES.filter((c) => "hub" in c && c.hub === true).map((c) => ({
     "@type": "GeoCircle",
     "geoMidpoint": {
       "@type": "GeoCoordinates",
-      "latitude": 45.903688,
-      "longitude": 5.192938
+      "latitude": c.lat,
+      "longitude": c.lng
     },
     "geoRadius": "30000"
-  },
+  })),
   "aggregateRating": {
     "@type": "AggregateRating",
     "ratingValue": "5.0",
