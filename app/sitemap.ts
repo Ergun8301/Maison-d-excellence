@@ -32,6 +32,9 @@ const PAGES_FIXES: { chemin: string; priorite: number; frequence: MetadataRoute.
   { chemin: '/blog', priorite: 0.6, frequence: 'weekly' },
   { chemin: '/mentions-legales', priorite: 0.2, frequence: 'yearly' },
   { chemin: '/politique-confidentialite', priorite: 0.2, frequence: 'yearly' },
+  { chemin: '/construction-maison-meximieux', priorite: 0.7, frequence: 'monthly' },
+  { chemin: '/construction-maison-bourg-en-bresse', priorite: 0.7, frequence: 'monthly' },
+  { chemin: '/construction-maison-amberieu-en-bugey', priorite: 0.7, frequence: 'monthly' },
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {

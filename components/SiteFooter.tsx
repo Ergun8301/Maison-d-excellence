@@ -49,6 +49,9 @@ export default function SiteFooter(v: Vals) {
                     <a href="/investisseurs" onClick={goInvestisseurs} className="me-link" style={{ textDecoration: "none", color: "rgba(247,247,244,0.72)", fontSize: "14.5px" }} style-hover="color:#9CC4B2;">Projets investisseurs</a>
                     <a href="/blog" onClick={goBlog} className="me-link" style={{ textDecoration: "none", color: "rgba(247,247,244,0.72)", fontSize: "14.5px" }} style-hover="color:#9CC4B2;">Blog</a>
                     <a href="/zone-intervention" onClick={goZone} className="me-link" style={{ textDecoration: "none", color: "rgba(247,247,244,0.72)", fontSize: "14.5px" }} style-hover="color:#9CC4B2;">Zone d'intervention</a>
+                    <a href="/construction-maison-meximieux" className="me-link" style={{ textDecoration: "none", color: "rgba(247,247,244,0.72)", fontSize: "14.5px" }} style-hover="color:#9CC4B2;">Construire à Meximieux</a>
+                    <a href="/construction-maison-bourg-en-bresse" className="me-link" style={{ textDecoration: "none", color: "rgba(247,247,244,0.72)", fontSize: "14.5px" }} style-hover="color:#9CC4B2;">Construire à Bourg-en-Bresse</a>
+                    <a href="/construction-maison-amberieu-en-bugey" className="me-link" style={{ textDecoration: "none", color: "rgba(247,247,244,0.72)", fontSize: "14.5px" }} style-hover="color:#9CC4B2;">Construire à Ambérieu-en-Bugey</a>
                     <a href="/mentions-legales" onClick={goMentions} className="me-link" style={{ textDecoration: "none", color: "rgba(247,247,244,0.72)", fontSize: "14.5px" }} style-hover="color:#9CC4B2;">Mentions légales</a>
                     <a href="/politique-confidentialite" onClick={goConfidentialite} className="me-link" style={{ textDecoration: "none", color: "rgba(247,247,244,0.72)", fontSize: "14.5px" }} style-hover="color:#9CC4B2;">Politique de confidentialité</a>
                   </div>

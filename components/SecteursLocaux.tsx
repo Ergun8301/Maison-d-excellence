@@ -1,0 +1,52 @@
+import { LOCALES } from '@/lib/data/locales';
+
+/**
+ * Renvoi vers les trois pages locales, posé en pied de la page Zone.
+ *
+ * Ajouté ici plutôt que dans le gabarit de la vue : celui-ci est régénéré
+ * depuis la maquette, où ces pages n'existent pas. Même procédé que la FAQ de
+ * la page Entreprise.
+ *
+ * Ces trois communes sont les pôles de la zone — celles qui portent un cercle
+ * de 30 km sur la carte juste au-dessus. Le lien depuis cette page compte :
+ * sans lui, les pages locales ne seraient atteignables que par le plan du
+ * site et par le pied de page.
+ */
+export default function SecteursLocaux() {
+  return (
+    <section style={{ background: '#111412', color: '#F7F7F4', padding: 'clamp(56px,7vw,96px) 0' }}>
+      <div style={{ maxWidth: '1440px', margin: '0 auto', padding: '0 clamp(20px,5vw,64px)' }}>
+        <div style={{ display: 'inline-flex', alignItems: 'center', gap: '12px', marginBottom: '18px' }}>
+          <span style={{ width: '42px', height: '1px', background: '#9CC4B2' }} />
+          <span style={{ color: '#9CC4B2', fontSize: '11.5px', fontWeight: 600, letterSpacing: '0.22em', textTransform: 'uppercase' }}>
+            Nos trois pôles
+          </span>
+        </div>
+        <h2 style={{ margin: '0 0 clamp(28px,3.4vw,44px)', fontFamily: "'Cormorant Garamond',serif", fontWeight: 300, fontSize: 'clamp(26px,3.4vw,44px)', lineHeight: 1.08, maxWidth: '26ch' }}>
+          Ce que construire change d’une commune à l’autre.
+        </h2>
+        <div className="me-g3" style={{ gap: 'clamp(18px,2.2vw,34px)' }}>
+          {LOCALES.map((l) => (
+            <a
+              key={l.slug}
+              href={`/${l.slug}`}
+              className="me-link"
+              style={{ display: 'block', textDecoration: 'none', color: 'inherit', paddingTop: '20px', borderTop: '1px solid rgba(247,247,244,0.16)' }}
+              style-hover="color:#9CC4B2;"
+            >
+              <span style={{ display: 'block', fontFamily: "'Cormorant Garamond',serif", fontWeight: 500, fontSize: 'clamp(22px,2.2vw,28px)' }}>
+                {l.commune}
+              </span>
+              <span style={{ display: 'block', margin: '10px 0 0', fontSize: '14.5px', lineHeight: 1.7, color: 'rgba(247,247,244,0.66)' }}>
+                {l.blocs[0].titre}
+              </span>
+              <span style={{ display: 'inline-block', margin: '14px 0 0', fontSize: '12px', fontWeight: 600, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#9CC4B2' }}>
+                Lire la page →
+              </span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}

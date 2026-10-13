@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Maisons d'Excellence — carte</title>
+<!--
+  Page de carte autonome, chargée en cadre par /contact et /zone-intervention.
+
+  Pourquoi une page séparée : Leaflet et les tuiles ne se chargent alors que
+  sur les deux pages qui portent une carte, et seulement quand le visiteur y
+  arrive. Le site n'a plus besoin de charger la bibliothèque sur ses dix-sept
+  pages comme il le faisait.
+
+  Pourquoi OpenStreetMap : CARTO, le fond employé jusqu'ici, réclame désormais
+  une clé et dessinait « API KEY REQUIRED » sur chaque tuile. Les tuiles
+  OpenStreetMap sont libres et sans compte. L'attribution est obligatoire, elle
+  est conservée en bas à droite.
+
+  Deux vues, choisies par ?vue= :
+    bureau  le bureau de Meximieux, pour la page Contact
+    zone    les communes desservies et les cercles de 30 km, pour la page Zone
+
+  Les coordonnées viennent de /carte-donnees.json, servi par le site depuis
+  lib/data/communes.ts et lib/jsonld.ts : aucune liste recopiée ici.
+
+  Rendu repris de la carte Mister Kebab Grill : effet sombre par filtre CSS sur
+  le calque des tuiles, repères en pastille avec halo qui pulse, molette active
+  seulement après un clic, deux doigts sur écran tactile. Les valeurs du filtre
+  sont celles de ce modèle, éprouvées sur les vraies tuiles OpenStreetMap.
+  Seules les teintes changent : le vert et le crème de la marque remplacent
+  l'or. Le vert foncé #2E5A49 sert aux surfaces ; les traits et les textes
+  prennent le vert clair #9CC4B2, le vert foncé étant illisible sur un fond de
+  carte assombri.
+-->
+<link rel="stylesheet" href="/vendor/leaflet/leaflet.css">
+<script src="/vendor/leaflet/leaflet.js"></script>
+<style>
+  /* Deux fontes seulement, en latin : ce cadre n'affiche que des noms de
+     communes. Sous-ensemble volontaire de app/fonts.css, qui n'est pas servi
+     comme fichier statique. */
+  @font-face{font-family:'Cormorant Garamond';src:url('/fonts/cormorant-garamond-normal-latin.woff2') format('woff2');font-weight:300 700;font-style:normal;font-display:swap}
+  @font-face{font-family:'Manrope';src:url('/fonts/manrope-normal-latin.woff2') format('woff2');font-weight:200 800;font-style:normal;font-display:swap}
+
+  :root{
+    --encre:#0B0D0C;
+    --panneau:#111412;
+    --vert:#2E5A49;
+    --sauge:#9CC4B2;
+    --creme:#F7F7F4;
+    --terne:#77807A;
+  }
+  html,body{margin:0;height:100%;background:var(--encre)}
+  #carte{position:absolute;inset:0;background:var(--encre)}
+
+  /* L'effet sombre : le fond clair d'OpenStreetMap est inversé puis ramené
+     dans une teinte froide. Appliqué au seul calque des tuiles, pour que les
+     repères et les cercles gardent leurs vraies couleurs. */
+  .leaflet-tile-pane{filter:invert(1) hue-rotate(180deg) saturate(1.9) sepia(.12) brightness(.92) contrast(.92)}
+
+  .leaflet-container{font-family:'Manrope',system-ui,sans-serif;background:var(--encre)}
+  .leaflet-control-attribution{background:rgba(11,13,12,.8)!important;color:var(--terne)!important;font:10px 'Manrope',system-ui,sans-serif}
+  .leaflet-control-attribution a{color:var(--sauge)!important}
+  .leaflet-bar a{background:var(--panneau)!important;color:var(--sauge)!important;border-color:rgba(156,196,178,.3)!important}
+  .leaflet-bar a:hover{background:#18201B!important;color:var(--creme)!important}
+
+  /* Repère : un halo qui pulse, une pastille, et le nom en majuscules
+     espacées — la micro-typographie du site. */
+  .me-pin{position:relative;width:46px;height:46px}
+  .me-pin i{position:absolute;inset:0;border-radius:50%;border:1px solid rgba(156,196,178,.6);animation:mePulse 2.4s ease-out infinite}
+  .me-pin b{position:absolute;left:50%;top:50%;width:16px;height:16px;margin:-8px 0 0 -8px;border-radius:50%;background:var(--sauge);box-shadow:0 0 0 4px rgba(11,13,12,.85),0 0 22px rgba(156,196,178,.75)}
+  .me-pin.petit i{inset:11px}
+  .me-pin.petit b{width:10px;height:10px;margin:-5px 0 0 -5px;background:var(--vert);box-shadow:0 0 0 3px rgba(11,13,12,.85),0 0 14px rgba(46,90,73,.9)}
+  .me-lab{position:absolute;left:34px;top:50%;transform:translateY(-50%);white-space:nowrap;font:600 10px 'Manrope',system-ui,sans-serif;letter-spacing:.26em;text-transform:uppercase;color:var(--creme);background:rgba(11,13,12,.86);border:1px solid rgba(156,196,178,.4);padding:7px 10px}
+  @keyframes mePulse{0%{transform:scale(.35);opacity:1}100%{transform:scale(1.25);opacity:0}}
+
+  /* Sur un écran étroit, « Ambérieu-en-Bugey » posé à droite de son repère
+     sortait du cadre : mesuré à 404 px pour une fenêtre de 390. L'étiquette
+     passe alors sous le repère et se resserre, ce qui supprime le
+     débordement quelle que soit la position du repère après recadrage. */
+  @media (max-width: 560px){
+    .me-lab{left:50%;top:auto;bottom:-6px;transform:translate(-50%,100%);font-size:9px;letter-spacing:.12em;padding:5px 8px}
+  }
+  @media (prefers-reduced-motion: reduce){.me-pin i{animation:none;opacity:.5}}
+
+  .leaflet-tooltip.me-info{background:rgba(11,13,12,.88);border:1px solid rgba(156,196,178,.4);color:var(--creme);border-radius:0;box-shadow:none;font:600 10px 'Manrope',system-ui,sans-serif;letter-spacing:.2em;text-transform:uppercase;padding:6px 9px}
+  .leaflet-tooltip.me-info::before{display:none}
+
+  .leaflet-popup-content-wrapper,.leaflet-popup-tip{background:var(--panneau);color:var(--creme);border:1px solid rgba(156,196,178,.35);border-radius:0;box-shadow:0 20px 50px rgba(0,0,0,.6)}
+  .leaflet-popup-content{margin:16px 18px;font-size:15px;line-height:1.55}
+  .leaflet-popup-content b{display:block;font:600 9px 'Manrope',system-ui,sans-serif;letter-spacing:.3em;text-transform:uppercase;color:var(--sauge);margin-bottom:6px}
+  .leaflet-popup-content a{display:inline-block;margin-top:10px;font:600 10px 'Manrope',system-ui,sans-serif;letter-spacing:.22em;text-transform:uppercase;color:var(--sauge);text-decoration:none;border-bottom:1px solid rgba(156,196,178,.5)}
+  .leaflet-container a.leaflet-popup-close-button{color:var(--terne)}
+
+  .me-recentrer a{display:flex!important;align-items:center;justify-content:center;cursor:pointer}
+  .me-recentrer svg{display:block}
+</style>
+</head>
+<body>
+<div id="carte"></div>
+<script>
+(async () => {
+  const vue = new URLSearchParams(location.search).get('vue') === 'zone' ? 'zone' : 'bureau';
+  const d = await fetch('/carte-donnees.json').then((r) => r.json());
+
+  /* Écran tactile : un doigt fait défiler la page, deux doigts déplacent et
+     zooment la carte. Sans cela, la carte capture le défilement et le
+     visiteur reste bloqué dessus. */
+  const tactile = matchMedia('(pointer: coarse)').matches;
+  const carte = L.map('carte', {
+    zoomControl: true, attributionControl: true,
+    scrollWheelZoom: false, dragging: !tactile, tap: false,
+    /* Sans cela le fondu des tuiles reste bloqué à opacité 0 dans ce cadre. */
+    fadeAnimation: false,
+  });
+  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a>',
+  }).addTo(carte);
+
+  const epingle = (nom, petit) => L.divIcon({
+    className: '', iconSize: [46, 46], iconAnchor: [23, 23],
+    html: '<div class="me-pin' + (petit ? ' petit' : '') + '"><i></i><b></b>' +
+          (nom ? '<span class="me-lab">' + nom + '</span>' : '') + '</div>',
+  });
+
+  let recentrer;
+
+  if (vue === 'bureau') {
+    const b = d.bureau;
+    const dest = encodeURIComponent(b.adresse);
+    L.marker([b.lat, b.lng], { icon: epingle(null, false) })
+      .addTo(carte)
+      .bindPopup(
+        '<b>Maisons d&rsquo;Excellence</b>' + b.adresse.replace(', ', '<br>') + '<br>' + b.tel +
+        '<a href="https://www.google.com/maps/dir/?api=1&destination=' + dest +
+        '" target="_blank" rel="noopener">Itinéraire ↗</a>'
+      );
+    recentrer = () => carte.setView([b.lat, b.lng], 16);
+  } else {
+    const poles = d.communes.filter((c) => c.pole);
+    /* Les cercles d'abord, pour qu'ils passent sous les repères. */
+    poles.forEach((c) => {
+      L.circle([c.lat, c.lng], {
+        radius: d.rayon, color: '#9CC4B2', weight: 1.2, opacity: 0.7,
+        fillColor: '#2E5A49', fillOpacity: 0.12, interactive: false,
+      }).addTo(carte);
+    });
+    /* Seuls les trois pôles portent leur nom : au-delà, les étiquettes se
+       chevauchent. Les autres communes le donnent au survol. */
+    d.communes.forEach((c) => {
+      const m = L.marker([c.lat, c.lng], {
+        icon: epingle(c.pole ? c.nom : null, !c.pole),
+        keyboard: false, zIndexOffset: c.pole ? 400 : 0, title: c.nom,
+      }).addTo(carte);
+      if (!c.pole) m.bindTooltip(c.nom, { direction: 'right', offset: [10, 0], className: 'me-info' });
+    });
+    const cadre = L.latLngBounds(poles.map((c) => [c.lat, c.lng])).pad(0.85);
+    recentrer = () => carte.fitBounds(cadre);
+  }
+
+  recentrer();
+
+  /* Bouton « recentrer », sous le zoom. */
+  const Recentrer = L.Control.extend({
+    options: { position: 'topleft' },
+    onAdd() {
+      const boite = L.DomUtil.create('div', 'leaflet-bar me-recentrer');
+      const a = L.DomUtil.create('a', '', boite);
+      a.href = '#';
+      a.title = vue === 'zone' ? 'Recentrer sur la zone d’intervention' : 'Recentrer sur le bureau';
+      a.setAttribute('aria-label', a.title);
+      a.setAttribute('role', 'button');
+      a.innerHTML = '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="6.5"/><circle cx="12" cy="12" r="1.6" fill="currentColor"/><path d="M12 2v3.5M12 18.5V22M2 12h3.5M18.5 12H22"/></svg>';
+      L.DomEvent.disableClickPropagation(boite);
+      L.DomEvent.on(a, 'click', (e) => { L.DomEvent.preventDefault(e); carte.closePopup(); recentrer(); });
+      return boite;
+    },
+  });
+  carte.addControl(new Recentrer());
+
+  /* La molette ne zoome qu'après un clic dans la carte : sinon elle avale le
+     défilement de la page au passage. */
+  carte.on('click', () => carte.scrollWheelZoom.enable());
+  carte.on('mouseout', () => carte.scrollWheelZoom.disable());
+
+  /* Le cadre peut être mesuré avant d'être visible. */
+  setTimeout(() => { try { carte.invalidateSize(); } catch (e) {} }, 260);
+  setTimeout(() => { try { carte.invalidateSize(); } catch (e) {} }, 900);
+})();
+</script>
+</body>
+</html>

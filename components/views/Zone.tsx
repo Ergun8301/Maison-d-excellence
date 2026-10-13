@@ -23,9 +23,9 @@ export default function Zone(v: Vals) {
           <section style={{ background: "#F7F7F4", padding: "clamp(48px,6vw,80px) 0 clamp(72px,9vw,130px)" }}>
             <div style={{ maxWidth: "1440px", margin: "0 auto", padding: "0 clamp(20px,5vw,64px)" }}>
               <div data-reveal="" style={{ borderRadius: "12px", overflow: "hidden", border: "1px solid rgba(17,20,18,0.12)", boxShadow: "0 50px 90px -60px rgba(17,20,18,0.6)" }}>
-                <div id="me-map" style={{ width: "100%", height: "clamp(420px,58vh,620px)" }}></div>
+                <iframe data-carte="/carte.html?vue=zone" title="Carte de la zone d’intervention de Maisons d’Excellence dans l’Ain" style={{ display: "block", width: "100%", height: "clamp(420px,58vh,620px)", border: "0" }}></iframe>
               </div>
-              <p data-reveal="" style={{ margin: "14px 0 0", fontSize: "12.5px", color: "#8D948E" }}>Les cercles représentent un rayon de 30 km autour de nos trois pôles d'intervention. Fond de carte OpenStreetMap / CARTO.</p>
+              <p data-reveal="" style={{ margin: "14px 0 0", fontSize: "12.5px", color: "#8D948E" }}>Les cercles représentent un rayon de 30 km autour de nos trois pôles d'intervention. Fond de carte OpenStreetMap.</p>
 
               <div className="me-split" style={{ gap: "clamp(36px,5vw,80px)", alignItems: "start", marginTop: "clamp(56px,7vw,96px)" }}>
                 <div>

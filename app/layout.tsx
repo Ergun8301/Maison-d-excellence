@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import Script from 'next/script';
 import { SITE_URL } from '@/lib/site';
 import { ORGANISATION_JSONLD } from '@/lib/jsonld';
 import './fonts.css';
@@ -27,8 +26,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head>
         {/* Les polices sont servies depuis le site : voir app/fonts.css, importé
             plus haut. La maquette les chargeait chez Google, ce qui envoyait
-            l'adresse IP du visiteur à un tiers dès l'ouverture d'une page. */}
-        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+            l'adresse IP du visiteur à un tiers dès l'ouverture d'une page.
+
+            Leaflet était chargé ici, donc sur les dix-sept pages, pour les
+            deux seules qui portent une carte. Les cartes vivent désormais dans
+            un cadre autonome (public/carte.html) qui embarque sa propre copie
+            de la bibliothèque, servie par le site : plus aucun appel à un CDN
+            au chargement d'une page. */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(ORGANISATION_JSONLD) }}
@@ -36,7 +40,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body>
         {children}
-        <Script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" strategy="afterInteractive" />
       </body>
     </html>
   );
