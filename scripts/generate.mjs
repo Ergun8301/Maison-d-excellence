@@ -65,6 +65,56 @@ const absolutePhotos = (s) =>
  * style, aucune classe, aucun nœud n'est touché.
  */
 const CORRECTIONS = [
+  // Pied de page : la maquette présente Bourg-en-Bresse et Ambérieu-en-Bugey
+  // comme des communes desservies depuis Meximieux. Ce sont deux des trois
+  // pôles, chacun avec son rayon de 30 km.
+  [
+    `Constructeur de maisons individuelles sur-mesure à Meximieux : Bourg-en-Bresse, Ambérieu-en-Bugey, Villefranche-sur-Saône, Montluel, Lagnieu, Pérouges. Plans dessinés sur-mesure, CCMI, conformité RE2020.`,
+    `Constructeur de maisons individuelles sur-mesure dans l’Ain : trois pôles, Meximieux, Bourg-en-Bresse et Ambérieu-en-Bugey, et 30 km autour de chacun. Plans dessinés sur-mesure, CCMI, conformité RE2020.`,
+  ],
+
+  // Horaires du bureau : 9h–19h, et non les 8h30–18h00 de la maquette. Deux
+  // chaînes, la page Contact et le pied de page ; le balisage JSON-LD
+  // (lib/jsonld.ts) et les pages locales (lib/data/locales.ts) sont hors
+  // générateur et se corrigent à part. Les jours d'ouverture ne changent pas.
+  ['Lundi – vendredi · 8h30 – 18h00', 'Lundi – vendredi · 9h – 19h'],
+  ['Lun – Ven · 8h30 – 18h00', 'Lun – Ven · 9h – 19h'],
+
+  // Pied de page : renvoi vers les trois pages locales, qui n'existent pas
+  // dans la maquette. Posées juste après « Zone d'intervention », dont elles
+  // sont le prolongement.
+  //
+  // Seule l'ancre du pied de page est visée : la maquette en porte une
+  // seconde, dans le menu mobile, qui ne doit pas recevoir ces trois liens.
+  [
+    `<a href="#zone" onClick="{{ goZone }}" class="me-link" style="text-decoration:none;color:rgba(247,247,244,0.72);font-size:14.5px;" style-hover="color:#9CC4B2;">Zone d'intervention</a>`,
+    `<a href="/zone-intervention" onClick="{{ goZone }}" class="me-link" style="text-decoration:none;color:rgba(247,247,244,0.72);font-size:14.5px;" style-hover="color:#9CC4B2;">Zone d'intervention</a>
+                    <a href="/construction-maison-meximieux" class="me-link" style="text-decoration:none;color:rgba(247,247,244,0.72);font-size:14.5px;" style-hover="color:#9CC4B2;">Construire à Meximieux</a>
+                    <a href="/construction-maison-bourg-en-bresse" class="me-link" style="text-decoration:none;color:rgba(247,247,244,0.72);font-size:14.5px;" style-hover="color:#9CC4B2;">Construire à Bourg-en-Bresse</a>
+                    <a href="/construction-maison-amberieu-en-bugey" class="me-link" style="text-decoration:none;color:rgba(247,247,244,0.72);font-size:14.5px;" style-hover="color:#9CC4B2;">Construire à Ambérieu-en-Bugey</a>`,
+  ],
+
+  // Cartes : CARTO réclame désormais une clé et dessinait « API KEY REQUIRED »
+  // sur chaque tuile. Les deux cartes passent sur un fond OpenStreetMap, dans
+  // une page autonome chargée en cadre (public/carte.html).
+  //
+  // Le cadre est écrit sans `src` : lib/site-runtime.js le renseigne quand le
+  // bloc arrive à 600 px de l'écran. Rien n'est demandé à OpenStreetMap tant
+  // que le visiteur n'est pas descendu jusque-là, et le site n'embarque plus
+  // Leaflet sur ses dix-sept pages pour deux cartes.
+  [
+    '<div id="me-map-bureau" style="position:absolute;inset:0;width:100%;height:100%;"></div>',
+    '<iframe data-carte="/carte.html?vue=bureau" title="Carte du bureau Maisons d\u2019Excellence, 6 rue de Genève à Meximieux" style="position:absolute;inset:0;width:100%;height:100%;border:0;"></iframe>',
+  ],
+  [
+    '<div id="me-map" style="width:100%;height:clamp(420px,58vh,620px);"></div>',
+    '<iframe data-carte="/carte.html?vue=zone" title="Carte de la zone d\u2019intervention de Maisons d\u2019Excellence dans l\u2019Ain" style="display:block;width:100%;height:clamp(420px,58vh,620px);border:0;"></iframe>',
+  ],
+  [
+    "Fond de carte OpenStreetMap / CARTO.",
+    "Fond de carte OpenStreetMap.",
+  ],
+
   // Bandeau d'accueil : les quatre photos venaient des serveurs d'Unsplash.
   //
   // Elles sont désormais des fichiers du dépôt, pour deux raisons. La

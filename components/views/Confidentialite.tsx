@@ -18,6 +18,12 @@
  * Unsplash y a figuré tant que les photographies venaient de ses serveurs.
  * Elles sont désormais des fichiers du dépôt, servis par le site lui-même :
  * il n'est plus sous-traitant et a donc été retiré de la liste.
+ *
+ * Même mouvement pour les cartes : unpkg livrait la bibliothèque Leaflet sur
+ * les dix-sept pages, elle est maintenant servie par le site ; CARTO
+ * fournissait les fonds de carte, il réclame désormais une clé et cède la
+ * place à OpenStreetMap, qui prend donc sa ligne — quelqu'un envoie toujours
+ * les tuiles, et cette liste se veut exacte.
  */
 const H2 = {
   margin: '0',
@@ -70,9 +76,8 @@ export default function Confidentialite() {
             <h2 style={H2}>Les services techniques que votre navigateur appelle</h2>
             <p style={P}>Afficher une page suppose d&rsquo;aller chercher des fichiers, et l&rsquo;ordinateur qui les envoie voit nécessairement votre adresse IP. Voici la liste exacte, relevée sur le site lui-même et non recopiée d&rsquo;un modèle.</p>
             <p style={LI}><strong>Netlify, Inc.</strong> (San Francisco, États-Unis) héberge le site et reçoit les formulaires. Ses serveurs voient votre adresse IP à chaque page consultée et conservent les messages que vous envoyez.</p>
-            <p style={LI}><strong>unpkg</strong>, distribué par <strong>Cloudflare, Inc.</strong> (États-Unis), fournit la bibliothèque d&rsquo;affichage des cartes. Elle est appelée sur toutes les pages.</p>
-            <p style={LI}><strong>CARTO</strong>, distribué par <strong>Fastly, Inc.</strong> (États-Unis), fournit les fonds de carte. Uniquement sur les pages Contact et Zone d&rsquo;intervention, et seulement lorsque la carte s&rsquo;affiche.</p>
-            <p style={LI}>Les polices de caractères et la totalité des photographies sont servies depuis ce site : aucune requête ne part chez Google ni chez une banque d’images lorsque vous ouvrez une page.</p>
+            <p style={LI}><strong>OpenStreetMap Foundation</strong> (Royaume-Uni) fournit le fond des deux cartes. Uniquement sur les pages Contact et Zone d&rsquo;intervention, et seulement si vous descendez jusqu&rsquo;à la carte&nbsp;: elle n&rsquo;est pas chargée à l&rsquo;ouverture de la page.</p>
+            <p style={LI}>Les polices de caractères, la totalité des photographies et la bibliothèque qui dessine les cartes sont servies depuis ce site : aucune requête ne part chez Google, chez une banque d’images ou chez un distributeur de code lorsque vous ouvrez une page.</p>
             <p style={LI}>Ces sociétés sont établies hors de l&rsquo;Union européenne. Les transferts correspondants sont encadrés par les clauses contractuelles types de la Commission européenne et, pour les sociétés américaines qui y adhèrent, par le cadre de protection des données UE&ndash;États-Unis.</p>
           </div>
 
@@ -91,7 +96,7 @@ export default function Confidentialite() {
 
           <div>
             <h2 style={H2}>Mise à jour</h2>
-            <p style={P}>Cette politique décrit le site tel qu&rsquo;il fonctionne au 10 septembre 2026. Toute modification du site qui ajouterait ou retirerait un service appelé automatiquement sera reportée ici.</p>
+            <p style={P}>Cette politique décrit le site tel qu&rsquo;il fonctionne au 13 octobre 2026. Toute modification du site qui ajouterait ou retirerait un service appelé automatiquement sera reportée ici.</p>
           </div>
 
         </div>

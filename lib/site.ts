@@ -21,9 +21,26 @@ export const COMPANY = {
 export const EMAIL = 'contact@maisons-dexcellence.fr';
 export const EMAIL_HREF = `mailto:${EMAIL}`;
 
-export const PHONE_DISPLAY = '06 15 19 16 47';
-export const PHONE_E164 = '+33615191647';
-export const PHONE_HREF = 'tel:+33615191647';
+/**
+ * Numéro principal de l'entreprise : la ligne fixe du bureau, celle que porte
+ * la fiche Google. C'est elle qui doit apparaître partout où le site annonce
+ * « appelez-nous ».
+ *
+ * Ces constantes portaient le portable du dirigeant. Les pages, elles,
+ * affichaient déjà la ligne fixe : le seul endroit qui publiait le portable
+ * comme numéro de l'entreprise était llms.txt, lu par les moteurs de réponse.
+ * Un numéro personnel diffusé comme numéro d'accueil finit en démarchage.
+ */
+export const PHONE_DISPLAY = '04 74 34 66 43';
+export const PHONE_E164 = '+33474346643';
+export const PHONE_HREF = 'tel:+33474346643';
+
+/**
+ * Le portable ne sert qu'à WhatsApp — c'est la ligne qui porte le compte.
+ * Il n'est jamais présenté comme le numéro d'accueil : là où il s'affiche, le
+ * libellé dit « WhatsApp ».
+ */
+export const WHATSAPP_DISPLAY = '06 15 19 16 47';
 
 /** Numéro WhatsApp au format wa.me (E.164 sans « + » ni séparateurs). */
 export const WHATSAPP_NUMBER = '33615191647';
@@ -41,7 +58,7 @@ export function waLink(
 
 export const WA_URL = waLink();
 
-/** Secteur de Meximieux — centre de la zone d'intervention (30 km). */
+/** Bureau de Meximieux — l'un des trois pôles de la zone d'intervention (30 km chacun). */
 export const GEO = {
   lat: 45.9081,
   lng: 5.1953,

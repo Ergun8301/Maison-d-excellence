@@ -137,7 +137,7 @@ export default function Contact(v: Vals) {
                   </div>
                   <div style={{ display: "flex", alignItems: "flex-start", gap: "15px", padding: "20px 0", borderTop: "1px solid rgba(17,20,18,0.14)" }}>
                     <span style={{ width: "38px", height: "38px", flex: "none", borderRadius: "50%", background: "#111412", color: "#9CC4B2", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "15px" }}>◷</span>
-                    <span><span style={{ display: "block", fontSize: "10.5px", letterSpacing: "0.16em", textTransform: "uppercase", color: "#77807A", marginBottom: "3px" }}>Horaires</span><span style={{ fontSize: "16px", color: "#333834", lineHeight: "1.6", display: "block" }}>Lundi – vendredi · 8h30 – 18h00<br />Samedi sur rendez-vous</span></span>
+                    <span><span style={{ display: "block", fontSize: "10.5px", letterSpacing: "0.16em", textTransform: "uppercase", color: "#77807A", marginBottom: "3px" }}>Horaires</span><span style={{ fontSize: "16px", color: "#333834", lineHeight: "1.6", display: "block" }}>Lundi – vendredi · 9h – 19h<br />Samedi sur rendez-vous</span></span>
                   </div>
                   <a href="/zone-intervention" onClick={goZone} className="me-link" style={{ textDecoration: "none", display: "flex", alignItems: "flex-start", gap: "15px", padding: "20px 0", borderTop: "1px solid rgba(17,20,18,0.14)", borderBottom: "1px solid rgba(17,20,18,0.14)", color: "#111412" }} style-hover="color:#2E5A49;">
                     <span style={{ width: "38px", height: "38px", flex: "none", borderRadius: "50%", background: "#111412", color: "#9CC4B2", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "15px" }}>⌂</span>
@@ -146,7 +146,7 @@ export default function Contact(v: Vals) {
                 </div>
 
                 <div data-reveal="" data-delay="120" style={{ position: "relative", display: "flex", flexDirection: "column", minHeight: "clamp(320px,38vw,520px)", borderRadius: "12px", overflow: "hidden", border: "1px solid rgba(17,20,18,0.12)", boxShadow: "0 40px 80px -55px rgba(17,20,18,0.6)", background: "#EDEDE7" }}>
-                  <div id="me-map-bureau" style={{ position: "absolute", inset: "0", width: "100%", height: "100%" }}></div>
+                  <iframe data-carte="/carte.html?vue=bureau" title="Carte du bureau Maisons d’Excellence, 6 rue de Genève à Meximieux" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", border: "0" }}></iframe>
                   <a href="https://www.google.com/maps/search/?api=1&query=6+rue+de+Gen%C3%A8ve+01800+Meximieux" target="_blank" rel="noopener" className="me-btn" style={{ position: "absolute", zIndex: "500", left: "16px", bottom: "16px", display: "inline-flex", alignItems: "center", gap: "9px", padding: "13px 22px", borderRadius: "100px", background: "#111412", color: "#F7F7F4", fontSize: "13px", fontWeight: "600", textDecoration: "none", boxShadow: "0 18px 34px -18px rgba(17,20,18,0.9)" }} style-hover="background:#2E5A49;transform:translateY(-3px);">Ouvrir l'itinéraire ↗</a>
                 </div>
 
