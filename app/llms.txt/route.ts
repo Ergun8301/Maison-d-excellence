@@ -23,7 +23,7 @@ export function GET(): Response {
     ['/realisations', 'Réalisations livrées dans l’Ain'],
     ['/entreprise', 'Savoir-faire technique, garanties CCMI, échéancier de paiement, questions fréquentes'],
     ['/terrains', 'Terrains à bâtir suivis dans le secteur'],
-    ['/zone-intervention', 'Communes desservies, rayon de 30 km autour de Meximieux'],
+    ['/zone-intervention', 'Communes desservies, trois pôles (Meximieux, Bourg-en-Bresse, Ambérieu-en-Bugey) et 30 km autour de chacun'],
     ['/investisseurs', 'Maisons jumelées et groupées pour investisseurs'],
     ['/renovation-extension', 'Rénovation, extension et surélévation'],
     ['/blog', 'Guides : RE2020, prix au m², budget, échéancier CCMI'],
@@ -47,8 +47,9 @@ export function GET(): Response {
 - Horaires du bureau : du lundi au vendredi de 9h à 19h, le samedi sur rendez-vous
 - Zone d'intervention : environ 30 km autour de chacun des trois pôles —
   Meximieux, Bourg-en-Bresse et Ambérieu-en-Bugey — ce qui couvre notamment
-  Péronnas, Viriat, Saint-Denis-lès-Bourg, Attignat, Ceyzériat, Montluel,
-  Lagnieu, Pérouges, Miribel, Villars-les-Dombes et Chalamont, ainsi que
+  Péronnas, Viriat, Saint-Denis-lès-Bourg, Attignat, Ceyzériat, Montagnat,
+  Marboz, Montrevel-en-Bresse, Montluel, Lagnieu, Pont-d'Ain, Dagneux,
+  Pérouges, Miribel, Villars-les-Dombes et Chalamont, ainsi que
   Villefranche-sur-Saône
 - Contrat : CCMI, prix ferme et définitif, délai contractuel de 12 mois de
   chantier avec pénalités de retard, garantie de livraison à prix et délais convenus

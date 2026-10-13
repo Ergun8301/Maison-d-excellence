@@ -1,4 +1,4 @@
-// Les 20 couples title/description et les slugs canoniques.
+// Les 25 couples title/description et les slugs canoniques.
 // Le troisième élément est le slug de la route Next.js (chaîne vide pour
 // l'accueil).
 //
@@ -23,7 +23,7 @@ export const META = {
       'investisseurs': ['Maison jumelée et projets investisseurs dans l’Ain', 'Maisons jumelées, mitoyennes et groupées : coût de construction, loyer de marché et rendement chiffrés sur votre parcelle et le PLU applicable.', 'investisseurs'],
       'blog': ['Blog construction : RE2020, prix au m², CCMI', 'Nos guides pour construire dans l’Ain : RE2020 en 2026, prix de construction au mètre carré, budget d’une maison de 100 m², échéancier CCMI.', 'blog'],
       'article': ['Guide construction de maison | Maisons d’Excellence', 'Repères de prix, de délais et de garanties pour construire sa maison individuelle dans l’Ain, expliqués par un constructeur CCMI de Meximieux.', 'blog'],
-      'zone': ['Zone d’intervention : 30 km autour de Meximieux', 'Nous construisons autour de Meximieux, Bourg-en-Bresse et Ambérieu-en-Bugey : Montluel, Lagnieu, Pérouges, Miribel, Villars-les-Dombes, Chalamont.', 'zone-intervention'],
+      'zone': ['Zone d’intervention : 3 pôles, 30 km autour de chacun', 'Nous construisons dans un rayon de 30 km autour de Meximieux, Bourg-en-Bresse et Ambérieu-en-Bugey : Montluel, Lagnieu, Pérouges, Péronnas, Viriat, Attignat.', 'zone-intervention'],
       'renovation': ['Rénovation et extension de maison dans l’Ain', 'Extension, surélévation, agrandissement et mise aux normes dans l’Ain : une activité secondaire menée avec la même exigence technique qu’un neuf.', 'renovation-extension'],
       'mentions': ['Mentions légales | Maisons d’Excellence', 'Mentions légales, hébergeur et informations RGPD de Maisons d’Excellence, SARL de construction de maisons individuelles basée à Meximieux (01).', 'mentions-legales'],
       'confidentialite': ['Politique de confidentialité | Maisons d’Excellence', 'Quelles données le formulaire recueille, quels services techniques votre navigateur appelle, et combien de temps vos messages sont conservés.', 'politique-confidentialite'],
@@ -37,4 +37,9 @@ export const META = {
       'ceyzeriat': ['Constructeur de maison à Ceyzériat (01) | MdE', 'Construire à Ceyzériat, au pied du Revermont : terrain rocheux, terrassement, aspect extérieur encadré par le PLU. Plans sur-mesure et CCMI à prix ferme.', 'construction-maison-ceyzeriat'],
       'montluel': ['Constructeur de maison à Montluel (01) | MdE', 'Construire à Montluel, sur la Côtière : petites parcelles, emprise au sol, maison à étage. Étude de faisabilité gratuite, plans sur-mesure et CCMI.', 'construction-maison-montluel'],
       'lagnieu': ['Constructeur de maison à Lagnieu (01) | MdE', 'Construire à Lagnieu, en plaine de l’Ain : sol de graviers, niveau de la nappe, terrain plat. Plans dessinés sur-mesure, CCMI à prix ferme et garanties.', 'construction-maison-lagnieu'],
+      'montagnat': ['Constructeur de maison à Montagnat (01) | MdE', 'Construire à Montagnat, près de Bourg-en-Bresse : voisinage agricole, distances à respecter, haies et accès. Plans dessinés sur-mesure, CCMI à prix ferme.', 'construction-maison-montagnat'],
+      'marboz': ['Constructeur de maison à Marboz (01) | MdE', 'Construire à Marboz, au nord de Bourg-en-Bresse : chauffage hors gaz de ville, orientation, RE2020. Plans dessinés sur-mesure, CCMI à prix ferme et garanties.', 'construction-maison-marboz'],
+      'montrevel': ['Constructeur de maison à Montrevel-en-Bresse | MdE', 'Construire à Montrevel-en-Bresse : certificat d’urbanisme, promesse de vente et conditions suspensives avant d’acheter. Plans sur-mesure, CCMI à prix ferme.', 'construction-maison-montrevel-en-bresse'],
+      'pontdain': ['Constructeur de maison à Pont-d’Ain (01) | MdE', 'Construire à Pont-d’Ain, sur la rivière d’Ain : plan de prévention des inondations, plancher surélevé, abords du château. Plans sur-mesure, CCMI et garanties.', 'construction-maison-pont-d-ain'],
+      'dagneux': ['Constructeur de maison à Dagneux (01) | MdE', 'Construire à Dagneux, sur la Côtière : bruit de l’A42, isolement des façades, plan tourné vers le côté calme. Plans dessinés sur-mesure, CCMI à prix ferme.', 'construction-maison-dagneux'],
     } as const satisfies Record<string, MetaEntry>;

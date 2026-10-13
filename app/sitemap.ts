@@ -10,7 +10,7 @@ import { LOCALES } from '@/lib/data/locales';
  * Sans ce fichier, Google doit découvrir chaque page en suivant les liens un
  * par un — ça marche, mais lentement, et rien ne garantit qu'il les visite
  * toutes. Le plan lui donne la liste complète d'un coup : les douze pages
- * fixes, plus les dix pages locales, chaque article de blog et chaque fiche
+ * fixes, plus les pages locales, chaque article de blog et chaque fiche
  * terrain, générées à partir des mêmes données que le reste du site pour
  * qu'une fiche ajoutée quelque part n'ait pas besoin d'être répétée ici.
  *
@@ -52,7 +52,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.5,
   }));
 
-  // Les dix pages locales viennent des données, et non d'une liste recopiée :
+  // Les pages locales viennent des données, et non d'une liste recopiée :
   // une commune ajoutée dans lib/data/locales.ts entre d'elle-même au plan du
   // site. Les trois pôles passent avant les communes qu'ils couvrent.
   const locales = LOCALES.map((l) => ({
