@@ -61,8 +61,8 @@ export const ORGANISATION_JSONLD = {
         "Thursday",
         "Friday"
       ],
-      "opens": "08:30",
-      "closes": "18:00"
+      "opens": "09:00",
+      "closes": "19:00"
     },
     {
       "@type": "OpeningHoursSpecification",

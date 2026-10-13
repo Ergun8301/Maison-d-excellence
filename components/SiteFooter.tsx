@@ -61,7 +61,7 @@ export default function SiteFooter(v: Vals) {
                   <div style={{ display: "flex", flexDirection: "column", gap: "13px", fontSize: "14.5px", color: "rgba(247,247,244,0.72)", lineHeight: "1.5" }}>
                     <a href="tel:+33474346643" className="me-link" style={{ textDecoration: "none", color: "rgba(247,247,244,0.72)" }} style-hover="color:#9CC4B2;">04 74 34 66 43</a>
                     <span>6 rue de Genève<br />01800 Meximieux</span>
-                    <span>Lun – Ven · 8h30 – 18h00</span>
+                    <span>Lun – Ven · 9h – 19h</span>
                     <span style={{ color: "#9CC4B2" }}>5,0 / 5 — {avisCount} avis Google</span>
                   </div>
                 </div>

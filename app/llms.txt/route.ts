@@ -44,6 +44,7 @@ export function GET(): Response {
 - Forme : ${COMPANY.form}, gérant ${COMPANY.manager}, société créée en 2019
 - Adresse : 6 rue de Genève, 01800 Meximieux, France
 - Téléphone : ${PHONE_DISPLAY} — Courriel : ${EMAIL}
+- Horaires du bureau : du lundi au vendredi de 9h à 19h, le samedi sur rendez-vous
 - Zone d'intervention : environ 30 km autour de chacun des trois pôles —
   Meximieux, Bourg-en-Bresse et Ambérieu-en-Bugey — ce qui couvre notamment
   Péronnas, Viriat, Saint-Denis-lès-Bourg, Attignat, Ceyzériat, Montluel,

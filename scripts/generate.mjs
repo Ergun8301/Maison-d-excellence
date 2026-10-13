@@ -65,6 +65,13 @@ const absolutePhotos = (s) =>
  * style, aucune classe, aucun nœud n'est touché.
  */
 const CORRECTIONS = [
+  // Horaires du bureau : 9h–19h, et non les 8h30–18h00 de la maquette. Deux
+  // chaînes, la page Contact et le pied de page ; le balisage JSON-LD
+  // (lib/jsonld.ts) et les pages locales (lib/data/locales.ts) sont hors
+  // générateur et se corrigent à part. Les jours d'ouverture ne changent pas.
+  ['Lundi – vendredi · 8h30 – 18h00', 'Lundi – vendredi · 9h – 19h'],
+  ['Lun – Ven · 8h30 – 18h00', 'Lun – Ven · 9h – 19h'],
+
   // Pied de page : renvoi vers les trois pages locales, qui n'existent pas
   // dans la maquette. Posées juste après « Zone d'intervention », dont elles
   // sont le prolongement.

@@ -137,7 +137,7 @@ export default function Contact(v: Vals) {
                   </div>
                   <div style={{ display: "flex", alignItems: "flex-start", gap: "15px", padding: "20px 0", borderTop: "1px solid rgba(17,20,18,0.14)" }}>
                     <span style={{ width: "38px", height: "38px", flex: "none", borderRadius: "50%", background: "#111412", color: "#9CC4B2", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "15px" }}>◷</span>
-                    <span><span style={{ display: "block", fontSize: "10.5px", letterSpacing: "0.16em", textTransform: "uppercase", color: "#77807A", marginBottom: "3px" }}>Horaires</span><span style={{ fontSize: "16px", color: "#333834", lineHeight: "1.6", display: "block" }}>Lundi – vendredi · 8h30 – 18h00<br />Samedi sur rendez-vous</span></span>
+                    <span><span style={{ display: "block", fontSize: "10.5px", letterSpacing: "0.16em", textTransform: "uppercase", color: "#77807A", marginBottom: "3px" }}>Horaires</span><span style={{ fontSize: "16px", color: "#333834", lineHeight: "1.6", display: "block" }}>Lundi – vendredi · 9h – 19h<br />Samedi sur rendez-vous</span></span>
                   </div>
                   <a href="/zone-intervention" onClick={goZone} className="me-link" style={{ textDecoration: "none", display: "flex", alignItems: "flex-start", gap: "15px", padding: "20px 0", borderTop: "1px solid rgba(17,20,18,0.14)", borderBottom: "1px solid rgba(17,20,18,0.14)", color: "#111412" }} style-hover="color:#2E5A49;">
                     <span style={{ width: "38px", height: "38px", flex: "none", borderRadius: "50%", background: "#111412", color: "#9CC4B2", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "15px" }}>⌂</span>
