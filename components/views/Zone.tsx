@@ -25,7 +25,7 @@ export default function Zone(v: Vals) {
               <div data-reveal="" style={{ borderRadius: "12px", overflow: "hidden", border: "1px solid rgba(17,20,18,0.12)", boxShadow: "0 50px 90px -60px rgba(17,20,18,0.6)" }}>
                 <div id="me-map" style={{ width: "100%", height: "clamp(420px,58vh,620px)" }}></div>
               </div>
-              <p data-reveal="" style={{ margin: "14px 0 0", fontSize: "12.5px", color: "#8D948E" }}>Les cercles représentent un rayon de 30 km autour de nos trois pôles d'intervention. Fond de carte OpenStreetMap / CARTO.</p>
+              <p data-reveal="" style={{ margin: "14px 0 0", fontSize: "12.5px", color: "#8D948E" }}>Les cercles représentent un rayon de 30 km autour de nos trois pôles d'intervention. Fond de carte © contributeurs OpenStreetMap.</p>
 
               <div className="me-split" style={{ gap: "clamp(36px,5vw,80px)", alignItems: "start", marginTop: "clamp(56px,7vw,96px)" }}>
                 <div>

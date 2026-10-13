@@ -57,6 +57,15 @@ a:hover{color:#111412;}
 .leaflet-container{font-family:'Manrope',sans-serif;background:#EDEDE7;}
 .leaflet-pane,.leaflet-top,.leaflet-bottom{z-index:400 !important;}
 .leaflet-tile-loaded{opacity:1 !important;}
+/* Fond de carte OpenStreetMap : ses couleurs d'origine sont vives, un filtre les ramène à la charte
+   (crème, sauge). Il ne touche que les tuiles : pastilles, cercles et étiquettes gardent leurs couleurs.
+   Contact : fond lisible (parcs, eau, routes). Zone : fond plus calme pour que les cercles ressortent. */
+#me-map-bureau .leaflet-tile-pane{filter:grayscale(.45) sepia(.12) hue-rotate(35deg) saturate(1.05) brightness(1.03) contrast(.97);}
+#me-map .leaflet-tile-pane{filter:grayscale(.7) sepia(.2) hue-rotate(40deg) brightness(1.03) contrast(.96);}
+.leaflet-control-attribution{background:rgba(247,247,244,.9) !important;color:#4E534E;font-size:11px;}
+.leaflet-control-attribution a{color:#2E5A49 !important;}
+.leaflet-bar{border:1px solid rgba(17,20,18,.14) !important;border-radius:10px;overflow:hidden;box-shadow:0 8px 20px -10px rgba(17,20,18,.55) !important;}
+.leaflet-bar a{color:#111412;}
 .me-pin{font-family:'Manrope',sans-serif;}
 @media(max-width:1024px){ .me-g4{grid-template-columns:1fr 1fr;} }
 @media(max-width:1120px){
