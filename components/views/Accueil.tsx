@@ -78,7 +78,7 @@ export default function Accueil(v: Vals) {
                 </div>
                 <div data-reveal="right" data-delay="120" style={{ position: "relative" }}>
                   <div data-reveal="wipe" style={{ position: "relative", overflow: "hidden", borderRadius: "6px", aspectRatio: "4/5", boxShadow: "0 50px 90px -50px rgba(17,20,18,0.6)" }}>
-                    <img data-parallax="0.07" src="/photos/maison-etage-terrain-en-pente.webp" alt="Intérieur lumineux d'une maison neuve sur-mesure livrée dans l'Ain" style={{ width: "100%", height: "100%", objectFit: "cover", transform: "scale(1.08)", willChange: "transform" }} />
+                    <img loading="lazy" width="1086" height="1448" decoding="async" data-parallax="0.07" src="/photos/maison-etage-terrain-en-pente.webp" alt="Maison à étage en enduit clair sur terrain en pente, escalier et terrasses en béton, dans l'Ain" style={{ width: "100%", height: "100%", objectFit: "cover", transform: "scale(1.08)", willChange: "transform" }} />
                   </div>
                   <div style={{ position: "absolute", left: "-22px", bottom: "-26px", background: "#111412", color: "#F7F7F4", padding: "24px 30px", borderRadius: "6px", boxShadow: "0 30px 60px -30px rgba(17,20,18,0.7)" }}>
                     <div style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: "46px", fontWeight: "300", lineHeight: "1", color: "#9CC4B2" }}>A → Z</div>
@@ -263,21 +263,21 @@ export default function Accueil(v: Vals) {
               <div className="me-g3" style={{ gap: "clamp(16px,1.8vw,26px)" }}>
                 <div data-reveal="" className="me-card" style={{ borderRadius: "6px", overflow: "hidden", background: "#111412" }}>
                   <div style={{ position: "relative", overflow: "hidden", aspectRatio: "3/4" }}>
-                    <img loading="lazy" className="me-zoom" src="/photos/maison-contemporaine-etage-porche.webp" alt="Maison contemporaine à étage avec porche d'entrée construite dans l'Ain" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                    <img width="1484" height="1060" decoding="async" loading="lazy" className="me-zoom" src="/photos/maison-contemporaine-etage-porche.webp" alt="Maison contemporaine à étage avec porche d'entrée construite dans l'Ain" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
                     <div style={{ position: "absolute", inset: "0", background: "linear-gradient(180deg,transparent 45%,rgba(11,13,12,0.85) 100%)" }}></div>
                     <div style={{ position: "absolute", left: "24px", bottom: "22px", color: "#F7F7F4" }}><div style={{ fontSize: "11px", letterSpacing: "0.22em", textTransform: "uppercase", color: "#9CC4B2" }}>Contemporain</div><div style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: "27px", fontWeight: "400", marginTop: "4px" }}>Maison à étage</div></div>
                   </div>
                 </div>
                 <div data-reveal="" data-delay="120" className="me-card" style={{ borderRadius: "6px", overflow: "hidden", background: "#111412" }}>
                   <div style={{ position: "relative", overflow: "hidden", aspectRatio: "3/4" }}>
-                    <img loading="lazy" className="me-zoom" src="/photos/maison-plain-pied-en-l.webp" alt="Maison traditionnelle de plain-pied en L, toiture tuile, construite dans l'Ain" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                    <img width="1478" height="1064" decoding="async" loading="lazy" className="me-zoom" src="/photos/maison-plain-pied-en-l.webp" alt="Maison traditionnelle de plain-pied en L, toiture tuile, construite dans l'Ain" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
                     <div style={{ position: "absolute", inset: "0", background: "linear-gradient(180deg,transparent 45%,rgba(11,13,12,0.85) 100%)" }}></div>
                     <div style={{ position: "absolute", left: "24px", bottom: "22px", color: "#F7F7F4" }}><div style={{ fontSize: "11px", letterSpacing: "0.22em", textTransform: "uppercase", color: "#9CC4B2" }}>Traditionnel</div><div style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: "27px", fontWeight: "400", marginTop: "4px" }}>Plain-pied en L</div></div>
                   </div>
                 </div>
                 <div data-reveal="" data-delay="240" className="me-card" style={{ borderRadius: "6px", overflow: "hidden", background: "#111412" }}>
                   <div style={{ position: "relative", overflow: "hidden", aspectRatio: "3/4" }}>
-                    <img loading="lazy" className="me-zoom" src="/photos/maison-monopente-garage-independant.webp" alt="Maison contemporaine à toit monopente avec garage indépendant, construite dans l'Ain" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                    <img width="1448" height="1086" decoding="async" loading="lazy" className="me-zoom" src="/photos/maison-monopente-garage-independant.webp" alt="Maison contemporaine à toit monopente avec garage indépendant, construite dans l'Ain" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
                     <div style={{ position: "absolute", inset: "0", background: "linear-gradient(180deg,transparent 45%,rgba(11,13,12,0.85) 100%)" }}></div>
                     <div style={{ position: "absolute", left: "24px", bottom: "22px", color: "#F7F7F4" }}><div style={{ fontSize: "11px", letterSpacing: "0.22em", textTransform: "uppercase", color: "#9CC4B2" }}>Contemporain</div><div style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: "27px", fontWeight: "400", marginTop: "4px" }}>Toit monopente</div></div>
                   </div>
@@ -346,7 +346,7 @@ export default function Accueil(v: Vals) {
 
           {/* GARANTIES */}
           <section style={{ position: "relative", overflow: "hidden", color: "#F7F7F4", padding: "clamp(90px,13vw,170px) 0" }}>
-            <div style={{ position: "absolute", inset: "0", overflow: "hidden" }}><img loading="lazy" data-parallax="0.10" src="/photos/chantier-gros-oeuvre-brique.webp" alt="Chantier de construction de maison individuelle suivi par Maisons d'Excellence" style={{ width: "100%", height: "100%", objectFit: "cover", transform: "scale(1.08)", willChange: "transform" }} /></div>
+            <div style={{ position: "absolute", inset: "0", overflow: "hidden" }}><img width="1448" height="1086" decoding="async" loading="lazy" data-parallax="0.10" src="/photos/chantier-gros-oeuvre-brique.webp" alt="Chantier de construction de maison individuelle suivi par Maisons d'Excellence" style={{ width: "100%", height: "100%", objectFit: "cover", transform: "scale(1.08)", willChange: "transform" }} /></div>
             <div style={{ position: "absolute", inset: "0", background: "linear-gradient(110deg,rgba(11,13,12,0.94) 0%,rgba(11,13,12,0.80) 50%,rgba(11,13,12,0.55) 100%)" }}></div>
             <div style={{ position: "relative", maxWidth: "1440px", margin: "0 auto", padding: "0 clamp(20px,5vw,64px)" }}>
               <div style={{ maxWidth: "62ch" }}>

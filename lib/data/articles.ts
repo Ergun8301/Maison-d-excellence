@@ -5,6 +5,8 @@
 // qui tient dans ce que Google affiche. Les cinq titres complets faisaient
 // 71 à 94 caractères une fois le nom de l'entreprise ajouté, et étaient tous
 // tronqués dans les résultats de recherche.
+// `seoDescription`, facultative, remplace le chapô comme méta-description quand
+// celui-ci dépasse les 155 caractères que Google affiche.
 // Ne pas reformuler : le rendu des vues en dépend mot pour mot.
 
 export const ARTICLES = [
@@ -15,9 +17,10 @@ export const ARTICLES = [
     "read": "6 min",
     "title": "RE2020 en 2026 : ce qui change vraiment pour votre maison individuelle",
     "seoTitle": "RE2020 en 2026 : ce qui change pour votre maison",
+    "seoDescription": "RE2020 en 2026 : seuils carbone, confort d’été, choix des matériaux. Ce qu’elle impose à une maison neuve dans l’Ain, et ce que cela change sur le devis.",
     "excerpt": "Nouveaux seuils carbone, confort d’été, choix des matériaux : ce que la RE2020 impose en 2026 à une maison neuve dans l’Ain, et ce que cela change sur le devis.",
     "img": "/photos/blog-re2020-2026.webp",
-    "alt": "Maison individuelle neuve conforme à la RE2020 dans l’Ain",
+    "alt": "Salon lumineux d’une maison neuve, grandes baies vitrées et pièce de vie ouverte",
     "body": [
       {
         "h": "Des seuils carbone qui se resserrent par palier",
@@ -25,15 +28,15 @@ export const ARTICLES = [
       },
       {
         "h": "Le confort d’été devient un critère de conception",
-        "p": "L’indicateur de degrés-heures d’inconfort impose de penser les surchauffes dès le plan : orientation des pièces de vie, dimension des débords de toit, casquettes et volets, inertie des murs. Dans la Plaine de l’Ain, où les épisodes de chaleur sont désormais courants, c’est ce qui distingue une maison agréable en août d’une maison à climatiser."
+        "p": "L’indicateur de degrés-heures d’inconfort impose de penser les surchauffes dès le plan : orientation des pièces de vie, dimension des débords de toit, casquettes et volets, inertie des murs. Dans la Plaine de l’Ain, où les épisodes de chaleur sont désormais courants, c’est ce qui distingue une maison agréable en août d’une maison à climatiser. Les plans de [nos modèles de maisons](/nos-modeles) prévoient ces protections dès le dessin, pour un plain-pied comme pour une maison à étage."
       },
       {
         "h": "Brique, béton cellulaire : quel impact sur le calcul",
-        "p": "La brique de terre cuite à alvéoles et le béton cellulaire (siporex), [les deux modes constructifs que nous employons](/entreprise), affichent tous deux de bonnes performances thermiques intrinsèques, ce qui limite l’épaisseur d’isolant rapporté. Le choix se fait surtout sur l’étanchéité à l’air, la mise en œuvre et le confort d’été — chaque projet est calculé, jamais décidé par habitude."
+        "p": "La brique de terre cuite à alvéoles et le béton cellulaire (siporex), [les deux modes constructifs que nous employons](/entreprise), affichent tous deux de bonnes performances thermiques intrinsèques, ce qui limite l’épaisseur d’isolant rapporté. Le choix se fait surtout sur l’étanchéité à l’air, la mise en œuvre et le confort d’été — chaque projet est calculé, jamais décidé par habitude. Près d’une autoroute, comme à [Dagneux, au bord de l’A42](/construction-maison-dagneux), les vitrages et la ventilation comptent autant que le mur."
       },
       {
         "h": "Le chauffage au gaz est de fait écarté",
-        "p": "Le plafond d’émissions du poste chauffage exclut en pratique la chaudière gaz en maison neuve. Les solutions retenues sont la pompe à chaleur air/eau, parfois complétée d’un poêle bois. Le surcoût d’équipement se compense sur les consommations, et la maison reste valorisable à la revente."
+        "p": "Le plafond d’émissions du poste chauffage exclut en pratique la chaudière gaz en maison neuve. Les solutions retenues sont la pompe à chaleur air/eau, parfois complétée d’un poêle bois. Le surcoût d’équipement se compense sur les consommations, et la maison reste valorisable à la revente. La question se pose très concrètement dans les communes où le gaz de ville ne dessert pas toutes les rues : voyez [le chauffage à Marboz, au nord de Bourg-en-Bresse](/construction-maison-marboz), où elle se règle rue par rue."
       },
       {
         "h": "Ce que cela représente sur le budget",
@@ -50,7 +53,7 @@ export const ARTICLES = [
     "seoTitle": "Prix de construction au m² dans l’Ain — repères 2026",
     "excerpt": "Ce que couvre réellement un prix au m², pourquoi il varie de 1 400 à 2 100 € dans l’Ain, et comment lire une annonce de constructeur sans se tromper.",
     "img": "/photos/blog-prix-construction-m2.webp",
-    "alt": "Chantier de maison individuelle dans l’Ain, gros œuvre en cours",
+    "alt": "Constructeur étudiant un plan de maison, rouleau de plans et crayon sur la table",
     "body": [
       {
         "h": "Un prix au m² n’a de sens qu’avec son périmètre",
@@ -58,15 +61,15 @@ export const ARTICLES = [
       },
       {
         "h": "La fourchette observée dans l’Ain en 2026",
-        "p": "Pour une maison sur-mesure conforme à la RE2020, on se situe généralement entre 1 450 et 2 100 € le mètre carré habitable, hors terrain — [notre simulateur](/#estimation) applique ces repères à votre projet. En dessous, il s’agit le plus souvent d’un modèle catalogue à finitions minimales ; au-dessus, d’une architecture ambitieuse ou de prestations haut de gamme."
+        "p": "Pour une maison sur-mesure conforme à la RE2020, on se situe généralement entre 1 450 et 2 100 € le mètre carré habitable, hors terrain — [notre simulateur](/#estimation) applique ces repères à votre projet. En dessous, il s’agit le plus souvent d’un modèle catalogue à finitions minimales ; au-dessus, d’une architecture ambitieuse ou de prestations haut de gamme. Pour comparer un plain-pied et une maison à étage, parcourez [nos modèles](/nos-modeles)."
       },
       {
         "h": "Pourquoi un plain-pied coûte plus cher au m²",
-        "p": "À surface habitable égale, un plain-pied demande davantage de fondations, de dalle et de toiture qu’une maison à étage. Comptez 5 à 10 % de plus au mètre carré. En contrepartie, il consomme plus de terrain — l’arbitrage se fait donc terrain et construction ensemble, jamais séparément."
+        "p": "À surface habitable égale, un plain-pied demande davantage de fondations, de dalle et de toiture qu’une maison à étage. Comptez 5 à 10 % de plus au mètre carré. En contrepartie, il consomme plus de terrain — l’arbitrage se fait donc terrain et construction ensemble, jamais séparément. Sur un terrain en pente, comme autour d’[Ambérieu-en-Bugey](/construction-maison-amberieu-en-bugey), la comparaison change encore : plateforme, demi-niveaux ou sous-sol modifient le devis."
       },
       {
         "h": "Les postes qui font vraiment bouger le devis",
-        "p": "La forme du bâtiment (chaque décrochement coûte), la surface de menuiseries, le type de charpente, la présence d’un vide sanitaire ou d’un sous-sol, et le niveau de finition des pièces d’eau. Un plan compact bien dessiné permet souvent de financer de meilleures prestations sans changer le budget total."
+        "p": "La forme du bâtiment (chaque décrochement coûte), la surface de menuiseries, le type de charpente, la présence d’un vide sanitaire ou d’un sous-sol, et le niveau de finition des pièces d’eau. Un plan compact bien dessiné permet souvent de financer de meilleures prestations sans changer le budget total. La nature du sol en fait partie : [les études de sol G1 et G2 à Bourg-en-Bresse](/construction-maison-bourg-en-bresse) montrent leur poids sur les fondations."
       },
       {
         "h": "Ce que le prix au m² ne dit jamais",
@@ -83,7 +86,7 @@ export const ARTICLES = [
     "seoTitle": "Le budget réel d’une maison de 100 m² dans l’Ain",
     "excerpt": "Décomposition complète d’un projet de 100 m² : construction, terrain, frais annexes, et le montant à prévoir avant le premier coup de pelle.",
     "img": "/photos/blog-budget-maison-100m2.webp",
-    "alt": "Maison familiale de 100 m² construite dans l’Ain",
+    "alt": "Maison à étage avec balcon, terrasse et piscine",
     "body": [
       {
         "h": "La construction : le poste que vous maîtrisez le mieux",
@@ -91,11 +94,11 @@ export const ARTICLES = [
       },
       {
         "h": "Le terrain : de 90 000 à 170 000 € selon la commune",
-        "p": "Un terrain de 500 à 700 m² s’échange autour de 100 000 € du côté de Lagnieu ou Chazey-sur-Ain, [dans notre secteur d’intervention](/zone-intervention), et dépasse 150 000 € sur la Côtière et à Montluel. L’écart de prix au mètre carré entre deux communes voisines dépasse souvent le coût d’une chambre supplémentaire."
+        "p": "Un terrain de 500 à 700 m² s’échange autour de 100 000 € du côté de [Lagnieu](/construction-maison-lagnieu) ou Chazey-sur-Ain, [dans notre secteur d’intervention](/zone-intervention), et dépasse 150 000 € sur la Côtière et [à Montluel](/construction-maison-montluel). L’écart de prix au mètre carré entre deux communes voisines dépasse souvent le coût d’une chambre supplémentaire."
       },
       {
         "h": "Les frais annexes, trop souvent oubliés",
-        "p": "Frais de notaire sur le terrain, étude de sol, raccordements, taxe d’aménagement, assurance dommages-ouvrage, frais de dossier bancaire et garantie : prévoyez 25 000 à 45 000 €. Ce sont ces postes qui font dérailler un plan de financement pourtant calé sur la construction."
+        "p": "Frais de notaire sur le terrain, étude de sol, raccordements, taxe d’aménagement, assurance dommages-ouvrage, frais de dossier bancaire et garantie : prévoyez 25 000 à 45 000 €. Ce sont ces postes qui font dérailler un plan de financement pourtant calé sur la construction. L’étude de sol (G1, puis G2 selon le terrain) en fait partie, tout comme le prêt à taux zéro (PTZ) quand vous y avez droit, à voir avec votre banque. Pour préparer l’achat du terrain, [la page de Montrevel-en-Bresse](/construction-maison-montrevel-en-bresse) détaille le certificat d’urbanisme et la promesse de vente."
       },
       {
         "h": "Ce qui vient après la remise des clés",
@@ -120,7 +123,7 @@ export const ARTICLES = [
     "body": [
       {
         "h": "1. Le premier rendez-vous : on écoute",
-        "p": "Une heure trente au bureau, sans plan et sans devis. Vous racontez votre terrain, votre budget, votre façon de vivre, le nombre de chambres, la place de la cuisine. Nous écoutons et nous disons franchement ce qui est réaliste. Aucun engagement à ce stade."
+        "p": "Une heure trente au bureau, sans plan et sans devis. Vous racontez votre terrain, votre budget, votre façon de vivre, le nombre de chambres, la place de la cuisine. Nous écoutons et nous disons franchement ce qui est réaliste. Aucun engagement à ce stade. Il se tient au bureau de [Meximieux](/construction-maison-meximieux) ou sur votre terrain, autour de [Bourg-en-Bresse](/construction-maison-bourg-en-bresse) comme d’Ambérieu-en-Bugey."
       },
       {
         "h": "2. Les plans sur-mesure : deux à quatre semaines",
@@ -128,7 +131,7 @@ export const ARTICLES = [
       },
       {
         "h": "3. Le CCMI et le permis : deux à quatre mois",
-        "p": "Signature du Contrat de Construction de Maison Individuelle, à prix ferme et délai contractuel, puis dépôt du permis de construire. L’instruction dure deux mois en général, trois en secteur protégé. Le prêt se met en place en parallèle."
+        "p": "Signature du Contrat de Construction de Maison Individuelle, à prix ferme et délai contractuel, puis dépôt du permis de construire. L’instruction dure deux mois en général, trois en secteur protégé. Le prêt se met en place en parallèle. Avant de signer, le [certificat d’urbanisme et la promesse de vente](/construction-maison-montrevel-en-bresse) se préparent avec soin ; l’étude de sol (G1, puis G2 selon le terrain) intervient avant ou pendant cette étape."
       },
       {
         "h": "4. Le chantier : dix à quatorze mois",
@@ -147,9 +150,10 @@ export const ARTICLES = [
     "read": "7 min",
     "title": "Comment fonctionne l’échéancier de paiement d’un CCMI",
     "seoTitle": "L’échéancier de paiement d’un CCMI, étape par étape",
+    "seoDescription": "Les appels de fonds d’un CCMI sont plafonnés par la loi et suivent l’avancement du chantier : vous ne payez jamais en avance. Explication étape par étape.",
     "excerpt": "Vous ne payez jamais en avance : les appels de fonds d’un CCMI sont plafonnés par la loi et suivent l’avancement réel du chantier. Explication étape par étape.",
     "img": "/photos/blog-echeancier-ccmi.webp",
-    "alt": "Chantier de construction en cours d’élévation des murs",
+    "alt": "Personne devant un écran d’ordinateur affichant des lignes de code",
     "body": [
       {
         "h": "Un calendrier fixé par le Code de la construction",
@@ -169,7 +173,7 @@ export const ARTICLES = [
       },
       {
         "h": "La garantie de livraison, filet de sécurité",
-        "p": "Un établissement financier garantit l’achèvement de votre maison au prix et dans les délais convenus, même en cas de défaillance du constructeur. Demandez systématiquement l’attestation : sur un projet à 250 000 €, c’est le document qui vous protège vraiment."
+        "p": "Un établissement financier garantit l’achèvement de votre maison au prix et dans les délais convenus, même en cas de défaillance du constructeur. Demandez systématiquement l’attestation : sur un projet à 250 000 €, c’est le document qui vous protège vraiment. Ces règles valent pour tous [nos modèles de maisons](/nos-modeles), de plain-pied ou à étage, et pour toute notre zone, de [Meximieux](/construction-maison-meximieux) à [Bourg-en-Bresse](/construction-maison-bourg-en-bresse)."
       }
     ]
   }

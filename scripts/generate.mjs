@@ -2,6 +2,29 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { toJsx } from './tojsx.mjs';
 
+/**
+ * ATTENTION — ce générateur n'est plus la source de vérité des vues.
+ *
+ * Plusieurs vues générées (components/views/*.tsx, SiteHeader, SiteFooter) ont
+ * été retouchées à la main depuis la maquette, et une régénération écraserait
+ * ces retouches. Celles que les CORRECTIONS ci-dessous reproduisent sont sans
+ * danger ; les autres sont à reporter ou à refaire :
+ *
+ *  - logo de l'en-tête (components/SiteHeader.tsx) ;
+ *  - quelques retouches dans Terrains.tsx et Investisseurs.tsx ;
+ *  - images : les cartes de la maquette posent un <img> vide (un pixel SVG) et
+ *    portent la photo en fond CSS ; les vues pointent désormais l'image réelle
+ *    dans `src` (modèles, terrains, blog, article, fiche terrain), ce qui la
+ *    rend visible des moteurs d'images et lui rend le chargement différé ;
+ *  - largeur/hauteur, decoding="async" et fetchPriority="high" ajoutés aux
+ *    images réelles ; chargement différé de l'image de l'accueil ;
+ *  - textes alternatifs corrigés (Accueil, Modèles, articles du blog).
+ *
+ * Les paragraphes de maillage interne des pages Modèles, Réalisations, Terrains
+ * et Blog ne sont PAS dans les vues : ils vivent dans les hôtes
+ * (components/hosts) et dans lib/data/maillage.ts, donc ils survivent.
+ */
+
 const SRC = "/workspace/maison-d-excellence/design/Maisons d'Excellence.dc.html";
 const ROOT = '/workspace/maison-d-excellence';
 
@@ -65,12 +88,29 @@ const absolutePhotos = (s) =>
  * style, aucune classe, aucun nœud n'est touché.
  */
 const CORRECTIONS = [
+  // Zone d'intervention : « trois pôles » et « 30 km autour de A, B et C » se
+  // lisent comme trois agences, ou comme un seul cercle. On dit : une zone
+  // d'intervention, 30 km autour de chaque ville. Trois phrases de la maquette.
+  [
+    `Les cercles représentent un rayon de 30 km autour de nos trois pôles d'intervention.`,
+    `Chaque cercle représente un rayon de 30 km autour de la ville qui en est le centre.`,
+  ],
+  [
+    `Nous construisons dans un rayon d'environ 30 km autour de Meximieux, Bourg-en-Bresse et Ambérieu-en-Bugey.`,
+    `Notre zone d'intervention s'étend autour de Meximieux, Bourg-en-Bresse et Ambérieu-en-Bugey, sur 30 km autour de chaque ville.`,
+  ],
+  [
+    `30 km autour de Meximieux, Bourg-en-Bresse et Ambérieu-en-Bugey — voir la carte →`,
+    `Autour de Meximieux, Bourg-en-Bresse et Ambérieu-en-Bugey, 30 km autour de chaque ville — voir la carte →`,
+  ],
+
   // Pied de page : la maquette présente Bourg-en-Bresse et Ambérieu-en-Bugey
-  // comme des communes desservies depuis Meximieux. Ce sont deux des trois
-  // pôles, chacun avec son rayon de 30 km.
+  // comme des communes desservies depuis Meximieux. Ce sont trois villes, chacune
+  // avec son rayon de 30 km. On dit « zone d'intervention autour de… » et non
+  // « pôles », qui laisserait croire à trois agences.
   [
     `Constructeur de maisons individuelles sur-mesure à Meximieux : Bourg-en-Bresse, Ambérieu-en-Bugey, Villefranche-sur-Saône, Montluel, Lagnieu, Pérouges. Plans dessinés sur-mesure, CCMI, conformité RE2020.`,
-    `Constructeur de maisons individuelles sur-mesure dans l’Ain : trois pôles, Meximieux, Bourg-en-Bresse et Ambérieu-en-Bugey, et 30 km autour de chacun. Plans dessinés sur-mesure, CCMI, conformité RE2020.`,
+    `Constructeur de maisons individuelles sur-mesure dans l’Ain : zone d’intervention autour de Meximieux, Bourg-en-Bresse et Ambérieu-en-Bugey, 30 km autour de chaque ville. Plans dessinés sur-mesure, CCMI, conformité RE2020.`,
   ],
 
   // Horaires du bureau : 9h–19h, et non les 8h30–18h00 de la maquette. Deux

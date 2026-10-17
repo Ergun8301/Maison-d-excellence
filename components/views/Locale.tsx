@@ -1,6 +1,7 @@
 import type { PageLocale } from '@/lib/data/locales';
 import { faqJsonLd } from '@/lib/faq-jsonld';
 import { PHONE_DISPLAY, PHONE_HREF } from '@/lib/site';
+import { rendreTexte } from '@/lib/texte';
 
 /**
  * Page locale — les trois pôles et les sept communes rattachées.
@@ -17,6 +18,9 @@ import { PHONE_DISPLAY, PHONE_HREF } from '@/lib/site';
  *
  * Deux sections s'excluent, et c'est ce qui distingue les deux familles de
  * pages : un pôle liste ses communes voisines, une commune renvoie à son pôle.
+ *
+ * Les paragraphes admettent des liens internes, notés `[texte](/chemin)` et
+ * rendus par lib/texte.tsx, comme dans les articles du blog.
  *
  * Le balisage FAQPage est posé ici, et non dans chaque route, pour qu'il soit
  * construit à partir du même tableau que les questions affichées juste en
@@ -45,7 +49,7 @@ const SURTITRE_VERT = {
 } as const;
 
 export default function Locale({ page }: { page: PageLocale }) {
-  const [titreDebut, titreCommune] = page.h1;
+  const [titreDebut, titreCommune, titreRepere] = page.h1;
 
   return (
     <main data-screen-label={page.commune}>
@@ -65,6 +69,11 @@ export default function Locale({ page }: { page: PageLocale }) {
               après un tiret donnait trois lignes de titre sur un téléphone. */}
           <h1 style={{ margin: "0", fontFamily: "'Cormorant Garamond',serif", fontWeight: "300", fontSize: "clamp(34px,5vw,62px)", lineHeight: "1.04", letterSpacing: "-0.02em" }}>
             {titreDebut} <span style={{ whiteSpace: "nowrap" }}>{titreCommune}</span>
+            {titreRepere && (
+              <>
+                , près de <span style={{ whiteSpace: "nowrap" }}>{titreRepere}</span>
+              </>
+            )}
           </h1>
           {page.intro.map((t, i) => (
             <p key={i} style={{ margin: i === 0 ? "26px 0 0" : "14px 0 0", maxWidth: "62ch", color: "rgba(247,247,244,0.76)", fontSize: "16.5px", lineHeight: "1.8" }}>{t}</p>
@@ -79,7 +88,7 @@ export default function Locale({ page }: { page: PageLocale }) {
             <div key={b.titre}>
               <h2 style={H2}>{b.titre}</h2>
               {b.paragraphes.map((t, i) => (
-                <p key={i} style={P}>{t}</p>
+                <p key={i} style={P}>{rendreTexte(t)}</p>
               ))}
             </div>
           ))}
@@ -95,7 +104,7 @@ export default function Locale({ page }: { page: PageLocale }) {
               <span style={SURTITRE_VERT}>Communes voisines</span>
             </div>
             <h2 style={{ ...H2, maxWidth: "24ch" }}>{page.voisines.titre}</h2>
-            <p style={{ ...P, maxWidth: "70ch" }}>{page.voisines.intro}</p>
+            <p style={{ ...P, maxWidth: "70ch" }}>{rendreTexte(page.voisines.intro)}</p>
             <ul className="me-g3" style={{ listStyle: "none", margin: "clamp(26px,3vw,40px) 0 0", padding: "0", gap: "clamp(14px,1.6vw,22px) clamp(24px,3vw,48px)" }}>
               {page.voisines.liste.map((v) => (
                 <li key={v.nom} style={{ paddingTop: "16px", borderTop: "1px solid rgba(17,20,18,0.12)" }}>
@@ -122,9 +131,9 @@ export default function Locale({ page }: { page: PageLocale }) {
           <div style={{ maxWidth: "900px", margin: "0 auto", padding: "0 clamp(20px,5vw,64px)" }}>
             <div style={{ display: "inline-flex", alignItems: "center", gap: "12px", marginBottom: "16px" }}>
               <span style={{ width: "42px", height: "1px", background: "#2E5A49" }}></span>
-              <span style={SURTITRE_VERT}>Secteur de {page.pole.commune}</span>
+              <span style={SURTITRE_VERT}>Zone de {page.pole.commune}</span>
             </div>
-            <p style={{ ...P, margin: "0", maxWidth: "70ch" }}>{page.pole.texte}</p>
+            <p style={{ ...P, margin: "0", maxWidth: "70ch" }}>{rendreTexte(page.pole.texte)}</p>
             <a href={`/${page.pole.slug}`} className="me-btn" style={{ display: "inline-flex", alignItems: "center", gap: "9px", margin: "22px 0 0", textDecoration: "none", padding: "13px 26px", borderRadius: "100px", background: "#2E5A49", color: "#fff", fontSize: "13px", fontWeight: "600" }} style-hover="background:#3B7059;transform:translateY(-3px);">
               Construire à {page.pole.commune} →
             </a>
@@ -144,7 +153,7 @@ export default function Locale({ page }: { page: PageLocale }) {
             {page.faq.map((item) => (
               <div key={item.q} style={{ paddingTop: "22px", borderTop: "1px solid rgba(17,20,18,0.12)" }}>
                 <h3 style={{ margin: 0, fontFamily: "'Cormorant Garamond',serif", fontWeight: "500", fontSize: "clamp(20px,1.9vw,25px)", lineHeight: "1.25", color: "#111412" }}>{item.q}</h3>
-                <p style={{ margin: "12px 0 0", color: "#565B56", fontSize: "14.5px", lineHeight: "1.75" }}>{item.r}</p>
+                <p style={{ margin: "12px 0 0", color: "#565B56", fontSize: "14.5px", lineHeight: "1.75" }}>{rendreTexte(item.r)}</p>
               </div>
             ))}
           </div>

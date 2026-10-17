@@ -13,7 +13,7 @@ export default function NosModeles(v: Vals) {
     <>
       <main data-screen-label="Nos modèles">
           <section style={{ position: "relative", minHeight: "clamp(480px,66vh,600px)", overflow: "hidden", display: "flex", alignItems: "flex-end" }}>
-            <div style={{ position: "absolute", inset: "0", overflow: "hidden" }}><img src="/photos/maison-contemporaine-bardage-bois.webp" alt="Maison contemporaine à étage, béton et bardage bois ajouré, volets coulissants" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "50% 42%", animation: "meKb 18s ease-out forwards" }} /></div>
+            <div style={{ position: "absolute", inset: "0", overflow: "hidden" }}><img width="1800" height="1350" decoding="async" fetchPriority="high" src="/photos/maison-contemporaine-bardage-bois.webp" alt="Maison contemporaine à étage, béton et bardage bois ajouré, volets coulissants" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "50% 42%", animation: "meKb 18s ease-out forwards" }} /></div>
             <div style={{ position: "absolute", inset: "0", background: "linear-gradient(180deg,rgba(11,13,12,0.62) 0%,rgba(11,13,12,0.42) 34%,rgba(11,13,12,0.74) 68%,rgba(11,13,12,0.94) 100%)" }}></div>
             <div style={{ position: "relative", width: "100%", maxWidth: "1440px", margin: "0 auto", padding: "clamp(104px,11vw,128px) clamp(20px,5vw,64px) clamp(44px,5.4vw,76px)" }}>
               <div data-reveal="" style={{ display: "inline-flex", alignItems: "center", gap: "12px", marginBottom: "20px" }}><span style={{ width: "42px", height: "1px", background: "#9CC4B2" }}></span><span style={{ color: "#CFE0D6", fontSize: "12px", fontWeight: "600", letterSpacing: "0.3em", textTransform: "uppercase" }}>Nos modèles de maisons · Ain</span></div>
@@ -45,7 +45,7 @@ export default function NosModeles(v: Vals) {
                 {(modelesPP ?? []).map((m, i) => (
                   <div data-reveal="" data-delay={m.delay} className="me-card" style={{ background: "#FFFFFF", border: "1px solid rgba(17,20,18,0.07)", borderRadius: "9px", overflow: "hidden", display: "flex", flexDirection: "column" }} key={i}>
                     <div style={{ position: "relative", overflow: "hidden", aspectRatio: "16/11" }}>
-                      <img loading="lazy" className="me-zoom" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3C/svg%3E" alt={`Modèle de maison ${m.name} — maison neuve construite sur-mesure dans l'Ain`} style={{ width: "100%", height: "100%", objectFit: "cover", backgroundColor: "#EDEDE7", backgroundSize: "cover", backgroundPosition: "center", backgroundImage: `${m.bg}` }} />
+                      <img loading="lazy" className="me-zoom" src={m.photo} alt={`Modèle de maison ${m.name} : maison neuve de plain-pied, plan sur-mesure, dans l'Ain`} style={{ width: "100%", height: "100%", objectFit: "cover", backgroundColor: "#EDEDE7", backgroundSize: "cover", backgroundPosition: "center" }} />
                     </div>
                     <div style={{ padding: "26px 24px 24px", display: "flex", flexDirection: "column", flex: "1" }}>
                       <h3 style={{ margin: "0", fontFamily: "'Cormorant Garamond',serif", fontWeight: "400", fontSize: "28px", lineHeight: "1.08", color: "#111412" }}>{m.name}</h3>
@@ -71,7 +71,7 @@ export default function NosModeles(v: Vals) {
                 {(modelesEtage ?? []).map((m, i) => (
                   <div data-reveal="" data-delay={m.delay} className="me-card" style={{ background: "#FFFFFF", border: "1px solid rgba(17,20,18,0.07)", borderRadius: "9px", overflow: "hidden", display: "flex", flexDirection: "column" }} key={i}>
                     <div style={{ position: "relative", overflow: "hidden", aspectRatio: "16/11" }}>
-                      <img loading="lazy" className="me-zoom" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3C/svg%3E" alt={`Modèle de maison ${m.name} — maison neuve construite sur-mesure dans l'Ain`} style={{ width: "100%", height: "100%", objectFit: "cover", backgroundColor: "#EDEDE7", backgroundSize: "cover", backgroundPosition: "center", backgroundImage: `${m.bg}` }} />
+                      <img loading="lazy" className="me-zoom" src={m.photo} alt={`Modèle de maison ${m.name} : maison neuve à étage, plan sur-mesure, dans l'Ain`} style={{ width: "100%", height: "100%", objectFit: "cover", backgroundColor: "#EDEDE7", backgroundSize: "cover", backgroundPosition: "center" }} />
                     </div>
                     <div style={{ padding: "26px 24px 24px", display: "flex", flexDirection: "column", flex: "1" }}>
                       <h3 style={{ margin: "0", fontFamily: "'Cormorant Garamond',serif", fontWeight: "400", fontSize: "28px", lineHeight: "1.08", color: "#111412" }}>{m.name}</h3>
@@ -97,7 +97,7 @@ export default function NosModeles(v: Vals) {
                 {(modelesEco ?? []).map((m, i) => (
                   <div data-reveal="" data-delay={m.delay} className="me-card" style={{ background: "#FFFFFF", border: "1px solid rgba(17,20,18,0.07)", borderRadius: "9px", overflow: "hidden", display: "flex", flexDirection: "column" }} key={i}>
                     <div style={{ position: "relative", overflow: "hidden", aspectRatio: "16/11" }}>
-                      <img loading="lazy" className="me-zoom" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3C/svg%3E" alt={`Modèle de maison ${m.name} — maison neuve construite sur-mesure dans l'Ain`} style={{ width: "100%", height: "100%", objectFit: "cover", backgroundColor: "#EDEDE7", backgroundSize: "cover", backgroundPosition: "center", backgroundImage: `${m.bg}` }} />
+                      <img loading="lazy" className="me-zoom" src={m.photo} alt={`Modèle de maison ${m.name} : maison neuve éco-conçue RE2020, plan sur-mesure, dans l'Ain`} style={{ width: "100%", height: "100%", objectFit: "cover", backgroundColor: "#EDEDE7", backgroundSize: "cover", backgroundPosition: "center" }} />
                     </div>
                     <div style={{ padding: "26px 24px 24px", display: "flex", flexDirection: "column", flex: "1" }}>
                       <h3 style={{ margin: "0", fontFamily: "'Cormorant Garamond',serif", fontWeight: "400", fontSize: "28px", lineHeight: "1.08", color: "#111412" }}>{m.name}</h3>

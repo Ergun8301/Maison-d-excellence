@@ -7,11 +7,11 @@ import { LOCALES, POLES, communesDuPole } from '@/lib/data/locales';
  * depuis la maquette, où ces pages n'existent pas. Même procédé que la FAQ de
  * la page Entreprise.
  *
- * Trois cartes pour les trois pôles — ceux qui portent un cercle de 30 km sur
- * la carte juste au-dessus — puis, sous chaque pôle, les communes qui ont leur
- * propre page. Le lien depuis cette page compte : sans lui, les pages locales
+ * Trois cartes pour les trois villes qui portent un cercle de 30 km sur la
+ * carte juste au-dessus, puis, sous chacune, les communes qui ont leur propre
+ * page. Le lien depuis cette page compte : sans lui, les pages locales
  * ne seraient atteignables que par le plan du site et par le pied de page, qui
- * ne porte que les trois pôles.
+ * ne porte que les trois villes.
  *
  * La liste vient des données : une commune ajoutée dans lib/data/locales.ts
  * avec un `pole` apparaît ici toute seule.
@@ -27,7 +27,7 @@ export default function SecteursLocaux() {
         <div style={{ display: 'inline-flex', alignItems: 'center', gap: '12px', marginBottom: '18px' }}>
           <span style={{ width: '42px', height: '1px', background: '#9CC4B2' }} />
           <span style={{ color: '#9CC4B2', fontSize: '11.5px', fontWeight: 600, letterSpacing: '0.22em', textTransform: 'uppercase' }}>
-            Nos trois pôles
+            Zone d’intervention
           </span>
         </div>
         <h2 style={{ margin: '0 0 clamp(28px,3.4vw,44px)', fontFamily: "'Cormorant Garamond',serif", fontWeight: 300, fontSize: 'clamp(26px,3.4vw,44px)', lineHeight: 1.08, maxWidth: '26ch' }}>
@@ -55,7 +55,7 @@ export default function SecteursLocaux() {
           ))}
         </div>
 
-        {/* Les communes qui ont leur page, rangées sous leur pôle. */}
+        {/* Les communes qui ont leur page, rangées sous leur ville de référence. */}
         <div style={{ margin: 'clamp(34px,4vw,54px) 0 0', display: 'flex', flexDirection: 'column', gap: 'clamp(18px,2vw,26px)' }}>
           {avecCommunes.map((p) => (
             <div key={p.slug} style={{ paddingTop: '18px', borderTop: '1px solid rgba(247,247,244,0.16)' }}>
@@ -82,7 +82,7 @@ export default function SecteursLocaux() {
         </div>
 
         <p style={{ margin: 'clamp(26px,3vw,38px) 0 0', fontSize: '13px', lineHeight: 1.7, color: 'rgba(247,247,244,0.5)' }}>
-          {LOCALES.length} communes détaillées, et nous construisons dans tout le rayon de 30 km autour de chacun des trois pôles.
+          {LOCALES.length} pages locales détaillent ce qui change d’un terrain à l’autre ; nous construisons dans tout le rayon de 30 km autour de chaque ville.
         </p>
       </div>
     </section>

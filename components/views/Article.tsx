@@ -26,7 +26,7 @@ export default function Article(v: Vals) {
 
           <div style={{ maxWidth: "1180px", margin: "0 auto", padding: "0 clamp(20px,5vw,64px)" }}>
             <div style={{ borderRadius: "12px", overflow: "hidden", marginTop: "clamp(-40px,-4vw,-24px)", boxShadow: "0 50px 90px -55px rgba(17,20,18,0.7)", aspectRatio: "16/8", background: "#EDEDE7" }}>
-              <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3C/svg%3E" alt={art.alt} style={{ width: "100%", height: "100%", objectFit: "cover", backgroundSize: "cover", backgroundPosition: "center", backgroundImage: `${art.bg}` }} />
+              <img src={art.img} alt={art.alt} style={{ width: "100%", height: "100%", objectFit: "cover", backgroundSize: "cover", backgroundPosition: "center" }} />
             </div>
           </div>
 
