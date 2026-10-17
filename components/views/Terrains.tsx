@@ -14,7 +14,7 @@ export default function Terrains(v: Vals) {
     <>
       <main data-screen-label="Terrains">
           <section style={{ position: "relative", minHeight: "clamp(480px,66vh,600px)", overflow: "hidden", display: "flex", alignItems: "flex-end" }}>
-            <div style={{ position: "absolute", inset: "0", overflow: "hidden" }}><img src="/photos/terrain-a-batir-bandeau.webp" alt="Terrain à bâtir constructible dans la Plaine de l'Ain" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "50% 54%", animation: "meKb 18s ease-out forwards" }} /></div>
+            <div style={{ position: "absolute", inset: "0", overflow: "hidden" }}><img width="1800" height="1200" decoding="async" fetchPriority="high" src="/photos/terrain-a-batir-bandeau.webp" alt="Terrain à bâtir constructible dans la Plaine de l'Ain" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "50% 54%", animation: "meKb 18s ease-out forwards" }} /></div>
             <div style={{ position: "absolute", inset: "0", background: "linear-gradient(180deg,rgba(11,13,12,0.62) 0%,rgba(11,13,12,0.42) 34%,rgba(11,13,12,0.74) 68%,rgba(11,13,12,0.94) 100%)" }}></div>
             <div style={{ position: "relative", width: "100%", maxWidth: "1440px", margin: "0 auto", padding: "clamp(104px,11vw,128px) clamp(20px,5vw,64px) clamp(44px,5.4vw,76px)" }}>
               <div data-reveal="" style={{ display: "inline-flex", alignItems: "center", gap: "12px", marginBottom: "20px" }}><span style={{ width: "42px", height: "1px", background: "#9CC4B2" }}></span><span style={{ color: "#CFE0D6", fontSize: "12px", fontWeight: "600", letterSpacing: "0.3em", textTransform: "uppercase" }}>Terrains à bâtir · Ain</span></div>
@@ -43,7 +43,7 @@ export default function Terrains(v: Vals) {
                 {(terrains ?? []).map((t, i) => (
                   <a href={t.href} onClick={t.onOpen} data-reveal="" data-delay={t.delay} className="me-card" style={{ display: "block", textDecoration: "none", borderRadius: "9px", overflow: "hidden", background: "#FFFFFF", border: "1px solid rgba(17,20,18,0.07)", opacity: `${t.cardOpacity}`, color: "#111412" }} key={i}>
                     <div style={{ position: "relative", overflow: "hidden", aspectRatio: "16/11" }}>
-                      <img loading="lazy" className="me-zoom" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3C/svg%3E" alt={`Terrain à bâtir à ${t.commune} dans l'Ain`} style={{ width: "100%", height: "100%", objectFit: "cover", backgroundColor: "#EDEDE7", backgroundSize: "cover", backgroundPosition: "center", backgroundImage: `${t.bg}` }} />
+                      <img loading="lazy" className="me-zoom" src={t.photo} alt={`Terrain à bâtir à ${t.commune} dans l'Ain`} style={{ width: "100%", height: "100%", objectFit: "cover", backgroundColor: "#EDEDE7", backgroundSize: "cover", backgroundPosition: "center" }} />
                       <span style={{ position: "absolute", top: "13px", left: "13px", padding: "6px 13px", borderRadius: "100px", fontSize: "10.5px", fontWeight: "700", letterSpacing: "0.05em", textTransform: "uppercase", ...cssToStyle(t.badgeStyle) }}>{t.status}</span>
                       <span style={{ position: "absolute", top: "13px", right: "13px", padding: "6px 12px", borderRadius: "100px", background: "rgba(11,13,12,0.6)", color: "#F7F7F4", fontSize: "12px", fontWeight: "600", backdropFilter: "blur(4px)" }}>{t.surfaceLabel}</span>
                     </div>

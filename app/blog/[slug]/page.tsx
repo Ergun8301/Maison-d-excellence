@@ -27,12 +27,13 @@ export async function generateMetadata({
   // Le titre et le résumé sont repris aussi dans le bloc Open Graph : sans
   // cela, une carte de partage annonçait le titre générique du blog quel que
   // soit l'article ouvert.
+  const description = 'seoDescription' in a ? a.seoDescription : a.excerpt;
   return {
     ...base,
     title: a.seoTitle,
-    description: a.excerpt,
-    openGraph: { ...base.openGraph, title: a.seoTitle, description: a.excerpt },
-    twitter: { ...base.twitter, title: a.seoTitle, description: a.excerpt },
+    description,
+    openGraph: { ...base.openGraph, title: a.seoTitle, description },
+    twitter: { ...base.twitter, title: a.seoTitle, description },
   };
 }
 

@@ -23,7 +23,7 @@ export function GET(): Response {
     ['/realisations', 'Réalisations livrées dans l’Ain'],
     ['/entreprise', 'Savoir-faire technique, garanties CCMI, échéancier de paiement, questions fréquentes'],
     ['/terrains', 'Terrains à bâtir suivis dans le secteur'],
-    ['/zone-intervention', 'Communes desservies, trois pôles (Meximieux, Bourg-en-Bresse, Ambérieu-en-Bugey) et 30 km autour de chacun'],
+    ['/zone-intervention', 'Zone d’intervention autour de Meximieux, Bourg-en-Bresse et Ambérieu-en-Bugey, 30 km autour de chaque ville'],
     ['/investisseurs', 'Maisons jumelées et groupées pour investisseurs'],
     ['/renovation-extension', 'Rénovation, extension et surélévation'],
     ['/blog', 'Guides : RE2020, prix au m², budget, échéancier CCMI'],
@@ -45,8 +45,8 @@ export function GET(): Response {
 - Adresse : 6 rue de Genève, 01800 Meximieux, France
 - Téléphone : ${PHONE_DISPLAY} — Courriel : ${EMAIL}
 - Horaires du bureau : du lundi au vendredi de 9h à 19h, le samedi sur rendez-vous
-- Zone d'intervention : environ 30 km autour de chacun des trois pôles —
-  Meximieux, Bourg-en-Bresse et Ambérieu-en-Bugey — ce qui couvre notamment
+- Zone d'intervention : autour de Meximieux, Bourg-en-Bresse et Ambérieu-en-Bugey,
+  environ 30 km autour de chaque ville — ce qui couvre notamment
   Péronnas, Viriat, Saint-Denis-lès-Bourg, Attignat, Ceyzériat, Montagnat,
   Marboz, Montrevel-en-Bresse, Montluel, Lagnieu, Pont-d'Ain, Dagneux,
   Pérouges, Miribel, Villars-les-Dombes et Chalamont, ainsi que

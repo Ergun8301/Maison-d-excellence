@@ -15,7 +15,7 @@ export default function FicheTerrain(v: Vals) {
       <main data-screen-label="Fiche terrain">
           <section style={{ position: "relative", minHeight: "clamp(400px,46vh,548px)", overflow: "hidden", display: "flex", alignItems: "flex-end" }}>
             <div style={{ position: "absolute", inset: "0", overflow: "hidden", background: "#111412" }}>
-              <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3C/svg%3E" alt={`Terrain à bâtir de ${t.surfaceLabel} à ${t.commune}`} style={{ width: "100%", height: "100%", objectFit: "cover", backgroundSize: "cover", backgroundPosition: "center", backgroundImage: `${t.bg}`, animation: "meKb 18s ease-out forwards" }} />
+              <img src={t.photo} alt={`Terrain à bâtir de ${t.surfaceLabel} à ${t.commune}`} style={{ width: "100%", height: "100%", objectFit: "cover", backgroundSize: "cover", backgroundPosition: "center", animation: "meKb 18s ease-out forwards" }} />
             </div>
             <div style={{ position: "absolute", inset: "0", background: "linear-gradient(180deg,rgba(11,13,12,0.5) 0%,rgba(11,13,12,0.15) 36%,rgba(11,13,12,0.88) 100%)" }}></div>
             <div style={{ position: "relative", width: "100%", maxWidth: "1440px", margin: "0 auto", padding: "clamp(100px,10.5vw,124px) clamp(20px,5vw,64px) clamp(40px,5vw,70px)" }}>

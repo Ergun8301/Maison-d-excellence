@@ -21,6 +21,15 @@ import Link from 'next/link';
  */
 const LIEN = /\[([^\]]+)\]\((\/[^)\s]*)\)/g;
 
+/**
+ * Le même texte sans sa notation de liens : `[texte](/chemin)` devient
+ * `texte`. Pour le balisage structuré (FAQPage), qui doit reprendre ce que le
+ * visiteur lit, mais lui en tant que texte, sans notation ni lien.
+ */
+export function texteBrut(texte: string): string {
+  return texte.replace(LIEN, '$1');
+}
+
 export function rendreTexte(texte: string): ReactNode {
   const morceaux: ReactNode[] = [];
   let curseur = 0;
