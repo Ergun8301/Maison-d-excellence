@@ -1,3 +1,4 @@
+import { Fragment } from 'react';
 import type { PageLocale } from '@/lib/data/locales';
 import { faqJsonLd } from '@/lib/faq-jsonld';
 import { PHONE_DISPLAY, PHONE_HREF } from '@/lib/site';
@@ -84,13 +85,22 @@ export default function Locale({ page }: { page: PageLocale }) {
       {/* Les sections propres à la commune */}
       <section style={{ background: "#F7F7F4", padding: "clamp(48px,6vw,80px) 0 clamp(40px,5vw,64px)" }}>
         <div style={{ maxWidth: "760px", margin: "0 auto", padding: "0 clamp(20px,5vw,64px)", display: "flex", flexDirection: "column", gap: "clamp(30px,3.6vw,46px)" }}>
-          {page.blocs.map((b) => (
-            <div key={b.titre}>
-              <h2 style={H2}>{b.titre}</h2>
-              {b.paragraphes.map((t, i) => (
-                <p key={i} style={P}>{rendreTexte(t)}</p>
-              ))}
-            </div>
+          {page.blocs.map((b, n) => (
+            <Fragment key={b.titre}>
+              <div>
+                <h2 style={H2}>{b.titre}</h2>
+                {b.paragraphes.map((t, i) => (
+                  <p key={i} style={P}>{rendreTexte(t)}</p>
+                ))}
+              </div>
+              {/* Une photo de réalisation, quand la page en porte une : après
+                  la première section, à ses proportions d'origine. */}
+              {n === 0 && page.photo && (
+                <figure style={{ margin: "0" }}>
+                  <img src={page.photo.src} width={page.photo.w} height={page.photo.h} alt={page.photo.alt} loading="lazy" decoding="async" style={{ display: "block", width: "100%", height: "auto", borderRadius: "8px", background: "#EDEDE7" }} />
+                </figure>
+              )}
+            </Fragment>
           ))}
         </div>
       </section>

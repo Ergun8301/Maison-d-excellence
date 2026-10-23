@@ -2,7 +2,8 @@
  * Pages locales.
  *
  * Trois pages de ville — Meximieux, Bourg-en-Bresse, Ambérieu-en-Bugey — et
- * douze pages de commune rattachées à l'une d'elles. Les trois villes sont
+ * vingt pages de commune rattachées à l'une d'elles : douze ici, huit dans
+ * lib/data/locales-communes-2.ts, ajoutées à la suite du tableau. Les trois villes sont
  * celles autour desquelles la zone d'intervention est dessinée : chacune porte
  * un cercle de 30 km sur la carte de la page zone d'intervention
  * (lib/data/communes.ts). Ce ne sont pas des agences : le bureau est à
@@ -29,7 +30,7 @@
  *   Pont-d'Ain             le risque d'inondation, la cote de référence
  *   Dagneux                le bruit de l'A42, l'isolement des façades
  *
- * Les douze pages de commune sont volontairement plus courtes que les trois
+ * Les pages de commune sont volontairement plus courtes que les trois
  * pages de ville : elles n'ont pas de liste de communes voisines, et renvoient
  * à leur ville de référence.
  *
@@ -71,6 +72,8 @@
  *    page Bourg-en-Bresse à reprendre en conséquence.
  */
 
+import { LOCALES_COMMUNES_2 } from '@/lib/data/locales-communes-2';
+
 export type QuestionLocale = { readonly q: string; readonly r: string };
 export type BlocLocal = { readonly titre: string; readonly paragraphes: readonly string[] };
 
@@ -106,6 +109,12 @@ export type PageLocale = {
   readonly pole?: Pole;
   readonly faqTitre: string;
   readonly faq: readonly QuestionLocale[];
+  /**
+   * Photo d'une réalisation déjà publiée sur le site, posée après la première
+   * section. Facultative : les douze premières pages n'en portent pas. Le texte
+   * alternatif décrit l'image, sans la rattacher à la commune.
+   */
+  readonly photo?: { readonly src: string; readonly w: number; readonly h: number; readonly alt: string };
   /** Texte de l'appel à l'estimation. Propre à chaque commune : quinze pages
    *  qui se terminent sur la même phrase sont quinze pages qui se recopient. */
   readonly ctaTexte: string;
@@ -160,17 +169,17 @@ export const LOCALES: readonly PageLocale[] = [
     voisines: {
       titre: 'Autour de Meximieux',
       intro:
-        'Les communes voisines relèvent de la même zone d’intervention, à quelques minutes du bureau. Pour chacune, le PLU est à lire avant de dessiner. Quatre ont leur propre page : [les petites parcelles de Montluel](/construction-maison-montluel) sur la Côtière, [le sol de graviers de Lagnieu](/construction-maison-lagnieu) en pleine plaine, [Pont-d’Ain et son plan de prévention](/construction-maison-pont-d-ain) au bord de la rivière, [l’isolement des façades à Dagneux](/construction-maison-dagneux) le long de l’A42.',
+        'Les communes voisines relèvent de la même zone d’intervention, à quelques minutes du bureau. Pour chacune, le PLU est à lire avant de dessiner. Six ont leur propre page : [les petites parcelles de Montluel](/construction-maison-montluel) sur la Côtière, [le sol de graviers de Lagnieu](/construction-maison-lagnieu) en pleine plaine, [Pont-d’Ain et son plan de prévention](/construction-maison-pont-d-ain) au bord de la rivière, [l’isolement des façades à Dagneux](/construction-maison-dagneux) le long de l’A42, [Villieu-Loyes-Mollon](/construction-maison-villieu-loyes-mollon), commune de trois villages, et [Bourg-Saint-Christophe](/construction-maison-bourg-saint-christophe), au pied de la Côtière.',
       liste: [
         { nom: 'Pérouges', note: 'Cité médiévale voisine ; les abords peuvent relever d’un périmètre de protection.' },
         { nom: 'Montluel', note: 'Sur la Côtière, côté Lyon : des parcelles plus petites et plus chères.', slug: 'construction-maison-montluel' },
         { nom: 'Lagnieu', note: 'À l’est, en pleine plaine : sol de graviers, terrains plats.', slug: 'construction-maison-lagnieu' },
         { nom: 'Pont-d’Ain', note: 'Sur la rivière d’Ain, au nord : le risque d’inondation se lit avant d’acheter.', slug: 'construction-maison-pont-d-ain' },
         { nom: 'Dagneux', note: 'Sur la Côtière, au bord de l’A42 : le bruit se lit sur une carte.', slug: 'construction-maison-dagneux' },
-        { nom: 'Villieu-Loyes-Mollon', note: 'Commune de plaine au nord, le long de la vallée de l’Ain.' },
+        { nom: 'Villieu-Loyes-Mollon', note: 'Au pied de la Côtière, entre Meximieux et Pont-d’Ain : trois anciens villages, à trois kilomètres du bureau.', slug: 'construction-maison-villieu-loyes-mollon' },
         { nom: 'Charnoz-sur-Ain', note: 'En bord d’Ain, juste à l’est de Meximieux.' },
         { nom: 'Chazey-sur-Ain', note: 'Rive droite de l’Ain, parcelles souvent généreuses.' },
-        { nom: 'Bourg-Saint-Christophe', note: 'Sur le plateau, côté Montluel.' },
+        { nom: 'Bourg-Saint-Christophe', note: 'Au pied de la Côtière, à trois kilomètres de Meximieux et de Pérouges : l’eau du coteau se lit sur place.', slug: 'construction-maison-bourg-saint-christophe' },
         { nom: 'Le Montellier', note: 'Entrée de la Dombes, habitat dispersé.' },
         { nom: 'Rignieux-le-Franc', note: 'Dombes des étangs, au nord-ouest.' },
         { nom: 'Joyeux', note: 'Dombes, petites communes et terrains de lotissement.' },
@@ -245,14 +254,14 @@ export const LOCALES: readonly PageLocale[] = [
         titre: 'Trente kilomètres autour de Bourg-en-Bresse',
         paragraphes: [
           'Notre zone d’intervention compte trente kilomètres autour de Bourg-en-Bresse, comme autour de Meximieux et d’Ambérieu-en-Bugey : [la carte de la zone d’intervention](/zone-intervention) en dessine les trois cercles. Le secteur bressan se mène comme les autres : le même interlocuteur du premier rendez-vous à la remise des clés, les mêmes artisans, les mêmes rendez-vous de chantier.',
-          'Bourg-en-Bresse est à environ 40 km du bureau de Meximieux par l’A42 puis l’A40 ; pour savoir [comment se passe un premier rendez-vous au bureau](/construction-maison-meximieux), voyez la page de Meximieux. Huit communes du secteur ont ici leur propre page : Péronnas, Viriat, Saint-Denis-lès-Bourg, Attignat, Ceyzériat, Montagnat, Marboz et Montrevel-en-Bresse.',
+          'Bourg-en-Bresse est à environ 40 km du bureau de Meximieux par l’A42 puis l’A40 ; pour savoir [comment se passe un premier rendez-vous au bureau](/construction-maison-meximieux), voyez la page de Meximieux. Douze communes du secteur ont ici leur propre page : Péronnas, Viriat, Saint-Denis-lès-Bourg, Attignat, Ceyzériat, Montagnat, Marboz, Montrevel-en-Bresse, Polliat, Servas, Jasseron et Buellas.',
         ],
       },
     ],
     voisines: {
       titre: 'Autour de Bourg-en-Bresse',
       intro:
-        'Les communes de la périphérie concentrent l’essentiel des terrains constructibles du secteur. Nous y intervenons dans les mêmes conditions qu’à Bourg même, et chacune des huit premières a sa page.',
+        'Les communes de la périphérie concentrent l’essentiel des terrains constructibles du secteur. Nous y intervenons dans les mêmes conditions qu’à Bourg même, et chacune des douze premières a sa page.',
       liste: [
         { nom: 'Péronnas', note: 'Au sud immédiat : tissu déjà bâti, terrains issus d’une division.', slug: 'construction-maison-peronnas' },
         { nom: 'Viriat', note: 'Au nord, à environ 7 km du centre : commune étendue faite de hameaux dispersés.', slug: 'construction-maison-viriat' },
@@ -263,9 +272,10 @@ export const LOCALES: readonly PageLocale[] = [
         { nom: 'Marboz', note: 'Au nord, près de l’A39 : une grande commune de campagne, où le chauffage se choisit tôt.', slug: 'construction-maison-marboz' },
         { nom: 'Montrevel-en-Bresse', note: 'Au nord, dans la Bresse : l’achat du terrain se prépare avant le plan.', slug: 'construction-maison-montrevel-en-bresse' },
         { nom: 'Certines', note: 'Sur l’axe Bourg–Meximieux, à mi-chemin du bureau.' },
-        { nom: 'Servas', note: 'Entre Bourg et la Dombes.' },
-        { nom: 'Jasseron', note: 'Au pied du Revermont, terrains parfois en léger dévers.' },
-        { nom: 'Buellas', note: 'À l’ouest, en pleine Bresse.' },
+        { nom: 'Polliat', note: 'À dix kilomètres à l’ouest, dans le sud de la Bresse : une gare TER, la D 1079 et l’A40.', slug: 'construction-maison-polliat' },
+        { nom: 'Servas', note: 'Au sud, dans la Bresse de l’Ain : un village traversé par la route de Lyon, entre deux usines.', slug: 'construction-maison-servas' },
+        { nom: 'Jasseron', note: 'À huit kilomètres à l’est, dans le Revermont : des bois, l’A40 et un aérodrome.', slug: 'construction-maison-jasseron' },
+        { nom: 'Buellas', note: 'À l’ouest, entre plaine bressane et plateau dombiste : soixante mètres de relief.', slug: 'construction-maison-buellas' },
       ],
     },
     faqTitre: 'Questions qu’on nous pose à Bourg-en-Bresse',
@@ -329,10 +339,10 @@ export const LOCALES: readonly PageLocale[] = [
     voisines: {
       titre: 'Le pied du Bugey',
       intro:
-        'Les communes qui entourent Ambérieu partagent la même particularité : on passe de la plaine au relief en quelques kilomètres, et le terrain décide du projet. [Lagnieu, en retour de plaine](/construction-maison-lagnieu), et [Pont-d’Ain, sur la rivière](/construction-maison-pont-d-ain), ont chacune leur page.',
+        'Les communes qui entourent Ambérieu partagent la même particularité : on passe de la plaine au relief en quelques kilomètres, et le terrain décide du projet. [Lagnieu, en retour de plaine](/construction-maison-lagnieu), [Pont-d’Ain, sur la rivière](/construction-maison-pont-d-ain), [Saint-Denis-en-Bugey, dans la banlieue de la ville](/construction-maison-saint-denis-en-bugey) et [Château-Gaillard, bourg rural en plaine](/construction-maison-chateau-gaillard) ont chacune leur page.',
       liste: [
-        { nom: 'Saint-Denis-en-Bugey', note: 'Mitoyenne d’Ambérieu, dans la vallée.' },
-        { nom: 'Château-Gaillard', note: 'En plaine, à l’ouest, sur la route de Meximieux.' },
+        { nom: 'Saint-Denis-en-Bugey', note: 'Mitoyenne d’Ambérieu, dans le Bugey : la gare à deux kilomètres, la route et le rail dans le décor.', slug: 'construction-maison-saint-denis-en-bugey' },
+        { nom: 'Château-Gaillard', note: 'Dans la plaine de l’Ain, à trois kilomètres d’Ambérieu : un bourg rural en quatre ensembles.', slug: 'construction-maison-chateau-gaillard' },
         { nom: 'Vaux-en-Bugey', note: 'Sur le coteau, parcelles fréquemment en pente.' },
         { nom: 'Bettant', note: 'Adossée au relief, au nord-est d’Ambérieu.' },
         { nom: 'Douvres', note: 'Au pied de la falaise, le long de la vallée.' },
@@ -1047,6 +1057,9 @@ export const LOCALES: readonly PageLocale[] = [
       'Le simulateur suppose un terrain sans contrainte de bruit. À Dagneux, le plan et les vitrages s’adaptent à la route : cela se chiffre une fois la parcelle située sur le classement sonore.',
     invitation: 'Pour voir des chantiers proches de Dagneux, appelez-nous au',
   },
+
+  /* ══ HUIT COMMUNES DE PLUS ══════════════════════════════════════════════ */
+  ...LOCALES_COMMUNES_2,
 ];
 
 /** Accès par slug, pour les pages. */
