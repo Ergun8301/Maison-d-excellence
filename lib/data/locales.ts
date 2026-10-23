@@ -552,7 +552,7 @@ export const LOCALES: readonly PageLocale[] = [
         paragraphes: [
           'Ces secteurs sont encadrés par une orientation d’aménagement et de programmation, l’OAP du PLU. C’est un schéma opposable au permis de construire : il fixe les accès, les cheminements, parfois une densité minimale de logements à l’hectare et l’ordre dans lequel les zones s’ouvrent.',
           'Trois conséquences possibles : un lot plus petit qu’espéré, un accès mutualisé avec le voisin, et un terrain classé en zone à urbaniser pas encore constructible. La mairie répond avant la promesse de vente.',
-          'Nous suivons en ce moment [deux lots à bâtir à Attignat](/terrains), de 891 et 910 m², issus d’une division en trois lots sur limites bornées : surfaces, accès, plan et photos sont détaillés sur chaque fiche.',
+          'Nous suivons en ce moment [deux lots à bâtir à Attignat](/terrains), de 891 et 910 m², issus d’une division en trois lots sur limites bornées : viabilisation, étude de sol, prix, plan et photos sont détaillés sur chaque fiche.',
         ],
       },
       {

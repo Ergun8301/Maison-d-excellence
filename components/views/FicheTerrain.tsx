@@ -44,7 +44,9 @@ export default function FicheTerrain(v: Vals) {
                       <div key={i} style={{ display: "flex", gap: "12px", alignItems: "flex-start" }}><span style={{ color: "#2E5A49", fontSize: "18px", lineHeight: "1.3" }}>✓</span><span style={{ fontSize: "14.5px", color: "#333834" }}>{p}</span></div>
                     ))}
                   </div>
-                  <p data-reveal="" data-delay="240" style={{ margin: "30px 0 0", fontSize: "13px", color: "#8D948E", lineHeight: "1.6", maxWidth: "70ch" }}>Surface issue du plan de division établi par un géomètre-expert, sur limites bornées. Informations communiquées à titre indicatif et sous réserve de disponibilité.</p>
+                  {(t.lieu) ? (<><h3 data-reveal="" data-delay="200" style={{ margin: "34px 0 0", fontFamily: "'Cormorant Garamond',serif", fontWeight: "400", fontSize: "clamp(22px,2.4vw,28px)", lineHeight: "1.1", color: "#111412" }}>Le village</h3>
+                  <p data-reveal="" data-delay="220" style={{ margin: "12px 0 0", color: "#4E534E", fontSize: "14.5px", lineHeight: "1.75", maxWidth: "60ch" }}>{t.lieu}</p></>) : null}
+                  <p data-reveal="" data-delay="240" style={{ margin: "30px 0 0", fontSize: "13px", color: "#8D948E", lineHeight: "1.6", maxWidth: "70ch" }}>Terrain vendu par notre partenaire foncier. Surface issue du plan de division établi par un géomètre-expert, sur limites bornées. Informations communiquées à titre indicatif et sous réserve de disponibilité.</p>
                 </div>
 
                 <div data-reveal="" data-delay="120" style={{ position: "sticky", top: "104px", background: "#111412", color: "#F7F7F4", borderRadius: "12px", padding: "clamp(28px,3.4vw,44px)", boxShadow: "0 50px 90px -60px rgba(17,20,18,0.9)" }}>

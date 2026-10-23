@@ -60,7 +60,7 @@ export default function Terrains(v: Vals) {
                 ))}
               </div>
 
-              <p data-reveal="" style={{ margin: "clamp(34px,4vw,48px) 0 0", fontSize: "13px", color: "#8D948E", lineHeight: "1.6", maxWidth: "78ch" }}>Surfaces issues du plan de division d’un géomètre-expert, sur limites bornées. Informations communiquées à titre indicatif et sous réserve de disponibilité.</p></>) : null}
+              <p data-reveal="" style={{ margin: "clamp(34px,4vw,48px) 0 0", fontSize: "13px", color: "#8D948E", lineHeight: "1.6", maxWidth: "78ch" }}>Terrains vendus par notre partenaire foncier. Surfaces issues du plan de division d’un géomètre-expert, sur limites bornées. Informations communiquées à titre indicatif et sous réserve de disponibilité.</p></>) : null}
 
               {(sansTerrains) ? (<>
               <div data-reveal="" style={{ maxWidth: "60ch" }}>

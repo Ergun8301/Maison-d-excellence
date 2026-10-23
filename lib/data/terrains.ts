@@ -3,14 +3,19 @@
 // La maquette Claude Design livrait huit fiches inventées — références,
 // communes, surfaces, prix, statuts et photographies de banque d'images.
 // Elles ont été retirées : un constructeur soumis au CCMI est engagé par ce
-// qu'il affiche. Les trois lots d'Attignat ci-dessous, eux, sont réels : surfaces,
-// numéros de lot et conditions d'accès sont repris du plan de division établi
-// par un géomètre-expert (limites bornées, procès-verbal du 18 décembre 2024).
-// Rien d'autre n'y figure : ni le plan lui-même (il porte des noms de
-// voisins), ni les numéros de parcelles cadastrales.
+// qu'il affiche. Les trois lots d'Attignat ci-dessous, eux, sont réels :
+// surfaces, numéros de lot et accès viennent du plan de division du
+// géomètre-expert (limites bornées, procès-verbal du 18 décembre 2024) ;
+// viabilisation, étude de sol G2, prix et description viennent de l'annonce
+// du vendeur, transmise par le client. Le plan est publié sans les noms des
+// voisins ; les numéros de parcelles cadastrales ne figurent pas dans les
+// textes. Les mentions « libre de constructeur », « vente directe » et
+// « aucun frais d'agence » de l'annonce ne sont pas reprises : les lots sont
+// présentés comme vendus par un partenaire foncier, sans le nommer.
 //
 // `price: null` affiche « Sur demande » partout (liste, fiche, message
-// pré-rempli). Renseigner un nombre suffit à faire apparaître le prix.
+// pré-rempli) ; un nombre fait apparaître le prix. Un lot « Vendu » n'en
+// affiche pas.
 //
 // Les fiches publiées alimentent d'elles-mêmes la liste, les filtres, le plan
 // du site (app/sitemap.ts) et la route /terrains/[slug]. Les références TA-00x
@@ -30,16 +35,22 @@ export type Terrain = {
   desc: string;
   /** Une ligne chacune, affichées en coches sur la fiche. */
   points: readonly string[];
+  /** Paragraphe sur la commune, sous les coches de la fiche. */
+  lieu: string;
   photo: string;
   photoAlt: string;
   /** Cadrage de la photo panoramique dans les vignettes et le bandeau. */
   photoPos: string;
   /** Description du `<meta>` : propre à chaque fiche, 140 à 155 caractères. */
   meta: string;
+  /** Début du titre de page (« … | Maisons d’Excellence »). */
+  titre: string;
 };
 
+const VILLAGE =
+  'Attignat compte 3 300 habitants : deux écoles, périscolaire, restaurant scolaire, micro-crèche, médiathèque et commerces de proximité. L’échangeur de l’A40 est à 5 minutes, Bourg-en-Bresse à 11 km.';
+
 const ZONE = 'Zone d’implantation de la maison tracée au plan de division';
-const BORNES = 'sur limites bornées (procès-verbal du 18 décembre 2024)';
 
 export const TERRAINS: readonly Terrain[] = [
   {
@@ -51,17 +62,19 @@ export const TERRAINS: readonly Terrain[] = [
     price: null,
     status: 'Vendu',
     note: 'Lot 1 sur 3 : le plus vaste, 997 m² sur limites bornées. Ce lot est vendu.',
-    desc: 'Lot à bâtir de 997 m², à l’ouest d’une division en trois lots à Attignat. C’est le plus vaste des trois. Il se dessert par l’espace commun, au sud, selon le plan de division du géomètre-expert. Ce lot est aujourd’hui vendu.',
+    desc: 'Lot à bâtir de 997 m², à l’ouest d’une division en trois lots route de Viriat, à Attignat. C’est le plus vaste des trois. Il se dessert par l’espace commun, au sud, selon le plan de division du géomètre-expert. Ce lot est aujourd’hui vendu.',
     points: [
-      `997 m² ${BORNES}`,
+      '997 m² sur limites bornées (procès-verbal du 18 décembre 2024)',
       'Accès imposé par l’espace commun, au sud du lot',
       ZONE,
       'Le plus vaste des trois lots',
     ],
+    lieu: VILLAGE,
     photo: '/terrains/attignat-vue-1.webp',
     photoAlt: 'Terrain herbeux à bâtir à Attignat, dans l’Ain',
     photoPos: '50% 55%',
-    meta: 'Terrain de 997 m² à Attignat (Ain), lot 1 sur 3 : vendu. Les lots 2 et 3, de 891 et 910 m² sur limites bornées, restent à découvrir près de Bourg.',
+    meta: 'Terrain de 997 m² à Attignat (Ain), lot 1 sur 3 : vendu. Les lots 2 et 3, viabilisés, de 891 et 910 m², restent à découvrir près de Bourg-en-Bresse.',
+    titre: 'Lot vendu de 997 m² à Attignat',
   },
   {
     ref: 'TA-002',
@@ -69,20 +82,25 @@ export const TERRAINS: readonly Terrain[] = [
     commune: 'Attignat',
     secteur: 'Bresse',
     surface: 891,
-    price: null,
+    price: 70900,
     status: 'Disponible',
-    note: 'Lot 2 sur 3 : au centre de la division, 891 m² sur limites bornées.',
-    desc: 'Lot à bâtir de 891 m², au centre d’une division en trois lots à Attignat, entre les lots 1 et 3. Il se dessert par l’espace commun, au sud, selon le plan de division du géomètre-expert.',
+    note: '891 m² viabilisés, plats, étude de sol G2 réalisée.',
+    desc: 'L’un des deux derniers terrains disponibles route de Viriat, à Attignat, dans un ensemble de trois lots dont un déjà vendu. Parcelle plate et de forme régulière, au centre de la division, prête à recevoir votre projet de maison.',
     points: [
-      `891 m² ${BORNES}`,
+      '891 m², bornés par un géomètre-expert',
+      'Eau, électricité et télécom en limite de parcelle',
+      'Voie d’accès commune en enrobé, travaux terminés',
+      'Étude de sol G2 réalisée et remise à l’acquéreur',
+      'Jusqu’à 300 m² de surface de plancher',
       'Accès imposé par l’espace commun, au sud du lot',
       ZONE,
-      'Lot central, entre les lots 1 et 3',
     ],
+    lieu: VILLAGE,
     photo: '/terrains/attignat-vue-2.webp',
     photoAlt: 'Prairie à bâtir entourée de haies à Attignat, dans l’Ain',
     photoPos: '50% 85%',
-    meta: 'Terrain à bâtir de 891 m² à Attignat (Ain), lot 2 sur 3, limites bornées. Accès par l’espace commun. Prix sur demande, faisabilité étudiée avec vous.',
+    meta: 'Terrain viabilisé de 891 m² à Attignat (Ain), lot 2 : eau, électricité, télécom en limite, étude de sol G2 réalisée, voie en enrobé. 70 900 €.',
+    titre: 'Terrain viabilisé 891 m² à Attignat',
   },
   {
     ref: 'TA-003',
@@ -90,20 +108,25 @@ export const TERRAINS: readonly Terrain[] = [
     commune: 'Attignat',
     secteur: 'Bresse',
     surface: 910,
-    price: null,
+    price: 69900,
     status: 'Disponible',
-    note: 'Lot 3 sur 3 : en bordure de la RD 29, 910 m² sur limites bornées.',
-    desc: 'Lot à bâtir de 910 m², en bordure de la route départementale 29 (route de Viriat), à l’est d’une division en trois lots à Attignat. L’entrée du lot est à placer par l’acquéreur, selon le plan de division du géomètre-expert.',
+    note: '910 m² viabilisés, en bordure de la voie d’accès, étude de sol G2 réalisée.',
+    desc: 'L’un des deux derniers terrains disponibles route de Viriat, à Attignat, dans un ensemble de trois lots dont un déjà vendu. Il est situé en bordure de la voie d’accès, peu passante et sans vis-à-vis, avec une très légère pente naturelle.',
     points: [
-      `910 m² ${BORNES}`,
-      'En bordure de la route départementale 29',
+      '910 m² de forme régulière, bornés par un géomètre-expert',
+      'Eau, électricité et télécom en limite de parcelle',
+      'Voie d’accès commune en enrobé, travaux terminés',
+      'Étude de sol G2 réalisée et remise à l’acquéreur',
+      'Jusqu’à 300 m² de surface de plancher',
       'Entrée du lot à placer par l’acquéreur',
       ZONE,
     ],
+    lieu: VILLAGE,
     photo: '/terrains/attignat-vue-3.webp',
     photoAlt: 'Terrain à bâtir à Attignat, avec vue dégagée sur la campagne',
     photoPos: '50% 78%',
-    meta: 'Terrain à bâtir de 910 m² à Attignat (Ain), lot 3 sur 3, en bordure de la RD 29, limites bornées. Prix sur demande, faisabilité étudiée avec vous.',
+    meta: 'Terrain viabilisé de 910 m² à Attignat (Ain), lot 3 : eau, électricité, télécom en limite, étude de sol G2 réalisée, voie en enrobé. 69 900 €.',
+    titre: 'Terrain viabilisé 910 m² à Attignat',
   },
 ];
 

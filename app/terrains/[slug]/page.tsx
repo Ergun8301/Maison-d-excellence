@@ -20,7 +20,7 @@ export async function generateMetadata({
   if (!t) return base;
   // Titre et description propres à chaque lot, repris aussi dans les blocs de
   // partage : sinon chaque fiche annoncerait le titre générique.
-  const title = `Terrain à bâtir à ${t.commune}, lot ${t.ref.slice(-1)} | Maisons d’Excellence`;
+  const title = `${t.titre} | Maisons d’Excellence`;
   return {
     ...base,
     title,
