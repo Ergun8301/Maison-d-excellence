@@ -48,8 +48,10 @@ export function GET(): Response {
 - Zone d'intervention : autour de Meximieux, Bourg-en-Bresse et Ambérieu-en-Bugey,
   environ 30 km autour de chaque ville — ce qui couvre notamment
   Péronnas, Viriat, Saint-Denis-lès-Bourg, Attignat, Ceyzériat, Montagnat,
-  Marboz, Montrevel-en-Bresse, Montluel, Lagnieu, Pont-d'Ain, Dagneux,
-  Pérouges, Miribel, Villars-les-Dombes et Chalamont, ainsi que
+  Marboz, Montrevel-en-Bresse, Polliat, Servas, Jasseron, Buellas, Montluel,
+  Lagnieu, Pont-d'Ain, Dagneux, Saint-Denis-en-Bugey, Château-Gaillard,
+  Bourg-Saint-Christophe, Villieu-Loyes-Mollon, Pérouges, Miribel,
+  Villars-les-Dombes et Chalamont, ainsi que
   Villefranche-sur-Saône
 - Contrat : CCMI, prix ferme et définitif, délai contractuel de 12 mois de
   chantier avec pénalités de retard, garantie de livraison à prix et délais convenus

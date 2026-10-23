@@ -1,4 +1,4 @@
-// Les 25 couples title/description et les slugs canoniques.
+// Les couples title/description et les slugs canoniques.
 // Le troisième élément est le slug de la route Next.js (chaîne vide pour
 // l'accueil).
 //
@@ -42,4 +42,12 @@ export const META = {
       'montrevel': ['Maison neuve à Montrevel-en-Bresse | Maisons d’Excellence', 'Construire à Montrevel-en-Bresse, au nord de Bourg-en-Bresse : certificat d’urbanisme, promesse de vente, PTZ. Plans sur-mesure, CCMI à prix ferme.', 'construction-maison-montrevel-en-bresse'],
       'pontdain': ['Construire une maison à Pont-d’Ain | Maisons d’Excellence', 'Construire à Pont-d’Ain, sur la rivière d’Ain : plan de prévention des inondations, vide sanitaire haut, abords du château. CCMI à prix ferme, garanties.', 'construction-maison-pont-d-ain'],
       'dagneux': ['Construction maison neuve à Dagneux | Maisons d’Excellence', 'Construire à Dagneux, sur la Côtière : bruit de l’A42, isolement des façades, maison à étage. Plans sur-mesure, CCMI à prix ferme et RE2020.', 'construction-maison-dagneux'],
+      'saintdenisenbugey': ['Construire à Saint-Denis-en-Bugey | Maisons d’Excellence', 'Maison neuve à Saint-Denis-en-Bugey, banlieue d’Ambérieu : gare à 2 km, RD 1075 et voie ferrée, 74,7 % de maisons individuelles. Plans sur-mesure, CCMI.', 'construction-maison-saint-denis-en-bugey'],
+      'chateaugaillard': ['Maison neuve à Château-Gaillard | Maisons d’Excellence', 'Construire à Château-Gaillard, à 3 km d’Ambérieu : bourg, hameau de Cormoz, pavillons et zone d’activités. Plans sur-mesure, CCMI et garanties légales.', 'construction-maison-chateau-gaillard'],
+      'bourgsaintchristophe': ['Maison à Bourg-Saint-Christophe | Maisons d’Excellence', 'Maison neuve à Bourg-Saint-Christophe, au pied de la Côtière, à 3 km de Meximieux : ruissellement, étude de sol G1 et G2. Plans sur-mesure, CCMI.', 'construction-maison-bourg-saint-christophe'],
+      'villieuloyesmollon': ['Maison neuve à Villieu-Loyes-Mollon | Maisons d’Excellence', 'Construire à Villieu-Loyes-Mollon, trois villages et deux hameaux à 3 km de Meximieux : choisir son secteur, lire le PLU. Plans sur-mesure, CCMI.', 'construction-maison-villieu-loyes-mollon'],
+      'polliat': ['Construire à Polliat, près de Bourg | Maisons d’Excellence', 'Maison neuve à Polliat, à 10 km de Bourg-en-Bresse : gare TER, D 1079 et A40 à proximité, sol à vérifier. Plans sur-mesure, CCMI à prix ferme et garanties.', 'construction-maison-polliat'],
+      'servas': ['Maison neuve à Servas, près de Bourg | Maisons d’Excellence', 'Construire à Servas, village bressan traversé par la route de Lyon, entre fromagerie et usine : choisir le côté de la route. Plans sur-mesure, CCMI.', 'construction-maison-servas'],
+      'jasseron': ['Construire une maison à Jasseron | Maisons d’Excellence', 'Maison neuve à Jasseron, dans le Revermont à 8 km de Bourg : lisière de bois, A40 et aérodrome à vérifier. Plans sur-mesure, CCMI à prix ferme.', 'construction-maison-jasseron'],
+      'buellas': ['Maison neuve à Buellas, près de Bourg | Maisons d’Excellence', 'Construire à Buellas, entre plaine bressane et plateau dombiste : 61 m de relief, hameau de Corgenon. Plans sur-mesure, CCMI à prix ferme et garanties.', 'construction-maison-buellas'],
     } as const satisfies Record<string, MetaEntry>;
