@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { GALERIE, PLAN, TERRAINS } from '@/lib/data/terrains';
+import { PLAN, TERRAINS } from '@/lib/data/terrains';
 
 const SURTITRE = { color: '#2E5A49', fontSize: '11.5px', fontWeight: 600, letterSpacing: '0.22em', textTransform: 'uppercase' } as const;
 const TITRE = { margin: 0, fontFamily: "'Cormorant Garamond',serif", fontWeight: 400, fontSize: 'clamp(26px,3.2vw,40px)', lineHeight: 1.1, color: '#111412' } as const;
@@ -15,34 +15,14 @@ function Surtitre({ children }: { children: string }) {
 }
 
 /**
- * Photos et plan de division sous une fiche terrain, posés dans l'hôte
- * plutôt que dans la vue, que la maquette régénère.
- *
- * Les photos s'affichent entières, à leur proportion d'origine : un cadre à
- * hauteur fixe rogne les vues panoramiques. Les formats identiques sont
- * appariés sur une même rangée, pour que les hauteurs restent égales.
+ * Plan de division, en grand, tout en bas d'une fiche terrain, puis les liens
+ * vers les autres lots. Posé dans l'hôte plutôt que dans la vue, que la
+ * maquette régénère. Les photos, elles, sont dans les rangées de la vue.
  */
-export default function TerrainGalerie({ slug }: { slug: string }) {
+export default function TerrainPlan({ slug }: { slug: string }) {
   const autres = TERRAINS.filter((t) => t.slug !== slug);
   return (
     <>
-      <section style={{ background: '#F7F7F4', padding: '0 0 clamp(56px,7vw,96px)' }}>
-        <div style={{ maxWidth: '1440px', margin: '0 auto', padding: '0 clamp(20px,5vw,64px)' }}>
-          <Surtitre>Le terrain en photos</Surtitre>
-          <h2 style={TITRE}>Le terrain et ses abords</h2>
-          <p style={{ margin: '14px 0 0', maxWidth: '62ch', color: '#4E534E', fontSize: '15px', lineHeight: 1.75 }}>
-            Photographies de l’ensemble de la division : elles ne se rapportent pas à un lot en particulier.
-          </p>
-          <div className="me-g2" style={{ gap: 'clamp(12px,1.6vw,22px)', marginTop: 'clamp(24px,3vw,36px)' }}>
-            {GALERIE.map((g) => (
-              <a key={g.src} href={g.src} target="_blank" rel="noopener" aria-label={`${g.alt} (ouvrir en grand)`} style={{ display: 'block', ...(g.pleine ? { gridColumn: '1 / -1' } : {}) }}>
-                <img src={g.src} width={g.w} height={g.h} alt={g.alt} loading="lazy" decoding="async" style={IMG} />
-              </a>
-            ))}
-          </div>
-        </div>
-      </section>
-
       <section style={{ background: '#EDEDE7', padding: 'clamp(48px,6vw,84px) 0' }}>
         <div style={{ maxWidth: '1440px', margin: '0 auto', padding: '0 clamp(20px,5vw,64px)' }}>
           <Surtitre>Plan de division</Surtitre>

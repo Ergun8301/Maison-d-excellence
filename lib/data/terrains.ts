@@ -22,6 +22,15 @@
 // sont des repères internes au site, pas des numéros de dossier du vendeur.
 // Les photos vivent dans public/terrains/.
 
+/** Une rangée d'une fiche : un texte et une photo, côte à côte, en alternance. */
+export type Rangee = {
+  titre: string;
+  texte?: string;
+  points?: readonly string[];
+  /** Numéro de la photo dans VUES. */
+  vue: 1 | 2 | 3 | 4 | 5;
+};
+
 export type Terrain = {
   ref: string;
   slug: string;
@@ -32,11 +41,7 @@ export type Terrain = {
   price: number | null;
   status: string;
   note: string;
-  desc: string;
-  /** Une ligne chacune, affichées en coches sur la fiche. */
-  points: readonly string[];
-  /** Paragraphe sur la commune, sous les coches de la fiche. */
-  lieu: string;
+  rangees: readonly Rangee[];
   photo: string;
   photoAlt: string;
   /** Cadrage de la photo panoramique dans les vignettes et le bandeau. */
@@ -52,6 +57,12 @@ const VILLAGE =
 
 const ZONE = 'Zone d’implantation de la maison tracée au plan de division';
 
+const DEJA_REALISE = [
+  'Eau, électricité et télécom en limite de parcelle',
+  'Voie d’accès commune en enrobé, travaux terminés',
+  'Étude de sol G2 réalisée et remise à l’acquéreur',
+] as const;
+
 export const TERRAINS: readonly Terrain[] = [
   {
     ref: 'TA-001',
@@ -62,14 +73,20 @@ export const TERRAINS: readonly Terrain[] = [
     price: null,
     status: 'Vendu',
     note: 'Lot 1 sur 3 : le plus vaste, 997 m² sur limites bornées. Ce lot est vendu.',
-    desc: 'Lot à bâtir de 997 m², à l’ouest d’une division en trois lots route de Viriat, à Attignat. C’est le plus vaste des trois. Il se dessert par l’espace commun, au sud, selon le plan de division du géomètre-expert. Ce lot est aujourd’hui vendu.',
-    points: [
-      '997 m² sur limites bornées (procès-verbal du 18 décembre 2024)',
-      'Accès imposé par l’espace commun, au sud du lot',
-      ZONE,
-      'Le plus vaste des trois lots',
+    rangees: [
+      {
+        titre: 'La parcelle',
+        texte: 'Lot à bâtir de 997 m², à l’ouest d’une division en trois lots route de Viriat, à Attignat. C’est le plus vaste des trois. Ce lot est aujourd’hui vendu.',
+        points: ['997 m² sur limites bornées (procès-verbal du 18 décembre 2024)', 'Le plus vaste des trois lots'],
+        vue: 2,
+      },
+      {
+        titre: 'Accès et implantation',
+        points: ['Accès imposé par l’espace commun, au sud du lot', ZONE],
+        vue: 5,
+      },
+      { titre: 'Le village', texte: VILLAGE, vue: 3 },
     ],
-    lieu: VILLAGE,
     photo: '/terrains/attignat-vue-1.webp',
     photoAlt: 'Terrain herbeux à bâtir à Attignat, dans l’Ain',
     photoPos: '50% 55%',
@@ -85,17 +102,21 @@ export const TERRAINS: readonly Terrain[] = [
     price: 70900,
     status: 'Disponible',
     note: '891 m² viabilisés, plats, étude de sol G2 réalisée.',
-    desc: 'L’un des deux derniers terrains disponibles route de Viriat, à Attignat, dans un ensemble de trois lots dont un déjà vendu. Parcelle plate et de forme régulière, au centre de la division, prête à recevoir votre projet de maison.',
-    points: [
-      '891 m², bornés par un géomètre-expert',
-      'Eau, électricité et télécom en limite de parcelle',
-      'Voie d’accès commune en enrobé, travaux terminés',
-      'Étude de sol G2 réalisée et remise à l’acquéreur',
-      'Jusqu’à 300 m² de surface de plancher',
-      'Accès imposé par l’espace commun, au sud du lot',
-      ZONE,
+    rangees: [
+      {
+        titre: 'La parcelle',
+        texte: 'L’un des deux derniers terrains disponibles route de Viriat, à Attignat, dans un ensemble de trois lots dont un déjà vendu. Parcelle plate et de forme régulière, au centre de la division, prête à recevoir votre projet de maison.',
+        points: ['891 m², bornés par un géomètre-expert', 'Jusqu’à 300 m² de surface de plancher'],
+        vue: 1,
+      },
+      { titre: 'Déjà réalisé', points: DEJA_REALISE, vue: 4 },
+      {
+        titre: 'Accès et implantation',
+        points: ['Accès imposé par l’espace commun, au sud du lot', ZONE],
+        vue: 5,
+      },
+      { titre: 'Le village', texte: VILLAGE, vue: 3 },
     ],
-    lieu: VILLAGE,
     photo: '/terrains/attignat-vue-2.webp',
     photoAlt: 'Prairie à bâtir entourée de haies à Attignat, dans l’Ain',
     photoPos: '50% 85%',
@@ -111,17 +132,21 @@ export const TERRAINS: readonly Terrain[] = [
     price: 69900,
     status: 'Disponible',
     note: '910 m² viabilisés, en bordure de la voie d’accès, étude de sol G2 réalisée.',
-    desc: 'L’un des deux derniers terrains disponibles route de Viriat, à Attignat, dans un ensemble de trois lots dont un déjà vendu. Il est situé en bordure de la voie d’accès, peu passante et sans vis-à-vis, avec une très légère pente naturelle.',
-    points: [
-      '910 m² de forme régulière, bornés par un géomètre-expert',
-      'Eau, électricité et télécom en limite de parcelle',
-      'Voie d’accès commune en enrobé, travaux terminés',
-      'Étude de sol G2 réalisée et remise à l’acquéreur',
-      'Jusqu’à 300 m² de surface de plancher',
-      'Entrée du lot à placer par l’acquéreur',
-      ZONE,
+    rangees: [
+      {
+        titre: 'La parcelle',
+        texte: 'L’un des deux derniers terrains disponibles route de Viriat, à Attignat, dans un ensemble de trois lots dont un déjà vendu. Il est situé en bordure de la voie d’accès, peu passante et sans vis-à-vis, avec une très légère pente naturelle.',
+        points: ['910 m² de forme régulière, bornés par un géomètre-expert', 'Jusqu’à 300 m² de surface de plancher'],
+        vue: 1,
+      },
+      { titre: 'Déjà réalisé', points: DEJA_REALISE, vue: 4 },
+      {
+        titre: 'Accès et implantation',
+        points: ['Entrée du lot à placer par l’acquéreur', ZONE],
+        vue: 5,
+      },
+      { titre: 'Le village', texte: VILLAGE, vue: 2 },
     ],
-    lieu: VILLAGE,
     photo: '/terrains/attignat-vue-3.webp',
     photoAlt: 'Terrain à bâtir à Attignat, avec vue dégagée sur la campagne',
     photoPos: '50% 78%',
@@ -132,17 +157,16 @@ export const TERRAINS: readonly Terrain[] = [
 
 /**
  * Photos communes aux trois fiches : le terrain a été photographié dans son
- * ensemble, sans reprendre un lot après l'autre. Elles s'affichent entières
- * (jamais recadrées) sous chaque fiche, dans cet ordre. `pleine` : la photo
- * occupe toute la largeur de la grille.
+ * ensemble, sans reprendre un lot après l'autre. Elles s'affichent entières,
+ * jamais recadrées, à côté des textes (voir `rangees`).
  */
-export const GALERIE: readonly { src: string; w: number; h: number; alt: string; pleine?: boolean }[] = [
-  { src: '/terrains/attignat-vue-1.webp', w: 1700, h: 767, alt: 'Prairie du terrain à Attignat, vue vers les arbres et une maison voisine' },
-  { src: '/terrains/attignat-vue-2.webp', w: 1700, h: 767, alt: 'Prairie bordée de haies sur le terrain d’Attignat' },
-  { src: '/terrains/attignat-vue-4.webp', w: 1400, h: 1050, alt: 'Zone gravillonnée de l’espace commun à Attignat, avec une gaine bleue et un coffret' },
-  { src: '/terrains/attignat-vue-5.webp', w: 1400, h: 1050, alt: 'Route en bordure du terrain d’Attignat, avec un coffret en limite' },
-  { src: '/terrains/attignat-vue-3.webp', w: 1700, h: 767, alt: 'Vue dégagée sur la campagne depuis le terrain d’Attignat', pleine: true },
-];
+export const VUES = {
+  1: { src: '/terrains/attignat-vue-1.webp', w: 1700, h: 767, alt: 'Prairie du terrain à Attignat, vue vers les arbres et une maison voisine' },
+  2: { src: '/terrains/attignat-vue-2.webp', w: 1700, h: 767, alt: 'Prairie bordée de haies sur le terrain d’Attignat' },
+  3: { src: '/terrains/attignat-vue-3.webp', w: 1700, h: 767, alt: 'Vue dégagée sur la campagne depuis le terrain d’Attignat' },
+  4: { src: '/terrains/attignat-vue-4.webp', w: 1400, h: 1050, alt: 'Zone gravillonnée de l’espace commun à Attignat, avec une gaine bleue et un coffret' },
+  5: { src: '/terrains/attignat-vue-5.webp', w: 1400, h: 1050, alt: 'Route en bordure du terrain d’Attignat, avec un coffret en limite' },
+} as const;
 
 /**
  * Plan de division du géomètre-expert (limites bornées, 18 décembre 2024).
