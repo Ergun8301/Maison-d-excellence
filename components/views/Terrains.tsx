@@ -28,31 +28,31 @@ export default function Terrains(v: Vals) {
               {(hasTerrains) ? (<><div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", flexWrap: "wrap", gap: "24px", marginBottom: "clamp(28px,3.4vw,40px)" }}>
                 <div>
                   <h2 data-reveal="" style={{ margin: "0", fontFamily: "'Cormorant Garamond',serif", fontWeight: "300", fontSize: "clamp(28px,3.8vw,50px)", lineHeight: "1.04", color: "#111412" }}>Parcelles suivies en ce moment.</h2>
-                  <p data-reveal="" data-delay="80" style={{ margin: "14px 0 0", color: "#77807A", fontSize: "14.5px", lineHeight: "1.65", maxWidth: "60ch" }}>Fiches tenues à jour manuellement. Une parcelle qui vous intéresse ? Nous étudions gratuitement si votre projet de maison y entre.</p>
+                  <p data-reveal="" data-delay="80" style={{ margin: "14px 0 0", color: "#77807A", fontSize: "14.5px", lineHeight: "1.65", maxWidth: "60ch" }}>Fiches tenues à jour manuellement. Une parcelle qui vous intéresse ? Nous vérifions avec vous si votre projet de maison y entre.</p>
                 </div>
                 <div data-reveal="" data-delay="160" style={{ fontSize: "14px", color: "#77807A" }}><span style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: "30px", color: "#111412", verticalAlign: "-3px" }}>{terrainCount}</span> terrain(s) affiché(s)</div>
               </div>
 
-              <div data-reveal="" style={{ display: "flex", flexWrap: "wrap", gap: "10px", marginBottom: "clamp(28px,3.4vw,40px)" }}>
+              {(terrainChips ?? []).length > 2 ? (<div data-reveal="" style={{ display: "flex", flexWrap: "wrap", gap: "10px", marginBottom: "clamp(28px,3.4vw,40px)" }}>
                 {(terrainChips ?? []).map((chip, i) => (
                   <button onClick={chip.onClick} className="me-btn" style={{ cursor: "pointer", padding: "10px 20px", borderRadius: "100px", border: "1px solid", fontFamily: "inherit", fontSize: "13px", fontWeight: "600", letterSpacing: "0.01em", ...cssToStyle(chip.style) }} key={i}>{chip.label}</button>
                 ))}
-              </div>
+              </div>) : null}
 
               <div className="me-g3" style={{ gap: "clamp(16px,1.8vw,26px)" }}>
                 {(terrains ?? []).map((t, i) => (
-                  <a href={t.href} onClick={t.onOpen} data-reveal="" data-delay={t.delay} className="me-card" style={{ display: "block", textDecoration: "none", borderRadius: "9px", overflow: "hidden", background: "#FFFFFF", border: "1px solid rgba(17,20,18,0.07)", opacity: `${t.cardOpacity}`, color: "#111412" }} key={i}>
+                  <a href={t.href} onClick={t.onOpen} data-reveal="" data-delay={t.delay} className="me-card" style={{ display: "flex", flexDirection: "column", textDecoration: "none", borderRadius: "9px", overflow: "hidden", background: "#FFFFFF", border: "1px solid rgba(17,20,18,0.07)", opacity: `${t.cardOpacity}`, color: "#111412" }} key={i}>
                     <div style={{ position: "relative", overflow: "hidden", aspectRatio: "16/11" }}>
-                      <img loading="lazy" className="me-zoom" src={t.photo} alt={`Terrain à bâtir à ${t.commune} dans l'Ain`} style={{ width: "100%", height: "100%", objectFit: "cover", backgroundColor: "#EDEDE7", backgroundSize: "cover", backgroundPosition: "center" }} />
+                      <img loading="lazy" className="me-zoom" src={t.photo} alt={t.photoAlt} style={{ width: "100%", height: "100%", objectFit: "cover", backgroundColor: "#EDEDE7", backgroundSize: "cover", objectPosition: t.photoPos, backgroundPosition: "center" }} />
                       <span style={{ position: "absolute", top: "13px", left: "13px", padding: "6px 13px", borderRadius: "100px", fontSize: "10.5px", fontWeight: "700", letterSpacing: "0.05em", textTransform: "uppercase", ...cssToStyle(t.badgeStyle) }}>{t.status}</span>
                       <span style={{ position: "absolute", top: "13px", right: "13px", padding: "6px 12px", borderRadius: "100px", background: "rgba(11,13,12,0.6)", color: "#F7F7F4", fontSize: "12px", fontWeight: "600", backdropFilter: "blur(4px)" }}>{t.surfaceLabel}</span>
                     </div>
-                    <div style={{ padding: "22px 24px 24px" }}>
+                    <div style={{ padding: "22px 24px 24px", flex: "1", display: "flex", flexDirection: "column" }}>
                       <h3 style={{ margin: "0", fontFamily: "'Cormorant Garamond',serif", fontWeight: "500", fontSize: "26px", color: "#111412", lineHeight: "1" }}>{t.commune}</h3>
                       <div style={{ marginTop: "6px", fontSize: "11.5px", letterSpacing: "0.12em", textTransform: "uppercase", color: "#2E5A49" }}>{t.secteur} · Réf. {t.ref}</div>
-                      <p style={{ margin: "14px 0 0", color: "#77807A", fontSize: "13.5px", lineHeight: "1.55" }}>{t.note}</p>
-                      <div style={{ marginTop: "18px", paddingTop: "16px", borderTop: "1px solid rgba(17,20,18,0.1)", display: "flex", alignItems: "center", justifyContent: "space-between", gap: "12px" }}>
-                        <span><span style={{ display: "block", fontSize: "11px", color: "#8D948E" }}>Terrain à partir de</span><span style={{ display: "block", fontFamily: "'Cormorant Garamond',serif", fontSize: "25px", color: "#111412", lineHeight: "1.1" }}>{t.priceLabel}</span></span>
+                      <p style={{ margin: "14px 0 18px", color: "#77807A", fontSize: "13.5px", lineHeight: "1.55" }}>{t.note}</p>
+                      <div style={{ marginTop: "auto", paddingTop: "16px", borderTop: "1px solid rgba(17,20,18,0.1)", display: "flex", alignItems: "center", justifyContent: "space-between", gap: "12px" }}>
+                        <span><span style={{ display: "block", fontSize: "11px", color: "#8D948E" }}>Prix du terrain</span><span style={{ display: "block", fontFamily: "'Cormorant Garamond',serif", fontSize: "25px", color: "#111412", lineHeight: "1.1" }}>{t.priceLabel}</span></span>
                         <span style={{ padding: "11px 18px", borderRadius: "100px", background: "#111412", color: "#F7F7F4", fontSize: "12.5px", fontWeight: "600", whiteSpace: "nowrap" }}>Voir la fiche →</span>
                       </div>
                     </div>
@@ -60,7 +60,7 @@ export default function Terrains(v: Vals) {
                 ))}
               </div>
 
-              <p data-reveal="" style={{ margin: "clamp(34px,4vw,48px) 0 0", fontSize: "13px", color: "#8D948E", lineHeight: "1.6", maxWidth: "78ch" }}>Informations communiquées à titre indicatif, hors frais de notaire et sous réserve de disponibilité. Les terrains sont commercialisés par leurs propriétaires ou par notre partenaire foncier : vous restez libre de votre constructeur.</p></>) : null}
+              <p data-reveal="" style={{ margin: "clamp(34px,4vw,48px) 0 0", fontSize: "13px", color: "#8D948E", lineHeight: "1.6", maxWidth: "78ch" }}>Surfaces issues du plan de division d’un géomètre-expert, sur limites bornées. Informations communiquées à titre indicatif et sous réserve de disponibilité.</p></>) : null}
 
               {(sansTerrains) ? (<>
               <div data-reveal="" style={{ maxWidth: "60ch" }}>

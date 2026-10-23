@@ -15,7 +15,7 @@ export default function FicheTerrain(v: Vals) {
       <main data-screen-label="Fiche terrain">
           <section style={{ position: "relative", minHeight: "clamp(400px,46vh,548px)", overflow: "hidden", display: "flex", alignItems: "flex-end" }}>
             <div style={{ position: "absolute", inset: "0", overflow: "hidden", background: "#111412" }}>
-              <img src={t.photo} alt={`Terrain à bâtir de ${t.surfaceLabel} à ${t.commune}`} style={{ width: "100%", height: "100%", objectFit: "cover", backgroundSize: "cover", backgroundPosition: "center", animation: "meKb 18s ease-out forwards" }} />
+              <img src={t.photo} alt={t.photoAlt} style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: t.photoPos, backgroundSize: "cover", backgroundPosition: "center", animation: "meKb 18s ease-out forwards" }} />
             </div>
             <div style={{ position: "absolute", inset: "0", background: "linear-gradient(180deg,rgba(11,13,12,0.5) 0%,rgba(11,13,12,0.15) 36%,rgba(11,13,12,0.88) 100%)" }}></div>
             <div style={{ position: "relative", width: "100%", maxWidth: "1440px", margin: "0 auto", padding: "clamp(100px,10.5vw,124px) clamp(20px,5vw,64px) clamp(40px,5vw,70px)" }}>
@@ -40,12 +40,11 @@ export default function FicheTerrain(v: Vals) {
                   <h2 data-reveal="" data-delay="80" style={{ margin: "clamp(34px,4vw,52px) 0 0", fontFamily: "'Cormorant Garamond',serif", fontWeight: "300", fontSize: "clamp(28px,3.6vw,46px)", lineHeight: "1.06", color: "#111412" }}>La parcelle</h2>
                   <p data-reveal="" data-delay="120" style={{ margin: "18px 0 0", color: "#4E534E", fontSize: "clamp(15px,1.4vw,18px)", lineHeight: "1.8", maxWidth: "60ch" }}>{t.desc}</p>
                   <div className="me-g2" data-reveal="" data-delay="180" style={{ gap: "14px", marginTop: "30px", maxWidth: "60ch" }}>
-                    <div style={{ display: "flex", gap: "12px", alignItems: "flex-start" }}><span style={{ color: "#2E5A49", fontSize: "18px", lineHeight: "1.3" }}>✓</span><span style={{ fontSize: "14.5px", color: "#333834" }}>{t.note}</span></div>
-                    <div style={{ display: "flex", gap: "12px", alignItems: "flex-start" }}><span style={{ color: "#2E5A49", fontSize: "18px", lineHeight: "1.3" }}>✓</span><span style={{ fontSize: "14.5px", color: "#333834" }}>Faisabilité vérifiée par nos équipes</span></div>
-                    <div style={{ display: "flex", gap: "12px", alignItems: "flex-start" }}><span style={{ color: "#2E5A49", fontSize: "18px", lineHeight: "1.3" }}>✓</span><span style={{ fontSize: "14.5px", color: "#333834" }}>Compatible avec une maison RE2020</span></div>
-                    <div style={{ display: "flex", gap: "12px", alignItems: "flex-start" }}><span style={{ color: "#2E5A49", fontSize: "18px", lineHeight: "1.3" }}>✓</span><span style={{ fontSize: "14.5px", color: "#333834" }}>Étude d'implantation offerte</span></div>
+                    {(t.points ?? []).map((p, i) => (
+                      <div key={i} style={{ display: "flex", gap: "12px", alignItems: "flex-start" }}><span style={{ color: "#2E5A49", fontSize: "18px", lineHeight: "1.3" }}>✓</span><span style={{ fontSize: "14.5px", color: "#333834" }}>{p}</span></div>
+                    ))}
                   </div>
-                  <p data-reveal="" data-delay="240" style={{ margin: "30px 0 0", fontSize: "13px", color: "#8D948E", lineHeight: "1.6", maxWidth: "70ch" }}>Prix hors frais de notaire, hors viabilisation restant éventuellement à réaliser. Surface cadastrale communiquée par le propriétaire, à confirmer au bornage.</p>
+                  <p data-reveal="" data-delay="240" style={{ margin: "30px 0 0", fontSize: "13px", color: "#8D948E", lineHeight: "1.6", maxWidth: "70ch" }}>Surface issue du plan de division établi par un géomètre-expert, sur limites bornées. Informations communiquées à titre indicatif et sous réserve de disponibilité.</p>
                 </div>
 
                 <div data-reveal="" data-delay="120" style={{ position: "sticky", top: "104px", background: "#111412", color: "#F7F7F4", borderRadius: "12px", padding: "clamp(28px,3.4vw,44px)", boxShadow: "0 50px 90px -60px rgba(17,20,18,0.9)" }}>

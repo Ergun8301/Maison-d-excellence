@@ -22,6 +22,8 @@ export type TerrainCard = {
   secteur: string;
   note: string;
   photo: string;
+  photoAlt: string;
+  photoPos: string;
   status: string;
   bg: string;
   surfaceLabel: string;
@@ -142,7 +144,7 @@ export type Vals = {
   /** Complément de `hasTerrains`, pour la branche « état vide » du gabarit. */
   sansTerrains: boolean;
   terrainChips: { label: string; onClick: () => void; style: string }[];
-  t: Record<string, string>;
+  t: Record<string, string> & { points?: readonly string[] };
   hasTerrain: boolean;
   askTerrain: () => void;
 
