@@ -1,4 +1,5 @@
 import type { MouseEvent, ChangeEvent, FormEvent } from 'react';
+import type { Rangee } from '@/lib/data/terrains';
 
 /** Bouton d'option du simulateur (niveau, chambres, garage, vide sanitaire…). */
 export type Opt = {
@@ -14,7 +15,6 @@ export type Avis = {
   text: string;
   delay: number;
 };
-
 export type TerrainCard = {
   slug: string;
   ref: string;
@@ -22,6 +22,8 @@ export type TerrainCard = {
   secteur: string;
   note: string;
   photo: string;
+  photoAlt: string;
+  photoPos: string;
   status: string;
   bg: string;
   surfaceLabel: string;
@@ -142,7 +144,7 @@ export type Vals = {
   /** Complément de `hasTerrains`, pour la branche « état vide » du gabarit. */
   sansTerrains: boolean;
   terrainChips: { label: string; onClick: () => void; style: string }[];
-  t: Record<string, string>;
+  t: Record<string, string> & { rangees?: readonly Rangee[] };
   hasTerrain: boolean;
   askTerrain: () => void;
 

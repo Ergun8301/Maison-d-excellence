@@ -23,7 +23,7 @@ const echeancierEnLigne = ECHEANCIER.map((e) => `${e.pct} ${e.t.toLowerCase()}`)
 export const FAQ: readonly Question[] = [
   {
     q: 'Dans quel secteur construisez-vous ?',
-    r: "Dans l'Ain, dans un rayon d'environ 30 km autour de chacun de nos trois pôles : Meximieux, Bourg-en-Bresse et Ambérieu-en-Bugey. Cela couvre notamment Montluel, Lagnieu, Pérouges, Miribel, Villars-les-Dombes, Chalamont et les communes voisines, ainsi que Villefranche-sur-Saône. Au-delà, nous préférons le dire franchement plutôt que de suivre un chantier de trop loin.",
+    r: "Dans l'Ain, autour de Meximieux, Bourg-en-Bresse et Ambérieu-en-Bugey, dans un rayon d'environ 30 km autour de chaque ville. Cela couvre notamment Montluel, Lagnieu, Pérouges, Miribel, Villars-les-Dombes, Chalamont et les communes voisines, ainsi que Villefranche-sur-Saône. Au-delà, nous préférons le dire franchement plutôt que de suivre un chantier de trop loin.",
   },
   {
     q: 'Construisez-vous sur un terrain que je possède déjà ?',

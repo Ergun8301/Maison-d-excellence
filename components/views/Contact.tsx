@@ -14,7 +14,7 @@ export default function Contact(v: Vals) {
       <main data-screen-label="Contact">
           {/* EN-TÊTE */}
           <section style={{ position: "relative", minHeight: "clamp(480px,66vh,600px)", overflow: "hidden", display: "flex", alignItems: "flex-end" }}>
-            <div style={{ position: "absolute", inset: "0", overflow: "hidden" }}><img src="/photos/devanture-rue.webp" alt="La devanture du bureau Maisons d'Excellence, 6 rue de Genève à Meximieux" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "50% 47%", animation: "meKbDoux 22s ease-out forwards" }} /></div>
+            <div style={{ position: "absolute", inset: "0", overflow: "hidden" }}><img width="1448" height="1086" decoding="async" fetchPriority="high" src="/photos/devanture-rue.webp" alt="La devanture du bureau Maisons d'Excellence, 6 rue de Genève à Meximieux" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "50% 47%", animation: "meKbDoux 22s ease-out forwards" }} /></div>
             <div style={{ position: "absolute", inset: "0", background: "linear-gradient(180deg,rgba(11,13,12,0.62) 0%,rgba(11,13,12,0.42) 34%,rgba(11,13,12,0.74) 68%,rgba(11,13,12,0.94) 100%)" }}></div>
             <div style={{ position: "relative", width: "100%", maxWidth: "1440px", margin: "0 auto", padding: "clamp(104px,11vw,128px) clamp(20px,5vw,64px) clamp(44px,5.4vw,76px)" }}>
               <div data-reveal="" style={{ display: "inline-flex", alignItems: "center", gap: "12px", marginBottom: "20px" }}><span style={{ width: "42px", height: "1px", background: "#9CC4B2" }}></span><span style={{ color: "#CFE0D6", fontSize: "12px", fontWeight: "600", letterSpacing: "0.3em", textTransform: "uppercase" }}>Contact · Meximieux (01)</span></div>
@@ -141,7 +141,7 @@ export default function Contact(v: Vals) {
                   </div>
                   <a href="/zone-intervention" onClick={goZone} className="me-link" style={{ textDecoration: "none", display: "flex", alignItems: "flex-start", gap: "15px", padding: "20px 0", borderTop: "1px solid rgba(17,20,18,0.14)", borderBottom: "1px solid rgba(17,20,18,0.14)", color: "#111412" }} style-hover="color:#2E5A49;">
                     <span style={{ width: "38px", height: "38px", flex: "none", borderRadius: "50%", background: "#111412", color: "#9CC4B2", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "15px" }}>⌂</span>
-                    <span><span style={{ display: "block", fontSize: "10.5px", letterSpacing: "0.16em", textTransform: "uppercase", color: "#77807A", marginBottom: "3px" }}>Zone d'intervention</span><span style={{ fontSize: "15px", color: "#333834", lineHeight: "1.6", display: "block" }}>30 km autour de Meximieux, Bourg-en-Bresse et Ambérieu-en-Bugey — voir la carte →</span></span>
+                    <span><span style={{ display: "block", fontSize: "10.5px", letterSpacing: "0.16em", textTransform: "uppercase", color: "#77807A", marginBottom: "3px" }}>Zone d'intervention</span><span style={{ fontSize: "15px", color: "#333834", lineHeight: "1.6", display: "block" }}>Autour de Meximieux, Bourg-en-Bresse et Ambérieu-en-Bugey, 30 km autour de chaque ville — voir la carte →</span></span>
                   </a>
                 </div>
 

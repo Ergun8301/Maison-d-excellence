@@ -48,6 +48,9 @@ export const ROUTES: Record<string, string> = {
 const fmt = (n: number) =>
   String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
 
+/** Prix d'un terrain, ou « Sur demande » tant qu'il n'est pas communiqué. */
+const prixTerrain = (n: number | null) => (n === null ? 'Sur demande' : `${fmt(n)} €`);
+
 type EstState = {
   surface: number;
   niveau: string;
@@ -85,6 +88,7 @@ const BADGE: Record<string, string> = {
   Disponible: 'background:#E3EFE8;color:#1F6B4A;',
   'Dernier lot': 'background:#EFEADA;color:#7C6A2E;',
   Réservé: 'background:#EAEAE4;color:#7E837E;',
+  Vendu: 'background:#EAEAE4;color:#7E837E;',
 };
 
 /** Message pré-rempli transmis au formulaire de contact d'une vue à l'autre. */
@@ -297,12 +301,14 @@ export default function Site({
       secteur: x.secteur,
       note: x.note,
       photo: x.photo,
+      photoAlt: x.photoAlt,
+      photoPos: x.photoPos,
       status: x.status,
       bg: `url("${x.photo}")`,
       surfaceLabel: `${fmt(x.surface)} m²`,
-      priceLabel: `${fmt(x.price)} €`,
+      priceLabel: x.status === 'Vendu' ? 'Vendu' : prixTerrain(x.price),
       badgeStyle: BADGE[x.status] || BADGE.Disponible,
-      cardOpacity: x.status === 'Réservé' ? '0.6' : '1',
+      cardOpacity: x.status === 'Réservé' || x.status === 'Vendu' ? '0.6' : '1',
       delay: (i % 3) * 90,
       href: `/terrains/${x.slug}`,
       onOpen: () => router.push(`/terrains/${x.slug}`),
@@ -338,7 +344,8 @@ export default function Site({
       ? {
           ...rawT,
           surfaceLabel: `${fmt(rawT.surface)} m²`,
-          priceLabel: `${fmt(rawT.price)} €`,
+          priceLabel: rawT.status === 'Vendu' ? '—' : prixTerrain(rawT.price),
+          badgeStyle: BADGE[rawT.status] || BADGE.Disponible,
           bg: `url("${rawT.photo}")`,
         }
       : null;
@@ -454,13 +461,14 @@ export default function Site({
 
       terrains,
       terrainCount: terrains.length,
-      // Aucun terrain réel à publier pour l'instant : la vue bascule sur un
-      // état vide plutôt que d'afficher une liste, des filtres et un compteur
-      // qui ne portent sur rien. Remplir lib/data/terrains.ts suffit à tout
-      // faire réapparaître.
+      // Sans terrain publié, la vue bascule sur un état vide plutôt que
+      // d'afficher une liste, des filtres et un compteur qui ne portent sur
+      // rien (voir lib/data/terrains.ts).
       hasTerrains: terrains.length > 0,
       sansTerrains: terrains.length === 0,
-      terrainChips: ['Tout', "Plaine de l'Ain", 'Côtière', 'Bugey'].map((f) => ({
+      // Les filtres se déduisent des secteurs réellement publiés ; avec un seul
+      // secteur, ils ne filtreraient rien et sont masqués par la vue.
+      terrainChips: ['Tout', ...Array.from(new Set(TERRAINS.map((x) => x.secteur)))].map((f) => ({
         label: f,
         onClick: () => setTerrainFilter(f),
         style:
@@ -468,12 +476,12 @@ export default function Site({
             ? 'background:#111412;color:#F7F7F4;border-color:#111412;'
             : 'background:transparent;color:#4E534E;border-color:rgba(17,20,18,0.2);',
       })),
-      t: (t ?? {}) as Record<string, string>,
+      t: (t ?? {}) as unknown as Vals['t'],
       hasTerrain: !!t,
       askTerrain: () => {
         if (!t) return;
         askWith(
-          `Bonjour, je suis intéressé par le terrain réf. ${t.ref} à ${t.commune} (${t.surfaceLabel}, ${t.priceLabel}). J’aimerais étudier un projet de construction sur cette parcelle.`
+          `Bonjour, je suis intéressé par le terrain réf. ${t.ref} à ${t.commune} (${t.surfaceLabel}${rawT?.price == null ? '' : `, ${t.priceLabel}`}). J’aimerais étudier un projet de construction sur cette parcelle.`
         );
       },
 

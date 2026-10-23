@@ -26,6 +26,8 @@ a:hover{color:#111412;}
 .me-cx{display:grid;grid-template-columns:1.02fr 0.98fr;align-items:stretch;}
 .me-lead{display:grid;grid-template-columns:0.82fr 1.7fr;}
 .me-sticky{position:sticky;top:98px;}
+/* Rangée de fiche terrain : photo et texte côte à côte ; les colonnes se règlent en ligne. */
+.me-rang{display:grid;align-items:center;}
 .me-steps{display:grid;grid-template-columns:repeat(5,1fr);}
 .me-card{transition:transform .65s cubic-bezier(.16,.84,.44,1),box-shadow .65s cubic-bezier(.16,.84,.44,1);}
 .me-card:hover{transform:translateY(-10px);box-shadow:0 50px 90px -55px rgba(11,13,12,.85);}
@@ -85,6 +87,9 @@ a:hover{color:#111412;}
 @media(max-width:880px){
   .me-g3{grid-template-columns:1fr 1fr;}
   .me-split{grid-template-columns:1fr;}
+  .me-rang{grid-template-columns:1fr !important;}
+  .me-rang > *{grid-column:1 !important;grid-row:auto !important;}
+  .me-rang > .me-rang-photo{order:-1;}
   .me-cx{grid-template-columns:1fr;}
   .me-lead{grid-template-columns:1fr;}
   .me-sticky{position:static;}

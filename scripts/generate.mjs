@@ -2,6 +2,29 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { toJsx } from './tojsx.mjs';
 
+/**
+ * ATTENTION — ce générateur n'est plus la source de vérité des vues.
+ *
+ * Plusieurs vues générées (components/views/*.tsx, SiteHeader, SiteFooter) ont
+ * été retouchées à la main depuis la maquette, et une régénération écraserait
+ * ces retouches. Celles que les CORRECTIONS ci-dessous reproduisent sont sans
+ * danger ; les autres sont à reporter ou à refaire :
+ *
+ *  - logo de l'en-tête (components/SiteHeader.tsx) ;
+ *  - quelques retouches dans Terrains.tsx et Investisseurs.tsx ;
+ *  - images : les cartes de la maquette posent un <img> vide (un pixel SVG) et
+ *    portent la photo en fond CSS ; les vues pointent désormais l'image réelle
+ *    dans `src` (modèles, terrains, blog, article, fiche terrain), ce qui la
+ *    rend visible des moteurs d'images et lui rend le chargement différé ;
+ *  - largeur/hauteur, decoding="async" et fetchPriority="high" ajoutés aux
+ *    images réelles ; chargement différé de l'image de l'accueil ;
+ *  - textes alternatifs corrigés (Accueil, Modèles, articles du blog).
+ *
+ * Les paragraphes de maillage interne des pages Modèles, Réalisations, Terrains
+ * et Blog ne sont PAS dans les vues : ils vivent dans les hôtes
+ * (components/hosts) et dans lib/data/maillage.ts, donc ils survivent.
+ */
+
 const SRC = "/workspace/maison-d-excellence/design/Maisons d'Excellence.dc.html";
 const ROOT = '/workspace/maison-d-excellence';
 
@@ -65,12 +88,29 @@ const absolutePhotos = (s) =>
  * style, aucune classe, aucun nœud n'est touché.
  */
 const CORRECTIONS = [
+  // Zone d'intervention : « trois pôles » et « 30 km autour de A, B et C » se
+  // lisent comme trois agences, ou comme un seul cercle. On dit : une zone
+  // d'intervention, 30 km autour de chaque ville. Trois phrases de la maquette.
+  [
+    `Les cercles représentent un rayon de 30 km autour de nos trois pôles d'intervention.`,
+    `Chaque cercle représente un rayon de 30 km autour de la ville qui en est le centre.`,
+  ],
+  [
+    `Nous construisons dans un rayon d'environ 30 km autour de Meximieux, Bourg-en-Bresse et Ambérieu-en-Bugey.`,
+    `Notre zone d'intervention s'étend autour de Meximieux, Bourg-en-Bresse et Ambérieu-en-Bugey, sur 30 km autour de chaque ville.`,
+  ],
+  [
+    `30 km autour de Meximieux, Bourg-en-Bresse et Ambérieu-en-Bugey — voir la carte →`,
+    `Autour de Meximieux, Bourg-en-Bresse et Ambérieu-en-Bugey, 30 km autour de chaque ville — voir la carte →`,
+  ],
+
   // Pied de page : la maquette présente Bourg-en-Bresse et Ambérieu-en-Bugey
-  // comme des communes desservies depuis Meximieux. Ce sont deux des trois
-  // pôles, chacun avec son rayon de 30 km.
+  // comme des communes desservies depuis Meximieux. Ce sont trois villes, chacune
+  // avec son rayon de 30 km. On dit « zone d'intervention autour de… » et non
+  // « pôles », qui laisserait croire à trois agences.
   [
     `Constructeur de maisons individuelles sur-mesure à Meximieux : Bourg-en-Bresse, Ambérieu-en-Bugey, Villefranche-sur-Saône, Montluel, Lagnieu, Pérouges. Plans dessinés sur-mesure, CCMI, conformité RE2020.`,
-    `Constructeur de maisons individuelles sur-mesure dans l’Ain : trois pôles, Meximieux, Bourg-en-Bresse et Ambérieu-en-Bugey, et 30 km autour de chacun. Plans dessinés sur-mesure, CCMI, conformité RE2020.`,
+    `Constructeur de maisons individuelles sur-mesure dans l’Ain : zone d’intervention autour de Meximieux, Bourg-en-Bresse et Ambérieu-en-Bugey, 30 km autour de chaque ville. Plans dessinés sur-mesure, CCMI, conformité RE2020.`,
   ],
 
   // Horaires du bureau : 9h–19h, et non les 8h30–18h00 de la maquette. Deux
@@ -361,13 +401,16 @@ const CORRECTIONS = [
         <span class="me-hdr-mark"`,
   ],
 
-  // Le client n'a qu'un compte Instagram — le lien Facebook du pied de page
-  // était une invention de la maquette, jamais confirmée, et pointait vers
-  // une page qui n'existe pas. On le retire plutôt que de publier un lien
-  // mort ou, pire, une page qui n'est pas la sienne.
+  // Pied de page : la maquette portait un lien Facebook vers une adresse
+  // inventée (facebook.com/maisonsdexcellence), jamais confirmée. Le client a
+  // depuis confirmé sa vraie page : on garde l'icône de la maquette, on lui
+  // donne la bonne adresse, rel="noopener noreferrer" et un libellé court.
   [
     '<a href="https://www.facebook.com/maisonsdexcellence" target="_blank" rel="noopener" class="me-soc" aria-label="Maisons d\'Excellence sur Facebook" style="width:40px;height:40px;border-radius:50%;border:1px solid rgba(247,247,244,0.25);color:rgba(247,247,244,0.8);display:inline-flex;align-items:center;justify-content:center;text-decoration:none;">\n              <svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor" aria-hidden="true"><path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.412c0-3.025 1.792-4.696 4.533-4.696 1.313 0 2.686.236 2.686.236v2.971H15.83c-1.491 0-1.956.93-1.956 1.886v2.264h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073"></path></svg>\n            </a>\n            ',
-    '',
+    '<a href="https://www.facebook.com/maisonsdexcellence" target="_blank" rel="noopener" class="me-soc" aria-label="Maisons d\'Excellence sur Facebook" style="width:40px;height:40px;border-radius:50%;border:1px solid rgba(247,247,244,0.25);color:rgba(247,247,244,0.8);display:inline-flex;align-items:center;justify-content:center;text-decoration:none;">\n              <svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor" aria-hidden="true"><path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.412c0-3.025 1.792-4.696 4.533-4.696 1.313 0 2.686.236 2.686.236v2.971H15.83c-1.491 0-1.956.93-1.956 1.886v2.264h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073"></path></svg>\n            </a>\n            '
+      .replace('https://www.facebook.com/maisonsdexcellence', 'https://www.facebook.com/maisons.dexcellence')
+      .replace('rel="noopener"', 'rel="noopener noreferrer"')
+      .replace(/aria-label="[^"]*"/, 'aria-label="Facebook"'),
   ],
 
   // Voile du hero. Les valeurs de la maquette correspondaient à un réglage
@@ -531,7 +574,7 @@ const CORRECTIONS = [
           <span style="color:#D3B27A;font-size:12.5px;letter-spacing:0.16em;">★★★★★</span>
           <span style="color:rgba(247,247,244,0.82);font-size:12.5px;font-weight:500;letter-spacing:0.02em;white-space:nowrap;">5,0 / 5 — {{ avisCount }} avis Google</span>
         </div>`,
-    `<div class="me-hero-social" style="justify-self:start;display:inline-flex;align-items:center;gap:14px;"><a href="{{ avisUrl }}" target="_blank" rel="noopener noreferrer" data-reveal="" data-delay="560" class="me-hero-avis me-pastille-google" aria-label="Voir les avis Google de Maisons d'Excellence" style="flex:none;display:inline-flex;align-items:center;gap:11px;text-decoration:none;background:#FFFFFF;border:1px solid rgba(0,0,0,0.08);border-radius:999px;padding:8px 16px;box-shadow:0 6px 18px -6px rgba(0,0,0,0.35);transition:transform .3s cubic-bezier(.16,.84,.44,1),box-shadow .3s;"><svg width="22" height="22" viewBox="0 0 48 48" aria-hidden="true" style="flex:none;display:block;"><path fill="#4285F4" d="M45.12 24.5c0-1.56-.14-3.06-.4-4.5H24v8.51h11.84c-.51 2.75-2.06 5.08-4.39 6.64v5.52h7.11c4.16-3.83 6.56-9.47 6.56-16.17z"></path><path fill="#34A853" d="M24 46c5.94 0 10.92-1.97 14.56-5.33l-7.11-5.52c-1.97 1.32-4.49 2.1-7.45 2.1-5.73 0-10.58-3.87-12.31-9.07H4.34v5.7C7.96 41.07 15.4 46 24 46z"></path><path fill="#FBBC05" d="M11.69 28.18C11.25 26.86 11 25.45 11 24s.25-2.86.69-4.18v-5.7H4.34C2.85 17.09 2 20.45 2 24s.85 6.91 2.34 9.88l7.35-5.7z"></path><path fill="#EA4335" d="M24 10.75c3.23 0 6.13 1.11 8.41 3.29l6.31-6.31C34.91 4.18 29.93 2 24 2 15.4 2 7.96 6.93 4.34 14.12l7.35 5.7c1.73-5.2 6.58-9.07 12.31-9.07z"></path></svg><span style="display:flex;flex-direction:column;line-height:1.25;"><span style="display:flex;align-items:center;gap:6px;"><span class="me-note" style="font-weight:700;font-size:14px;color:#202124;">5,0</span><span class="me-etoiles" style="color:#FBBC04;font-size:13px;letter-spacing:1px;">★★★★★</span></span><span class="me-nb-avis" style="font-size:12px;color:#5F6368;white-space:nowrap;">{{ avisCount }} avis Google</span></span></a><a href="https://www.instagram.com/maisonsdexcellence" target="_blank" rel="noopener" data-reveal="" data-delay="580" class="me-hero-insta" aria-label="Maisons d'Excellence sur Instagram" style="flex:none;display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:50%;border:1px solid rgba(247,247,244,0.32);color:rgba(247,247,244,0.86);text-decoration:none;transition:transform .3s cubic-bezier(.16,.84,.44,1),border-color .3s,color .3s;" style-hover="border-color:#F7F7F4;color:#F7F7F4;transform:translateY(-2px);"><svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor" aria-hidden="true"><path d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0m0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06zm0 3.678a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324M12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8m7.846-10.405a1.441 1.441 0 0 1-2.88 0 1.44 1.44 0 0 1 2.88 0"></path></svg></a></div>`,
+    `<div class="me-hero-social" style="justify-self:start;display:inline-flex;align-items:center;gap:14px;"><a href="{{ avisUrl }}" target="_blank" rel="noopener noreferrer" data-reveal="" data-delay="560" class="me-hero-avis me-pastille-google" aria-label="Voir les avis Google de Maisons d'Excellence" style="flex:none;display:inline-flex;align-items:center;gap:11px;text-decoration:none;background:#FFFFFF;border:1px solid rgba(0,0,0,0.08);border-radius:999px;padding:8px 16px;box-shadow:0 6px 18px -6px rgba(0,0,0,0.35);transition:transform .3s cubic-bezier(.16,.84,.44,1),box-shadow .3s;"><svg width="22" height="22" viewBox="0 0 48 48" aria-hidden="true" style="flex:none;display:block;"><path fill="#4285F4" d="M45.12 24.5c0-1.56-.14-3.06-.4-4.5H24v8.51h11.84c-.51 2.75-2.06 5.08-4.39 6.64v5.52h7.11c4.16-3.83 6.56-9.47 6.56-16.17z"></path><path fill="#34A853" d="M24 46c5.94 0 10.92-1.97 14.56-5.33l-7.11-5.52c-1.97 1.32-4.49 2.1-7.45 2.1-5.73 0-10.58-3.87-12.31-9.07H4.34v5.7C7.96 41.07 15.4 46 24 46z"></path><path fill="#FBBC05" d="M11.69 28.18C11.25 26.86 11 25.45 11 24s.25-2.86.69-4.18v-5.7H4.34C2.85 17.09 2 20.45 2 24s.85 6.91 2.34 9.88l7.35-5.7z"></path><path fill="#EA4335" d="M24 10.75c3.23 0 6.13 1.11 8.41 3.29l6.31-6.31C34.91 4.18 29.93 2 24 2 15.4 2 7.96 6.93 4.34 14.12l7.35 5.7c1.73-5.2 6.58-9.07 12.31-9.07z"></path></svg><span style="display:flex;flex-direction:column;line-height:1.25;"><span style="display:flex;align-items:center;gap:6px;"><span class="me-note" style="font-weight:700;font-size:14px;color:#202124;">5,0</span><span class="me-etoiles" style="color:#FBBC04;font-size:13px;letter-spacing:1px;">★★★★★</span></span><span class="me-nb-avis" style="font-size:12px;color:#5F6368;white-space:nowrap;">{{ avisCount }} avis Google</span></span></a><a href="https://www.instagram.com/maisonsdexcellence" target="_blank" rel="noopener" data-reveal="" data-delay="580" class="me-hero-insta" aria-label="Maisons d'Excellence sur Instagram" style="flex:none;display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:50%;border:1px solid rgba(247,247,244,0.32);color:rgba(247,247,244,0.86);text-decoration:none;transition:transform .3s cubic-bezier(.16,.84,.44,1),border-color .3s,color .3s;" style-hover="border-color:#F7F7F4;color:#F7F7F4;transform:translateY(-2px);"><svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor" aria-hidden="true"><path d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0m0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06zm0 3.678a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324M12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8m7.846-10.405a1.441 1.441 0 0 1-2.88 0 1.44 1.44 0 0 1 2.88 0"></path></svg></a><a href="https://www.facebook.com/maisons.dexcellence" target="_blank" rel="noopener noreferrer" data-reveal="" data-delay="600" class="me-hero-insta" aria-label="Facebook" style="flex:none;display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:50%;border:1px solid rgba(247,247,244,0.32);color:rgba(247,247,244,0.86);text-decoration:none;transition:transform .3s cubic-bezier(.16,.84,.44,1),border-color .3s,color .3s;" style-hover="border-color:#F7F7F4;color:#F7F7F4;transform:translateY(-2px);"><svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor" aria-hidden="true"><path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.412c0-3.025 1.792-4.696 4.533-4.696 1.313 0 2.686.236 2.686.236v2.971H15.83c-1.491 0-1.956.93-1.956 1.886v2.264h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073"></path></svg></a></div>`,
   ],
 
   // Déclaration des formulaires auprès de Netlify Forms.

@@ -135,9 +135,11 @@ export const ORGANISATION_JSONLD = {
     "bestRating": "5"
   },
   // `sameAs` relie l'entité décrite ici à ses profils publics. La fiche
-  // Google est celle qui porte les 36 avis repris plus haut.
+  // Google est celle qui porte les 36 avis repris plus haut. Facebook et
+  // Instagram sont les deux comptes du client, liés dans le pied de page.
   "sameAs": [
     "https://www.instagram.com/maisonsdexcellence",
+    "https://www.facebook.com/maisons.dexcellence",
     "https://search.google.com/local/reviews?placeid=ChIJ93t0HkWz9EcRIXzMIN2ZCAE"
   ],
   "knowsAbout": [
