@@ -88,6 +88,7 @@ const BADGE: Record<string, string> = {
   Disponible: 'background:#E3EFE8;color:#1F6B4A;',
   'Dernier lot': 'background:#EFEADA;color:#7C6A2E;',
   Réservé: 'background:#EAEAE4;color:#7E837E;',
+  Vendu: 'background:#EAEAE4;color:#7E837E;',
 };
 
 /** Message pré-rempli transmis au formulaire de contact d'une vue à l'autre. */
@@ -305,9 +306,9 @@ export default function Site({
       status: x.status,
       bg: `url("${x.photo}")`,
       surfaceLabel: `${fmt(x.surface)} m²`,
-      priceLabel: prixTerrain(x.price),
+      priceLabel: x.status === 'Vendu' ? 'Vendu' : prixTerrain(x.price),
       badgeStyle: BADGE[x.status] || BADGE.Disponible,
-      cardOpacity: x.status === 'Réservé' ? '0.6' : '1',
+      cardOpacity: x.status === 'Réservé' || x.status === 'Vendu' ? '0.6' : '1',
       delay: (i % 3) * 90,
       href: `/terrains/${x.slug}`,
       onOpen: () => router.push(`/terrains/${x.slug}`),
@@ -343,7 +344,7 @@ export default function Site({
       ? {
           ...rawT,
           surfaceLabel: `${fmt(rawT.surface)} m²`,
-          priceLabel: prixTerrain(rawT.price),
+          priceLabel: rawT.status === 'Vendu' ? '—' : prixTerrain(rawT.price),
           badgeStyle: BADGE[rawT.status] || BADGE.Disponible,
           bg: `url("${rawT.photo}")`,
         }

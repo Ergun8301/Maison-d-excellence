@@ -49,19 +49,19 @@ export const TERRAINS: readonly Terrain[] = [
     secteur: 'Bresse',
     surface: 997,
     price: null,
-    status: 'Disponible',
-    note: 'Lot 1 sur 3 : le plus vaste, 997 m² sur limites bornées.',
-    desc: 'Lot à bâtir de 997 m², à l’ouest d’une division en trois lots à Attignat. C’est le plus vaste des trois. Il se dessert par l’espace commun, au sud, selon le plan de division du géomètre-expert.',
+    status: 'Vendu',
+    note: 'Lot 1 sur 3 : le plus vaste, 997 m² sur limites bornées. Ce lot est vendu.',
+    desc: 'Lot à bâtir de 997 m², à l’ouest d’une division en trois lots à Attignat. C’est le plus vaste des trois. Il se dessert par l’espace commun, au sud, selon le plan de division du géomètre-expert. Ce lot est aujourd’hui vendu.',
     points: [
       `997 m² ${BORNES}`,
       'Accès imposé par l’espace commun, au sud du lot',
       ZONE,
       'Le plus vaste des trois lots',
     ],
-    photo: '/terrains/attignat-lot-1.webp',
+    photo: '/terrains/attignat-vue-1.webp',
     photoAlt: 'Terrain herbeux à bâtir à Attignat, dans l’Ain',
     photoPos: '50% 55%',
-    meta: 'Terrain à bâtir de 997 m² à Attignat (Ain), lot 1 sur 3, limites bornées. Accès par l’espace commun. Prix sur demande, faisabilité étudiée avec vous.',
+    meta: 'Terrain de 997 m² à Attignat (Ain), lot 1 sur 3 : vendu. Les lots 2 et 3, de 891 et 910 m² sur limites bornées, restent à découvrir près de Bourg.',
   },
   {
     ref: 'TA-002',
@@ -79,7 +79,7 @@ export const TERRAINS: readonly Terrain[] = [
       ZONE,
       'Lot central, entre les lots 1 et 3',
     ],
-    photo: '/terrains/attignat-lot-2.webp',
+    photo: '/terrains/attignat-vue-2.webp',
     photoAlt: 'Prairie à bâtir entourée de haies à Attignat, dans l’Ain',
     photoPos: '50% 85%',
     meta: 'Terrain à bâtir de 891 m² à Attignat (Ain), lot 2 sur 3, limites bornées. Accès par l’espace commun. Prix sur demande, faisabilité étudiée avec vous.',
@@ -100,9 +100,35 @@ export const TERRAINS: readonly Terrain[] = [
       'Entrée du lot à placer par l’acquéreur',
       ZONE,
     ],
-    photo: '/terrains/attignat-lot-3.webp',
-    photoAlt: 'Terrain à bâtir à Attignat, dans l’Ain',
-    photoPos: '50% 55%',
+    photo: '/terrains/attignat-vue-3.webp',
+    photoAlt: 'Terrain à bâtir à Attignat, avec vue dégagée sur la campagne',
+    photoPos: '50% 78%',
     meta: 'Terrain à bâtir de 910 m² à Attignat (Ain), lot 3 sur 3, en bordure de la RD 29, limites bornées. Prix sur demande, faisabilité étudiée avec vous.',
   },
 ];
+
+/**
+ * Photos communes aux trois fiches : le terrain a été photographié dans son
+ * ensemble, sans reprendre un lot après l'autre. Elles s'affichent entières
+ * (jamais recadrées) sous chaque fiche, dans cet ordre. `pleine` : la photo
+ * occupe toute la largeur de la grille.
+ */
+export const GALERIE: readonly { src: string; w: number; h: number; alt: string; pleine?: boolean }[] = [
+  { src: '/terrains/attignat-vue-1.webp', w: 1700, h: 767, alt: 'Prairie du terrain à Attignat, vue vers les arbres et une maison voisine' },
+  { src: '/terrains/attignat-vue-2.webp', w: 1700, h: 767, alt: 'Prairie bordée de haies sur le terrain d’Attignat' },
+  { src: '/terrains/attignat-vue-4.webp', w: 1400, h: 1050, alt: 'Zone gravillonnée de l’espace commun à Attignat, avec une gaine bleue et un coffret' },
+  { src: '/terrains/attignat-vue-5.webp', w: 1400, h: 1050, alt: 'Route en bordure du terrain d’Attignat, avec un coffret en limite' },
+  { src: '/terrains/attignat-vue-3.webp', w: 1700, h: 767, alt: 'Vue dégagée sur la campagne depuis le terrain d’Attignat', pleine: true },
+];
+
+/**
+ * Plan de division du géomètre-expert (limites bornées, 18 décembre 2024).
+ * Les noms des propriétaires voisins et leurs numéros de parcelle y sont
+ * masqués ; le reste du plan est celui du géomètre, sans retouche.
+ */
+export const PLAN = {
+  src: '/terrains/attignat-plan-division.webp',
+  w: 2400,
+  h: 1697,
+  alt: 'Plan de division des trois lots d’Attignat et de l’espace commun, avec les surfaces, les accès et les zones d’implantation',
+} as const;

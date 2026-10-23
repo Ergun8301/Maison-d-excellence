@@ -35,7 +35,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
   if (!TERRAINS.some((t) => t.slug === slug)) notFound();
   return (
     <Site page="terrain-detail" terrainSlug={slug}>
-      <View />
+      <View slug={slug} />
     </Site>
   );
 }
