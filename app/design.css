@@ -380,5 +380,6 @@ a:hover{color:#111412;}
   .me-ext-bandeau-texte{position:static;padding-top:28px;}
 }
 @media(max-width:600px){
-  .me-ext-bandeau-cta{flex-direction:column;align-items:stretch;max-width:320px;}
+  /* Boutons sur toute la largeur du texte : alignés avec lui, de bord à bord. */
+  .me-ext-bandeau-cta{flex-direction:column;align-items:stretch;width:100%;}
 }
