@@ -125,6 +125,28 @@ function Photo({ p, sens, recadre }: { p: PhotoExtension; sens: 'unfold-left' | 
   );
 }
 
+/**
+ * Grande photo pleine largeur entre deux sections, pour aérer la lecture.
+ * `cadre` règle la partie gardée quand l'écran recadre (téléphone) : on vise
+ * l'extension, pas la maison.
+ */
+function Bandeau({ p, cadre }: { p: PhotoExtension; cadre: string }) {
+  return (
+    <div data-reveal="" style={{ marginTop: 'clamp(48px,6vw,88px)' }}>
+      <img
+        src={p.src}
+        width={p.w}
+        height={p.h}
+        alt={p.alt}
+        loading="lazy"
+        decoding="async"
+        className="me-bandeau"
+        style={{ objectPosition: cadre }}
+      />
+    </div>
+  );
+}
+
 function Encadre({ titre, children }: { titre: string; children: ReactNode }) {
   return (
     <aside
@@ -236,10 +258,10 @@ export default function PageExtension({
             fetchPriority="high"
             src={P_.entete.src}
             alt={P_.entete.alt}
-            style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: '50% 55%', animation: 'meKb 18s ease-out forwards' }}
+            style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: '84% 55%', animation: 'meKb 18s ease-out forwards' }}
           />
         </div>
-        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg,rgba(11,13,12,0.6) 0%,rgba(11,13,12,0.3) 34%,rgba(11,13,12,0.72) 70%,rgba(11,13,12,0.94) 100%)' }} />
+        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg,rgba(11,13,12,0.42) 0%,rgba(11,13,12,0.08) 32%,rgba(11,13,12,0.36) 64%,rgba(11,13,12,0.8) 100%)' }} />
         <div style={{ position: 'relative', width: '100%', ...CONTENEUR, paddingTop: 'clamp(110px,11vw,136px)', paddingBottom: 'clamp(44px,5.4vw,76px)' }}>
           <div data-reveal="">
             <Surtitre clair>Extension et agrandissement · Ain</Surtitre>
@@ -290,6 +312,17 @@ export default function PageExtension({
           <div className="me-g3" style={{ gap: 'clamp(14px,1.6vw,22px)', marginTop: 'clamp(36px,4.6vw,60px)' }}>
             {TYPES_EXTENSION.map((t, i) => (
               <div key={t.titre} data-reveal="" data-delay={String((i % 3) * 100)} style={CARTE}>
+                {t.titre === 'Garage transformé' ? (
+                  <img
+                    src={P_.garage.src}
+                    width={P_.garage.w}
+                    height={P_.garage.h}
+                    alt={P_.garage.alt}
+                    loading="lazy"
+                    decoding="async"
+                    style={{ display: 'block', width: '100%', height: 'auto', aspectRatio: '2 / 1', objectFit: 'cover', objectPosition: '62% 50%', borderRadius: '6px', marginBottom: '18px', background: '#EDEDE7' }}
+                  />
+                ) : null}
                 <div style={{ fontSize: '11px', letterSpacing: '0.18em', color: VERT, fontWeight: 700 }}>{String(i + 1).padStart(2, '0')}</div>
                 <h3 style={{ ...H3, marginTop: '10px' }}>{t.titre}</h3>
                 <p style={{ margin: '12px 0 0', color: '#565B56', fontSize: '14.5px', lineHeight: 1.7 }}>{t.texte}</p>
@@ -411,6 +444,7 @@ export default function PageExtension({
             </div>
             <Encadre titre="Où vérifier">{URBANISME_OUTILS}</Encadre>
           </div>
+          <Bandeau p={P_.bandeUrbanisme} cadre="74% 60%" />
         </div>
       </section>
 
@@ -437,6 +471,7 @@ export default function PageExtension({
           <Encadre titre="À savoir">
             Informations générales, à confirmer pour votre projet : les règles fiscales et les aides évoluent, et chaque mairie applique son propre PLU.
           </Encadre>
+          <Bandeau p={P_.bandeBudget} cadre="78% 55%" />
         </div>
       </section>
 
@@ -487,6 +522,7 @@ export default function PageExtension({
             ))}
           </div>
           <p data-reveal="" style={{ ...P, maxWidth: '82ch', marginTop: 'clamp(28px,3.4vw,40px)' }}>{rendreTexte(SECTEURS_SUITE)}</p>
+          <Bandeau p={P_.bandeTypes} cadre="62% 60%" />
         </div>
       </section>
 
@@ -508,6 +544,7 @@ export default function PageExtension({
               </details>
             ))}
           </div>
+          <Bandeau p={P_.bandeFin} cadre="66% 60%" />
         </div>
       </section>
 

@@ -347,3 +347,15 @@ a:hover{color:#111412;}
   .me-seuils li{grid-template-columns:1fr;gap:6px;}
   .me-accordeon details p{padding-right:0;}
 }
+
+/* Menu : page en cours soulignée (aria-current posé par SiteHeader). Le
+   filet suit la couleur du texte, claire sur le bandeau, sombre une fois
+   l'en-tête passé sur fond clair. */
+/* !important : la maquette pose text-decoration:none en style en ligne. */
+.me-navitem[aria-current="page"]{opacity:1 !important;color:inherit;text-decoration:underline !important;text-decoration-thickness:1.5px !important;text-underline-offset:9px;}
+.me-navitem:hover{text-decoration:underline !important;text-decoration-thickness:1px;text-underline-offset:9px;}
+[aria-current="page"]:not(.me-navitem){color:#9CC4B2 !important;}
+
+/* Page Extension : grandes photos entre les sections. Hauteur fixe pour que
+   le recadrage reste lisible sur téléphone comme sur grand écran. */
+.me-bandeau{display:block;width:100%;height:clamp(240px,40vw,560px);object-fit:cover;border-radius:10px;background:#EDEDE7;}
