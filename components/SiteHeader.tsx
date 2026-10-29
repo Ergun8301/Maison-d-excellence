@@ -1,5 +1,6 @@
 'use client';
 
+import { usePathname } from 'next/navigation';
 import type { Vals } from '@/components/site-vals';
 
 /**
@@ -9,6 +10,11 @@ import type { Vals } from '@/components/site-vals';
  */
 export default function SiteHeader(v: Vals) {
   const { closeMenu, goAccueil, goBlog, goContact, goEntreprise, goEstimation, goInvestisseurs, goModeles, goRealisations, goRenovation, goTerrains, goZone, menuOpen, scrollTop, terrainsInNav, toggleMenu } = v;
+  // Page en cours : le lien du menu correspondant est souligné (et annoncé
+  // aux lecteurs d'écran par aria-current). Une fiche terrain allume
+  // « Terrains ».
+  const chemin = usePathname() ?? '/';
+  const ici = (base: string) => (chemin === base || chemin.startsWith(base + '/') ? 'page' : undefined);
   return (
     <>
       <header data-header="" style={{ position: "fixed", top: "0", left: "0", right: "0", zIndex: "120", color: "#F7F7F4", borderBottom: "1px solid transparent", transition: "background .5s,color .4s,box-shadow .5s,border-color .5s" }}>
@@ -20,15 +26,16 @@ export default function SiteHeader(v: Vals) {
               </svg>
               <span className="me-hdr-mark" style={{ fontFamily: "'Cormorant Garamond',serif", fontWeight: "500", fontSize: "clamp(18px,2vw,25px)", letterSpacing: "0.08em", whiteSpace: "nowrap" }}>MAISONS D'EXCELLENCE</span>
             </a>
-            <nav className="me-desk-nav" style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "clamp(12px,1.6vw,26px)" }}>
+            <nav className="me-desk-nav" style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "clamp(12px,1.1vw,26px)" }}>
               <span aria-hidden="true" style={{ width: "1px", height: "26px", background: "currentColor", opacity: "0.22", marginRight: "clamp(2px,1vw,14px)" }}></span>
-              <a href="/nos-modeles" onClick={goModeles} data-navitem="" className="me-navitem" style={{ textDecoration: "none", color: "rgba(247,247,244,0.86)", fontSize: "11.5px", fontWeight: "600", letterSpacing: "0.13em", textTransform: "uppercase", whiteSpace: "nowrap" }}>Nos modèles</a>
-              <a href="/realisations" onClick={goRealisations} data-navitem="" className="me-navitem" style={{ textDecoration: "none", color: "rgba(247,247,244,0.86)", fontSize: "11.5px", fontWeight: "600", letterSpacing: "0.13em", textTransform: "uppercase", whiteSpace: "nowrap" }}>Nos réalisations</a>
-              <a href="/entreprise" onClick={goEntreprise} data-navitem="" className="me-navitem" style={{ textDecoration: "none", color: "rgba(247,247,244,0.86)", fontSize: "11.5px", fontWeight: "600", letterSpacing: "0.13em", textTransform: "uppercase", whiteSpace: "nowrap" }}>L'entreprise</a>
+              <a href="/nos-modeles" aria-current={ici('/nos-modeles')} onClick={goModeles} data-navitem="" className="me-navitem" style={{ textDecoration: "none", color: "rgba(247,247,244,0.86)", fontSize: "11.5px", fontWeight: "600", letterSpacing: "0.13em", textTransform: "uppercase", whiteSpace: "nowrap" }}>Nos modèles</a>
+              <a href="/realisations" aria-current={ici('/realisations')} onClick={goRealisations} data-navitem="" className="me-navitem" style={{ textDecoration: "none", color: "rgba(247,247,244,0.86)", fontSize: "11.5px", fontWeight: "600", letterSpacing: "0.13em", textTransform: "uppercase", whiteSpace: "nowrap" }}>Nos réalisations</a>
+              <a href="/renovation-extension" aria-current={ici('/renovation-extension')} onClick={goRenovation} data-navitem="" className="me-navitem" style={{ textDecoration: "none", color: "rgba(247,247,244,0.86)", fontSize: "11.5px", fontWeight: "600", letterSpacing: "0.13em", textTransform: "uppercase", whiteSpace: "nowrap" }}>Extension</a>
+              <a href="/entreprise" aria-current={ici('/entreprise')} onClick={goEntreprise} data-navitem="" className="me-navitem" style={{ textDecoration: "none", color: "rgba(247,247,244,0.86)", fontSize: "11.5px", fontWeight: "600", letterSpacing: "0.13em", textTransform: "uppercase", whiteSpace: "nowrap" }}>L'entreprise</a>
               {(terrainsInNav) ? (<>
-                <a href="/terrains" onClick={goTerrains} data-navitem="" className="me-navitem" style={{ textDecoration: "none", color: "rgba(247,247,244,0.86)", fontSize: "11.5px", fontWeight: "600", letterSpacing: "0.13em", textTransform: "uppercase", whiteSpace: "nowrap" }}>Terrains</a>
+                <a href="/terrains" aria-current={ici('/terrains')} onClick={goTerrains} data-navitem="" className="me-navitem" style={{ textDecoration: "none", color: "rgba(247,247,244,0.86)", fontSize: "11.5px", fontWeight: "600", letterSpacing: "0.13em", textTransform: "uppercase", whiteSpace: "nowrap" }}>Terrains</a>
               </>) : null}
-              <a href="/contact" onClick={goContact} data-navitem="" className="me-navitem" style={{ textDecoration: "none", color: "rgba(247,247,244,0.86)", fontSize: "11.5px", fontWeight: "600", letterSpacing: "0.13em", textTransform: "uppercase", whiteSpace: "nowrap" }}>Contact</a>
+              <a href="/contact" aria-current={ici('/contact')} onClick={goContact} data-navitem="" className="me-navitem" style={{ textDecoration: "none", color: "rgba(247,247,244,0.86)", fontSize: "11.5px", fontWeight: "600", letterSpacing: "0.13em", textTransform: "uppercase", whiteSpace: "nowrap" }}>Contact</a>
             </nav>
             <div style={{ display: "flex", alignItems: "center", justifyContent: "flex-end", gap: "clamp(12px,1.6vw,22px)" }}>
               <a href="/#estimation" onClick={goEstimation} className="me-btn me-hdr-cta" style={{ textDecoration: "none", display: "inline-flex", alignItems: "center", gap: "9px", padding: "13px 24px", borderRadius: "100px", background: "#2E5A49", color: "#fff", fontSize: "11.5px", fontWeight: "700", letterSpacing: "0.11em", textTransform: "uppercase", whiteSpace: "nowrap", flex: "none", boxShadow: "0 10px 22px -14px rgba(46,90,73,.55)" }} style-hover="background:#3B7059;transform:translateY(-3px);box-shadow:0 18px 36px -16px rgba(46,90,73,1);">Estimation en ligne</a>
@@ -43,16 +50,16 @@ export default function SiteHeader(v: Vals) {
         {(menuOpen) ? (<>
           <div onClick={closeMenu} style={{ position: "fixed", inset: "0", zIndex: "200", background: "rgba(11,13,12,0.97)", backdropFilter: "blur(8px)", display: "flex", flexDirection: "column", justifyContent: "center", padding: "40px clamp(28px,8vw,64px)", overflowY: "auto" }}><button onClick={closeMenu} aria-label="Fermer le menu" className="me-fermer" style={{ position: "absolute", top: "clamp(17px,2vw,26px)", right: "clamp(20px,5vw,64px)", width: "44px", height: "44px", display: "flex", alignItems: "center", justifyContent: "center", border: "1px solid rgba(247,247,244,0.5)", borderRadius: "100px", background: "transparent", color: "#F7F7F4", cursor: "pointer" }}><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.4" aria-hidden="true"><path d="M3 3 L13 13 M13 3 L3 13"></path></svg></button>
             <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
-              <a href="/nos-modeles" onClick={goModeles} style={{ textDecoration: "none", color: "#F7F7F4", fontFamily: "'Cormorant Garamond',serif", fontWeight: "300", fontSize: "clamp(30px,9vw,50px)", lineHeight: "1.18", borderBottom: "1px solid rgba(247,247,244,0.12)", padding: "8px 0" }}>Nos modèles</a>
-              <a href="/realisations" onClick={goRealisations} style={{ textDecoration: "none", color: "#F7F7F4", fontFamily: "'Cormorant Garamond',serif", fontWeight: "300", fontSize: "clamp(30px,9vw,50px)", lineHeight: "1.18", borderBottom: "1px solid rgba(247,247,244,0.12)", padding: "8px 0" }}>Nos réalisations</a>
-              <a href="/entreprise" onClick={goEntreprise} style={{ textDecoration: "none", color: "#F7F7F4", fontFamily: "'Cormorant Garamond',serif", fontWeight: "300", fontSize: "clamp(30px,9vw,50px)", lineHeight: "1.18", borderBottom: "1px solid rgba(247,247,244,0.12)", padding: "8px 0" }}>L'entreprise</a>
+              <a href="/nos-modeles" aria-current={ici('/nos-modeles')} onClick={goModeles} style={{ textDecoration: "none", color: "#F7F7F4", fontFamily: "'Cormorant Garamond',serif", fontWeight: "300", fontSize: "clamp(30px,9vw,50px)", lineHeight: "1.18", borderBottom: "1px solid rgba(247,247,244,0.12)", padding: "8px 0" }}>Nos modèles</a>
+              <a href="/realisations" aria-current={ici('/realisations')} onClick={goRealisations} style={{ textDecoration: "none", color: "#F7F7F4", fontFamily: "'Cormorant Garamond',serif", fontWeight: "300", fontSize: "clamp(30px,9vw,50px)", lineHeight: "1.18", borderBottom: "1px solid rgba(247,247,244,0.12)", padding: "8px 0" }}>Nos réalisations</a>
+              <a href="/renovation-extension" aria-current={ici('/renovation-extension')} onClick={goRenovation} style={{ textDecoration: "none", color: "#F7F7F4", fontFamily: "'Cormorant Garamond',serif", fontWeight: "300", fontSize: "clamp(30px,9vw,50px)", lineHeight: "1.18", borderBottom: "1px solid rgba(247,247,244,0.12)", padding: "8px 0" }}>Extension</a>
+              <a href="/entreprise" aria-current={ici('/entreprise')} onClick={goEntreprise} style={{ textDecoration: "none", color: "#F7F7F4", fontFamily: "'Cormorant Garamond',serif", fontWeight: "300", fontSize: "clamp(30px,9vw,50px)", lineHeight: "1.18", borderBottom: "1px solid rgba(247,247,244,0.12)", padding: "8px 0" }}>L'entreprise</a>
               <a href="/#estimation" onClick={goEstimation} style={{ textDecoration: "none", color: "#9CC4B2", fontFamily: "'Cormorant Garamond',serif", fontWeight: "400", fontSize: "clamp(30px,9vw,50px)", lineHeight: "1.18", borderBottom: "1px solid rgba(247,247,244,0.12)", padding: "8px 0" }}>Estimer mon projet</a>
-              <a href="/terrains" onClick={goTerrains} style={{ textDecoration: "none", color: "#F7F7F4", fontFamily: "'Cormorant Garamond',serif", fontWeight: "300", fontSize: "clamp(30px,9vw,50px)", lineHeight: "1.18", borderBottom: "1px solid rgba(247,247,244,0.12)", padding: "8px 0" }}>Terrains</a>
-              <a href="/contact" onClick={goContact} style={{ textDecoration: "none", color: "#F7F7F4", fontFamily: "'Cormorant Garamond',serif", fontWeight: "300", fontSize: "clamp(30px,9vw,50px)", lineHeight: "1.18", padding: "8px 0" }}>Contact</a>
+              <a href="/terrains" aria-current={ici('/terrains')} onClick={goTerrains} style={{ textDecoration: "none", color: "#F7F7F4", fontFamily: "'Cormorant Garamond',serif", fontWeight: "300", fontSize: "clamp(30px,9vw,50px)", lineHeight: "1.18", borderBottom: "1px solid rgba(247,247,244,0.12)", padding: "8px 0" }}>Terrains</a>
+              <a href="/contact" aria-current={ici('/contact')} onClick={goContact} style={{ textDecoration: "none", color: "#F7F7F4", fontFamily: "'Cormorant Garamond',serif", fontWeight: "300", fontSize: "clamp(30px,9vw,50px)", lineHeight: "1.18", padding: "8px 0" }}>Contact</a>
             </div>
             <div style={{ display: "flex", flexDirection: "column", gap: "16px", marginTop: "34px", paddingTop: "26px", borderTop: "1px solid rgba(247,247,244,0.12)" }}>
               <a href="/investisseurs" onClick={goInvestisseurs} style={{ textDecoration: "none", color: "rgba(247,247,244,0.62)", fontSize: "14px" }}>Investisseurs</a>
-              <a href="/renovation-extension" onClick={goRenovation} style={{ textDecoration: "none", color: "rgba(247,247,244,0.62)", fontSize: "14px" }}>Rénovation &amp; extension</a>
               <a href="/blog" onClick={goBlog} style={{ textDecoration: "none", color: "rgba(247,247,244,0.62)", fontSize: "14px" }}>Blog</a>
               <a href="/zone-intervention" onClick={goZone} style={{ textDecoration: "none", color: "rgba(247,247,244,0.62)", fontSize: "14px" }}>Zone d'intervention</a>
             </div>

@@ -15,7 +15,9 @@ import { COMMUNES } from '@/lib/data/communes';
  *    balisage annonçait donc une adresse que rien d'autre ne confirmait.
  *    Une seule source de vérité, réglée par NEXT_PUBLIC_SITE_URL.
  *
- * La note 5,0 sur 36 avis correspond bien à la fiche Google de l'établissement.
+ * Aucune note agrégée (`aggregateRating`) n'est déclarée : Google n'en tient
+ * pas compte pour une entreprise qui publie elle-même ses avis, et le site
+ * renvoie déjà vers la fiche Google, qui fait foi.
  */
 export const ORGANISATION_JSONLD = {
   "@context": "https://schema.org",
@@ -66,11 +68,6 @@ export const ORGANISATION_JSONLD = {
       ],
       "opens": "09:00",
       "closes": "19:00"
-    },
-    {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": "Saturday",
-      "description": "Sur rendez-vous"
     }
   ],
   "areaServed": [
@@ -128,14 +125,8 @@ export const ORGANISATION_JSONLD = {
     },
     "geoRadius": "30000"
   })),
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "ratingValue": "5.0",
-    "reviewCount": "36",
-    "bestRating": "5"
-  },
   // `sameAs` relie l'entité décrite ici à ses profils publics. La fiche
-  // Google est celle qui porte les 36 avis repris plus haut. Instagram est le
+  // Google est celle qui porte les avis de l'établissement. Instagram est le
   // compte du client, lié dans le pied de page. La page Facebook, introuvable,
   // a été retirée d'ici comme du site.
   "sameAs": [

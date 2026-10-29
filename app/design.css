@@ -61,7 +61,16 @@ a:hover{color:#111412;}
 .leaflet-tile-loaded{opacity:1 !important;}
 .me-pin{font-family:'Manrope',sans-serif;}
 @media(max-width:1024px){ .me-g4{grid-template-columns:1fr 1fr;} }
-@media(max-width:1120px){
+/* Menu du haut : six liens depuis l'ajout d'« Extension ». Entre 1400 et
+   1599 px, on resserre les écarts pour garder le bouton « Estimation en
+   ligne » dans la marge ; en dessous, le menu passe en burger (il passait à
+   1120 px quand il n'avait que cinq liens, et débordait déjà vers 1280 px). */
+@media(max-width:1599px){
+  [data-header] > div{gap:20px !important;}
+  .me-desk-nav{gap:16px !important;}
+  .me-desk-nav > span{margin-right:0 !important;}
+}
+@media(max-width:1399px){
   .me-desk-nav{display:none !important;}
   .me-burger{display:inline-flex !important;}
 }
@@ -135,11 +144,11 @@ a:hover{color:#111412;}
 
 /* Position du bouton de menu sur mobile.
    La barre est une grille de trois colonnes : marque, navigation, groupe de
-   droite. Sous 1120 px la navigation passe en display:none, ce qui supprime sa
+   droite. Sous 1400 px la navigation passe en display:none, ce qui supprime sa
    cellule — le groupe de droite glisse alors dans la colonne du milieu et le
    bouton se retrouve à 82 px du bord au lieu d'y être collé. Deux colonnes
    suffisent dès lors que la navigation a disparu. */
-@media (max-width: 1120px) {
+@media (max-width: 1399px) {
   /* !important : la maquette pose ces colonnes en style en ligne, qui prime
      sur une feuille de style — la règle voisine .me-desk-nav fait de même. */
   [data-header] > div { grid-template-columns: 1fr auto !important; }
@@ -284,4 +293,93 @@ a:hover{color:#111412;}
 .me-link-texte:hover {
   color: #111412;
   text-decoration-color: rgba(17, 20, 18, 0.6);
+}
+
+/* Page Extension (components/PageExtension.tsx). Sommaire cliquable, ancres
+   décalées sous l'en-tête fixe, tableau comparatif, seuils d'urbanisme et
+   questions fréquentes en accordéon. Même palette que le reste du site. */
+.me-ancre{scroll-margin-top:84px;}
+.me-sommaire{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px 26px;}
+.me-sommaire a{display:inline-flex;align-items:baseline;gap:8px;color:#333834;text-decoration:none;font-size:14px;font-weight:500;padding:6px 0;}
+.me-sommaire a span{color:#2E5A49;font-size:11px;font-weight:700;letter-spacing:.12em;}
+.me-sommaire a:hover{color:#2E5A49;}
+.me-tableau{margin-top:22px;overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid rgba(17,20,18,.1);border-radius:10px;background:#FFFFFF;}
+.me-tableau:focus-visible{outline:2px solid #2E5A49;outline-offset:3px;}
+.me-tableau table{width:100%;min-width:720px;border-collapse:collapse;font-size:14.5px;line-height:1.6;color:#333834;}
+.me-tableau th,.me-tableau td{text-align:left;vertical-align:top;padding:18px 20px;border-bottom:1px solid rgba(17,20,18,.08);}
+.me-tableau thead th{background:#111412;color:#F7F7F4;font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;}
+.me-tableau tbody th{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:500;color:#111412;white-space:nowrap;}
+.me-tableau tbody tr:last-child th,.me-tableau tbody tr:last-child td{border-bottom:none;}
+.me-tableau tbody tr:nth-child(even){background:#F7F7F4;}
+.me-seuils{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;border-top:1px solid rgba(17,20,18,.12);}
+.me-seuils li{display:grid;grid-template-columns:minmax(110px,0.4fr) 1fr;gap:18px;padding:20px 0;border-bottom:1px solid rgba(17,20,18,.12);}
+.me-seuils span{font-family:'Cormorant Garamond',serif;font-size:24px;line-height:1.2;color:#2E5A49;}
+.me-seuils p{margin:0;color:#4E534E;font-size:15px;line-height:1.7;}
+.me-accordeon{border-top:1px solid rgba(17,20,18,.12);}
+.me-accordeon details{border-bottom:1px solid rgba(17,20,18,.12);}
+.me-accordeon summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:22px 0;}
+.me-accordeon summary::-webkit-details-marker{display:none;}
+.me-accordeon summary:focus-visible{outline:2px solid #2E5A49;outline-offset:4px;}
+.me-accordeon h3{margin:0;font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(20px,2vw,25px);line-height:1.25;color:#111412;transition:color .3s;}
+.me-accordeon summary:hover h3{color:#2E5A49;}
+.me-accordeon-signe{flex:none;position:relative;width:34px;height:34px;border-radius:50%;border:1px solid rgba(17,20,18,.2);transition:background .3s,border-color .3s,transform .45s cubic-bezier(.16,.84,.44,1);}
+.me-accordeon-signe::before,.me-accordeon-signe::after{content:"";position:absolute;left:50%;top:50%;width:12px;height:1.5px;background:#2E5A49;transform:translate(-50%,-50%);}
+.me-accordeon-signe::after{transform:translate(-50%,-50%) rotate(90deg);transition:opacity .3s;}
+.me-accordeon details[open] .me-accordeon-signe{background:#2E5A49;border-color:#2E5A49;transform:rotate(180deg);}
+.me-accordeon details[open] .me-accordeon-signe::before{background:#FFFFFF;}
+.me-accordeon details[open] .me-accordeon-signe::after{opacity:0;}
+.me-accordeon details p{margin:0;padding:0 56px 26px 0;color:#4E534E;font-size:15.5px;line-height:1.8;max-width:78ch;}
+/* Sur téléphone, le tableau devient une carte par structure : chaque valeur
+   reprend son critère (attribut data-critere), plus de défilement latéral. */
+@media(max-width:720px){
+  .me-tableau{overflow:visible;border:none;background:transparent;}
+  .me-tableau table,.me-tableau tbody,.me-tableau tr,.me-tableau th,.me-tableau td{display:block;min-width:0;width:auto;}
+  .me-tableau thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);}
+  .me-tableau tbody{display:flex;flex-direction:column;gap:14px;}
+  .me-tableau tbody tr,.me-tableau tbody tr:nth-child(even){background:#FFFFFF;border:1px solid rgba(17,20,18,.1);border-radius:10px;padding:6px 20px;}
+  .me-tableau tbody th{padding:14px 0 10px;white-space:normal;border-bottom:1px solid rgba(17,20,18,.08);}
+  .me-tableau td{padding:12px 0;}
+  .me-tableau td::before{content:attr(data-critere);display:block;margin-bottom:3px;color:#2E5A49;font-size:10.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;}
+  .me-tableau tbody tr:last-child td:last-child,.me-tableau td:last-child{border-bottom:none;}
+}
+@media(max-width:600px){
+  .me-sommaire{gap:4px 18px;}
+  .me-seuils li{grid-template-columns:1fr;gap:6px;}
+  .me-accordeon details p{padding-right:0;}
+}
+
+/* Menu : page en cours soulignée (aria-current posé par SiteHeader). Le
+   filet suit la couleur du texte, claire sur le bandeau, sombre une fois
+   l'en-tête passé sur fond clair. */
+/* !important : la maquette pose text-decoration:none en style en ligne. */
+.me-navitem[aria-current="page"]{opacity:1 !important;color:inherit;text-decoration:underline !important;text-decoration-thickness:1.5px !important;text-underline-offset:9px;}
+.me-navitem:hover{text-decoration:underline !important;text-decoration-thickness:1px;text-underline-offset:9px;}
+[aria-current="page"]:not(.me-navitem){color:#9CC4B2 !important;}
+
+/* Page Extension : grandes photos entre les sections, montrées entières
+   (aucun recadrage), centrées et limitées en largeur sur grand écran. */
+.me-bandeau{display:block;width:100%;max-width:1120px;height:auto;margin:0 auto;border-radius:10px;background:#EDEDE7;}
+
+/* Page Extension : bandeau. Sur ordinateur, il remplit exactement le
+   premier écran (100svh) : plus de bande blanche en bas. La photo est
+   cadrée par object-position (70 % = on garde surtout le bas, là où sont
+   l'extension et le séjour ; un peu de ciel en haut). Le texte et les
+   boutons sont posés en bas à gauche, sur un voile léger. Sur tablette et
+   téléphone, la photo est montrée entière, et le texte passe dessous. */
+.me-ext-bandeau{position:relative;height:100svh;min-height:560px;max-height:1100px;overflow:hidden;}
+.me-ext-bandeau-fond{position:absolute;inset:0;}
+.me-ext-bandeau-fond img{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 70%;}
+.me-ext-bandeau-voile{position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(11,13,12,0.5) 0%,rgba(11,13,12,0.28) 40%,rgba(11,13,12,0) 62%),linear-gradient(180deg,rgba(11,13,12,0.4) 0%,rgba(11,13,12,0.06) 22%,rgba(11,13,12,0.06) 55%,rgba(11,13,12,0.45) 100%);}
+.me-ext-bandeau-texte{position:absolute;left:0;right:0;bottom:0;max-width:1440px;margin:0 auto;padding:0 clamp(20px,5vw,64px) clamp(32px,4vw,56px);}
+.me-ext-bandeau-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:clamp(20px,2.2vw,28px);}
+@media(max-width:900px){
+  .me-ext-bandeau{height:auto;min-height:0;max-height:none;padding-top:80px;}
+  .me-ext-bandeau-fond{position:static;}
+  .me-ext-bandeau-fond img{height:auto;object-fit:fill;}
+  .me-ext-bandeau-voile{display:none;}
+  .me-ext-bandeau-texte{position:static;padding-top:28px;}
+}
+@media(max-width:600px){
+  /* Boutons sur toute la largeur du texte : alignés avec lui, de bord à bord. */
+  .me-ext-bandeau-cta{flex-direction:column;align-items:stretch;width:100%;}
 }

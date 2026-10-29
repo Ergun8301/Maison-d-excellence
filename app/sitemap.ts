@@ -29,7 +29,7 @@ const PAGES_FIXES: { chemin: string; priorite: number; frequence: MetadataRoute.
   { chemin: '/contact', priorite: 0.7, frequence: 'yearly' },
   { chemin: '/zone-intervention', priorite: 0.6, frequence: 'monthly' },
   { chemin: '/investisseurs', priorite: 0.6, frequence: 'monthly' },
-  { chemin: '/renovation-extension', priorite: 0.6, frequence: 'monthly' },
+  { chemin: '/renovation-extension', priorite: 0.8, frequence: 'monthly' },
   { chemin: '/blog', priorite: 0.6, frequence: 'weekly' },
   { chemin: '/mentions-legales', priorite: 0.2, frequence: 'yearly' },
   { chemin: '/politique-confidentialite', priorite: 0.2, frequence: 'yearly' },

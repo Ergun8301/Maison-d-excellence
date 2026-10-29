@@ -45,7 +45,7 @@ export default function SiteFooter(v: Vals) {
                   <div style={{ fontSize: "11px", letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(247,247,244,0.45)", marginBottom: "18px" }}>Aller plus loin</div>
                   <div style={{ display: "flex", flexDirection: "column", gap: "13px" }}>
                     <a href="/terrains" onClick={goTerrains} className="me-link" style={{ textDecoration: "none", color: "rgba(247,247,244,0.72)", fontSize: "14.5px" }} style-hover="color:#9CC4B2;">Terrains disponibles</a>
-                    <a href="/renovation-extension" onClick={goRenovation} className="me-link" style={{ textDecoration: "none", color: "rgba(247,247,244,0.72)", fontSize: "14.5px" }} style-hover="color:#9CC4B2;">Rénovation &amp; extension</a>
+                    <a href="/renovation-extension" onClick={goRenovation} className="me-link" style={{ textDecoration: "none", color: "rgba(247,247,244,0.72)", fontSize: "14.5px" }} style-hover="color:#9CC4B2;">Rénovation et extension</a>
                     <a href="/investisseurs" onClick={goInvestisseurs} className="me-link" style={{ textDecoration: "none", color: "rgba(247,247,244,0.72)", fontSize: "14.5px" }} style-hover="color:#9CC4B2;">Projets investisseurs</a>
                     <a href="/blog" onClick={goBlog} className="me-link" style={{ textDecoration: "none", color: "rgba(247,247,244,0.72)", fontSize: "14.5px" }} style-hover="color:#9CC4B2;">Blog</a>
                     <a href="/zone-intervention" onClick={goZone} className="me-link" style={{ textDecoration: "none", color: "rgba(247,247,244,0.72)", fontSize: "14.5px" }} style-hover="color:#9CC4B2;">Zone d'intervention</a>
