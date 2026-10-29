@@ -37,13 +37,13 @@ export type PhotoExtension = {
 
 export const PHOTOS_EXTENSION = {
   entete: {
-    src: '/extension/extension-bois-encadrement-gris-facade.webp',
+    src: '/extension/extension-baies-vitrees-salon-jardin.webp',
     w: 1920,
-    h: 1080,
-    alt: 'Maison blanche à étage agrandie par une extension vitrée en bois, encadrée de gris',
-    legende: 'Extension en bois encadrée de gris, ouverte sur le jardin.',
-    auteur: 'Maisons d’Excellence',
-    source: 'Google Drive de l’entreprise (1NsJA8OEOEEIsPDT1Vpb7_jgs4KlKLgOO)',
+    h: 1280,
+    alt: 'Illustration : extension enduite à toit plat ouverte sur une terrasse, et son séjour lumineux vu de l’intérieur',
+    legende: 'Illustration : l’extension côté jardin et son séjour.',
+    auteur: 'Image générée (fournie par Maisons d’Excellence)',
+    source: 'Google Drive de l’entreprise (1u160mfFjhu2Y-GqYDDIoJ1m8kyOv8qQC)',
   },
   maconnerie: {
     src: '/extension/extension-maconnee-enduit-blanc-garage.webp',
