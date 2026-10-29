@@ -141,7 +141,7 @@ export const LOCALES: readonly PageLocale[] = [
         titre: 'Un constructeur dont le bureau est dans la rue',
         paragraphes: [
           'Pour un projet à Meximieux, le premier rendez-vous se fait au bureau ou sur votre terrain, sans déplacement à organiser. C’est le cas le plus simple de toute notre zone : la commune est à quelques minutes, et une visite de chantier se cale dans une matinée.',
-          'Le bureau est ouvert du lundi au vendredi de 9h à 19h, et le samedi sur rendez-vous. Vous pouvez passer sans prévenir, mais un appel évite de trouver la porte close un jour de chantier.',
+          'Le bureau est ouvert du lundi au vendredi de 9h à 19h ; il est fermé le samedi et le dimanche. Vous pouvez passer sans prévenir, mais un appel évite de trouver la porte close un jour de chantier.',
         ],
       },
       {
@@ -189,7 +189,7 @@ export const LOCALES: readonly PageLocale[] = [
     faq: [
       {
         q: 'Votre bureau est-il vraiment à Meximieux ?',
-        r: 'Oui, au 6 rue de Genève, 01800 Meximieux. Ouvert du lundi au vendredi de 9h à 19h, et le samedi sur rendez-vous. C’est le siège de l’entreprise, pas une adresse de domiciliation.',
+        r: 'Oui, au 6 rue de Genève, 01800 Meximieux. Ouvert du lundi au vendredi de 9h à 19h, fermé le samedi et le dimanche. C’est le siège de l’entreprise, pas une adresse de domiciliation.',
       },
       {
         q: 'Faut-il un permis de construire différent près de Pérouges ?',

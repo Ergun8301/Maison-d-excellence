@@ -20,10 +20,11 @@ export default function SiteHeader(v: Vals) {
               </svg>
               <span className="me-hdr-mark" style={{ fontFamily: "'Cormorant Garamond',serif", fontWeight: "500", fontSize: "clamp(18px,2vw,25px)", letterSpacing: "0.08em", whiteSpace: "nowrap" }}>MAISONS D'EXCELLENCE</span>
             </a>
-            <nav className="me-desk-nav" style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "clamp(12px,1.6vw,26px)" }}>
+            <nav className="me-desk-nav" style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "clamp(12px,1.1vw,26px)" }}>
               <span aria-hidden="true" style={{ width: "1px", height: "26px", background: "currentColor", opacity: "0.22", marginRight: "clamp(2px,1vw,14px)" }}></span>
               <a href="/nos-modeles" onClick={goModeles} data-navitem="" className="me-navitem" style={{ textDecoration: "none", color: "rgba(247,247,244,0.86)", fontSize: "11.5px", fontWeight: "600", letterSpacing: "0.13em", textTransform: "uppercase", whiteSpace: "nowrap" }}>Nos modèles</a>
               <a href="/realisations" onClick={goRealisations} data-navitem="" className="me-navitem" style={{ textDecoration: "none", color: "rgba(247,247,244,0.86)", fontSize: "11.5px", fontWeight: "600", letterSpacing: "0.13em", textTransform: "uppercase", whiteSpace: "nowrap" }}>Nos réalisations</a>
+              <a href="/renovation-extension" onClick={goRenovation} data-navitem="" className="me-navitem" style={{ textDecoration: "none", color: "rgba(247,247,244,0.86)", fontSize: "11.5px", fontWeight: "600", letterSpacing: "0.13em", textTransform: "uppercase", whiteSpace: "nowrap" }}>Extension</a>
               <a href="/entreprise" onClick={goEntreprise} data-navitem="" className="me-navitem" style={{ textDecoration: "none", color: "rgba(247,247,244,0.86)", fontSize: "11.5px", fontWeight: "600", letterSpacing: "0.13em", textTransform: "uppercase", whiteSpace: "nowrap" }}>L'entreprise</a>
               {(terrainsInNav) ? (<>
                 <a href="/terrains" onClick={goTerrains} data-navitem="" className="me-navitem" style={{ textDecoration: "none", color: "rgba(247,247,244,0.86)", fontSize: "11.5px", fontWeight: "600", letterSpacing: "0.13em", textTransform: "uppercase", whiteSpace: "nowrap" }}>Terrains</a>
@@ -45,6 +46,7 @@ export default function SiteHeader(v: Vals) {
             <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
               <a href="/nos-modeles" onClick={goModeles} style={{ textDecoration: "none", color: "#F7F7F4", fontFamily: "'Cormorant Garamond',serif", fontWeight: "300", fontSize: "clamp(30px,9vw,50px)", lineHeight: "1.18", borderBottom: "1px solid rgba(247,247,244,0.12)", padding: "8px 0" }}>Nos modèles</a>
               <a href="/realisations" onClick={goRealisations} style={{ textDecoration: "none", color: "#F7F7F4", fontFamily: "'Cormorant Garamond',serif", fontWeight: "300", fontSize: "clamp(30px,9vw,50px)", lineHeight: "1.18", borderBottom: "1px solid rgba(247,247,244,0.12)", padding: "8px 0" }}>Nos réalisations</a>
+              <a href="/renovation-extension" onClick={goRenovation} style={{ textDecoration: "none", color: "#F7F7F4", fontFamily: "'Cormorant Garamond',serif", fontWeight: "300", fontSize: "clamp(30px,9vw,50px)", lineHeight: "1.18", borderBottom: "1px solid rgba(247,247,244,0.12)", padding: "8px 0" }}>Extension</a>
               <a href="/entreprise" onClick={goEntreprise} style={{ textDecoration: "none", color: "#F7F7F4", fontFamily: "'Cormorant Garamond',serif", fontWeight: "300", fontSize: "clamp(30px,9vw,50px)", lineHeight: "1.18", borderBottom: "1px solid rgba(247,247,244,0.12)", padding: "8px 0" }}>L'entreprise</a>
               <a href="/#estimation" onClick={goEstimation} style={{ textDecoration: "none", color: "#9CC4B2", fontFamily: "'Cormorant Garamond',serif", fontWeight: "400", fontSize: "clamp(30px,9vw,50px)", lineHeight: "1.18", borderBottom: "1px solid rgba(247,247,244,0.12)", padding: "8px 0" }}>Estimer mon projet</a>
               <a href="/terrains" onClick={goTerrains} style={{ textDecoration: "none", color: "#F7F7F4", fontFamily: "'Cormorant Garamond',serif", fontWeight: "300", fontSize: "clamp(30px,9vw,50px)", lineHeight: "1.18", borderBottom: "1px solid rgba(247,247,244,0.12)", padding: "8px 0" }}>Terrains</a>
@@ -52,7 +54,6 @@ export default function SiteHeader(v: Vals) {
             </div>
             <div style={{ display: "flex", flexDirection: "column", gap: "16px", marginTop: "34px", paddingTop: "26px", borderTop: "1px solid rgba(247,247,244,0.12)" }}>
               <a href="/investisseurs" onClick={goInvestisseurs} style={{ textDecoration: "none", color: "rgba(247,247,244,0.62)", fontSize: "14px" }}>Investisseurs</a>
-              <a href="/renovation-extension" onClick={goRenovation} style={{ textDecoration: "none", color: "rgba(247,247,244,0.62)", fontSize: "14px" }}>Rénovation &amp; extension</a>
               <a href="/blog" onClick={goBlog} style={{ textDecoration: "none", color: "rgba(247,247,244,0.62)", fontSize: "14px" }}>Blog</a>
               <a href="/zone-intervention" onClick={goZone} style={{ textDecoration: "none", color: "rgba(247,247,244,0.62)", fontSize: "14px" }}>Zone d'intervention</a>
             </div>

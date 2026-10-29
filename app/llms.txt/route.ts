@@ -25,7 +25,7 @@ export function GET(): Response {
     ['/terrains', 'Terrains à bâtir suivis dans le secteur'],
     ['/zone-intervention', 'Zone d’intervention autour de Meximieux, Bourg-en-Bresse et Ambérieu-en-Bugey, 30 km autour de chaque ville'],
     ['/investisseurs', 'Maisons jumelées et groupées pour investisseurs'],
-    ['/renovation-extension', 'Rénovation, extension et surélévation'],
+    ['/renovation-extension', 'Extension de maison : types, structures, urbanisme, budget'],
     ['/blog', 'Guides : RE2020, prix au m², budget, échéancier CCMI'],
     ['/contact', 'Coordonnées et prise de rendez-vous'],
     ['/mentions-legales', 'Mentions légales et informations RGPD'],
@@ -35,8 +35,8 @@ export function GET(): Response {
 
 > Constructeur de maisons individuelles sur-mesure à Meximieux, dans l'Ain (01).
 > Maisons neuves en brique ou béton cellulaire, conformes à la RE2020, construites
-> sous contrat de construction de maison individuelle (CCMI). Rénovation et
-> extension en activité secondaire.
+> sous contrat de construction de maison individuelle (CCMI). Extension et
+> agrandissement de maisons existantes.
 
 ## Repères
 
@@ -44,7 +44,7 @@ export function GET(): Response {
 - Forme : ${COMPANY.form}, gérant ${COMPANY.manager}, société créée en 2019
 - Adresse : 6 rue de Genève, 01800 Meximieux, France
 - Téléphone : ${PHONE_DISPLAY} — Courriel : ${EMAIL}
-- Horaires du bureau : du lundi au vendredi de 9h à 19h, le samedi sur rendez-vous
+- Horaires du bureau : du lundi au vendredi de 9h à 19h, fermé le samedi et le dimanche
 - Zone d'intervention : autour de Meximieux, Bourg-en-Bresse et Ambérieu-en-Bugey,
   environ 30 km autour de chaque ville — ce qui couvre notamment
   Péronnas, Viriat, Saint-Denis-lès-Bourg, Attignat, Ceyzériat, Montagnat,

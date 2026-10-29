@@ -11,6 +11,11 @@ import { toJsx } from './tojsx.mjs';
  * danger ; les autres sont à reporter ou à refaire :
  *
  *  - logo de l'en-tête (components/SiteHeader.tsx) ;
+ *  - lien « Extension » du menu (bureau et mobile, SiteHeader.tsx), qui
+ *    remplace le lien secondaire « Rénovation & extension » du menu mobile,
+ *    et libellé « Rénovation et extension » du pied de page (SiteFooter.tsx) ;
+ *  - page /renovation-extension : l'hôte affiche components/PageExtension.tsx,
+ *    écrite à la main ; la vue Renovation.tsx générée n'est plus utilisée ;
  *  - quelques retouches dans Terrains.tsx et Investisseurs.tsx ;
  *  - images : les cartes de la maquette posent un <img> vide (un pixel SVG) et
  *    portent la photo en fond CSS ; les vues pointent désormais l'image réelle
@@ -116,9 +121,11 @@ const CORRECTIONS = [
   // Horaires du bureau : 9h–19h, et non les 8h30–18h00 de la maquette. Deux
   // chaînes, la page Contact et le pied de page ; le balisage JSON-LD
   // (lib/jsonld.ts) et les pages locales (lib/data/locales.ts) sont hors
-  // générateur et se corrigent à part. Les jours d'ouverture ne changent pas.
+  // générateur et se corrigent à part.
   ['Lundi – vendredi · 8h30 – 18h00', 'Lundi – vendredi · 9h – 19h'],
   ['Lun – Ven · 8h30 – 18h00', 'Lun – Ven · 9h – 19h'],
+  // Samedi et dimanche fermés : la maquette annonçait le samedi sur rendez-vous.
+  ['<br>Samedi sur rendez-vous', '<br>Samedi et dimanche : fermé'],
 
   // Pied de page : renvoi vers les trois pages locales, qui n'existent pas
   // dans la maquette. Posées juste après « Zone d'intervention », dont elles
