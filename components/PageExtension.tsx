@@ -105,8 +105,8 @@ function Surtitre({ children, clair = false }: { children: string; clair?: boole
   );
 }
 
-/** `recadre` : rapport largeur/hauteur imposé, pour qu'une photo en hauteur ne dépasse pas l'écran. */
-function Photo({ p, sens, recadre }: { p: PhotoExtension; sens: 'unfold-left' | 'unfold-right'; recadre?: string }) {
+/** Photo d'une rangée photo et texte, montrée entière, avec sa légende. */
+function Photo({ p, sens }: { p: PhotoExtension; sens: 'unfold-left' | 'unfold-right' }) {
   return (
     <figure className="me-rang-photo" data-reveal={sens} style={{ margin: 0 }}>
       <img
@@ -116,7 +116,7 @@ function Photo({ p, sens, recadre }: { p: PhotoExtension; sens: 'unfold-left' | 
         alt={p.alt}
         loading="lazy"
         decoding="async"
-        style={{ display: 'block', width: '100%', height: 'auto', aspectRatio: recadre, objectFit: 'cover', borderRadius: '10px', background: '#EDEDE7' }}
+        style={{ display: 'block', width: '100%', height: 'auto', borderRadius: '10px', background: '#EDEDE7' }}
       />
       <figcaption style={{ margin: '10px 0 0', fontSize: '12.5px', lineHeight: 1.6, color: '#77807A' }}>
         {p.legende}
@@ -126,11 +126,10 @@ function Photo({ p, sens, recadre }: { p: PhotoExtension; sens: 'unfold-left' | 
 }
 
 /**
- * Grande photo pleine largeur entre deux sections, pour aérer la lecture.
- * `cadre` règle la partie gardée quand l'écran recadre (téléphone) : on vise
- * l'extension, pas la maison.
+ * Grande photo entre deux sections, pour aérer la lecture. Montrée entière :
+ * pas de recadrage.
  */
-function Bandeau({ p, cadre }: { p: PhotoExtension; cadre: string }) {
+function Bandeau({ p }: { p: PhotoExtension }) {
   return (
     <div data-reveal="" style={{ marginTop: 'clamp(48px,6vw,88px)' }}>
       <img
@@ -141,7 +140,6 @@ function Bandeau({ p, cadre }: { p: PhotoExtension; cadre: string }) {
         loading="lazy"
         decoding="async"
         className="me-bandeau"
-        style={{ objectPosition: cadre }}
       />
     </div>
   );
@@ -248,38 +246,40 @@ export default function PageExtension({
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd(FAQ_EXTENSION)) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }} />
 
-      {/* Bandeau : photo en grand, texte court et centré en bas, pour laisser
-          voir l'extension. */}
-      <section className="me-ext-hero" style={{ position: 'relative', overflow: 'hidden', display: 'flex', alignItems: 'flex-end', justifyContent: 'center' }}>
-        <div style={{ position: 'absolute', inset: 0, overflow: 'hidden', background: ENCRE }}>
-          <img
-            width={P_.entete.w}
-            height={P_.entete.h}
-            decoding="async"
-            fetchPriority="high"
-            src={P_.entete.src}
-            alt={P_.entete.alt}
-            style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: '50% 60%', animation: 'meKbDoux 18s ease-out forwards' }}
-          />
-        </div>
-        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg,rgba(11,13,12,0.55) 0%,rgba(11,13,12,0.12) 18%,rgba(11,13,12,0) 34%,rgba(11,13,12,0.38) 56%,rgba(11,13,12,0.7) 80%,rgba(11,13,12,0.82) 100%)' }} />
-        <div style={{ position: 'relative', width: '100%', ...CONTENEUR, paddingTop: 'clamp(110px,11vw,136px)', paddingBottom: 'clamp(40px,5vw,72px)', display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
-          <div data-reveal="" className="me-ext-hero-surtitre">
-            <Surtitre clair>Extension et agrandissement</Surtitre>
+      {/* Bandeau : la photo est montrée entière, jamais recadrée (pas de
+          object-fit: cover, pas de zoom animé) ; le texte est à côté sur
+          ordinateur et dessous sur téléphone, pour ne rien cacher. */}
+      <section style={{ background: ENCRE, color: CREME }}>
+        <div className="me-ext-hero" style={{ maxWidth: CONTENEUR.maxWidth, margin: CONTENEUR.margin, paddingLeft: 'clamp(20px,5vw,64px)', paddingRight: 'clamp(20px,5vw,64px)' }}>
+          <div className="me-ext-hero-texte">
+            <div data-reveal="">
+              <Surtitre clair>Extension et agrandissement</Surtitre>
+            </div>
+            <h1 data-reveal="" data-delay="120" style={{ margin: 0, color: '#FFFFFF', fontFamily: "'Cormorant Garamond',serif", fontWeight: 300, fontSize: 'clamp(40px,4.6vw,68px)', lineHeight: 1.04, letterSpacing: '-0.015em' }}>
+              Extension de maison dans l’Ain
+            </h1>
+            <p data-reveal="" data-delay="220" style={{ margin: 'clamp(16px,1.8vw,22px) 0 0', color: 'rgba(247,247,244,0.82)', fontSize: 'clamp(15px,1.25vw,18px)', lineHeight: 1.65, maxWidth: '42ch' }}>
+              {INTRO_EXTENSION[0]}
+            </p>
+            <div data-reveal="" data-delay="320" className="me-ext-hero-cta">
+              <a href="/#estimation" onClick={goEstimation} className="me-btn" style={BTN_VERT} style-hover="background:#3B7059;transform:translateY(-3px);">
+                Estimation en ligne →
+              </a>
+              <a href="/contact" onClick={goContact} className="me-btn" style={{ ...BTN_VERT, background: 'transparent', border: '1px solid rgba(247,247,244,0.45)', boxShadow: 'none' }} style-hover="border-color:#F7F7F4;transform:translateY(-3px);">
+                Parler de mon projet
+              </a>
+            </div>
           </div>
-          <h1 data-reveal="" data-delay="120" style={{ margin: 0, color: '#FFFFFF', fontFamily: "'Cormorant Garamond',serif", fontWeight: 300, fontSize: 'clamp(40px,5.4vw,78px)', lineHeight: 1.04, letterSpacing: '-0.015em', textShadow: '0 4px 32px rgba(11,13,12,0.55)' }}>
-            Extension de maison dans l’Ain
-          </h1>
-          <p data-reveal="" data-delay="220" style={{ margin: 'clamp(14px,1.6vw,20px) 0 0', color: 'rgba(247,247,244,0.92)', fontSize: 'clamp(15px,1.3vw,18px)', lineHeight: 1.6, maxWidth: '46ch', textShadow: '0 2px 18px rgba(11,13,12,0.8)' }}>
-            {INTRO_EXTENSION[0]}
-          </p>
-          <div data-reveal="" data-delay="320" className="me-ext-hero-cta" style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '12px', marginTop: 'clamp(22px,2.4vw,30px)' }}>
-            <a href="/#estimation" onClick={goEstimation} className="me-btn" style={{ ...BTN_VERT, minWidth: '220px' }} style-hover="background:#3B7059;transform:translateY(-3px);">
-              Estimation en ligne →
-            </a>
-            <a href="/contact" onClick={goContact} className="me-btn" style={{ ...BTN_VERT, minWidth: '220px', background: 'rgba(11,13,12,0.3)', border: '1px solid rgba(247,247,244,0.55)', boxShadow: 'none', backdropFilter: 'blur(4px)' }} style-hover="border-color:#F7F7F4;transform:translateY(-3px);">
-              Parler de mon projet
-            </a>
+          <div data-reveal="right" data-delay="150" className="me-ext-hero-photo">
+            <img
+              width={P_.entete.w}
+              height={P_.entete.h}
+              decoding="async"
+              fetchPriority="high"
+              src={P_.entete.src}
+              alt={P_.entete.alt}
+              style={{ display: 'block', width: '100%', height: 'auto', borderRadius: '10px' }}
+            />
           </div>
         </div>
       </section>
@@ -335,7 +335,7 @@ export default function PageExtension({
           </div>
 
           <div className="me-rang" style={{ gridTemplateColumns: '0.8fr 1.2fr', gap: 'clamp(28px,4.5vw,76px)', marginTop: 'clamp(56px,7vw,100px)' }}>
-            <Photo p={P_.vertical} sens="unfold-left" recadre="4 / 5" />
+            <Photo p={P_.vertical} sens="unfold-left" />
             <div data-reveal="right" data-delay="120">
               <h3 style={H3}>La lumière avant la surface</h3>
               <p style={P}>{rendreTexte(LUMIERE)}</p>
@@ -443,7 +443,7 @@ export default function PageExtension({
             </div>
             <Encadre titre="Où vérifier">{URBANISME_OUTILS}</Encadre>
           </div>
-          <Bandeau p={P_.bandeUrbanisme} cadre="74% 60%" />
+          <Bandeau p={P_.bandeUrbanisme} />
         </div>
       </section>
 
@@ -470,7 +470,7 @@ export default function PageExtension({
           <Encadre titre="À savoir">
             Informations générales, à confirmer pour votre projet : les règles fiscales et les aides évoluent, et chaque mairie applique son propre PLU.
           </Encadre>
-          <Bandeau p={P_.bandeBudget} cadre="78% 55%" />
+          <Bandeau p={P_.bandeBudget} />
         </div>
       </section>
 
@@ -521,7 +521,7 @@ export default function PageExtension({
             ))}
           </div>
           <p data-reveal="" style={{ ...P, maxWidth: '82ch', marginTop: 'clamp(28px,3.4vw,40px)' }}>{rendreTexte(SECTEURS_SUITE)}</p>
-          <Bandeau p={P_.bandeTypes} cadre="62% 60%" />
+          <Bandeau p={P_.bandeTypes} />
         </div>
       </section>
 
@@ -543,7 +543,7 @@ export default function PageExtension({
               </details>
             ))}
           </div>
-          <Bandeau p={P_.bandeFin} cadre="66% 60%" />
+          <Bandeau p={P_.bandeFin} />
         </div>
       </section>
 
