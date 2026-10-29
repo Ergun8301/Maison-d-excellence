@@ -360,20 +360,19 @@ a:hover{color:#111412;}
    (aucun recadrage), centrées et limitées en largeur sur grand écran. */
 .me-bandeau{display:block;width:100%;max-width:1120px;height:auto;margin:0 auto;border-radius:10px;background:#EDEDE7;}
 
-/* Page Extension : bandeau, construit comme celui de Nos modèles et Nos
-   réalisations (même hauteur, texte en bas à gauche). La photo est cadrée
-   sur son bas, là où se trouve l'extension, et le voile est plus léger.
-   Sur tablette et téléphone, la photo est montrée entière (ni coupée, ni
-   zoomée) sous l'en-tête fixe, et le texte passe dessous. */
-.me-ext-bandeau{position:relative;min-height:clamp(480px,66vh,600px);overflow:hidden;display:flex;align-items:flex-end;}
-.me-ext-bandeau-fond{position:absolute;inset:0;overflow:hidden;}
-.me-ext-bandeau-fond img{width:100%;height:100%;object-fit:cover;object-position:50% 88%;}
-.me-ext-bandeau-voile{position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(11,13,12,0.5) 0%,rgba(11,13,12,0.28) 40%,rgba(11,13,12,0) 62%),linear-gradient(180deg,rgba(11,13,12,0.4) 0%,rgba(11,13,12,0.06) 24%,rgba(11,13,12,0.06) 55%,rgba(11,13,12,0.45) 100%);}
-.me-ext-bandeau-texte{position:relative;width:100%;max-width:1440px;margin:0 auto;padding:clamp(104px,11vw,128px) clamp(20px,5vw,64px) clamp(44px,5.4vw,76px);}
+/* Page Extension : bandeau. La photo est en pleine largeur, sans
+   recadrage, hauteur automatique : ses quatre coins sont ceux du bandeau,
+   on la voit entière (dessus et dessous), jamais zoomée ni étirée. Pas
+   d'object-fit: cover ici, c'est lui qui coupait la photo. Le texte est
+   posé en bas à gauche, comme sur Nos modèles et Nos réalisations, avec
+   un voile léger seulement derrière lui. Sur tablette et téléphone, le
+   texte passe sous la photo. */
+.me-ext-bandeau{position:relative;}
+.me-ext-bandeau-fond img{display:block;width:100%;height:auto;}
+.me-ext-bandeau-voile{position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(11,13,12,0.5) 0%,rgba(11,13,12,0.28) 40%,rgba(11,13,12,0) 62%),linear-gradient(180deg,rgba(11,13,12,0.4) 0%,rgba(11,13,12,0.06) 22%,rgba(11,13,12,0.06) 55%,rgba(11,13,12,0.45) 100%);}
+.me-ext-bandeau-texte{position:absolute;left:0;right:0;bottom:0;max-width:1440px;margin:0 auto;padding:0 clamp(20px,5vw,64px) clamp(44px,5.4vw,76px);}
 @media(max-width:900px){
-  .me-ext-bandeau{display:block;min-height:0;padding-top:80px;}
-  .me-ext-bandeau-fond{position:static;}
-  .me-ext-bandeau-fond img{display:block;height:auto;object-fit:fill;}
+  .me-ext-bandeau{padding-top:80px;}
   .me-ext-bandeau-voile{display:none;}
-  .me-ext-bandeau-texte{padding-top:28px;}
+  .me-ext-bandeau-texte{position:static;padding-top:28px;}
 }
