@@ -345,7 +345,7 @@ export const SECTEURS = [
 ] as const;
 
 export const SECTEURS_SUITE =
-  'Nous intervenons aussi à [Saint-Denis-lès-Bourg](/construction-maison-saint-denis-les-bourg), [Ceyzériat](/construction-maison-ceyzeriat), [Attignat](/construction-maison-attignat) et [Montrevel-en-Bresse](/construction-maison-montrevel-en-bresse). Vous cherchez plutôt un terrain ? Voyez [nos terrains à bâtir](/terrains).';
+  'Dans un rayon d’environ 30 km autour de ces trois villes, nous étudions aussi des extensions de maison côté Bresse à [Saint-Denis-lès-Bourg](/construction-maison-saint-denis-les-bourg), [Ceyzériat](/construction-maison-ceyzeriat), [Attignat](/construction-maison-attignat), [Montrevel-en-Bresse](/construction-maison-montrevel-en-bresse), [Polliat](/construction-maison-polliat), [Montagnat](/construction-maison-montagnat), [Jasseron](/construction-maison-jasseron), [Buellas](/construction-maison-buellas), [Servas](/construction-maison-servas) et [Marboz](/construction-maison-marboz) ; autour de Meximieux à [Dagneux](/construction-maison-dagneux), [Bourg-Saint-Christophe](/construction-maison-bourg-saint-christophe), [Villieu-Loyes-Mollon](/construction-maison-villieu-loyes-mollon), Pérouges, Chalamont, Villars-les-Dombes et Miribel ; près d’Ambérieu-en-Bugey et de Lagnieu à [Château-Gaillard](/construction-maison-chateau-gaillard) et [Saint-Denis-en-Bugey](/construction-maison-saint-denis-en-bugey). Vous cherchez plutôt un terrain ? Voyez [nos terrains à bâtir](/terrains).';
 
 export const FAQ_EXTENSION: readonly QuestionLocale[] = [
   {
