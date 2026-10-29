@@ -273,6 +273,14 @@ export default function PageExtension({
           <p data-reveal="" data-delay="220" style={{ margin: 'clamp(20px,2.2vw,28px) 0 0', color: 'rgba(247,247,244,0.9)', fontSize: 'clamp(15px,1.35vw,17.5px)', lineHeight: 1.7, maxWidth: '60ch', textShadow: '0 2px 20px rgba(11,13,12,0.85)' }}>
             {INTRO_EXTENSION[0]}
           </p>
+          <div data-reveal="" data-delay="320" className="me-ext-bandeau-cta">
+            <a href="/#estimation" onClick={goEstimation} className="me-btn" style={BTN_VERT} style-hover="background:#3B7059;transform:translateY(-3px);">
+              Estimation en ligne →
+            </a>
+            <a href="/contact" onClick={goContact} className="me-btn" style={{ ...BTN_VERT, background: 'rgba(11,13,12,0.3)', border: '1px solid rgba(247,247,244,0.55)', boxShadow: 'none', backdropFilter: 'blur(4px)' }} style-hover="border-color:#F7F7F4;transform:translateY(-3px);">
+              Parler de mon projet
+            </a>
+          </div>
         </div>
       </section>
 

@@ -39,7 +39,7 @@ export const PHOTOS_EXTENSION = {
   entete: {
     src: '/extension/extension-baies-vitrees-salon-jardin.webp',
     w: 1920,
-    h: 1280,
+    h: 896,
     alt: 'Illustration : extension enduite à toit plat ouverte sur une terrasse, et son séjour lumineux vu de l’intérieur',
     legende: 'Illustration : l’extension côté jardin et son séjour.',
     auteur: 'Image générée (fournie par Maisons d’Excellence)',
