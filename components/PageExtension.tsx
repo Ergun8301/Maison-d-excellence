@@ -13,13 +13,13 @@ import {
   JONCTION,
   LUMIERE,
   PHOTOS_EXTENSION,
+  PHOTOS_TYPES,
   REGLES_PLU,
   SECTEURS,
   SECTEURS_SUITE,
   SEUILS,
   SOMMAIRE_EXTENSION,
   STRUCTURES,
-  SURELEVATION,
   TYPES_EXTENSION,
   URBANISME,
   URBANISME_OUTILS,
@@ -248,8 +248,9 @@ export default function PageExtension({
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd(FAQ_EXTENSION)) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }} />
 
-      {/* Bandeau */}
-      <section style={{ position: 'relative', minHeight: 'clamp(560px,78vh,760px)', overflow: 'hidden', display: 'flex', alignItems: 'flex-end' }}>
+      {/* Bandeau : photo en grand, texte court et centré en bas, pour laisser
+          voir l'extension. */}
+      <section className="me-ext-hero" style={{ position: 'relative', overflow: 'hidden', display: 'flex', alignItems: 'flex-end', justifyContent: 'center' }}>
         <div style={{ position: 'absolute', inset: 0, overflow: 'hidden', background: ENCRE }}>
           <img
             width={P_.entete.w}
@@ -258,25 +259,25 @@ export default function PageExtension({
             fetchPriority="high"
             src={P_.entete.src}
             alt={P_.entete.alt}
-            style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: '84% 55%', animation: 'meKb 18s ease-out forwards' }}
+            style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: '50% 60%', animation: 'meKbDoux 18s ease-out forwards' }}
           />
         </div>
-        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg,rgba(11,13,12,0.42) 0%,rgba(11,13,12,0.08) 32%,rgba(11,13,12,0.36) 64%,rgba(11,13,12,0.8) 100%)' }} />
-        <div style={{ position: 'relative', width: '100%', ...CONTENEUR, paddingTop: 'clamp(110px,11vw,136px)', paddingBottom: 'clamp(44px,5.4vw,76px)' }}>
-          <div data-reveal="">
-            <Surtitre clair>Extension et agrandissement · Ain</Surtitre>
+        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg,rgba(11,13,12,0.55) 0%,rgba(11,13,12,0.12) 18%,rgba(11,13,12,0) 34%,rgba(11,13,12,0.38) 56%,rgba(11,13,12,0.7) 80%,rgba(11,13,12,0.82) 100%)' }} />
+        <div style={{ position: 'relative', width: '100%', ...CONTENEUR, paddingTop: 'clamp(110px,11vw,136px)', paddingBottom: 'clamp(40px,5vw,72px)', display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
+          <div data-reveal="" className="me-ext-hero-surtitre">
+            <Surtitre clair>Extension et agrandissement</Surtitre>
           </div>
-          <h1 data-reveal="" data-delay="120" style={{ margin: 0, color: '#FFFFFF', fontFamily: "'Cormorant Garamond',serif", fontWeight: 300, fontSize: 'clamp(38px,5.6vw,76px)', lineHeight: 1.02, letterSpacing: '-0.02em', maxWidth: '24ch', textShadow: '0 4px 40px rgba(11,13,12,0.7)' }}>
-            Extension de maison dans l’Ain, autour de Bourg-en-Bresse et Meximieux
+          <h1 data-reveal="" data-delay="120" style={{ margin: 0, color: '#FFFFFF', fontFamily: "'Cormorant Garamond',serif", fontWeight: 300, fontSize: 'clamp(40px,5.4vw,78px)', lineHeight: 1.04, letterSpacing: '-0.015em', textShadow: '0 4px 32px rgba(11,13,12,0.55)' }}>
+            Extension de maison dans l’Ain
           </h1>
-          <p data-reveal="" data-delay="220" style={{ margin: 'clamp(20px,2.2vw,28px) 0 0', color: 'rgba(247,247,244,0.88)', fontSize: 'clamp(15px,1.35vw,17.5px)', lineHeight: 1.7, maxWidth: '62ch', textShadow: '0 2px 20px rgba(11,13,12,0.85)' }}>
+          <p data-reveal="" data-delay="220" style={{ margin: 'clamp(14px,1.6vw,20px) 0 0', color: 'rgba(247,247,244,0.92)', fontSize: 'clamp(15px,1.3vw,18px)', lineHeight: 1.6, maxWidth: '46ch', textShadow: '0 2px 18px rgba(11,13,12,0.8)' }}>
             {INTRO_EXTENSION[0]}
           </p>
-          <div data-reveal="" data-delay="320" style={{ display: 'flex', flexWrap: 'wrap', gap: '12px', marginTop: 'clamp(24px,2.8vw,34px)' }}>
-            <a href="/#estimation" onClick={goEstimation} className="me-btn" style={BTN_VERT} style-hover="background:#3B7059;transform:translateY(-3px);">
+          <div data-reveal="" data-delay="320" className="me-ext-hero-cta" style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '12px', marginTop: 'clamp(22px,2.4vw,30px)' }}>
+            <a href="/#estimation" onClick={goEstimation} className="me-btn" style={{ ...BTN_VERT, minWidth: '220px' }} style-hover="background:#3B7059;transform:translateY(-3px);">
               Estimation en ligne →
             </a>
-            <a href="/contact" onClick={goContact} className="me-btn" style={{ ...BTN_VERT, background: 'rgba(11,13,12,0.35)', border: '1px solid rgba(247,247,244,0.45)', boxShadow: 'none', backdropFilter: 'blur(4px)' }} style-hover="border-color:#F7F7F4;transform:translateY(-3px);">
+            <a href="/contact" onClick={goContact} className="me-btn" style={{ ...BTN_VERT, minWidth: '220px', background: 'rgba(11,13,12,0.3)', border: '1px solid rgba(247,247,244,0.55)', boxShadow: 'none', backdropFilter: 'blur(4px)' }} style-hover="border-color:#F7F7F4;transform:translateY(-3px);">
               Parler de mon projet
             </a>
           </div>
@@ -309,34 +310,32 @@ export default function PageExtension({
             </div>
             <p data-reveal="" data-delay="100" style={{ ...P, margin: 0 }}>{INTRO_EXTENSION[1]}</p>
           </div>
-          <div className="me-g3" style={{ gap: 'clamp(14px,1.6vw,22px)', marginTop: 'clamp(36px,4.6vw,60px)' }}>
-            {TYPES_EXTENSION.map((t, i) => (
-              <div key={t.titre} data-reveal="" data-delay={String((i % 3) * 100)} style={CARTE}>
-                {t.titre === 'Garage transformé' ? (
+          <div className="me-g4" style={{ gap: 'clamp(14px,1.6vw,22px)', marginTop: 'clamp(36px,4.6vw,60px)' }}>
+            {TYPES_EXTENSION.map((t, i) => {
+              const ph = P_[PHOTOS_TYPES[i]];
+              return (
+                <div key={t.titre} data-reveal="" data-delay={String(i * 90)} style={{ ...CARTE, padding: 0, overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
                   <img
-                    src={P_.garage.src}
-                    width={P_.garage.w}
-                    height={P_.garage.h}
-                    alt={P_.garage.alt}
+                    src={ph.src}
+                    width={ph.w}
+                    height={ph.h}
+                    alt={ph.alt}
                     loading="lazy"
                     decoding="async"
-                    style={{ display: 'block', width: '100%', height: 'auto', aspectRatio: '2 / 1', objectFit: 'cover', objectPosition: '62% 50%', borderRadius: '6px', marginBottom: '18px', background: '#EDEDE7' }}
+                    style={{ display: 'block', width: '100%', height: 'auto', aspectRatio: '4 / 3', objectFit: 'cover', background: '#EDEDE7' }}
                   />
-                ) : null}
-                <div style={{ fontSize: '11px', letterSpacing: '0.18em', color: VERT, fontWeight: 700 }}>{String(i + 1).padStart(2, '0')}</div>
-                <h3 style={{ ...H3, marginTop: '10px' }}>{t.titre}</h3>
-                <p style={{ margin: '12px 0 0', color: '#565B56', fontSize: '14.5px', lineHeight: 1.7 }}>{t.texte}</p>
-              </div>
-            ))}
-            <div data-reveal="" data-delay="200" style={{ ...CARTE, background: ENCRE, border: 'none' }}>
-              <div style={{ fontSize: '11px', letterSpacing: '0.18em', color: '#9CC4B2', fontWeight: 700 }}>ET AUSSI</div>
-              <h3 style={{ ...H3, marginTop: '10px', color: CREME }}>La surélévation</h3>
-              <p style={{ margin: '12px 0 0', color: 'rgba(247,247,244,0.72)', fontSize: '14.5px', lineHeight: 1.7 }}>{SURELEVATION}</p>
-            </div>
+                  <div style={{ padding: 'clamp(20px,2.2vw,28px)' }}>
+                    <div style={{ fontSize: '11px', letterSpacing: '0.18em', color: VERT, fontWeight: 700 }}>{String(i + 1).padStart(2, '0')}</div>
+                    <h3 style={{ ...H3, marginTop: '8px' }}>{t.titre}</h3>
+                    <p style={{ margin: '10px 0 0', color: '#565B56', fontSize: '14.5px', lineHeight: 1.7 }}>{t.texte}</p>
+                  </div>
+                </div>
+              );
+            })}
           </div>
 
           <div className="me-rang" style={{ gridTemplateColumns: '0.8fr 1.2fr', gap: 'clamp(28px,4.5vw,76px)', marginTop: 'clamp(56px,7vw,100px)' }}>
-            <Photo p={P_.veranda} sens="unfold-left" recadre="4 / 5" />
+            <Photo p={P_.vertical} sens="unfold-left" recadre="4 / 5" />
             <div data-reveal="right" data-delay="120">
               <h3 style={H3}>La lumière avant la surface</h3>
               <p style={P}>{rendreTexte(LUMIERE)}</p>

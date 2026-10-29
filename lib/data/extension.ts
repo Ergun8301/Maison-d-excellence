@@ -18,8 +18,8 @@ import type { QuestionLocale } from '@/lib/data/locales';
  *
  * Photos : fournies par l'entreprise (son Google Drive). Elles illustrent des
  * extensions en général : aucune légende ne les présente comme des
- * réalisations. L'image « veranda » est une illustration générée, signalée
- * comme telle dans son texte alternatif et sa légende.
+ * réalisations. L'image « carteGarage » est une illustration générée,
+ * signalée comme telle dans son texte alternatif.
  *
  * Les paragraphes admettent des liens internes notés `[texte](/chemin)`.
  */
@@ -37,13 +37,13 @@ export type PhotoExtension = {
 
 export const PHOTOS_EXTENSION = {
   entete: {
-    src: '/extension/extension-toit-plat-enduit-gris.webp',
-    w: 1168,
-    h: 784,
-    alt: 'Extension à toit plat enduite en gris, avec baie vitrée, à côté d’une maison blanche',
-    legende: 'Volume à toit plat raccordé à la façade existante.',
+    src: '/extension/extension-bois-encadrement-gris-facade.webp',
+    w: 1920,
+    h: 1080,
+    alt: 'Maison blanche à étage agrandie par une extension vitrée en bois, encadrée de gris',
+    legende: 'Extension en bois encadrée de gris, ouverte sur le jardin.',
     auteur: 'Maisons d’Excellence',
-    source: 'Google Drive de l’entreprise (1Pf74F9DWNJLjs4otrzluL_Byur2EK7PA)',
+    source: 'Google Drive de l’entreprise (1NsJA8OEOEEIsPDT1Vpb7_jgs4KlKLgOO)',
   },
   maconnerie: {
     src: '/extension/extension-maconnee-enduit-blanc-garage.webp',
@@ -72,14 +72,14 @@ export const PHOTOS_EXTENSION = {
     auteur: 'Maisons d’Excellence',
     source: 'Google Drive de l’entreprise (18png5AuYNtt8aEESal9jZwz522ulIrKM)',
   },
-  veranda: {
-    src: '/extension/extension-baies-vitrees-terrasse.webp',
-    w: 650,
-    h: 1024,
-    alt: 'Illustration : extension enduite à toit plat, grandes baies vitrées sur une terrasse en bois',
-    legende: 'Illustration : baies vitrées ouvertes sur le jardin.',
-    auteur: 'Image générée (fournie par Maisons d’Excellence)',
-    source: 'Google Drive de l’entreprise (1u160mfFjhu2Y-GqYDDIoJ1m8kyOv8qQC), moitié gauche',
+  vertical: {
+    src: '/extension/extension-blanche-toit-plat-jardin.webp',
+    w: 784,
+    h: 1168,
+    alt: 'Extension blanche à toit plat avec grande baie vitrée, accolée à une maison ancienne, côté jardin',
+    legende: 'Une grande baie vitrée ouvre l’extension sur le jardin.',
+    auteur: 'Maisons d’Excellence',
+    source: 'Google Drive de l’entreprise (1CgpXMRynISRBYO6RcGeBANrX-zOVeZ-u)',
   },
   interieur: {
     src: '/extension/extension-bardage-panneaux-gris.webp',
@@ -90,14 +90,41 @@ export const PHOTOS_EXTENSION = {
     auteur: 'Maisons d’Excellence',
     source: 'Google Drive de l’entreprise (16IIZACOKfV2nRE6nrqILAr5XkmQdzIlo)',
   },
-  garage: {
-    src: '/extension/extension-garage-maison-plain-pied.webp',
-    w: 1200,
-    h: 900,
-    alt: 'Maison de plain-pied enduite, prolongée par un volume de garage au crépi brun',
-    legende: 'Volume de garage accolé à une maison de plain-pied.',
+  carteLaterale: {
+    src: '/extension/carte-extension-laterale.webp',
+    w: 900,
+    h: 604,
+    alt: 'Extension latérale à toit plat au bardage sombre, posée contre le pignon d’une maison blanche',
+    legende: '',
     auteur: 'Maisons d’Excellence',
-    source: 'Google Drive de l’entreprise (1S55hBnGoXhh-Jy2te52RXM2duCfDhFAV)',
+    source: 'Google Drive de l’entreprise (1fShdViwdjbZooWrvLpVo-KzuGtmefQPT)',
+  },
+  carteArriere: {
+    src: '/extension/carte-extension-arriere.webp',
+    w: 900,
+    h: 636,
+    alt: 'Extension à l’arrière d’une maison, toit à deux pans, bardage et grandes baies sur terrasse',
+    legende: '',
+    auteur: 'Maisons d’Excellence',
+    source: 'Google Drive de l’entreprise (1MT8R6AojBzilns8m4z2xQUGrYxTmIrAU)',
+  },
+  cartePieceDeVie: {
+    src: '/extension/carte-prolongement-piece-de-vie.webp',
+    w: 900,
+    h: 604,
+    alt: 'Maison blanche prolongée au rez-de-chaussée par un volume sombre à toit plat',
+    legende: '',
+    auteur: 'Maisons d’Excellence',
+    source: 'Google Drive de l’entreprise (1QfGSC_7F-kz6Ci_ddbyUPtgUs-WQZpD9)',
+  },
+  carteGarage: {
+    src: '/extension/carte-garage-transforme.webp',
+    w: 784,
+    h: 478,
+    alt: 'Illustration : ancien garage aménagé en séjour avec cuisine ouverte',
+    legende: '',
+    auteur: 'Image générée (fournie par Maisons d’Excellence)',
+    source: 'Google Drive de l’entreprise (1FNpyX3SXIKN-tE2AT9pwgkeDNF52sjl5), partie « après »',
   },
   bandeTypes: {
     src: '/extension/extension-bois-gris-terrasse.webp',
@@ -148,8 +175,8 @@ export const SOMMAIRE_EXTENSION = [
 ] as const;
 
 export const INTRO_EXTENSION = [
-  'Une extension de maison ajoute une pièce sans changer d’adresse : un séjour agrandi, une chambre au rez-de-chaussée, une cuisine ouverte sur le jardin. Autour de Bourg-en-Bresse, de Meximieux et d’Ambérieu-en-Bugey, nous étudions ces agrandissements avec les matériaux de nos maisons neuves.',
-  'Le bon choix dépend de la parcelle, de l’orientation et du PLU, et d’une jonction réussie avec la maison.',
+  'Autour de Bourg-en-Bresse, Meximieux et Ambérieu-en-Bugey, nous agrandissons votre maison avec les matériaux de nos maisons neuves.',
+  'Une extension ajoute une pièce sans changer d’adresse : un séjour agrandi, une chambre au rez-de-chaussée, une cuisine ouverte sur le jardin. Le bon choix dépend de la parcelle, de l’orientation et du PLU.',
 ] as const;
 
 /** Texte de la rangée photo de la section « Types ». */
@@ -159,6 +186,9 @@ export const LUMIERE =
 /** Texte de la rangée photo de la section « Accompagnement ». */
 export const JONCTION =
   'Le point délicat est la jonction : fondation, toiture sans infiltration, isolation continue, sol de plain-pied. Nous l’étudions en premier. Pour en parler, [écrivez-nous](/contact).';
+
+/** Photo de chaque carte « type d'extension », dans l'ordre des cartes. */
+export const PHOTOS_TYPES = ['carteLaterale', 'carteArriere', 'cartePieceDeVie', 'carteGarage'] as const;
 
 export const TYPES_EXTENSION = [
   {
@@ -177,14 +207,8 @@ export const TYPES_EXTENSION = [
     titre: 'Garage transformé',
     texte: 'Le volume existe : il faut l’isoler, le ventiler, l’ouvrir. Supprimer une place de stationnement peut heurter le PLU.',
   },
-  {
-    titre: 'Véranda',
-    texte: 'Très vitrée, elle apporte la lumière mais chauffe l’été. Elle compte comme une extension pour les autorisations.',
-  },
 ] as const;
 
-export const SURELEVATION =
-  'Quand la parcelle ne laisse plus de place au sol, on peut ajouter un étage. Il faut vérifier la structure porteuse et la hauteur autorisée : nous l’étudions au cas par cas.';
 
 export const STRUCTURES = [
   {
@@ -289,7 +313,7 @@ export const BUDGET = [
   },
   {
     titre: 'Taxe d’aménagement',
-    texte: 'Elle est due dès qu’une extension crée plus de 5 m² clos et couverts, véranda comprise. Son montant dépend de taux votés localement ; service-public.gouv.fr propose un simulateur.',
+    texte: 'Elle est due dès qu’une extension crée plus de 5 m² clos et couverts. Son montant dépend de taux votés localement ; service-public.gouv.fr propose un simulateur.',
   },
   {
     titre: 'Financement',

@@ -61,16 +61,16 @@ a:hover{color:#111412;}
 .leaflet-tile-loaded{opacity:1 !important;}
 .me-pin{font-family:'Manrope',sans-serif;}
 @media(max-width:1024px){ .me-g4{grid-template-columns:1fr 1fr;} }
-/* Menu du haut : six liens depuis l'ajout d'« Extension ». Entre 1360 et
-   1439 px, on resserre les écarts pour garder le bouton « Estimation en
+/* Menu du haut : six liens depuis l'ajout d'« Extension ». Entre 1400 et
+   1599 px, on resserre les écarts pour garder le bouton « Estimation en
    ligne » dans la marge ; en dessous, le menu passe en burger (il passait à
    1120 px quand il n'avait que cinq liens, et débordait déjà vers 1280 px). */
-@media(max-width:1439px){
+@media(max-width:1599px){
   [data-header] > div{gap:20px !important;}
   .me-desk-nav{gap:16px !important;}
   .me-desk-nav > span{margin-right:0 !important;}
 }
-@media(max-width:1359px){
+@media(max-width:1399px){
   .me-desk-nav{display:none !important;}
   .me-burger{display:inline-flex !important;}
 }
@@ -144,11 +144,11 @@ a:hover{color:#111412;}
 
 /* Position du bouton de menu sur mobile.
    La barre est une grille de trois colonnes : marque, navigation, groupe de
-   droite. Sous 1360 px la navigation passe en display:none, ce qui supprime sa
+   droite. Sous 1400 px la navigation passe en display:none, ce qui supprime sa
    cellule — le groupe de droite glisse alors dans la colonne du milieu et le
    bouton se retrouve à 82 px du bord au lieu d'y être collé. Deux colonnes
    suffisent dès lors que la navigation a disparu. */
-@media (max-width: 1359px) {
+@media (max-width: 1399px) {
   /* !important : la maquette pose ces colonnes en style en ligne, qui prime
      sur une feuille de style — la règle voisine .me-desk-nav fait de même. */
   [data-header] > div { grid-template-columns: 1fr auto !important; }
@@ -359,3 +359,13 @@ a:hover{color:#111412;}
 /* Page Extension : grandes photos entre les sections. Hauteur fixe pour que
    le recadrage reste lisible sur téléphone comme sur grand écran. */
 .me-bandeau{display:block;width:100%;height:clamp(240px,40vw,560px);object-fit:cover;border-radius:10px;background:#EDEDE7;}
+
+/* Page Extension : hauteur du bandeau. Sur téléphone, les deux boutons
+   s'empilent à la même largeur, centrés. */
+.me-ext-hero{min-height:clamp(600px,88vh,820px);}
+@media(max-width:600px){
+  .me-ext-hero{min-height:640px;}
+  /* Sur le mur blanc de la photo, le surtitre ne se lirait pas. */
+  .me-ext-hero-surtitre{display:none;}
+  .me-ext-hero-cta{flex-direction:column;align-items:stretch;width:100%;max-width:320px;}
+}
