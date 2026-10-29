@@ -360,17 +360,20 @@ a:hover{color:#111412;}
    (aucun recadrage), centrées et limitées en largeur sur grand écran. */
 .me-bandeau{display:block;width:100%;max-width:1120px;height:auto;margin:0 auto;border-radius:10px;background:#EDEDE7;}
 
-/* Page Extension : bandeau. Texte à gauche et photo entière à droite sur
-   ordinateur ; sur tablette et téléphone, photo entière en haut, texte
-   centré dessous et boutons empilés. */
-.me-ext-hero{display:grid;grid-template-columns:0.82fr 1.18fr;gap:clamp(32px,4.5vw,72px);align-items:center;padding-top:clamp(118px,10vw,148px);padding-bottom:clamp(48px,5.5vw,84px);}
-.me-ext-hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:clamp(24px,2.6vw,34px);}
-.me-ext-hero-photo img{box-shadow:0 40px 80px -40px rgba(0,0,0,.8);}
+/* Page Extension : bandeau. La photo prend toute la largeur et garde sa
+   forme (hauteur automatique) : elle n'est ni coupée, ni zoomée, ni
+   étirée. Sur ordinateur, le texte est posé en bas, centré, sur un
+   dégradé ; sur téléphone et tablette, il passe sous la photo, et la photo
+   commence sous l'en-tête fixe pour que rien ne la cache. */
+.me-ext-hero{position:relative;}
+.me-ext-hero-img{display:block;width:100%;height:auto;}
+.me-ext-hero-voile{position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(11,13,12,0.45) 0%,rgba(11,13,12,0) 16%,rgba(11,13,12,0) 50%,rgba(11,13,12,0.55) 74%,rgba(11,13,12,0.82) 100%);}
+.me-ext-hero-texte{position:absolute;left:0;right:0;bottom:0;display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 clamp(20px,5vw,64px) clamp(36px,4.5vw,64px);}
+.me-ext-hero-cta{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:clamp(20px,2.2vw,28px);}
 @media(max-width:900px){
-  .me-ext-hero{grid-template-columns:1fr;padding-top:100px;gap:28px;}
-  .me-ext-hero-photo{order:-1;}
-  .me-ext-hero-texte{text-align:center;display:flex;flex-direction:column;align-items:center;}
-  .me-ext-hero-cta{justify-content:center;}
+  .me-ext-hero{padding-top:80px;}
+  .me-ext-hero-voile{display:none;}
+  .me-ext-hero-texte{position:static;padding-top:30px;}
 }
 @media(max-width:600px){
   .me-ext-hero-cta{flex-direction:column;align-items:stretch;width:100%;max-width:320px;}

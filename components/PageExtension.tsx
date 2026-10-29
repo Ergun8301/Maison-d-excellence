@@ -246,40 +246,39 @@ export default function PageExtension({
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd(FAQ_EXTENSION)) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }} />
 
-      {/* Bandeau : la photo est montrée entière, jamais recadrée (pas de
-          object-fit: cover, pas de zoom animé) ; le texte est à côté sur
-          ordinateur et dessous sur téléphone, pour ne rien cacher. */}
-      <section style={{ background: ENCRE, color: CREME }}>
-        <div className="me-ext-hero" style={{ maxWidth: CONTENEUR.maxWidth, margin: CONTENEUR.margin, paddingLeft: 'clamp(20px,5vw,64px)', paddingRight: 'clamp(20px,5vw,64px)' }}>
-          <div className="me-ext-hero-texte">
-            <div data-reveal="">
-              <Surtitre clair>Extension et agrandissement</Surtitre>
-            </div>
-            <h1 data-reveal="" data-delay="120" style={{ margin: 0, color: '#FFFFFF', fontFamily: "'Cormorant Garamond',serif", fontWeight: 300, fontSize: 'clamp(40px,4.6vw,68px)', lineHeight: 1.04, letterSpacing: '-0.015em' }}>
-              Extension de maison dans l’Ain
-            </h1>
-            <p data-reveal="" data-delay="220" style={{ margin: 'clamp(16px,1.8vw,22px) 0 0', color: 'rgba(247,247,244,0.82)', fontSize: 'clamp(15px,1.25vw,18px)', lineHeight: 1.65, maxWidth: '42ch' }}>
-              {INTRO_EXTENSION[0]}
-            </p>
-            <div data-reveal="" data-delay="320" className="me-ext-hero-cta">
-              <a href="/#estimation" onClick={goEstimation} className="me-btn" style={BTN_VERT} style-hover="background:#3B7059;transform:translateY(-3px);">
-                Estimation en ligne →
-              </a>
-              <a href="/contact" onClick={goContact} className="me-btn" style={{ ...BTN_VERT, background: 'transparent', border: '1px solid rgba(247,247,244,0.45)', boxShadow: 'none' }} style-hover="border-color:#F7F7F4;transform:translateY(-3px);">
-                Parler de mon projet
-              </a>
-            </div>
+      {/* Bandeau : la photo occupe toute la largeur de l'écran et reste
+          entière — hauteur automatique, jamais recadrée (pas de
+          object-fit: cover), jamais zoomée. Sur ordinateur le texte est posé
+          dessus, centré en bas sur un dégradé ; sur téléphone il passe
+          dessous pour ne pas cacher la maison. */}
+      <section className="me-ext-hero" style={{ background: ENCRE, color: CREME }}>
+        <img
+          width={P_.entete.w}
+          height={P_.entete.h}
+          decoding="async"
+          fetchPriority="high"
+          src={P_.entete.src}
+          alt={P_.entete.alt}
+          className="me-ext-hero-img"
+        />
+        <div aria-hidden="true" className="me-ext-hero-voile" />
+        <div className="me-ext-hero-texte">
+          <div data-reveal="">
+            <Surtitre clair>Extension et agrandissement</Surtitre>
           </div>
-          <div data-reveal="right" data-delay="150" className="me-ext-hero-photo">
-            <img
-              width={P_.entete.w}
-              height={P_.entete.h}
-              decoding="async"
-              fetchPriority="high"
-              src={P_.entete.src}
-              alt={P_.entete.alt}
-              style={{ display: 'block', width: '100%', height: 'auto', borderRadius: '10px' }}
-            />
+          <h1 data-reveal="" data-delay="120" style={{ margin: 0, color: '#FFFFFF', fontFamily: "'Cormorant Garamond',serif", fontWeight: 300, fontSize: 'clamp(40px,4.8vw,72px)', lineHeight: 1.04, letterSpacing: '-0.015em', textShadow: '0 4px 30px rgba(11,13,12,0.5)' }}>
+            Extension de maison dans l’Ain
+          </h1>
+          <p data-reveal="" data-delay="220" style={{ margin: 'clamp(12px,1.4vw,18px) 0 0', color: 'rgba(247,247,244,0.92)', fontSize: 'clamp(15px,1.25vw,18px)', lineHeight: 1.6, maxWidth: '52ch', textShadow: '0 2px 16px rgba(11,13,12,0.8)' }}>
+            {INTRO_EXTENSION[0]}
+          </p>
+          <div data-reveal="" data-delay="320" className="me-ext-hero-cta">
+            <a href="/#estimation" onClick={goEstimation} className="me-btn" style={{ ...BTN_VERT, minWidth: '220px' }} style-hover="background:#3B7059;transform:translateY(-3px);">
+              Estimation en ligne →
+            </a>
+            <a href="/contact" onClick={goContact} className="me-btn" style={{ ...BTN_VERT, minWidth: '220px', background: 'rgba(11,13,12,0.3)', border: '1px solid rgba(247,247,244,0.55)', boxShadow: 'none', backdropFilter: 'blur(4px)' }} style-hover="border-color:#F7F7F4;transform:translateY(-3px);">
+              Parler de mon projet
+            </a>
           </div>
         </div>
       </section>
