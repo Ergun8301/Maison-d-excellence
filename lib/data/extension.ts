@@ -16,10 +16,10 @@ import type { QuestionLocale } from '@/lib/data/locales';
  *  - les aides dont les règles changent souvent (MaPrimeRénov', éco-PTZ) sont
  *    citées sans montant ni barème.
  *
- * Photos : banque Pexels, licence Pexels (usage commercial permis, sans
- * attribution obligatoire). Auteur et page d'origine dans PHOTOS_EXTENSION.
- * Elles illustrent des extensions en général : aucune légende ne les présente
- * comme des réalisations de l'entreprise.
+ * Photos : fournies par l'entreprise (son Google Drive). Elles illustrent des
+ * extensions en général : aucune légende ne les présente comme des
+ * réalisations. L'image « veranda » est une illustration générée, signalée
+ * comme telle dans son texte alternatif et sa légende.
  *
  * Les paragraphes admettent des liens internes notés `[texte](/chemin)`.
  */
@@ -37,58 +37,58 @@ export type PhotoExtension = {
 
 export const PHOTOS_EXTENSION = {
   entete: {
-    src: '/extension/extension-maison-bois-vitree-jardin.webp',
-    w: 1680,
-    h: 1121,
-    alt: 'Extension de maison vitrée, bardée de bois, ouverte sur un jardin arboré',
-    legende: 'Extension vitrée ouverte sur le jardin.',
-    auteur: 'Lara (Pexels)',
-    source: 'https://www.pexels.com/photo/a-house-with-glass-panels-7410709/',
+    src: '/extension/extension-laterale-bardage-bois-maison.webp',
+    w: 1168,
+    h: 784,
+    alt: 'Maison enduite prolongée par une extension latérale à toit plat bardée de bois sombre',
+    legende: 'Extension latérale à toit plat, bardée de bois.',
+    auteur: 'Maisons d’Excellence',
+    source: 'Google Drive de l’entreprise (1qEIxthSEaEI4CAQtbk27izi1ya2jq-Di)',
   },
   maconnerie: {
-    src: '/extension/extension-maison-parpaing-chantier.webp',
-    w: 1400,
-    h: 1050,
-    alt: 'Extension en blocs béton en cours de construction à l’arrière d’une maison',
-    legende: 'Extension en blocs béton, avant enduit.',
-    auteur: 'Brett Jordan (Pexels)',
-    source: 'https://www.pexels.com/photo/a-brick-house-under-construction-4692281/',
+    src: '/extension/extension-maconnee-enduit-blanc-garage.webp',
+    w: 1168,
+    h: 784,
+    alt: 'Extension maçonnée enduite en blanc, avec porte de garage, accolée à une maison à étage',
+    legende: 'Extension maçonnée, finie en enduit.',
+    auteur: 'Maisons d’Excellence',
+    source: 'Google Drive de l’entreprise (1KGnrnhvfGK-_oJ6QwLVFWCOJzfg7djwU)',
   },
   contemporaine: {
-    src: '/extension/extension-maison-contemporaine-enduit-bois.webp',
-    w: 1400,
-    h: 1157,
-    alt: 'Volume contemporain enduit blanc avec parement bois et grande baie vitrée',
-    legende: 'Volume enduit avec parement bois et grande baie vitrée.',
-    auteur: 'Expect Best (Pexels)',
-    source: 'https://www.pexels.com/photo/modern-building-against-blue-sky-323776/',
+    src: '/extension/extension-toit-plat-enduit-gris.webp',
+    w: 1168,
+    h: 784,
+    alt: 'Extension à toit plat enduite en gris, avec baie vitrée, à côté d’une maison blanche',
+    legende: 'Volume à toit plat raccordé à la façade existante.',
+    auteur: 'Maisons d’Excellence',
+    source: 'Google Drive de l’entreprise (1Pf74F9DWNJLjs4otrzluL_Byur2EK7PA)',
   },
   bois: {
-    src: '/extension/extension-ossature-bois-bardage.webp',
-    w: 1400,
-    h: 1050,
-    alt: 'Façade à bardage bois vertical avec une fenêtre aux montants bleus',
-    legende: 'Bardage bois vertical.',
-    auteur: 'Haberdoedas Photography (Pexels)',
-    source: 'https://www.pexels.com/photo/wooden-house-with-contemporary-design-and-blue-window-32934164/',
+    src: '/extension/extension-ossature-bois-bardage-maison.webp',
+    w: 1024,
+    h: 683,
+    alt: 'Extension à bardage bois clair et grandes ouvertures, accolée à une maison au toit d’ardoise',
+    legende: 'Extension bardée de bois, ouverte sur le jardin.',
+    auteur: 'Maisons d’Excellence',
+    source: 'Google Drive de l’entreprise (18png5AuYNtt8aEESal9jZwz522ulIrKM)',
   },
   veranda: {
-    src: '/extension/veranda-maison-jardin.webp',
-    w: 1000,
-    h: 1500,
-    alt: 'Véranda vitrée meublée, baignée de soleil, donnant sur un jardin',
-    legende: 'Une véranda prolonge la maison vers le jardin.',
-    auteur: 'Laura Meinhardt (Pexels)',
-    source: 'https://www.pexels.com/photo/cozy-sunlit-conservatory-in-england-31147900/',
+    src: '/extension/extension-baies-vitrees-terrasse.webp',
+    w: 650,
+    h: 1024,
+    alt: 'Illustration : extension enduite à toit plat, grandes baies vitrées sur une terrasse en bois',
+    legende: 'Illustration : baies vitrées ouvertes sur le jardin.',
+    auteur: 'Image générée (fournie par Maisons d’Excellence)',
+    source: 'Google Drive de l’entreprise (1u160mfFjhu2Y-GqYDDIoJ1m8kyOv8qQC), moitié gauche',
   },
   interieur: {
-    src: '/extension/extension-interieur-lumineux-verriere.webp',
-    w: 1000,
-    h: 1500,
-    alt: 'Pièce lumineuse sous une verrière, murs blancs et plantes vertes',
-    legende: 'Une verrière éclaire la pièce agrandie.',
-    auteur: 'cottonbro studio (Pexels)',
-    source: 'https://www.pexels.com/photo/an-interior-of-a-house-with-potted-plants-9720709/',
+    src: '/extension/extension-bardage-panneaux-gris.webp',
+    w: 564,
+    h: 423,
+    alt: 'Extension habillée de panneaux gris, ouverte sur une terrasse en bois',
+    legende: 'Extension habillée de panneaux, sur terrasse.',
+    auteur: 'Maisons d’Excellence',
+    source: 'Google Drive de l’entreprise (16IIZACOKfV2nRE6nrqILAr5XkmQdzIlo)',
   },
 } as const satisfies Record<string, PhotoExtension>;
 

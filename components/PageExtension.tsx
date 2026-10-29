@@ -424,7 +424,7 @@ export default function PageExtension({
               <p style={P}>Pas de prix au mètre carré sans avoir vu la maison : deux extensions de même surface peuvent coûter très différemment. Ce qui pèse :</p>
               <Liste items={BUDGET_FACTEURS} />
             </div>
-            <Photo p={P_.interieur} sens="unfold-right" recadre="4 / 5" />
+            <Photo p={P_.interieur} sens="unfold-right" />
           </div>
           <div className="me-g3" style={{ gap: 'clamp(14px,1.6vw,22px)', marginTop: 'clamp(40px,5vw,64px)' }}>
             {BUDGET.map((b, i) => (
