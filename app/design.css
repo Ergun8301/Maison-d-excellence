@@ -360,20 +360,22 @@ a:hover{color:#111412;}
    (aucun recadrage), centrées et limitées en largeur sur grand écran. */
 .me-bandeau{display:block;width:100%;max-width:1120px;height:auto;margin:0 auto;border-radius:10px;background:#EDEDE7;}
 
-/* Page Extension : bandeau. La photo est en pleine largeur, sans
-   recadrage, hauteur automatique : ses quatre coins sont ceux du bandeau,
-   on la voit entière (dessus et dessous), jamais zoomée ni étirée. Pas
-   d'object-fit: cover ici, c'est lui qui coupait la photo. Le texte est
-   posé en bas à gauche, comme sur Nos modèles et Nos réalisations, avec
-   un voile léger seulement derrière lui. Sur tablette et téléphone, le
-   texte passe sous la photo. */
-.me-ext-bandeau{position:relative;}
-.me-ext-bandeau-fond img{display:block;width:100%;height:auto;}
+/* Page Extension : bandeau. Sur ordinateur, il remplit exactement le
+   premier écran (100svh) : plus de bande blanche en bas. La photo est
+   cadrée par object-position (70 % = on garde surtout le bas, là où sont
+   l'extension et le séjour ; un peu de ciel en haut). Le texte et les
+   boutons sont posés en bas à gauche, sur un voile léger. Sur tablette et
+   téléphone, la photo est montrée entière, et le texte passe dessous. */
+.me-ext-bandeau{position:relative;height:100svh;min-height:560px;max-height:1100px;overflow:hidden;}
+.me-ext-bandeau-fond{position:absolute;inset:0;}
+.me-ext-bandeau-fond img{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 70%;}
 .me-ext-bandeau-voile{position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(11,13,12,0.5) 0%,rgba(11,13,12,0.28) 40%,rgba(11,13,12,0) 62%),linear-gradient(180deg,rgba(11,13,12,0.4) 0%,rgba(11,13,12,0.06) 22%,rgba(11,13,12,0.06) 55%,rgba(11,13,12,0.45) 100%);}
 .me-ext-bandeau-texte{position:absolute;left:0;right:0;bottom:0;max-width:1440px;margin:0 auto;padding:0 clamp(20px,5vw,64px) clamp(32px,4vw,56px);}
 .me-ext-bandeau-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:clamp(20px,2.2vw,28px);}
 @media(max-width:900px){
-  .me-ext-bandeau{padding-top:80px;}
+  .me-ext-bandeau{height:auto;min-height:0;max-height:none;padding-top:80px;}
+  .me-ext-bandeau-fond{position:static;}
+  .me-ext-bandeau-fond img{height:auto;object-fit:fill;}
   .me-ext-bandeau-voile{display:none;}
   .me-ext-bandeau-texte{position:static;padding-top:28px;}
 }
