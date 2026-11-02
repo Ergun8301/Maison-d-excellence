@@ -25,6 +25,8 @@
  * place à OpenStreetMap, qui prend donc sa ligne — quelqu'un envoie toujours
  * les tuiles, et cette liste se veut exacte.
  */
+import { LienGererCookies } from '@/components/BandeauCookies';
+
 const H2 = {
   margin: '0',
   fontFamily: "'Cormorant Garamond',serif",
@@ -68,17 +70,23 @@ export default function Confidentialite() {
           </div>
 
           <div>
-            <h2 style={H2}>Ce que le site ne fait pas</h2>
-            <p style={P}>Le site ne dépose aucun cookie. Il ne comporte aucun outil de mesure d&rsquo;audience, aucune régie publicitaire, aucun bouton de partage traçant, aucun pixel de réseau social. Vous ne verrez donc pas de bandeau de consentement : il n&rsquo;y a rien à consentir. La seule information conservée par votre navigateur est un brouillon temporaire, gardé le temps de vous faire passer d&rsquo;une page à l&rsquo;autre avec votre demande déjà remplie ; il disparaît à la fermeture de l&rsquo;onglet et ne quitte jamais votre appareil.</p>
+            <h2 style={H2}>Cookies et mesure d&rsquo;audience</h2>
+            <p style={P}>Avec votre accord, et seulement avec votre accord, le site utilise <strong>Google Analytics 4</strong> pour mesurer son audience : quelles pages sont consultées, combien de temps, depuis quel type d&rsquo;appareil et quelle région, et si vous cliquez sur un bouton de contact (téléphone, WhatsApp, courriel, estimation en ligne) ou envoyez un formulaire. La finalité est uniquement de savoir ce qui est lu et d&rsquo;améliorer le site. Le contenu de vos formulaires n&rsquo;est jamais transmis à Google.</p>
+            <p style={LI}>Tant que vous n&rsquo;avez pas cliqué sur «&nbsp;Accepter&nbsp;» dans le bandeau, aucun outil de Google n&rsquo;est chargé et aucun cookie n&rsquo;est déposé. Si vous refusez, rien n&rsquo;est chargé du tout. L&rsquo;adresse IP est anonymisée, les signaux publicitaires et la personnalisation des annonces sont désactivés.</p>
+            <p style={LI}>Durées&nbsp;: les cookies de Google Analytics (<em>_ga</em>, <em>_ga_*</em>) expirent au plus tard au bout de 13 mois&nbsp;; votre choix, accepter ou refuser, est gardé 6 mois dans votre navigateur, puis la question vous est reposée.</p>
+            <p style={LI}>Vous pouvez retirer ou donner votre accord à tout moment, aussi simplement que vous l&rsquo;avez donné&nbsp;: <LienGererCookies />, également présent en bas de chaque page. Le refus n&rsquo;a aucune conséquence sur l&rsquo;accès au site. Le fondement juridique est votre consentement, au sens de l&rsquo;article 82 de la loi Informatique et Libertés.</p>
+            <p style={LI}>Le site ne comporte aucune régie publicitaire, aucun bouton de partage traçant, aucun pixel de réseau social. En dehors de votre choix ci-dessus, la seule information conservée par votre navigateur est un brouillon temporaire, gardé le temps de vous faire passer d&rsquo;une page à l&rsquo;autre avec votre demande déjà remplie&nbsp;; il disparaît à la fermeture de l&rsquo;onglet et ne quitte jamais votre appareil.</p>
           </div>
 
           <div>
             <h2 style={H2}>Les services techniques que votre navigateur appelle</h2>
             <p style={P}>Afficher une page suppose d&rsquo;aller chercher des fichiers, et l&rsquo;ordinateur qui les envoie voit nécessairement votre adresse IP. Voici la liste exacte, relevée sur le site lui-même et non recopiée d&rsquo;un modèle.</p>
             <p style={LI}><strong>Netlify, Inc.</strong> (San Francisco, États-Unis) héberge le site et reçoit les formulaires. Ses serveurs voient votre adresse IP à chaque page consultée et conservent les messages que vous envoyez.</p>
+            <p style={LI}><strong>Cloudflare, Inc.</strong> (San Francisco, États-Unis) fournit une statistique de fréquentation sans cookie (Cloudflare Web Analytics)&nbsp;: nombre de visites et pages consultées, sans identifiant attaché à votre navigateur ni suivi d&rsquo;une visite à l&rsquo;autre.</p>
+            <p style={LI}><strong>Google Ireland Limited</strong> (Dublin, Irlande), avec sa maison mère Google LLC (États-Unis), fournit Google Analytics 4, uniquement si vous l&rsquo;avez accepté dans le bandeau (voir plus haut).</p>
             <p style={LI}><strong>OpenStreetMap Foundation</strong> (Royaume-Uni) fournit le fond des deux cartes. Uniquement sur les pages Contact et Zone d&rsquo;intervention, et seulement si vous descendez jusqu&rsquo;à la carte&nbsp;: elle n&rsquo;est pas chargée à l&rsquo;ouverture de la page.</p>
             <p style={LI}>Les polices de caractères, la totalité des photographies et la bibliothèque qui dessine les cartes sont servies depuis ce site : aucune requête ne part chez Google, chez une banque d’images ou chez un distributeur de code lorsque vous ouvrez une page.</p>
-            <p style={LI}>Ces sociétés sont établies hors de l&rsquo;Union européenne. Les transferts correspondants sont encadrés par les clauses contractuelles types de la Commission européenne et, pour les sociétés américaines qui y adhèrent, par le cadre de protection des données UE&ndash;États-Unis.</p>
+            <p style={LI}>Netlify, Cloudflare et la fondation OpenStreetMap sont établies hors de l&rsquo;Union européenne, et Google Ireland peut transférer des données à sa maison mère américaine. Les transferts correspondants sont encadrés par les clauses contractuelles types de la Commission européenne et, pour les sociétés américaines qui y adhèrent, par le cadre de protection des données UE&ndash;États-Unis.</p>
           </div>
 
           <div>
@@ -96,7 +104,7 @@ export default function Confidentialite() {
 
           <div>
             <h2 style={H2}>Mise à jour</h2>
-            <p style={P}>Cette politique décrit le site tel qu&rsquo;il fonctionne au 13 octobre 2026. Toute modification du site qui ajouterait ou retirerait un service appelé automatiquement sera reportée ici.</p>
+            <p style={P}>Cette politique décrit le site tel qu&rsquo;il fonctionne au 2 novembre 2026. Toute modification du site qui ajouterait ou retirerait un service appelé automatiquement sera reportée ici.</p>
           </div>
 
         </div>

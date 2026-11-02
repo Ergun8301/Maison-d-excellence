@@ -1,5 +1,7 @@
 'use client';
 
+import { LienGererCookies } from '@/components/BandeauCookies';
+
 import type { Vals } from '@/components/site-vals';
 
 /**
@@ -42,6 +44,10 @@ export default function Mentions(v: Vals) {
               <div>
                 <h2 style={{ margin: "0", fontFamily: "'Cormorant Garamond',serif", fontWeight: "400", fontSize: "clamp(22px,2.6vw,32px)", color: "#111412" }}>Estimations et prix affichés</h2>
                 <p style={{ margin: "12px 0 0", color: "#4a443c", fontSize: "16px", lineHeight: "1.85" }}>Les fourchettes issues du simulateur et les prix de terrains présentés sont donnés à titre indicatif et ne constituent pas une offre contractuelle. Seul un Contrat de Construction de Maison Individuelle signé engage l'entreprise sur un prix et un délai.</p>
+              </div>
+              <div>
+                <h2 style={{ margin: "0", fontFamily: "'Cormorant Garamond',serif", fontWeight: "400", fontSize: "clamp(22px,2.6vw,32px)", color: "#111412" }}>Cookies et mesure d&rsquo;audience</h2>
+                <p style={{ margin: "12px 0 0", color: "#4a443c", fontSize: "16px", lineHeight: "1.85" }}>Avec votre accord seulement, le site mesure son audience avec Google Analytics 4 (cookies conservés 13 mois au plus, choix gardé 6 mois). Sans accord, aucun cookie n&rsquo;est déposé. Vous pouvez changer d&rsquo;avis à tout moment&nbsp;: <LienGererCookies />. Le détail figure dans la <a href="/politique-confidentialite" style={{ color: "#2E5A49" }}>politique de confidentialité</a>.</p>
               </div>
             </div>
           </section>

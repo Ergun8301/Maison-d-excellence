@@ -11,6 +11,8 @@ import { toJsx } from './tojsx.mjs';
  * danger ; les autres sont à reporter ou à refaire :
  *
  *  - logo de l'en-tête (components/SiteHeader.tsx) ;
+ *  - bouton « Gérer les cookies » du pied de page (SiteFooter.tsx) et section
+ *    « Cookies et mesure d'audience » des mentions légales (Mentions.tsx) ;
  *  - lien « Extension » du menu (bureau et mobile, SiteHeader.tsx), qui
  *    remplace le lien secondaire « Rénovation & extension » du menu mobile,
  *    et libellé « Rénovation et extension » du pied de page (SiteFooter.tsx) ;

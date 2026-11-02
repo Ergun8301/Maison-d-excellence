@@ -13,6 +13,8 @@ import { useRouter } from 'next/navigation';
 import type { ChangeEvent, FormEvent, MouseEvent, ReactNode } from 'react';
 
 import SiteHeader from '@/components/SiteHeader';
+import BandeauCookies from '@/components/BandeauCookies';
+import { EVT_FORMULAIRE } from '@/lib/mesure';
 import SiteFooter from '@/components/SiteFooter';
 import type { Opt, Vals } from '@/components/site-vals';
 import { SiteRuntime } from '@/lib/site-runtime';
@@ -171,6 +173,11 @@ async function envoyerANetlify(form: HTMLFormElement): Promise<boolean> {
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: donnees.toString(),
     });
+    // Envoi réussi : signalé au suivi d'audience (lib/mesure.ts), qui ne
+    // transmet que le nom du formulaire, et seulement avec consentement.
+    if (reponse.ok) {
+      window.dispatchEvent(new CustomEvent(EVT_FORMULAIRE, { detail: form.getAttribute('name') || 'formulaire' }));
+    }
     return reponse.ok;
   } catch {
     return false;
@@ -525,6 +532,7 @@ export default function Site({
       <SiteHeader {...v} />
       <SiteView vals={v}>{children}</SiteView>
       <SiteFooter {...v} />
+      <BandeauCookies />
     </div>
   );
 }
