@@ -1,6 +1,7 @@
 'use client';
 
 import type { Vals } from '@/components/site-vals';
+import { gererCookies } from '@/components/BandeauCookies';
 
 /**
  * SiteFooter — balisage repris tel quel de la maquette Claude Design.
@@ -54,6 +55,7 @@ export default function SiteFooter(v: Vals) {
                     <a href="/construction-maison-amberieu-en-bugey" className="me-link" style={{ textDecoration: "none", color: "rgba(247,247,244,0.72)", fontSize: "14.5px" }} style-hover="color:#9CC4B2;">Construire à Ambérieu-en-Bugey</a>
                     <a href="/mentions-legales" onClick={goMentions} className="me-link" style={{ textDecoration: "none", color: "rgba(247,247,244,0.72)", fontSize: "14.5px" }} style-hover="color:#9CC4B2;">Mentions légales</a>
                     <a href="/politique-confidentialite" onClick={goConfidentialite} className="me-link" style={{ textDecoration: "none", color: "rgba(247,247,244,0.72)", fontSize: "14.5px" }} style-hover="color:#9CC4B2;">Politique de confidentialité</a>
+                    <button type="button" onClick={gererCookies} className="me-link" style={{ padding: "0", border: "0", background: "none", cursor: "pointer", textAlign: "left", font: "inherit", color: "rgba(247,247,244,0.72)", fontSize: "14.5px" }} style-hover="color:#9CC4B2;">Gérer les cookies</button>
                   </div>
                 </div>
                 <div>

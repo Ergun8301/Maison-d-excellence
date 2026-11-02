@@ -383,3 +383,33 @@ a:hover{color:#111412;}
   /* Boutons sur toute la largeur du texte : alignés avec lui, de bord à bord. */
   .me-ext-bandeau-cta{flex-direction:column;align-items:stretch;width:100%;}
 }
+
+/* Bandeau de consentement (components/BandeauCookies.tsx). Couleurs, police,
+   rayons et ombre du site : fond encre, texte crème, surtitre vert d'eau à
+   filet, boutons en pilule. « Accepter » et « Refuser » partagent la même
+   classe : même taille, même poids visuel. */
+.me-consent{position:fixed;z-index:140;left:clamp(16px,2vw,28px);bottom:clamp(16px,2vw,28px);width:min(440px,calc(100vw - 32px));box-sizing:border-box;padding:22px 22px 20px;background:#111412;color:#F7F7F4;border:1px solid rgba(247,247,244,0.12);border-radius:10px;box-shadow:0 40px 80px -40px rgba(0,0,0,.8);font-family:'Manrope',system-ui,sans-serif;opacity:0;transform:translateY(16px);transition:opacity .45s cubic-bezier(.16,.84,.44,1),transform .45s cubic-bezier(.16,.84,.44,1);}
+.me-consent-visible{opacity:1;transform:none;}
+.me-consent-titre{display:flex;align-items:center;gap:12px;color:#9CC4B2;font-size:11.5px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;}
+.me-consent-titre span{width:28px;height:1px;background:#9CC4B2;}
+.me-consent-texte{margin:12px 0 0;font-size:14px;line-height:1.65;color:rgba(247,247,244,0.86);}
+.me-consent-texte a{color:#9CC4B2;text-decoration:underline;text-underline-offset:3px;}
+.me-consent-texte a:hover{color:#F7F7F4;}
+.me-consent-boutons{display:flex;gap:10px;margin-top:16px;}
+.me-consent-bouton{flex:1 1 0;min-height:44px;padding:0 20px;border-radius:100px;border:1px solid rgba(247,247,244,0.45);background:rgba(247,247,244,0.06);color:#F7F7F4;font:600 14px/1 'Manrope',system-ui,sans-serif;cursor:pointer;transition:background .3s,border-color .3s,transform .45s cubic-bezier(.16,.84,.44,1);}
+.me-consent-bouton:hover{background:rgba(247,247,244,0.14);border-color:#F7F7F4;transform:translateY(-2px);}
+.me-consent a:focus-visible,.me-consent-bouton:focus-visible{outline:2px solid #9CC4B2;outline-offset:3px;}
+/* Pendant que le bandeau est ouvert, les boutons flottants passent au-dessus
+   sur téléphone (sur ordinateur, le bandeau est à gauche, eux à droite). */
+@media(max-width:600px){
+  .me-consent{left:12px;right:12px;bottom:12px;width:auto;padding:18px 18px 16px;}
+  html.me-consent-ouvert .me-wa{bottom:calc(var(--me-consent-h,0px) + 24px) !important;}
+  html.me-consent-ouvert [data-totop]{bottom:calc(var(--me-consent-h,0px) + 96px) !important;}
+}
+@media(prefers-reduced-motion:reduce){
+  .me-consent,.me-consent-bouton{transition:none;}
+  .me-consent{transform:none;}
+}
+.me-consent-lien{padding:0;border:0;background:none;font:inherit;color:#2E5A49;text-decoration:underline;text-underline-offset:3px;cursor:pointer;}
+.me-consent-lien:hover{color:#3B7059;}
+.me-consent-lien:focus-visible{outline:2px solid #2E5A49;outline-offset:3px;}

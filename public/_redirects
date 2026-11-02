@@ -1,0 +1,9 @@
+# Anciennes adresses du site précédent, redirigées en 301 vers leur équivalent.
+# Fichier lu par Netlify (copié tel quel dans out/ à la construction).
+# Netlify applique la même règle avec ou sans barre oblique finale.
+/lentreprise              /entreprise       301
+/lentreprise/             /entreprise       301
+/savoir-faire             /entreprise       301
+/savoir-faire/            /entreprise       301
+/questions-frequentes     /entreprise#faq   301
+/questions-frequentes/    /entreprise#faq   301
