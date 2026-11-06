@@ -3,6 +3,8 @@ import type { PageLocale } from '@/lib/data/locales';
 import { faqJsonLd } from '@/lib/faq-jsonld';
 import { PHONE_DISPLAY, PHONE_HREF } from '@/lib/site';
 import { rendreTexte } from '@/lib/texte';
+import { LOCALE_PAR_SLUG } from '@/lib/data/locales';
+import { COMMUNES_PROCHES } from '@/lib/data/proximite';
 
 /**
  * Page locale — les trois pôles et les sept communes rattachées.
@@ -51,6 +53,12 @@ const SURTITRE_VERT = {
 
 export default function Locale({ page }: { page: PageLocale }) {
   const [titreDebut, titreCommune, titreRepere] = page.h1;
+  // Les pages locales les plus proches, avec leur nom : une entrée dont la page
+  // n'existe pas est ignorée plutôt que rendue en lien mort.
+  const proches = (COMMUNES_PROCHES[page.slug] ?? []).flatMap(([slug, km]) => {
+    const voisine = LOCALE_PAR_SLUG[slug];
+    return voisine ? [{ slug, commune: voisine.commune, km }] : [];
+  });
 
   return (
     <main data-screen-label={page.commune}>
@@ -194,6 +202,36 @@ export default function Locale({ page }: { page: PageLocale }) {
           </p>
         </div>
       </section>
+
+      {/* Communes voisines — les pages locales les plus proches, de la plus
+          proche à la plus éloignée. Sur toutes les pages, pôles compris : le
+          bloc voisin des pages de pôle, plus haut, décrit des communes qui
+          n'ont pas toutes une page ; celui-ci ne mène qu'à des pages qui
+          existent. Mêmes styles que ce bloc. */}
+      {proches.length > 0 && (
+        <section style={{ background: "#F7F7F4", padding: "clamp(48px,6vw,80px) 0" }}>
+          <div style={{ maxWidth: "1440px", margin: "0 auto", padding: "0 clamp(20px,5vw,64px)" }}>
+            <div style={{ display: "inline-flex", alignItems: "center", gap: "12px", marginBottom: "16px" }}>
+              <span style={{ width: "42px", height: "1px", background: "#2E5A49" }}></span>
+              <span style={SURTITRE_VERT}>Autour de {page.commune}</span>
+            </div>
+            <h2 style={{ ...H2, maxWidth: "24ch" }}>Communes voisines</h2>
+            <p style={{ ...P, maxWidth: "70ch" }}>
+              Les communes les plus proches de {page.commune} où nous construisons aussi. Distances à vol d&rsquo;oiseau&nbsp;: par la route, comptez un peu plus.
+            </p>
+            <ul className="me-g3" style={{ listStyle: "none", margin: "clamp(26px,3vw,40px) 0 0", padding: "0", gap: "clamp(14px,1.6vw,22px) clamp(24px,3vw,48px)" }}>
+              {proches.map(({ slug, commune, km }) => (
+                <li key={slug} style={{ paddingTop: "16px", borderTop: "1px solid rgba(17,20,18,0.12)" }}>
+                  <a href={`/${slug}`} className="me-link" style={{ display: "block", textDecoration: "none", fontFamily: "'Cormorant Garamond',serif", fontWeight: "500", fontSize: "20px", color: "#2E5A49" }} style-hover="color:#111412;">
+                    Construire à {commune} →
+                  </a>
+                  <span style={{ display: "block", margin: "6px 0 0", fontSize: "14px", lineHeight: "1.65", color: "#565B56" }}>À environ {km}&nbsp;km de {page.commune}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+      )}
     </main>
   );
 }
