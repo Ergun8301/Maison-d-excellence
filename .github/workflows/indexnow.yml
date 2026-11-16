@@ -1,0 +1,65 @@
+# IndexNow : prévenir Bing après chaque mise en ligne réussie sur Netlify.
+#
+# Netlify publie tout seul à chaque push sur main, sans rien signaler à
+# GitHub. Pour n'envoyer qu'une fois la nouvelle version réellement en ligne,
+# le travail attend que le plan du site publié (sitemap.xml) porte une date
+# de construction postérieure à ce commit : cette date est écrite à chaque
+# construction, donc elle ne change que lorsque la nouvelle version est servie.
+# Si la construction échoue, la date ne bouge pas, le délai expire et rien
+# n'est envoyé.
+#
+# L'envoi lui-même est fait par scripts/indexnow.mjs, qui relit aussi le
+# fichier clé sur le site avant d'écrire à api.indexnow.org.
+# Lancement à la main possible (onglet Actions), sans attente.
+
+name: IndexNow
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: indexnow
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  envoyer:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      SITE: https://maisons-dexcellence.fr
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Attendre que la nouvelle version soit en ligne
+        env:
+          COMMIT_A: ${{ github.event.head_commit.timestamp }}
+        run: |
+          if [ -n "$COMMIT_A" ]; then DEPUIS=$(date -d "$COMMIT_A" +%s); else DEPUIS=0; fi
+          mkdir -p out
+          for essai in $(seq 1 50); do
+            if curl -fsS --max-time 30 "$SITE/sitemap.xml?v=$essai$RANDOM" -o out/sitemap.xml; then
+              LU=$(grep -o '<lastmod>[^<]*' out/sitemap.xml | head -1 | cut -c10-)
+              if [ -n "$LU" ] && [ "$(date -d "$LU" +%s)" -ge "$DEPUIS" ]; then
+                echo "En ligne : construction du $LU (commit : ${COMMIT_A:-manuel})"
+                exit 0
+              fi
+              echo "Essai $essai : version publiée du ${LU:-inconnue}, on attend."
+            else
+              echo "Essai $essai : plan du site illisible, on attend."
+            fi
+            sleep 30
+          done
+          echo "La nouvelle version n'est pas en ligne après 25 minutes : rien n'est envoyé."
+          exit 1
+
+      - name: Envoyer les adresses du plan à IndexNow
+        run: node scripts/indexnow.mjs --envoyer --site="$SITE"
