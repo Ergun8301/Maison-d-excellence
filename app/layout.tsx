@@ -3,6 +3,7 @@ import { SITE_URL } from '@/lib/site';
 import { ORGANISATION_JSONLD } from '@/lib/jsonld';
 import './fonts.css';
 import './design.css';
+import './signature-ippyx.css';
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
