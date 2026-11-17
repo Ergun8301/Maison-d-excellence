@@ -127,10 +127,10 @@ export const ORGANISATION_JSONLD = {
   })),
   // `sameAs` relie l'entité décrite ici à ses profils publics. La fiche
   // Google est celle qui porte les avis de l'établissement. Instagram est le
-  // compte du client, lié dans le pied de page. La page Facebook, introuvable,
-  // a été retirée d'ici comme du site.
+  // compte du client, lié dans le pied de page, comme la page Facebook.
   "sameAs": [
     "https://www.instagram.com/maisonsdexcellence",
+    "https://www.facebook.com/profile.php?id=100071168793076",
     "https://search.google.com/local/reviews?placeid=ChIJ93t0HkWz9EcRIXzMIN2ZCAE"
   ],
   "knowsAbout": [

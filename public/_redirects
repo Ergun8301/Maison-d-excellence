@@ -3,7 +3,7 @@
 # Netlify applique la même règle avec ou sans barre oblique finale.
 /lentreprise              /entreprise       301
 /lentreprise/             /entreprise       301
-/savoir-faire             /entreprise       301
-/savoir-faire/            /entreprise       301
-/questions-frequentes     /entreprise#faq   301
-/questions-frequentes/    /entreprise#faq   301
+/savoir-faire              /renovation-extension       301
+/savoir-faire/            /renovation-extension       301
+/questions-frequentes     /                 301
+/questions-frequentes/    /                 301
