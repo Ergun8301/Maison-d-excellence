@@ -14,7 +14,7 @@ export type MetaEntry = readonly [title: string, description: string, slug: stri
 
 export const META = {
       'accueil': ['Constructeur de maison individuelle dans l’Ain | Maisons d’Excellence', 'Maisons neuves sur-mesure à Meximieux, Bourg-en-Bresse et Ambérieu : plans personnalisés, CCMI à prix ferme, RE2020. 5,0/5 sur 36 avis Google.', ''],
-      'modeles': ['Nos modèles de maisons dans l’Ain | Maisons d’Excellence', 'Maison plain-pied ou à étage, en briques ou béton cellulaire : chaque plan de maison individuelle est redessiné sur-mesure autour de votre terrain.', 'nos-modeles'],
+      'modeles': ['Maison sur mesure dans l’Ain | Maisons d’Excellence', 'Constructeur de maison sur mesure dans l’Ain : plain-pied ou étage, brique ou béton cellulaire, chaque plan redessiné autour de votre terrain.', 'nos-modeles'],
       'realisations': ['Nos réalisations de maisons neuves dans l’Ain', 'Maisons traditionnelles et contemporaines construites à Meximieux, Pérouges et Montluel : brique, béton cellulaire, charpente traditionnelle.', 'realisations'],
       'entreprise': ['L’entreprise : savoir-faire et garanties CCMI', 'Constructeur à taille humaine dans l’Ain : plans sur-mesure, brique ou siporex, charpente traditionnelle, RE2020, CCMI et garantie décennale.', 'entreprise'],
       'contact': ['Contacter un constructeur à Meximieux | Maisons d’Excellence', 'Parlons de votre projet : 6 rue de Genève, 01800 Meximieux, 04 74 34 66 43, WhatsApp. Premier rendez-vous gratuit, réponse sous 48 h ouvrées.', 'contact'],
