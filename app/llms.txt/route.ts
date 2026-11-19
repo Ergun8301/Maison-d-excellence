@@ -51,7 +51,7 @@ export function GET(): Response {
   Marboz, Montrevel-en-Bresse, Polliat, Servas, Jasseron, Buellas, Montluel,
   Lagnieu, Pont-d'Ain, Dagneux, Saint-Denis-en-Bugey, Château-Gaillard,
   Bourg-Saint-Christophe, Villieu-Loyes-Mollon, Pérouges, Miribel,
-  Villars-les-Dombes et Chalamont, ainsi que
+  Villars-les-Dombes, Chalamont, Mézériat et Châtillon-sur-Chalaronne, ainsi que
   Villefranche-sur-Saône
 - Contrat : CCMI, prix ferme et définitif, délai contractuel de 12 mois de
   chantier avec pénalités de retard, garantie de livraison à prix et délais convenus
