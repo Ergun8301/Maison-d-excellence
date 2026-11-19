@@ -73,6 +73,7 @@
  */
 
 import { LOCALES_COMMUNES_2 } from '@/lib/data/locales-communes-2';
+import { LOCALES_COMMUNES_3 } from '@/lib/data/locales-communes-3';
 
 export type QuestionLocale = { readonly q: string; readonly r: string };
 export type BlocLocal = { readonly titre: string; readonly paragraphes: readonly string[] };
@@ -1060,6 +1061,9 @@ export const LOCALES: readonly PageLocale[] = [
 
   /* ══ HUIT COMMUNES DE PLUS ══════════════════════════════════════════════ */
   ...LOCALES_COMMUNES_2,
+
+  /* ══ CINQ COMMUNES DE PLUS ══════════════════════════════════════════════ */
+  ...LOCALES_COMMUNES_3,
 ];
 
 /** Accès par slug, pour les pages. */
