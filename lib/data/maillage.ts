@@ -23,9 +23,11 @@ export type BlocMaillage = {
 
 export const MAILLAGE = {
   modeles: {
-    surtitre: 'Un plan pour chaque terrain',
-    titre: 'Plain-pied ou à étage : le terrain décide',
+    surtitre: 'Maison sur mesure dans l’Ain',
+    titre: 'Une maison sur mesure, du plan aux clés',
     paragraphes: [
+      'Une maison sur mesure ne part pas d’un plan de catalogue : elle part de votre terrain et de votre façon de vivre. Nous dessinons le plan, nous déposons le permis de construire pour vous, et le prix est fixé par un contrat de construction de maison individuelle (CCMI) : un prix ferme, avec les garanties légales du constructeur. Nous construisons sur 30 km autour de [Meximieux](/construction-maison-meximieux), de [Bourg-en-Bresse](/construction-maison-bourg-en-bresse) et d’[Ambérieu-en-Bugey](/construction-maison-amberieu-en-bugey).',
+      'Les huit modèles de cette page sont des points de départ. Plain-pied, à étage ou éco-conçue, en brique ou en béton cellulaire, chaque maison est conforme à la RE2020 et se redessine pièce par pièce. Le premier rendez-vous au bureau est gratuit et sans engagement : venez avec le plan cadastral de votre parcelle, ou [chiffrez votre projet en une minute](/#estimation).',
       'Chaque modèle se redessine autour de votre parcelle : une maison personnalisée, en briques ou en béton cellulaire, livrée clé en main ou hors d’eau hors d’air selon votre projet. Sur un terrain en pente, voyez [sous-sol, demi-niveaux ou plateforme à Ambérieu-en-Bugey](/construction-maison-amberieu-en-bugey) ; sur un terrain de coteau, [plateforme ou sous-sol à Ceyzériat](/construction-maison-ceyzeriat) ; sur une petite parcelle de la Côtière, [pourquoi la maison à étage s’impose souvent à Montluel](/construction-maison-montluel).',
       'En Bresse, c’est le sol qui commande : [les études de sol G1 et G2 à Bourg-en-Bresse](/construction-maison-bourg-en-bresse) pèsent sur les fondations et sur le vide sanitaire. En pleine plaine, [la maison de plain-pied à Lagnieu](/construction-maison-lagnieu) est souvent la solution la plus simple. Pour le prix de chaque configuration, voyez [le budget réel d’une maison de 100 m²](/blog/budget-maison-100m2).',
     ],
