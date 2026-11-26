@@ -1,6 +1,7 @@
 import { SITE_URL } from '@/lib/site';
 import { COMPANY, PHONE_DISPLAY, EMAIL } from '@/lib/site';
 import { FAQ } from '@/lib/data/faq';
+import { ARTICLES } from '@/lib/data/articles';
 
 /**
  * llms.txt — résumé du site à l'usage des moteurs de réponse.
@@ -65,6 +66,10 @@ export function GET(): Response {
 ## Pages
 
 ${pages.map(([url, titre]) => `- [${titre}](${SITE_URL}${url})`).join('\n')}
+
+## Guides
+
+${ARTICLES.map((a) => `- [${a.title}](${SITE_URL}/blog/${a.slug}) : ${'seoDescription' in a ? a.seoDescription : a.excerpt}`).join('\n')}
 
 ## Questions fréquentes
 
