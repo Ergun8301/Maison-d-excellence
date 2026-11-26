@@ -1,15 +1,14 @@
 import type { Metadata } from 'next';
 import Site from '@/components/Site';
-import Locale from '@/components/views/Locale';
+import View from '@/components/hosts/ExtensionVilleHost';
 import { pageMetadata } from '@/lib/seo';
-import { EXTENSION_PAR_SLUG } from '@/lib/data/locales-extension';
 
 export const metadata: Metadata = pageMetadata('extAmberieu');
 
 export default function Page() {
   return (
     <Site page="locale">
-      <Locale page={EXTENSION_PAR_SLUG['extension-maison-amberieu-en-bugey']} />
+      <View slug="extension-maison-amberieu-en-bugey" />
     </Site>
   );
 }
