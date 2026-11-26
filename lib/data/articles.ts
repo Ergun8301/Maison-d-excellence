@@ -149,8 +149,8 @@ export const ARTICLES = [
     "date": "9 avril 2026",
     "read": "7 min",
     "title": "Comment fonctionne l’échéancier de paiement d’un CCMI",
-    "seoTitle": "L’échéancier de paiement d’un CCMI, étape par étape",
-    "seoDescription": "Les appels de fonds d’un CCMI sont plafonnés par la loi et suivent l’avancement du chantier : vous ne payez jamais en avance. Explication étape par étape.",
+    "seoTitle": "Échéancier CCMI : les % à payer à chaque étape",
+    "seoDescription": "Barème légal d’un CCMI : 15 % à l’ouverture du chantier jusqu’à 95 % à l’achèvement des équipements. Vous ne payez jamais en avance.",
     "excerpt": "Vous ne payez jamais en avance : les appels de fonds d’un CCMI sont plafonnés par la loi et suivent l’avancement réel du chantier. Explication étape par étape.",
     "img": "/photos/blog-echeancier-ccmi.webp",
     "alt": "Personne devant un écran d’ordinateur affichant des lignes de code",
@@ -174,6 +174,176 @@ export const ARTICLES = [
       {
         "h": "La garantie de livraison, filet de sécurité",
         "p": "Un établissement financier garantit l’achèvement de votre maison au prix et dans les délais convenus, même en cas de défaillance du constructeur. Demandez systématiquement l’attestation : sur un projet à 250 000 €, c’est le document qui vous protège vraiment. Ces règles valent pour tous [nos modèles de maisons](/nos-modeles), de plain-pied ou à étage, et pour toute notre zone, de [Meximieux](/construction-maison-meximieux) à [Bourg-en-Bresse](/construction-maison-bourg-en-bresse)."
+      }
+    ]
+  },
+  {
+    "slug": "vivre-chez-soi-pendant-extension",
+    "cat": "Extension",
+    "date": "26 novembre 2026",
+    "read": "5 min",
+    "title": "Vivre chez soi pendant une extension de maison : ce qui se passe vraiment",
+    "seoTitle": "Habiter chez soi pendant une extension de maison",
+    "seoDescription": "Peut-on rester chez soi pendant une extension ? Poussière, bruit, coupures, ouverture du mur : comment le chantier s’organise pour que la maison reste habitable.",
+    "excerpt": "Dans la plupart des cas, oui, on reste chez soi. L’extension se construit à côté de la maison ; elle ne la traverse qu’à la fin, au moment d’ouvrir le mur.",
+    "img": "/extension/extension-cube-blanc-jardin.webp",
+    "alt": "Extension cubique blanche accolée à une maison au bardage sombre, côté jardin",
+    "body": [
+      {
+        "h": "Dehors d’abord, dedans à la fin",
+        "p": "Une extension se construit le long de la maison, pas dedans. Fondations, murs, toiture et menuiseries se font à l’extérieur, pendant que vous vivez normalement. La maison n’est touchée qu’à la fin, quand la nouvelle pièce est fermée et couverte."
+      },
+      {
+        "h": "Le moment délicat : ouvrir le mur",
+        "p": "Relier l’extension à la maison demande d’ouvrir un mur existant. C’est l’étape qui fait de la poussière et du bruit, et elle ne dure en général que quelques jours. On protège les pièces voisines par des bâches et des cloisons provisoires, et l’ouverture se fait quand l’extension est déjà hors d’eau : la maison n’est jamais ouverte à la pluie. Pour un mur porteur, voyez [ce que demande l’ouverture d’un mur porteur](/blog/ouvrir-mur-porteur-extension)."
+      },
+      {
+        "h": "Bruit, accès, coupures : à prévoir",
+        "p": "Les engins de terrassement et la maçonnerie font du bruit aux heures de chantier. L’accès au jardin est occupé pendant le gros œuvre. Le raccordement électrique ou de plomberie peut demander de courtes coupures, annoncées à l’avance. Avec de jeunes enfants ou du télétravail, mieux vaut connaître le calendrier pour organiser ces journées."
+      },
+      {
+        "h": "Quand vaut-il mieux partir ?",
+        "p": "Si l’extension transforme aussi l’intérieur (cuisine déplacée, salle de bains refaite, plusieurs murs ouverts), la maison peut devenir difficile à habiter quelques semaines. Cela se décide au moment du plan, pas en cours de chantier."
+      },
+      {
+        "h": "Ce que nous faisons pour vous",
+        "p": "Nous étudions la jonction avec la maison en premier et vous donnons un calendrier qui dit quand la maison sera touchée. Pour le panorama complet, voyez [notre page extension de maison](/renovation-extension), ou nos pages [extension à Bourg-en-Bresse](/extension-maison-bourg-en-bresse), [à Meximieux](/extension-maison-meximieux) et [à Ambérieu-en-Bugey](/extension-maison-amberieu-en-bugey)."
+      }
+    ]
+  },
+  {
+    "slug": "ouvrir-mur-porteur-extension",
+    "cat": "Extension",
+    "date": "26 novembre 2026",
+    "read": "5 min",
+    "title": "Ouvrir un mur porteur pour relier une extension à la maison",
+    "seoTitle": "Ouvrir un mur porteur pour une extension",
+    "seoDescription": "Relier une extension demande souvent d’ouvrir un mur porteur : calcul de la poutre, étaiement, mur mitoyen. Les étapes et les précautions, sans jargon.",
+    "excerpt": "Pour que l’extension prolonge vraiment la pièce de vie, il faut souvent ouvrir un mur porteur. C’est courant, à condition de le calculer avant de le casser.",
+    "img": "/extension/extension-baies-vitrees-salon-jardin.webp",
+    "alt": "Illustration : extension enduite à toit plat ouverte sur une terrasse, et son séjour lumineux vu de l’intérieur",
+    "body": [
+      {
+        "h": "Porteur ou pas : la première question",
+        "p": "Un mur porteur soutient un plancher, une charpente ou un étage. Le mur de façade sur lequel on accole une extension l’est presque toujours. On ne l’ouvre pas « au jugé » : la largeur de l’ouverture et ce qu’elle supporte se vérifient avant le chantier."
+      },
+      {
+        "h": "Une poutre calculée, pas devinée",
+        "p": "Pour remplacer le mur ouvert, on pose une poutre (béton, acier ou bois) qui reprend les charges et les reporte sur des appuis solides. Sa taille se calcule selon la portée et le poids à porter ; pour une grande ouverture ou un étage au-dessus, ce calcul relève d’un bureau d’études structure."
+      },
+      {
+        "h": "L’étaiement pendant les travaux",
+        "p": "Pendant l’ouverture, des étais soutiennent provisoirement le plancher ou la toiture. Ils restent en place jusqu’à ce que la poutre soit posée et prise. C’est une étape courte, mais c’est celle qui ne s’improvise pas."
+      },
+      {
+        "h": "Mur mitoyen : l’accord du voisin",
+        "p": "Si le mur est mitoyen, il appartient aux deux propriétaires. L’ouvrir ou le modifier demande l’accord du voisin, idéalement par écrit, avant de déposer le dossier."
+      },
+      {
+        "h": "Faut-il une autorisation pour l’ouverture ?",
+        "p": "Ouvrir un mur intérieur ne demande pas d’autorisation d’urbanisme en soi. C’est l’extension qui en demande une : déclaration préalable ou permis selon la surface, comme l’explique [notre page extension de maison](/renovation-extension). Si la façade change, l’ouverture est décrite dans le même dossier."
+      }
+    ]
+  },
+  {
+    "slug": "duree-extension-maison",
+    "cat": "Extension",
+    "date": "26 novembre 2026",
+    "read": "5 min",
+    "title": "Combien de temps pour une extension de maison, du projet aux clés ?",
+    "seoTitle": "Durée d’une extension de maison : délais réels",
+    "seoDescription": "Instruction de la déclaration ou du permis, recours des tiers, chantier : combien de temps dure une extension de maison, étape par étape, dans l’Ain.",
+    "excerpt": "Le chantier n’est qu’une partie du délai. Entre le premier plan et l’entrée dans la nouvelle pièce, il faut compter les études, l’instruction et le délai de recours.",
+    "img": "/extension/extension-bois-gris-terrasse.webp",
+    "alt": "Extension à bardage bois et gris prolongée par une terrasse",
+    "body": [
+      {
+        "h": "1. Étude et plans",
+        "p": "Visite de la maison, relevé, lecture du PLU, plans. Selon le projet et vos allers-retours sur le dessin, cette phase prend quelques semaines."
+      },
+      {
+        "h": "2. L’instruction du dossier",
+        "p": "Une déclaration préalable s’instruit en 1 mois, un permis de construire de maison individuelle en 2 mois, à partir d’un dossier complet. Si l’avis de l’Architecte des Bâtiments de France est requis (près d’un monument protégé, comme à [Meximieux, près de Pérouges](/extension-maison-meximieux)), comptez 2 mois pour une déclaration et 3 pour un permis."
+      },
+      {
+        "h": "3. Le délai de recours des tiers",
+        "p": "Une fois l’autorisation obtenue et affichée sur le terrain, les tiers disposent de 2 mois pour la contester. Beaucoup de banques et de propriétaires attendent la fin de ce délai pour commencer les travaux."
+      },
+      {
+        "h": "4. Le chantier",
+        "p": "Sa durée dépend de la surface, de la structure et du terrain. Une ossature bois, préparée en atelier, se monte plus vite qu’une maçonnerie ; un terrain en pente, comme souvent [à Ambérieu-en-Bugey](/extension-maison-amberieu-en-bugey), ajoute du terrassement. Nous donnons le délai après la visite, pas avant."
+      },
+      {
+        "h": "Comment gagner du temps",
+        "p": "Un dossier complet dès le dépôt évite les demandes de pièces qui relancent le délai. Lire le PLU et le règlement de lotissement avant de dessiner évite un refus. Voyez les étapes détaillées sur [notre page extension de maison](/renovation-extension)."
+      }
+    ]
+  },
+  {
+    "slug": "assurances-garanties-extension",
+    "cat": "Extension",
+    "date": "26 novembre 2026",
+    "read": "5 min",
+    "title": "Extension de maison : quelles assurances et quelles garanties ?",
+    "seoTitle": "Extension : garantie décennale, dommages-ouvrage",
+    "seoDescription": "Décennale, dommages-ouvrage, parfait achèvement, biennale : les garanties qui protègent une extension de maison, et l’assurance habitation à prévenir.",
+    "excerpt": "Une extension est une construction comme une autre : elle bénéficie des mêmes garanties légales qu’une maison neuve. Voici lesquelles, et ce qu’elles couvrent.",
+    "img": "/extension/extension-maconnee-enduit-blanc-garage.webp",
+    "alt": "Extension maçonnée enduite en blanc, avec porte de garage, accolée à une maison à étage",
+    "body": [
+      {
+        "h": "La garantie décennale du constructeur",
+        "p": "Tout constructeur doit être assuré en responsabilité décennale. Pendant 10 ans après la réception, elle couvre les dommages qui compromettent la solidité de l’ouvrage ou le rendent impropre à sa destination : fissure structurelle, infiltration par la toiture, affaissement. Demandez l’attestation avant de signer."
+      },
+      {
+        "h": "L’assurance dommages-ouvrage",
+        "p": "La loi impose au propriétaire qui fait construire de souscrire une assurance dommages-ouvrage avant l’ouverture du chantier. Elle préfinance la réparation des désordres de nature décennale, sans attendre de savoir qui est responsable."
+      },
+      {
+        "h": "Parfait achèvement et bon fonctionnement",
+        "p": "Pendant 1 an après la réception, la garantie de parfait achèvement oblige l’entreprise à reprendre tous les défauts signalés. Pendant 2 ans, la garantie de bon fonctionnement couvre les équipements dissociables : volets, menuiseries intérieures, robinetterie."
+      },
+      {
+        "h": "La jonction avec la maison existante",
+        "p": "L’endroit le plus sensible est la liaison entre l’extension et la maison. Elle doit être décrite dans le devis : c’est ce qui permet de savoir clairement quelle entreprise en répond. Nous l’étudions en premier, voyez [notre page extension de maison](/renovation-extension)."
+      },
+      {
+        "h": "Prévenir son assureur habitation",
+        "p": "La surface de la maison change : votre contrat multirisque habitation doit être mis à jour à la fin des travaux, faute de quoi la nouvelle pièce pourrait être mal couverte."
+      }
+    ]
+  },
+  {
+    "slug": "extension-voisins-limite-propriete",
+    "cat": "Extension",
+    "date": "26 novembre 2026",
+    "read": "6 min",
+    "title": "Extension et voisins : limite de propriété, distances et vues",
+    "seoTitle": "Extension en limite de propriété : les règles",
+    "seoDescription": "Construire une extension près du voisin : PLU, distance de la limite, vues droites de 1,90 m, mur mitoyen, recours. Les règles à vérifier avant de dessiner.",
+    "excerpt": "Une extension se pose souvent près de la clôture. Trois séries de règles décident de ce qui est permis : le PLU, le Code civil pour les vues, et la mitoyenneté.",
+    "img": "/extension/extension-grise-maison-blanche-jardin.webp",
+    "alt": "Extension grise à toit plat accolée à une maison blanche, vue depuis le jardin",
+    "body": [
+      {
+        "h": "Le PLU fixe la distance à la limite",
+        "p": "Le règlement du PLU dit si l’on peut construire en limite de propriété ou s’il faut garder un recul, et lequel. Il se lit sur le Géoportail de l’urbanisme ou en mairie. Dans une commune sans PLU, une règle nationale s’applique : hors limite, la distance doit être au moins égale à la moitié de la hauteur de la construction, sans descendre sous 3 mètres."
+      },
+      {
+        "h": "Les vues sur le voisin : le Code civil",
+        "p": "Une fenêtre qui regarde directement chez le voisin (vue droite) doit être à au moins 1,90 mètre de la limite ; une vue de biais (vue oblique), à 0,60 mètre. Près de la limite, on choisit donc un mur aveugle, des châssis fixes à verre opaque, ou des ouvertures orientées vers son propre jardin."
+      },
+      {
+        "h": "Mur mitoyen et clôture",
+        "p": "S’appuyer sur un mur mitoyen ou le surélever demande l’accord du voisin. Construire en limite sur son propre terrain se fait sans son accord, à condition de respecter le PLU, mais les travaux peuvent nécessiter de passer chez lui : mieux vaut en parler tôt."
+      },
+      {
+        "h": "Le droit de recours du voisin",
+        "p": "Après affichage de la déclaration ou du permis sur le terrain, un voisin dispose de 2 mois pour la contester. Un projet expliqué en amont limite ce risque ; un projet conforme au PLU le rend rarement fondé."
+      },
+      {
+        "h": "Lotissement : un règlement de plus",
+        "p": "En lotissement, comme souvent [autour de Bourg-en-Bresse](/extension-maison-bourg-en-bresse), un règlement propre peut ajouter des reculs ou des règles d’aspect. Nous lisons PLU et règlement avant de dessiner : voyez [notre page extension de maison](/renovation-extension)."
       }
     ]
   }

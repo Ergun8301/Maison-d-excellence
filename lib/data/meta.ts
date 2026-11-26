@@ -13,7 +13,7 @@
 export type MetaEntry = readonly [title: string, description: string, slug: string];
 
 export const META = {
-      'accueil': ['Constructeur de maison individuelle dans l’Ain | Maisons d’Excellence', 'Maisons neuves sur-mesure à Meximieux, Bourg-en-Bresse et Ambérieu : plans personnalisés, CCMI à prix ferme, RE2020. 5,0/5 sur 36 avis Google.', ''],
+      'accueil': ['Constructeur de maison à Meximieux et dans l’Ain | Maisons d’Excellence', 'Maisons neuves sur-mesure à Meximieux, Bourg-en-Bresse et Ambérieu : plans personnalisés, CCMI à prix ferme, RE2020. 5,0/5 sur 36 avis Google.', ''],
       'modeles': ['Maison sur mesure dans l’Ain : 8 modèles | MdE', 'Maison sur mesure dans l’Ain : 8 modèles plain-pied, à étage ou éco-conçus, redessinés autour de votre terrain. Permis déposé pour vous, CCMI à prix ferme.', 'nos-modeles'],
       'realisations': ['Nos réalisations de maisons neuves dans l’Ain', 'Maisons traditionnelles et contemporaines construites à Meximieux, Pérouges et Montluel : brique, béton cellulaire, charpente traditionnelle.', 'realisations'],
       'entreprise': ['L’entreprise : savoir-faire et garanties CCMI', 'Constructeur à taille humaine dans l’Ain : plans sur-mesure, brique ou siporex, charpente traditionnelle, RE2020, CCMI et garantie décennale.', 'entreprise'],
@@ -55,4 +55,7 @@ export const META = {
       'villarslesdombes': ['Maison Villars-les-Dombes (01) – Devis gratuit | MdE', 'Maison neuve à Villars-les-Dombes, au pays des étangs : sol étudié, CCMI à prix ferme et garanties légales. Estimation gratuite en 2 min.', 'construction-maison-villars-les-dombes'],
       'chalamont': ['Maison neuve Chalamont (01) – Devis gratuit | MdE', 'Construire à Chalamont, à 10 km de notre bureau de Meximieux : sol des étangs étudié, CCMI à prix ferme, garanties. Estimation gratuite.', 'construction-maison-chalamont'],
       'miribel': ['Maison neuve Miribel (01) – Devis gratuit | MdE', 'Maison à Miribel, à 13 km de Lyon : plan de prévention des risques lu avant le plan de maison, CCMI, garanties. Estimation gratuite en 2 min.', 'construction-maison-miribel'],
+      'extBourg': ['Extension de maison à Bourg-en-Bresse (01) | MdE', 'Agrandir sa maison à Bourg-en-Bresse : argile bressane, jonction avec l’existant, déclaration ou permis selon la surface. Estimation en ligne.', 'extension-maison-bourg-en-bresse'],
+      'extMeximieux': ['Extension de maison à Meximieux (01) | MdE', 'Agrandir sa maison à Meximieux, près de Pérouges : avis de l’architecte des Bâtiments de France, Côtière, petites parcelles. Bureau sur place.', 'extension-maison-meximieux'],
+      'extAmberieu': ['Extension de maison à Ambérieu-en-Bugey (01) | MdE', 'Agrandir sa maison à Ambérieu-en-Bugey : terrain en pente, sous-sol ou demi-niveau, étude de sol, déclaration ou permis. Estimation en ligne.', 'extension-maison-amberieu-en-bugey'],
     } as const satisfies Record<string, MetaEntry>;

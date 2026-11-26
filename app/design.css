@@ -410,3 +410,8 @@ a:hover{color:#111412;}
 .me-consent-lien{padding:0;border:0;background:none;font:inherit;color:#2E5A49;text-decoration:underline;text-underline-offset:3px;cursor:pointer;}
 .me-consent-lien:hover{color:#3B7059;}
 .me-consent-lien:focus-visible{outline:2px solid #2E5A49;outline-offset:3px;}
+
+/* Bloc « Construire ou agrandir ? » de l'accueil (components/PortesAccueil.tsx) :
+   carte plus haute sur tablette et téléphone pour que la photo reste visible au-dessus du texte. */
+.me-porte{aspect-ratio:4/3;}
+@media(max-width:900px){.me-porte{aspect-ratio:3/4;}}

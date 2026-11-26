@@ -26,6 +26,7 @@ import {
   type PhotoExtension,
 } from '@/lib/data/extension';
 
+import GuidesExtension from '@/components/GuidesExtension';
 /**
  * Page « Extension de maison » (/renovation-extension).
  *
@@ -42,11 +43,11 @@ import {
  * est construit à partir du même tableau.
  */
 
-const CREME = '#F7F7F4';
-const ENCRE = '#111412';
-const VERT = '#2E5A49';
+export const CREME = '#F7F7F4';
+export const ENCRE = '#111412';
+export const VERT = '#2E5A49';
 
-const H2 = {
+export const H2 = {
   margin: 0,
   fontFamily: "'Cormorant Garamond',serif",
   fontWeight: 300,
@@ -55,7 +56,7 @@ const H2 = {
   color: ENCRE,
   maxWidth: '22ch',
 } as const;
-const H3 = {
+export const H3 = {
   margin: 0,
   fontFamily: "'Cormorant Garamond',serif",
   fontWeight: 400,
@@ -63,15 +64,15 @@ const H3 = {
   lineHeight: 1.15,
   color: ENCRE,
 } as const;
-const P = { margin: '16px 0 0', color: '#4E534E', fontSize: 'clamp(15px,1.3vw,17px)', lineHeight: 1.8 } as const;
-const CONTENEUR = { maxWidth: '1440px', margin: '0 auto', padding: '0 clamp(20px,5vw,64px)' } as const;
-const CARTE = {
+export const P = { margin: '16px 0 0', color: '#4E534E', fontSize: 'clamp(15px,1.3vw,17px)', lineHeight: 1.8 } as const;
+export const CONTENEUR = { maxWidth: '1440px', margin: '0 auto', padding: '0 clamp(20px,5vw,64px)' } as const;
+export const CARTE = {
   background: '#FFFFFF',
   border: '1px solid rgba(17,20,18,0.08)',
   borderRadius: '10px',
   padding: 'clamp(24px,2.8vw,36px)',
 } as const;
-const BTN_VERT = {
+export const BTN_VERT = {
   textDecoration: 'none',
   display: 'inline-flex',
   alignItems: 'center',
@@ -86,7 +87,7 @@ const BTN_VERT = {
   boxShadow: '0 22px 44px -22px rgba(46,90,73,1)',
 } as const;
 
-function Surtitre({ children, clair = false }: { children: string; clair?: boolean }) {
+export function Surtitre({ children, clair = false }: { children: string; clair?: boolean }) {
   return (
     <div style={{ display: 'inline-flex', alignItems: 'center', gap: '12px', marginBottom: '18px' }}>
       <span style={{ width: '42px', height: '1px', background: clair ? '#9CC4B2' : VERT }} />
@@ -106,7 +107,7 @@ function Surtitre({ children, clair = false }: { children: string; clair?: boole
 }
 
 /** Photo d'une rangée photo et texte, montrée entière, avec sa légende. */
-function Photo({ p, sens }: { p: PhotoExtension; sens: 'unfold-left' | 'unfold-right' }) {
+export function Photo({ p, sens }: { p: PhotoExtension; sens: 'unfold-left' | 'unfold-right' }) {
   return (
     <figure className="me-rang-photo" data-reveal={sens} style={{ margin: 0 }}>
       <img
@@ -129,7 +130,7 @@ function Photo({ p, sens }: { p: PhotoExtension; sens: 'unfold-left' | 'unfold-r
  * Grande photo entre deux sections, pour aérer la lecture. Montrée entière :
  * pas de recadrage.
  */
-function Bandeau({ p }: { p: PhotoExtension }) {
+export function Bandeau({ p }: { p: PhotoExtension }) {
   return (
     <div data-reveal="" style={{ marginTop: 'clamp(48px,6vw,88px)' }}>
       <img
@@ -145,7 +146,7 @@ function Bandeau({ p }: { p: PhotoExtension }) {
   );
 }
 
-function Encadre({ titre, children }: { titre: string; children: ReactNode }) {
+export function Encadre({ titre, children }: { titre: string; children: ReactNode }) {
   return (
     <aside
       data-reveal=""
@@ -178,7 +179,7 @@ function Liste({ items }: { items: readonly string[] }) {
 }
 
 /** Bandeau d'appel à l'action, sombre, repris en milieu et en bas de page. */
-function Appel({
+export function Appel({
   titre,
   texte,
   goEstimation,
@@ -524,6 +525,8 @@ export default function PageExtension({
           <Bandeau p={P_.bandeTypes} />
         </div>
       </section>
+
+      <GuidesExtension />
 
       {/* g) FAQ */}
       <section id="faq" className="me-ancre" style={{ background: CREME, padding: 'clamp(64px,8vw,112px) 0' }}>

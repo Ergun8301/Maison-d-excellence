@@ -2,6 +2,7 @@
 
 import type { Vals } from '@/components/site-vals';
 import { cssToStyle } from '@/lib/css';
+import PortesAccueil from '@/components/PortesAccueil';
 
 /**
  * Accueil — balisage repris tel quel de la maquette Claude Design.
@@ -65,6 +66,9 @@ export default function Accueil(v: Vals) {
               <span aria-hidden="true"></span>
             </div>
           </section>
+
+          {/* Ajout hors maquette : deux portes « Construire / Agrandir » (components/PortesAccueil.tsx). */}
+          <PortesAccueil />
 
           {/* PROPOSITION DE VALEUR */}
           <section id="valeur" style={{ background: "#F7F7F4", padding: "clamp(84px,12vw,160px) 0", scrollMarginTop: "80px" }}>

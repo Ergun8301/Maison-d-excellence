@@ -1,6 +1,7 @@
 import { SITE_URL } from '@/lib/site';
 import { COMPANY, PHONE_DISPLAY, EMAIL } from '@/lib/site';
 import { FAQ } from '@/lib/data/faq';
+import { ARTICLES } from '@/lib/data/articles';
 
 /**
  * llms.txt — résumé du site à l'usage des moteurs de réponse.
@@ -26,6 +27,9 @@ export function GET(): Response {
     ['/zone-intervention', 'Zone d’intervention autour de Meximieux, Bourg-en-Bresse et Ambérieu-en-Bugey, 30 km autour de chaque ville'],
     ['/investisseurs', 'Maisons jumelées et groupées pour investisseurs'],
     ['/renovation-extension', 'Extension de maison : types, structures, urbanisme, budget'],
+    ['/extension-maison-bourg-en-bresse', 'Extension de maison à Bourg-en-Bresse : argile bressane, jonction, autorisations'],
+    ['/extension-maison-meximieux', 'Extension de maison à Meximieux : abords de Pérouges, Côtière, petites parcelles'],
+    ['/extension-maison-amberieu-en-bugey', 'Extension de maison à Ambérieu-en-Bugey : terrain en pente, sous-sol, demi-niveaux'],
     ['/blog', 'Guides : RE2020, prix au m², budget, échéancier CCMI'],
     ['/contact', 'Coordonnées et prise de rendez-vous'],
     ['/mentions-legales', 'Mentions légales et informations RGPD'],
@@ -62,6 +66,10 @@ export function GET(): Response {
 ## Pages
 
 ${pages.map(([url, titre]) => `- [${titre}](${SITE_URL}${url})`).join('\n')}
+
+## Guides
+
+${ARTICLES.map((a) => `- [${a.title}](${SITE_URL}/blog/${a.slug}) : ${'seoDescription' in a ? a.seoDescription : a.excerpt}`).join('\n')}
 
 ## Questions fréquentes
 

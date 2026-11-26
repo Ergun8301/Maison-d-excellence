@@ -3,6 +3,7 @@ import { SITE_URL } from '@/lib/site';
 import { ARTICLES } from '@/lib/data/articles';
 import { TERRAINS } from '@/lib/data/terrains';
 import { LOCALES } from '@/lib/data/locales';
+import { LOCALES_EXTENSION } from '@/lib/data/locales-extension';
 
 /**
  * Plan du site, pour Google.
@@ -62,6 +63,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: l.pole ? 0.6 : 0.7,
   }));
 
+  const extensions = LOCALES_EXTENSION.map((l) => ({
+    url: `${SITE_URL}/${l.slug}`,
+    lastModified: maintenant,
+    changeFrequency: 'monthly' as const,
+    priority: 0.7,
+  }));
+
   const terrains = TERRAINS.map((t) => ({
     url: `${SITE_URL}/terrains/${t.slug}`,
     lastModified: maintenant,
@@ -69,5 +77,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.5,
   }));
 
-  return [...fixes, ...locales, ...articles, ...terrains];
+  return [...fixes, ...locales, ...extensions, ...articles, ...terrains];
 }
