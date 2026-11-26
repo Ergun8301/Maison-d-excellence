@@ -7,6 +7,7 @@ import { ETAPES_EXTENSION, PHOTOS_EXTENSION, PHOTOS_TYPES, SEUILS, TYPES_EXTENSI
 import { LOCALES_EXTENSION, type PageExtensionVille as Donnees } from '@/lib/data/locales-extension';
 import { Appel, BTN_VERT, CARTE, CONTENEUR, CREME, Encadre, H2, H3, P, Photo, Surtitre, VERT } from '@/components/PageExtension';
 
+import GuidesExtension from '@/components/GuidesExtension';
 /**
  * Page « Extension de maison à <ville> ».
  *
@@ -200,6 +201,8 @@ export default function PageExtensionVille({
           </ol>
         </div>
       </section>
+
+      <GuidesExtension />
 
       {/* FAQ */}
       <section id="faq" className="me-ancre" style={{ background: CREME, padding: 'clamp(64px,8vw,112px) 0' }}>

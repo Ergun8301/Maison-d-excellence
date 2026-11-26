@@ -26,6 +26,7 @@ import {
   type PhotoExtension,
 } from '@/lib/data/extension';
 
+import GuidesExtension from '@/components/GuidesExtension';
 /**
  * Page « Extension de maison » (/renovation-extension).
  *
@@ -524,6 +525,8 @@ export default function PageExtension({
           <Bandeau p={P_.bandeTypes} />
         </div>
       </section>
+
+      <GuidesExtension />
 
       {/* g) FAQ */}
       <section id="faq" className="me-ancre" style={{ background: CREME, padding: 'clamp(64px,8vw,112px) 0' }}>
