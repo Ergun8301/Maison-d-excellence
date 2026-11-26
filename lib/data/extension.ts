@@ -332,15 +332,15 @@ export const ETAPES_EXTENSION = [
 export const SECTEURS = [
   {
     titre: 'Autour de Bourg-en-Bresse',
-    texte: 'Autour de [Bourg-en-Bresse](/construction-maison-bourg-en-bresse), le règlement d’un lotissement s’ajoute souvent au PLU, et le sol argileux de la Bresse appelle une étude de sol. À [Viriat](/construction-maison-viriat), une chambre de plus se vérifie côté assainissement ; à [Péronnas](/construction-maison-peronnas), ce sont souvent les reculs.',
+    texte: 'Autour de [Bourg-en-Bresse](/construction-maison-bourg-en-bresse), le règlement d’un lotissement s’ajoute souvent au PLU, et le sol argileux de la Bresse appelle une étude de sol. À [Viriat](/construction-maison-viriat), une chambre de plus se vérifie côté assainissement ; à [Péronnas](/construction-maison-peronnas), ce sont souvent les reculs. Le cas de la ville a sa page : [agrandir sa maison à Bourg-en-Bresse](/extension-maison-bourg-en-bresse).',
   },
   {
     titre: 'Autour de Meximieux',
-    texte: 'Notre bureau est à [Meximieux](/construction-maison-meximieux). Dans la plaine de l’Ain, les terrains plats simplifient les fondations ; près de Pérouges, un monument protégé peut imposer l’avis de l’Architecte des Bâtiments de France. À [Montluel](/construction-maison-montluel), les petites parcelles font de l’emprise au sol la première limite.',
+    texte: 'Notre bureau est à [Meximieux](/construction-maison-meximieux). Dans la plaine de l’Ain, les terrains plats simplifient les fondations ; près de Pérouges, un monument protégé peut imposer l’avis de l’Architecte des Bâtiments de France. À [Montluel](/construction-maison-montluel), les petites parcelles font de l’emprise au sol la première limite. Le cas du bureau a sa page : [agrandir sa maison à Meximieux](/extension-maison-meximieux).',
   },
   {
     titre: 'Autour d’Ambérieu-en-Bugey',
-    texte: 'À [Ambérieu-en-Bugey](/construction-maison-amberieu-en-bugey), les terrains en pente obligent l’extension à raccorder des niveaux différents. À [Lagnieu](/construction-maison-lagnieu), ce sont le sol de graviers et la nappe qui comptent ; à [Pont-d’Ain](/construction-maison-pont-d-ain), une zone inondable peut limiter l’agrandissement.',
+    texte: 'À [Ambérieu-en-Bugey](/construction-maison-amberieu-en-bugey), les terrains en pente obligent l’extension à raccorder des niveaux différents. À [Lagnieu](/construction-maison-lagnieu), ce sont le sol de graviers et la nappe qui comptent ; à [Pont-d’Ain](/construction-maison-pont-d-ain), une zone inondable peut limiter l’agrandissement. Le cas de la pente a sa page : [agrandir sa maison à Ambérieu-en-Bugey](/extension-maison-amberieu-en-bugey).',
   },
 ] as const;
 
