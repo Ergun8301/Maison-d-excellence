@@ -13,7 +13,7 @@
 export type MetaEntry = readonly [title: string, description: string, slug: string];
 
 export const META = {
-      'accueil': ['Constructeur de maison individuelle dans l’Ain | Maisons d’Excellence', 'Maisons neuves sur-mesure à Meximieux, Bourg-en-Bresse et Ambérieu : plans personnalisés, CCMI à prix ferme, RE2020. 5,0/5 sur 36 avis Google.', ''],
+      'accueil': ['Constructeur de maison à Meximieux et dans l’Ain | Maisons d’Excellence', 'Maisons neuves sur-mesure à Meximieux, Bourg-en-Bresse et Ambérieu : plans personnalisés, CCMI à prix ferme, RE2020. 5,0/5 sur 36 avis Google.', ''],
       'modeles': ['Maison sur mesure dans l’Ain : 8 modèles | MdE', 'Maison sur mesure dans l’Ain : 8 modèles plain-pied, à étage ou éco-conçus, redessinés autour de votre terrain. Permis déposé pour vous, CCMI à prix ferme.', 'nos-modeles'],
       'realisations': ['Nos réalisations de maisons neuves dans l’Ain', 'Maisons traditionnelles et contemporaines construites à Meximieux, Pérouges et Montluel : brique, béton cellulaire, charpente traditionnelle.', 'realisations'],
       'entreprise': ['L’entreprise : savoir-faire et garanties CCMI', 'Constructeur à taille humaine dans l’Ain : plans sur-mesure, brique ou siporex, charpente traditionnelle, RE2020, CCMI et garantie décennale.', 'entreprise'],
