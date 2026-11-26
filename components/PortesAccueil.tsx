@@ -65,7 +65,7 @@ function V1({ nav }: { nav: (href: string) => (e: MouseEvent) => void }) {
         <Entete />
         <div className="me-g2" style={{ gap: 'clamp(14px,1.6vw,22px)' }}>
           {PORTES.map((p, i) => (
-            <a key={p.cle} href={p.lien} onClick={nav(p.lien)} data-reveal="" data-delay={String(i * 120)} style={{ position: 'relative', display: 'block', overflow: 'hidden', borderRadius: '10px', aspectRatio: '4 / 3', textDecoration: 'none', color: '#F7F7F4' }}>
+            <a key={p.cle} href={p.lien} onClick={nav(p.lien)} data-reveal="" data-delay={String(i * 120)} className="me-porte" style={{ position: 'relative', display: 'block', overflow: 'hidden', borderRadius: '10px', textDecoration: 'none', color: '#F7F7F4' }}>
               <img src={p.img.src} width={p.img.w} height={p.img.h} alt={p.img.alt} loading="lazy" decoding="async" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} />
               <span aria-hidden="true" style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg,rgba(11,13,12,0) 25%,rgba(11,13,12,0.55) 55%,rgba(11,13,12,0.88) 100%)' }} />
               <span style={{ position: 'absolute', left: 0, right: 0, bottom: 0, padding: 'clamp(22px,3vw,40px)' }}>
