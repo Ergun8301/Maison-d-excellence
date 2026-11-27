@@ -16,7 +16,7 @@ import type { ModeleCard } from '@/components/site-vals';
  */
 
 export type Variante = 'v1' | 'v2' | 'v3';
-export const VARIANTE: Variante = 'v1';
+export const VARIANTE: Variante = 'v3';
 
 /** Garage visible sur la photo et décrit dans la fiche. null : non précisé. */
 const GARAGE: Record<string, 'Simple' | 'Double' | null> = {
@@ -141,9 +141,9 @@ function V2({ liste }: { liste: ModeleCard[] }) {
 /** V3 — bande sombre, trois photos plein cadre avec le nom dessus. */
 function V3({ liste }: { liste: ModeleCard[] }) {
   return (
-    <div className="me-g3" style={{ gap: '6px', marginTop: 'clamp(22px,2.6vw,32px)', background: '#111412', padding: '6px', borderRadius: '12px' }}>
+    <div className="me-est-v3" style={{ marginTop: 'clamp(22px,2.6vw,32px)' }}>
       {liste.map((m) => (
-        <button key={m.name} type="button" onClick={m.onAsk} style={{ position: 'relative', display: 'block', cursor: 'pointer', padding: 0, border: 'none', borderRadius: '8px', overflow: 'hidden', aspectRatio: '4 / 5', fontFamily: 'inherit', textAlign: 'left' }}>
+        <button key={m.name} type="button" onClick={m.onAsk} style={{ position: 'relative', display: 'block', cursor: 'pointer', padding: 0, border: 'none', borderRadius: '8px', overflow: 'hidden', fontFamily: 'inherit', textAlign: 'left' }}>
           <img src={m.photo} alt={`Modèle ${m.name} : ${m.desc}`} loading="lazy" decoding="async" width={600} height={750} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} />
           <span aria-hidden="true" style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg,rgba(11,13,12,0) 45%,rgba(11,13,12,0.85) 100%)' }} />
           <span style={{ position: 'absolute', left: 0, right: 0, bottom: 0, padding: '20px', color: '#F7F7F4', display: 'flex', flexDirection: 'column', gap: '4px' }}>
@@ -153,6 +153,13 @@ function V3({ liste }: { liste: ModeleCard[] }) {
           </span>
         </button>
       ))}
+      {liste.length < 3 && (
+        <a href="/nos-modeles" className="me-link" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', gap: '8px', padding: '24px', borderRadius: '8px', background: '#1C211E', color: '#F7F7F4', textDecoration: 'none' }}>
+          <span style={{ fontSize: '11px', letterSpacing: '0.16em', textTransform: 'uppercase', color: '#9CC4B2', fontWeight: 600 }}>8 modèles</span>
+          <span style={{ fontFamily: SERIF, fontWeight: 300, fontSize: '30px', lineHeight: 1.1 }}>Plain-pied, à étage ou éco-conçus</span>
+          <span style={{ fontSize: '13.5px', fontWeight: 600, color: '#9CC4B2' }}>Voir tous nos modèles →</span>
+        </a>
+      )}
     </div>
   );
 }

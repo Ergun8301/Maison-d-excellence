@@ -415,3 +415,14 @@ a:hover{color:#111412;}
    carte plus haute sur tablette et téléphone pour que la photo reste visible au-dessus du texte. */
 .me-porte{aspect-ratio:4/3;}
 @media(max-width:900px){.me-porte{aspect-ratio:3/4;}}
+
+/* Modèles sous le simulateur, version V3 (components/EstimationModeles.tsx) :
+   trois photos sur bande sombre ; sur téléphone, bande à faire glisser au doigt
+   pour ne pas allonger la page sous le formulaire d'estimation. */
+.me-est-v3{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;background:#111412;padding:6px;border-radius:12px;}
+.me-est-v3 > *{aspect-ratio:1/1;}
+@media(max-width:600px){
+  .me-est-v3{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;}
+  .me-est-v3::-webkit-scrollbar{display:none;}
+  .me-est-v3 > *{flex:0 0 78%;scroll-snap-align:start;aspect-ratio:4/5;}
+}
