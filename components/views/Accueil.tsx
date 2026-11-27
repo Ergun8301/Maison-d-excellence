@@ -3,6 +3,7 @@
 import type { Vals } from '@/components/site-vals';
 import { cssToStyle } from '@/lib/css';
 import PortesAccueil from '@/components/PortesAccueil';
+import EstimationModeles from '@/components/EstimationModeles';
 
 /**
  * Accueil — balisage repris tel quel de la maquette Claude Design.
@@ -234,6 +235,9 @@ export default function Accueil(v: Vals) {
                 </div>
 
               </div>
+
+              {/* Ajout hors maquette : modèles qui ressemblent au choix du simulateur (components/EstimationModeles.tsx). */}
+              <EstimationModeles niveau={v.estNiveau} garage={v.estGarage} modeles={[...v.modelesPP, ...v.modelesEtage, ...v.modelesEco]} />
 
               <div data-reveal="" style={{ marginTop: "clamp(44px,5.4vw,72px)", paddingTop: "clamp(36px,4vw,52px)", borderTop: "1px solid rgba(17,20,18,0.14)" }}>
                 <div className="me-g3" style={{ gap: "clamp(20px,2.6vw,40px)" }}>

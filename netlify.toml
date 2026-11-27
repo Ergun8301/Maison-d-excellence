@@ -38,3 +38,11 @@
   for = "/*.html"
   [headers.values]
     Cache-Control = "public, max-age=0, must-revalidate"
+
+# Fichier de données de la carte (zone d'intervention) : utile au site, pas
+# aux résultats de recherche. Google l'avait exploré et classé « explorée,
+# actuellement non indexée ».
+[[headers]]
+  for = "/carte-donnees.json"
+  [headers.values]
+    X-Robots-Tag = "noindex"
